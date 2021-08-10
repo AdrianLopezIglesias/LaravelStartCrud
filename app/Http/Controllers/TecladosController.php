@@ -90,6 +90,7 @@ class TecladosController extends AppBaseController
     public function edit($id)
     {
         $teclados = $this->tecladosRepository->find($id);
+        $teclado = $teclados[0];
 
         if (empty($teclados)) {
             Flash::error('Teclados not found');
