@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::resource('teclados', App\Http\Controllers\API\TecladosAPIController::class);
+Route::resource('teclados', TecladosAPIController::class);
 
 
-Route::resource('mice', App\Http\Controllers\API\MouseAPIController::class);
+Route::resource('mice', MouseAPIController::class);

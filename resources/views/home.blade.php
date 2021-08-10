@@ -1,10 +1,12 @@
-@extends('layouts.app')
 
 @section('content')
+Home View
 <div class="container">
-    <div class="row">
-
+  <div class="row">
+    <div class="" id="app">
+      <front-page></front-page>
 
     </div>
+  </div>
 </div>
-@endsection
+<script src="{{ mix('js/app.js') }}"></script>
