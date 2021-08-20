@@ -18,7 +18,7 @@ export default {
   mounted() {
   },
   async created(){
-   this.teclados = await this.$api.teclados.fetch({});
+   this.teclados = await this.$api.teclados.get(1);
   //  this.teclados = this.teclados.data;
   
   },

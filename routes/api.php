@@ -23,3 +23,6 @@ Route::resource('teclados', TecladosAPIController::class);
 
 
 Route::resource('mice', MouseAPIController::class);
+
+
+Route::resource('i_m_e_i_s', App\Http\Controllers\API\IMEIAPIController::class);

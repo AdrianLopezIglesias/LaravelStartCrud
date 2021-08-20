@@ -1956,7 +1956,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return _this.$api.teclados.fetch({});
+              return _this.$api.teclados.get(1);
 
             case 2:
               _this.teclados = _context.sent;
@@ -68675,7 +68675,7 @@ var ReadOnlyApiService = /*#__PURE__*/function (_BaseApiService) {
     key: "get",
     value: function () {
       var _get = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(id) {
-        var response;
+        var response, data;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -68699,19 +68699,20 @@ var ReadOnlyApiService = /*#__PURE__*/function (_BaseApiService) {
                 return response.json();
 
               case 8:
-                return _context2.abrupt("return", _context2.sent);
+                data = _context2.sent;
+                return _context2.abrupt("return", data.data);
 
-              case 11:
-                _context2.prev = 11;
+              case 12:
+                _context2.prev = 12;
                 _context2.t0 = _context2["catch"](0);
                 this.handleErrors(_context2.t0);
 
-              case 14:
+              case 15:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 11]]);
+        }, _callee2, this, [[0, 12]]);
       }));
 
       function get(_x) {

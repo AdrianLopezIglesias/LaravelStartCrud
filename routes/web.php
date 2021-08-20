@@ -42,3 +42,6 @@ Route::resource('teclados', App\Http\Controllers\TecladosController::class);
 
 
 Route::resource('mice', App\Http\Controllers\MouseController::class);
+
+
+Route::resource('imeis', App\Http\Controllers\IMEIController::class);
