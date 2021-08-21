@@ -1,11 +1,6 @@
 
 @section('content')
-Home View
-<div class="container">
-  <div class="row">
-    <div class="" id="example">
+    <div class="" id="App">
 
     </div>
-  </div>
-</div>
 <script src="{{ mix('js/app.js') }}"></script>
