@@ -6,13 +6,15 @@ import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import { Context } from './LanguageWrapper'
 import { FormattedMessage } from 'react-intl';
+import Form from 'react-bootstrap/Form'
+import paginationFactory, { PaginationProvider } from 'react-bootstrap-table2-paginator';
 
 
 export default function Navigation(props) {
   const context = useContext(Context);
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="sm">
       <Container>
         <Navbar.Brand href="#home">InteraSoft</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -20,8 +22,7 @@ export default function Navigation(props) {
           <Nav className="me-auto">
             <Nav.Link href="#home">
               <FormattedMessage
-                id="app.channel.plug"
-                defaultMessage="Tutorial brought to you by Adrian"
+                id="navigation.home"
               />
             </Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
@@ -33,10 +34,10 @@ export default function Navigation(props) {
             </NavDropdown>
           </Nav>
           <Nav className="ml-auto">
-            <select value={context.locale} onChange={context.selectLanguage}>
+            <Form.Select value={context.locale} onChange={context.selectLanguage}>
               <option value='en'>English</option>
               <option value='es'>Español</option>
-            </select>
+            </Form.Select>
           </Nav>
         </Navbar.Collapse>
       </Container>

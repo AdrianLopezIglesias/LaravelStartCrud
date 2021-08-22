@@ -2,6 +2,7 @@ import React, { useContext} from 'react';
 import ReactDOM from 'react-dom';
 //components
 import Page from './Page';
+import './index.css';
 
 
 /* react-intl imports */

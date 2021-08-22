@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import About from './About';
 import Navigation from './Navigation';
 // import Contact from './Contact';
-// import Projects from './Projects';
-// import Skills from './Skills';
+import Projects from './Projects';
+import Skills from './Skills';
 
 /* react-intl imports */
 import { IntlProvider } from 'react-intl';
@@ -13,21 +13,25 @@ import LanguageWrapper from './LanguageWrapper'
 import {Context} from './LanguageWrapper'
 
 
-
+import Container from 'react-bootstrap/Container'
 
 function Page() {
   const context = useContext(Context);
 
   return (
       <div>
-    <LanguageWrapper>
-        <Navigation context={context}/>
+      <LanguageWrapper>
+        <Navigation context={context} />
+        <br />
+        <Container>
 
         <About />
-        {/* <Projects />
         <Skills />
-        <Stack />
-        <Contact /> */}
+          <Projects />
+        {/* <Stack /> */}
+        {/* <Contact /> */}
+        
+        </Container>
     </LanguageWrapper>
       </div>
   );

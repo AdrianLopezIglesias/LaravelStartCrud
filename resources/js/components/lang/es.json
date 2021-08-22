@@ -1,5 +1,18 @@
 {
-  "app.header": "Editar y cargar",
-  "app.content": "Aprender React",
-  "app.channel.plug": "Datos y mas datos"
+"navigation.home": "Inicio",
+  "about.header": "Acerca de mi",
+  "about.content": "Soy un desarrollador de soluciones IT especializado en: ",
+  "about.content.item1": "Aplicaciones Web",
+  "about.content.item2": "Páginas Web",
+  "about.content.item3": "Automatizaciones",
+  "about.content.item4": "Desarrollo de Software",
+
+  "skills.header": "Tecnologias",
+  "skills.content": "",
+  "skills.filterExperience": "Años de experiencia",
+  "skills.filterArea": "Área de aplicación",
+  "skills.filterName": "Nombre de la tecnología",
+
+  "projects.header": "Proyectos"
+  
 }

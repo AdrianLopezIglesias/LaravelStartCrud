@@ -1,5 +1,9 @@
 {
-  "app.header": "Edit the files and save to reload",
-  "app.content": "Learn React",
-  "app.channel.plug": "Tutorial brought to you by Lokalise"
+"navigation.home": "Home",
+  "about.header": "About us",
+  "about.content": "",
+  "about.content.item1": "Aplicaciones Web",
+  "about.content.item2": "Páginas Web",
+  "about.content.item3": "Automatizaciones",
+  "about.content.item4": "Desarrollo de Software"
 }
