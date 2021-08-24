@@ -6,6 +6,7 @@ import Navigation from './Navigation';
 // import Contact from './Contact';
 import Projects from './Projects';
 import Skills from './Skills';
+import Contact from './Contact';
 
 /* react-intl imports */
 import { IntlProvider } from 'react-intl';
@@ -27,10 +28,16 @@ function Page() {
 <br />
 <br />
         <About />
+<br />
+<br />
         <Skills />
+<br />
+<br />
           <Projects />
+<br />
+<br />
         {/* <Stack /> */}
-        {/* <Contact /> */}
+        <Contact />
         
         </Container>
     </LanguageWrapper>

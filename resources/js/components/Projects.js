@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
 import TechTable from './TechTable';
 import ProjectCard from './ProjectCard'
-import proyectos from './proyectos'
+import proyectos from './bd/proyectos'
 import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
 

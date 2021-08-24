@@ -3,7 +3,7 @@ import BootstrapTable from "react-bootstrap-table-next";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 import filterFactory, { selectFilter, numberFilter, Comparator, textFilter } from "react-bootstrap-table2-filter";
-import tecnologias from './tecnologias.js';
+import tecnologias from './bd/tecnologias.js';
 import Table from 'react-bootstrap/Table'
 import Form from 'react-bootstrap/Form'
 import { FormattedMessage } from 'react-intl';

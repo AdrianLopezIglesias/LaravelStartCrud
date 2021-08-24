@@ -23,6 +23,9 @@ Route::get('/', [
 ])->name('home');
 
 
+
+
+Route::middleware(['auth'])->group(function () {
 Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
 
 Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate')->name('io_field_template');
@@ -40,8 +43,10 @@ Route::post(
 
 Route::resource('teclados', App\Http\Controllers\TecladosController::class);
 
-
 Route::resource('mice', App\Http\Controllers\MouseController::class);
 
+Route::resource('projects', App\Http\Controllers\ProjectController::class);
+Route::resource('mensajes', App\Http\Controllers\MensajeController::class);
 
-Route::resource('imeis', App\Http\Controllers\IMEIController::class);
+});
+

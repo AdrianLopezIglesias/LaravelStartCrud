@@ -10380,6 +10380,326 @@ if (document.getElementById('App')) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Contact.js":
+/*!********************************************!*\
+  !*** ./resources/js/components/Contact.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Contact)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_scroll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-scroll */ "./node_modules/react-scroll/modules/index.js");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/message.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+
+
+
+var Contact = /*#__PURE__*/function (_React$Component) {
+  _inherits(Contact, _React$Component);
+
+  var _super = _createSuper(Contact);
+
+  function Contact(props) {
+    var _this;
+
+    _classCallCheck(this, Contact);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      name: '',
+      nameError: false,
+      contact: '',
+      email: '',
+      emailError: false,
+      emailError2: false,
+      message: '',
+      messageError: false,
+      formValid: false
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleBlur = _this.handleBlur.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Contact, [{
+    key: "isValidEmail",
+    value: function isValidEmail(email) {
+      return /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email);
+    } // isValidcontact(contactno) {
+    //   return /^[6-9]\d{9}$/.test(contactno);
+    // }  
+
+  }, {
+    key: "handleBlur",
+    value: function handleBlur(e) {
+      var name = e.target.name;
+      var value = e.target.value;
+      this.setState(_defineProperty({}, name, value));
+
+      if (value.length <= 0 && name == 'name') {
+        this.setState({
+          nameError: true
+        });
+      } else {
+        this.setState({
+          nameError: false
+        });
+      }
+
+      if (value.length <= 0 && name == 'email') {
+        this.setState({
+          emailError: true
+        });
+        this.setState({
+          emailError2: false
+        });
+      } else {
+        this.setState({
+          emailError: false
+        });
+
+        if (this.isValidEmail(value)) {
+          this.setState({
+            emailError2: false
+          });
+        } else {
+          this.setState({
+            emailError2: true
+          });
+        }
+      }
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(e) {
+      this.setState(_defineProperty({}, e.target.name, e.target.value));
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      var _this$state = this.state,
+          name = _this$state.name,
+          email = _this$state.email,
+          message = _this$state.message,
+          nameError = _this$state.nameError,
+          emailError = _this$state.emailError,
+          emailError2 = _this$state.emailError2,
+          messageError = _this$state.messageError;
+      this.setState({
+        nameError: name ? false : true
+      });
+      this.setState({
+        messageError: message ? false : true
+      });
+      this.setState({
+        emailError: email ? false : true
+      });
+
+      if (email && !emailError) {
+        this.setState({
+          emailError2: this.isValidEmail(email) ? false : true
+        });
+      }
+
+      if (name && email && message && !nameError && !emailError && !emailError2 && !messageError) {
+        this.setState({
+          formValid: true
+        });
+      } else {
+        this.setState({
+          formValid: false
+        });
+      }
+
+      e.preventDefault();
+      axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/mensajes', {
+        name: name,
+        email: email,
+        message: message
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$state2 = this.state,
+          name = _this$state2.name,
+          email = _this$state2.email,
+          message = _this$state2.message,
+          nameError = _this$state2.nameError,
+          emailError = _this$state2.emailError,
+          emailError2 = _this$state2.emailError2,
+          messageError = _this$state2.messageError,
+          formValid = _this$state2.formValid;
+
+      if (!formValid) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_scroll__WEBPACK_IMPORTED_MODULE_1__.Element, {
+              name: "contact"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_4__.default, {
+                id: "contact.title"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              className: "card-body",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
+                action: "/",
+                onSubmit: function onSubmit(e) {
+                  return _this2.handleSubmit(e);
+                },
+                encType: "multipart/form-data",
+                autoComplete: "off",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                  className: "form-group",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
+                    className: "mb-0",
+                    children: ["Your name", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                      className: "text-danger",
+                      children: "*"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+                    name: "name",
+                    type: "text",
+                    className: "form-control",
+                    placeholder: "Name",
+                    value: this.state.name,
+                    onChange: this.handleChange,
+                    onBlur: this.handleBlur
+                  }), nameError ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                    className: "alert alert-danger mt-2",
+                    children: "Name is a required field."
+                  }) : '']
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                  className: "form-group",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
+                    className: "mb-0",
+                    children: ["Your email", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                      className: "text-danger",
+                      children: "*"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+                    name: "email",
+                    type: "email",
+                    className: "form-control",
+                    placeholder: "Email",
+                    value: this.state.email,
+                    onChange: this.handleChange,
+                    onBlur: this.handleBlur
+                  }), emailError ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                    className: "alert alert-danger mt-2",
+                    children: "Email is a required field."
+                  }) : '', emailError2 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                    className: "alert alert-danger mt-2",
+                    children: "Email invalid."
+                  }) : '']
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                  className: "form-group",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
+                    className: "mb-0",
+                    children: ["Message", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                      className: "text-danger",
+                      children: "*"
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("textarea", {
+                    name: "message",
+                    type: "text",
+                    className: "form-control",
+                    placeholder: "Message",
+                    value: this.state.message,
+                    onChange: this.handleChange,
+                    onBlur: this.handleBlur
+                  }), messageError ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                    className: "alert alert-danger mt-2",
+                    children: "Message is a required field."
+                  }) : '']
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                  className: "text-center mb-0",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+                    type: "submit",
+                    className: "btn btn-outline-secondary w-100",
+                    value: "Enviar"
+                  })
+                })]
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("hr", {})]
+        });
+      } else {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+          className: "thankyou_details",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "alert alert-success mt-3",
+            children: "Thank for your message. We will contact you soon."
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("ul", {
+            className: "list-group",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
+              className: "list-group-item",
+              children: ["Name: ", this.state.name]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
+              className: "list-group-item",
+              children: ["Email: ", this.state.email]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("li", {
+              className: "list-group-item",
+              children: ["Message: ", this.state.message]
+            })]
+          })]
+        });
+      }
+    }
+  }]);
+
+  return Contact;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component); // export default ContactForm;
+
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/LanguageWrapper.js":
 /*!****************************************************!*\
   !*** ./resources/js/components/LanguageWrapper.js ***!
@@ -10534,7 +10854,7 @@ function Navigation(props) {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_7__.default, {
           className: "me-auto",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_scroll__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            "class": "nav-link",
+            className: "nav-link",
             activeClass: "active",
             to: "about",
             spy: true,
@@ -10545,7 +10865,7 @@ function Navigation(props) {
               id: "navigation.about"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_scroll__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            "class": "nav-link",
+            className: "nav-link",
             activeClass: "active",
             to: "skills",
             spy: true,
@@ -10556,7 +10876,7 @@ function Navigation(props) {
               id: "navigation.skills"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_scroll__WEBPACK_IMPORTED_MODULE_3__.Link, {
-            "class": "nav-link",
+            className: "nav-link",
             activeClass: "active",
             to: "projects",
             spy: true,
@@ -10565,6 +10885,17 @@ function Navigation(props) {
             duration: 500,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_8__.default, {
               id: "navigation.projects"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_scroll__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            className: "nav-link",
+            activeClass: "active",
+            to: "contact",
+            spy: true,
+            smooth: true,
+            offset: -70,
+            duration: 500,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_8__.default, {
+              id: "navigation.contact"
             })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_7__.default, {
@@ -10605,14 +10936,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Navigation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Navigation */ "./resources/js/components/Navigation.js");
 /* harmony import */ var _Projects__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Projects */ "./resources/js/components/Projects.js");
 /* harmony import */ var _Skills__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Skills */ "./resources/js/components/Skills.js");
-/* harmony import */ var _LanguageWrapper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./LanguageWrapper */ "./resources/js/components/LanguageWrapper.js");
-/* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap/Container */ "./node_modules/react-bootstrap/esm/Container.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Contact__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Contact */ "./resources/js/components/Contact.js");
+/* harmony import */ var _LanguageWrapper__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./LanguageWrapper */ "./resources/js/components/LanguageWrapper.js");
+/* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap/Container */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
  //components
 
 
  // import Contact from './Contact';
+
 
 
 
@@ -10626,13 +10959,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Page() {
-  var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageWrapper__WEBPACK_IMPORTED_MODULE_6__.Context);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_LanguageWrapper__WEBPACK_IMPORTED_MODULE_6__.default, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Navigation__WEBPACK_IMPORTED_MODULE_3__.default, {
+  var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageWrapper__WEBPACK_IMPORTED_MODULE_7__.Context);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_LanguageWrapper__WEBPACK_IMPORTED_MODULE_7__.default, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Navigation__WEBPACK_IMPORTED_MODULE_3__.default, {
         context: context
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_8__.default, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_About__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Skills__WEBPACK_IMPORTED_MODULE_5__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Projects__WEBPACK_IMPORTED_MODULE_4__.default, {})]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_9__.default, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_About__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Skills__WEBPACK_IMPORTED_MODULE_5__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Projects__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Contact__WEBPACK_IMPORTED_MODULE_6__.default, {})]
       })]
     })
   });
@@ -10660,7 +10993,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap/Card */ "./node_modules/react-bootstrap/esm/Card.js");
 /* harmony import */ var _WrappedMessage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WrappedMessage */ "./resources/js/components/WrappedMessage.js");
 /* harmony import */ var _ProjectModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ProjectModal */ "./resources/js/components/ProjectModal.js");
-/* harmony import */ var _images__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./images */ "./resources/js/components/images.js");
+/* harmony import */ var _bd_images__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./bd/images */ "./resources/js/components/bd/images.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
  // import { FormattedMessage } from 'react-intl';
 
@@ -10679,7 +11012,7 @@ __webpack_require__.r(__webpack_exports__);
 function ProjectCard(props) {
   var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageWrapper__WEBPACK_IMPORTED_MODULE_1__.Context);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_6__.default, {
-    lg: 4,
+    md: 4,
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_7__.default, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_7__.default.Img, {
         variant: "top",
@@ -10776,7 +11109,7 @@ function ProjectModal(props) {
             id: image.description
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-          className: "d-block w-100 mh-400  center fit-image",
+          className: "d-block w-75",
           src: "/images/" + image.url,
           alt: image.title
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {})]
@@ -10832,7 +11165,7 @@ function ProjectModal(props) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
             children: ["Password: ", props.project.password]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
-            children: ["Repository: ", props.project.repository]
+            children: ["Repository: ", props.project.repo]
           })]
         }), tecnologias, imagenes, video]
       })]
@@ -10859,7 +11192,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap/Row */ "./node_modules/react-bootstrap/esm/Row.js");
 /* harmony import */ var _TechTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TechTable */ "./resources/js/components/TechTable.js");
 /* harmony import */ var _ProjectCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ProjectCard */ "./resources/js/components/ProjectCard.js");
-/* harmony import */ var _proyectos__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./proyectos */ "./resources/js/components/proyectos.js");
+/* harmony import */ var _bd_proyectos__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./bd/proyectos */ "./resources/js/components/bd/proyectos.js");
 /* harmony import */ var react_scroll__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-scroll */ "./node_modules/react-scroll/modules/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
  // import { FormattedMessage } from 'react-intl';
@@ -10886,7 +11219,7 @@ function Projects() {
         id: "projects.header"
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_8__.default, {
-      children: _proyectos__WEBPACK_IMPORTED_MODULE_4__.default.map(function (project, index) {
+      children: _bd_proyectos__WEBPACK_IMPORTED_MODULE_4__.default.map(function (project, index) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ProjectCard__WEBPACK_IMPORTED_MODULE_3__.default, {
           project: project,
           title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_7__.default, {
@@ -10964,7 +11297,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
 /* harmony import */ var react_bootstrap_table_next_dist_react_bootstrap_table2_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap-table-next/dist/react-bootstrap-table2.min.css */ "./node_modules/react-bootstrap-table-next/dist/react-bootstrap-table2.min.css");
 /* harmony import */ var react_bootstrap_table2_filter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap-table2-filter */ "./node_modules/react-bootstrap-table2-filter/lib/index.js");
-/* harmony import */ var _tecnologias_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./tecnologias.js */ "./resources/js/components/tecnologias.js");
+/* harmony import */ var _bd_tecnologias_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./bd/tecnologias.js */ "./resources/js/components/bd/tecnologias.js");
 /* harmony import */ var react_bootstrap_Table__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap/Table */ "./node_modules/react-bootstrap/esm/Table.js");
 /* harmony import */ var react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap/Form */ "./node_modules/react-bootstrap/esm/Form.js");
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/message.js");
@@ -11072,7 +11405,7 @@ var TechTable = /*#__PURE__*/function (_Component) {
       var products = function products() {
         var filters = _this2.state.filters;
         console.log("d=>", filters);
-        var items = _tecnologias_js__WEBPACK_IMPORTED_MODULE_5__.default;
+        var items = _bd_tecnologias_js__WEBPACK_IMPORTED_MODULE_5__.default;
         var experienciaFilter = filters.experiencia ? filters.experiencia.filterVal : null;
         var tipoFilter = filters.tipo ? filters.tipo.filterVal : null;
 
@@ -11257,10 +11590,10 @@ var WrappedMessage = function WrappedMessage(props) {
 
 /***/ }),
 
-/***/ "./resources/js/components/images.js":
-/*!*******************************************!*\
-  !*** ./resources/js/components/images.js ***!
-  \*******************************************/
+/***/ "./resources/js/components/bd/images.js":
+/*!**********************************************!*\
+  !*** ./resources/js/components/bd/images.js ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -11283,10 +11616,10 @@ var images = {
 
 /***/ }),
 
-/***/ "./resources/js/components/proyectos.js":
-/*!**********************************************!*\
-  !*** ./resources/js/components/proyectos.js ***!
-  \**********************************************/
+/***/ "./resources/js/components/bd/proyectos.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/bd/proyectos.js ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -11296,30 +11629,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 var proyectos = [{
   id: 1,
-  name: "Navela",
-  images: [{
-    url: "navela (1).gif",
-    title: "projects.project1.image1.title",
-    description: "projects.project1.image1.description"
-  }, {
-    url: "navela (2).jpg",
-    title: "projects.project1.image2.title",
-    description: "projects.project1.image2.description"
-  }],
-  title: "projects.project1.title",
-  description: "projects.project1.description",
-  tecnologies: ["JQuery", "PHP", "HTML", "CSS", "Bootstrap"]
-}, {
-  id: 2,
   name: "SiC",
   images: [{
-    url: "sic (1).gif",
-    title: "projects.project2.image1.title",
-    description: "projects.project2.image1.description"
+    "url": "sic (1).gif",
+    "title": "projects.project2.image1.title",
+    "description": "projects.project2.image1.description"
   }, {
-    url: "sic (2).gif",
-    title: "projects.project2.image2.title",
-    description: "projects.project2.image2.description"
+    "url": "sic (2).gif",
+    "title": "projects.project2.image2.title",
+    "description": "projects.project2.image2.description"
   }],
   title: "projects.project2.title",
   description: "projects.project2.description",
@@ -11339,6 +11657,21 @@ var proyectos = [{
   title: "projects.project3.title",
   description: "projects.project3.description",
   tecnologies: ["AngularJS", "HTML", "CSS"]
+}, {
+  id: 2,
+  name: "Navela",
+  images: [{
+    url: "navela (1).gif",
+    title: "projects.project1.image1.title",
+    description: "projects.project1.image1.description"
+  }, {
+    url: "navela (2).jpg",
+    title: "projects.project1.image2.title",
+    description: "projects.project1.image2.description"
+  }],
+  title: "projects.project1.title",
+  description: "projects.project1.description",
+  tecnologies: ["JQuery", "PHP", "HTML", "CSS", "Bootstrap"]
 }, {
   id: 4,
   name: "InteraSoft",
@@ -11363,10 +11696,10 @@ var proyectos = [{
 
 /***/ }),
 
-/***/ "./resources/js/components/tecnologias.js":
-/*!************************************************!*\
-  !*** ./resources/js/components/tecnologias.js ***!
-  \************************************************/
+/***/ "./resources/js/components/bd/tecnologias.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/bd/tecnologias.js ***!
+  \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -16616,7 +16949,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".about-image{\r\n  width: 100%;\r\n}\r\n\r\n.hidden{\r\ndisplay: none}\r\n\r\n.filter-label{\r\ndisplay:none}\r\n\r\n.carousel-caption-proyect-model {\r\n  position: relative;\r\n  color: black;\r\n  text-align: left;\r\n  padding-left: 0px;\r\n  margin-left: 0px\r\n}\r\n\r\n.mh-400{\r\n  max-height: 400px;\r\n}\r\n.mg-300{\r\n    max-height: 300px;\r\n}\r\n.fit-image{\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\r\n}\r\n\r\n.mw-500{\r\n  max-width: 800px\r\n}\r\n\r\n.center {\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  width: 50%;\r\n}\r\n\r\n.video-project{\r\n    width:100%;\r\n    height:500px;\r\n}\r\n\r\n.nav-link{\r\ncursor: pointer;}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".about-image{\r\n  width: 100%;\r\n}\r\n\r\n.hidden{\r\ndisplay: none}\r\n\r\n.filter-label{\r\ndisplay:none}\r\n\r\n.carousel-caption-proyect-model {\r\n  position: relative;\r\n  color: black;\r\n  text-align: left;\r\n  padding-left: 0px;\r\n  margin-left: 0px\r\n}\r\n\r\n.mh-400{\r\n  max-height: 400px;\r\n}\r\n.mg-300{\r\n    max-height: 300px;\r\n}\r\n.fit-image{\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\r\n}\r\n\r\n.mw-500{\r\n  max-width: 800px\r\n}\r\n\r\n.center {\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  width: 50%;\r\n}\r\n\r\n.video-project{\r\n    width:100%;\r\n    height:500px;\r\n}\r\n\r\n.nav-link{\r\ncursor: pointer;}\r\n\r\n.card-text{\r\n   overflow: hidden;\r\n   text-overflow: ellipsis;\r\n   display: -webkit-box;\r\n   -webkit-line-clamp: 6; /* number of lines to show */\r\n   -webkit-box-orient: vertical;}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -102051,7 +102384,7 @@ function _setPrototypeOf(o, p) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"navigation.home":"Inicio","about.header":"Acerca de mi","about.content1":"Soy un desarrollador web Full Stack con solidos conocimientos en Laravel y actualmente estudiando React.   ","about.content2":"Cuento con 7 años de experiencia en el desarrollo de soluciones IT. ","about.content3":"Estoy especializado en:","about.content.item1":"Desarrollo de Sistemas de Gestión","about.content.item2":"Páginas Web","about.content.item3":"Automatizaciones","about.content.item4":"Eficiencia productiva","skills.header":"Tecnologias","skills.content":"","skills.filterExperience":"Años de experiencia","skills.filterArea":"Área de aplicación","skills.filterName":"Nombre de la tecnología","projects.header":"Proyectos","projects.project1.title":"navela.com.ar","projects.project1.description":"Sitio web de una escuela de navegación de velero ubicada en Buenos Aires.","projects.project2.title":"Sistema de Gestión de RRHH","projects.project2.description":"El cliente solicitó un Sistema para unificar operaciones de distintas ramas de negocio y facilitar el reciclado de información y la carga operativa. Cuenta con: un sistema de Carga Masiva que inteligentemente incorpora datos a la BD desde la importación de un Excel evitando cargas duplicadas.","projects.project3.title":"Intera: Plataforma de aprendizaje","projects.project3.description":"Plataforma solicitada por una profesional de Psicopedagogia. Está compuesta por una serie de juegos diseñados para entrenar la lectura de chicos en edad de aprendizaje o con dificultades. Los juegos pueden ser jugados individualmente o en un mix aleatorio para aumentar la dificultad.","projects.project1.image1.title":"Construcción 100% a medida","projects.project1.image1.description":"El cliente entrego un mock-up con un detalle minucioso del sitio web que queria construir. Todos y cada uno de los elementos fueron desarrollados teniendo en cuenta sus deseos, tales como la diposición doble de la barra de navegación, la alineación exacta de los iconos, etc.","projects.project1.image2.title":"Prevención de spam","projects.project1.image2.description":"Se recomendo al cliente incorporar al formulario de contacto un CAPTCHA de Google (reCAPTCHA) para disminuir el spam."}');
+module.exports = JSON.parse('{"navigation.home":"Home","navigation.about":"About me","navigation.skills":"Tech stack","navigation.projects":"Portfolio","about.header":"About me","about.content1":"I am a Full Stack web developer with solid knowledge in Laravel and currently studying React.   ","about.content2":"I have 7 years of experience in the development of IT solutions.","about.content3":"I am specialized in:","about.content.item1":"Management Systems Development","about.content.item2":"Websites","about.content.item3":"Automations","about.content.item4":"Productive efficiency","skills.header":"Tech stack","skills.content":"","skills.filterExperience":"Years of experience","skills.filterArea":"Application area","skills.filterName":"Technology name","projects.header":"Portfolio","projects.project1.title":"navela.com.ar","projects.project1.description":"Website of a sailing school located in Buenos Aires.","projects.project1.image1.title":"100% custom construction","projects.project1.image1.description":"The client delivered a mock-up with a meticulous detail of the website he wanted to build. Each and every element was developed with your wishes in mind, such as the double layout of the navigation bar, the exact alignment of the icons, etc.","projects.project1.image2.title":"Spam prevention","projects.project1.image2.description":"The client is recommended to incorporate a Google CAPTCHA (reCAPTCHA) into the contact form to reduce spam.","projects.project2.title":"HR Management System","projects.project2.description":"The client requested a System to unify operations of different business branches and facilitate the recycling of information and the operational load. It has: a Mass Upload system that intelligently incorporates data to the DB from the import of an Excel avoiding duplicate uploads.","projects.project2.image1.title":"Detailed personal data profile","projects.project2.image1.description":"The system has dozens of sections, each with its own table in the database. The system is articulated by a series of PHP controllers, developing low to high complexity queries. The system data update is done through AJAX (jQuery), giving the end user ease and speed to operate.","projects.project2.image2.title":"Search system optimized for queries to tens of thousands of data","projects.project2.image2.description":"The client had several million data that had to be articulated in several tables, with performance when searching a priority. The final result was as expected, with an average of between 1 and 5 seconds when making a query.","projects.project3.title":"Intera: Learning platform","projects.project3.description":"Platform requested by a Psychopedagogy professional. It is made up of a series of games designed to train children of learning age or with difficulties to read. Games can be played individually or in a random mix to increase difficulty.","projects.project4.title":"InteraSoft.com.ar","projects.project4.description":"Personal website with Blog developed in CodeIgniter. The project was mainly developed for a university job."}');
 
 /***/ }),
 
@@ -102062,7 +102395,7 @@ module.exports = JSON.parse('{"navigation.home":"Inicio","about.header":"Acerca 
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"navigation.home":"Inicio","navigation.about":"Acerca de mi","navigation.skills":"Tecnologias","navigation.projects":"Portfolio","about.header":"Acerca de mi","about.content1":"Soy un desarrollador web Full Stack con solidos conocimientos en Laravel y actualmente estudiando React.   ","about.content2":"Cuento con 7 años de experiencia en el desarrollo de soluciones IT. ","about.content3":"Estoy especializado en:","about.content.item1":"Desarrollo de Sistemas de Gestión","about.content.item2":"Páginas Web","about.content.item3":"Automatizaciones","about.content.item4":"Eficiencia productiva","skills.header":"Tecnologias","skills.content":"","skills.filterExperience":"Años de experiencia","skills.filterArea":"Área de aplicación","skills.filterName":"Nombre de la tecnología","projects.header":"Proyectos","projects.project1.title":"navela.com.ar","projects.project1.description":"Sitio web de una escuela de navegación de velero ubicada en Buenos Aires.","projects.project3.title":"Intera: Plataforma de aprendizaje","projects.project3.description":"Plataforma solicitada por una profesional de Psicopedagogia. Está compuesta por una serie de juegos diseñados para entrenar la lectura de chicos en edad de aprendizaje o con dificultades. Los juegos pueden ser jugados individualmente o en un mix aleatorio para aumentar la dificultad.","projects.project1.image1.title":"Construcción 100% a medida","projects.project1.image1.description":"El cliente entrego un mock-up con un detalle minucioso del sitio web que queria construir. Todos y cada uno de los elementos fueron desarrollados teniendo en cuenta sus deseos, tales como la diposición doble de la barra de navegación, la alineación exacta de los iconos, etc.","projects.project1.image2.title":"Prevención de spam","projects.project1.image2.description":"Se recomendo al cliente incorporar al formulario de contacto un CAPTCHA de Google (reCAPTCHA) para disminuir el spam.","projects.project2.title":"Sistema de Gestión de RRHH","projects.project2.description":"El cliente solicitó un Sistema para unificar operaciones de distintas ramas de negocio y facilitar el reciclado de información y la carga operativa. Cuenta con: un sistema de Carga Masiva que inteligentemente incorpora datos a la BD desde la importación de un Excel evitando cargas duplicadas.","projects.project2.image1.title":"Perfil de datos personales con gran nivel de detalle","projects.project2.image1.description":"El sistema cuenta con decenas de secciones, cada una con su propia tabla en la base de datos. El sistema es articulado por una serie de controladores en PHP, desarrollando queries de baja a alta complejidad. La actualización de datos del sistema se realiza mediante AJAX (jQuery), dando al usuario final facilidad y velocidad para operar.","projects.project2.image2.title":"Sistema de búsqueda optimizado para consultas a decenas de miles de datos","projects.project2.image2.description":"El cliente poseia varios millones de datos  que debían ser articulados en varias tablas, siendo el performance a la hora de realizar búsquedas una prioridad. El resultado final fue tal lo esperado, con un promedio de entre 1 y 5 segundos al realizar una consulta."}');
+module.exports = JSON.parse('{"navigation.home":"Inicio","navigation.about":"Acerca de mi","navigation.skills":"Tecnologias","navigation.projects":"Portfolio","about.header":"Acerca de mi","about.content1":"Soy un desarrollador web Full Stack con solidos conocimientos en Laravel y actualmente estudiando React.   ","about.content2":"Cuento con 7 años de experiencia en el desarrollo de soluciones IT. ","about.content3":"Estoy especializado en:","about.content.item1":"Desarrollo de Sistemas de Gestión","about.content.item2":"Páginas Web","about.content.item3":"Automatizaciones","about.content.item4":"Eficiencia productiva","skills.header":"Tecnologias","skills.content":"","skills.filterExperience":"Años de experiencia","skills.filterArea":"Área de aplicación","skills.filterName":"Nombre de la tecnología","projects.header":"Proyectos","projects.project1.title":"navela.com.ar","projects.project1.description":"Sitio web de una escuela de navegación de velero ubicada en Buenos Aires.","projects.project1.image1.title":"Construcción 100% a medida","projects.project1.image1.description":"El cliente entrego un mock-up con un detalle minucioso del sitio web que queria construir. Todos y cada uno de los elementos fueron desarrollados teniendo en cuenta sus deseos, tales como la diposición doble de la barra de navegación, la alineación exacta de los iconos, etc.","projects.project1.image2.title":"Prevención de spam","projects.project1.image2.description":"Se recomendo al cliente incorporar al formulario de contacto un CAPTCHA de Google (reCAPTCHA) para disminuir el spam.","projects.project2.title":"Sistema de Gestión de RRHH","projects.project2.description":"El cliente solicitó un Sistema para unificar operaciones de distintas ramas de negocio y facilitar el reciclado de información y la carga operativa. Cuenta con: un sistema de Carga Masiva que inteligentemente incorpora datos a la BD desde la importación de un Excel evitando cargas duplicadas.","projects.project2.image1.title":"Perfil de datos personales con gran nivel de detalle","projects.project2.image1.description":"El sistema cuenta con decenas de secciones, cada una con su propia tabla en la base de datos. El sistema es articulado por una serie de controladores en PHP, desarrollando queries de baja a alta complejidad. La actualización de datos del sistema se realiza mediante AJAX (jQuery), dando al usuario final facilidad y velocidad para operar.","projects.project2.image2.title":"Sistema de búsqueda optimizado para consultas a decenas de miles de datos","projects.project2.image2.description":"El cliente poseia varios millones de datos  que debían ser articulados en varias tablas, siendo el performance a la hora de realizar búsquedas una prioridad. El resultado final fue tal lo esperado, con un promedio de entre 1 y 5 segundos al realizar una consulta.","projects.project3.title":"Intera: Plataforma de aprendizaje","projects.project3.description":"Plataforma solicitada por una profesional de Psicopedagogia. Está compuesta por una serie de juegos diseñados para entrenar la lectura de chicos en edad de aprendizaje o con dificultades. Los juegos pueden ser jugados individualmente o en un mix aleatorio para aumentar la dificultad.","projects.project4.title":"InteraSoft.com.ar","projects.project4.description":"Sitio web personal con Blog desarrollado en CodeIgniter. El proyecto fue principalmente desarrollado para un trabajo de la universidad.","contact.title":"Contacto"}');
 
 /***/ })
 

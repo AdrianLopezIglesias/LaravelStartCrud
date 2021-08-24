@@ -22,8 +22,6 @@
   "projects.header": "Proyectos",
   "projects.project1.title": "navela.com.ar",
   "projects.project1.description": "Sitio web de una escuela de navegación de velero ubicada en Buenos Aires.",
-  "projects.project3.title": "Intera: Plataforma de aprendizaje",
-  "projects.project3.description": "Plataforma solicitada por una profesional de Psicopedagogia. Está compuesta por una serie de juegos diseñados para entrenar la lectura de chicos en edad de aprendizaje o con dificultades. Los juegos pueden ser jugados individualmente o en un mix aleatorio para aumentar la dificultad.",
   "projects.project1.image1.title": "Construcción 100% a medida",
   "projects.project1.image1.description": "El cliente entrego un mock-up con un detalle minucioso del sitio web que queria construir. Todos y cada uno de los elementos fueron desarrollados teniendo en cuenta sus deseos, tales como la diposición doble de la barra de navegación, la alineación exacta de los iconos, etc.",
   "projects.project1.image2.title": "Prevención de spam",
@@ -35,6 +33,11 @@
   "projects.project2.image1.title": "Perfil de datos personales con gran nivel de detalle",
   "projects.project2.image1.description": "El sistema cuenta con decenas de secciones, cada una con su propia tabla en la base de datos. El sistema es articulado por una serie de controladores en PHP, desarrollando queries de baja a alta complejidad. La actualización de datos del sistema se realiza mediante AJAX (jQuery), dando al usuario final facilidad y velocidad para operar.",
   "projects.project2.image2.title": "Sistema de búsqueda optimizado para consultas a decenas de miles de datos",
-  "projects.project2.image2.description": "El cliente poseia varios millones de datos  que debían ser articulados en varias tablas, siendo el performance a la hora de realizar búsquedas una prioridad. El resultado final fue tal lo esperado, con un promedio de entre 1 y 5 segundos al realizar una consulta."
+  "projects.project2.image2.description": "El cliente poseia varios millones de datos  que debían ser articulados en varias tablas, siendo el performance a la hora de realizar búsquedas una prioridad. El resultado final fue tal lo esperado, con un promedio de entre 1 y 5 segundos al realizar una consulta.",
   
+  "projects.project3.title": "Intera: Plataforma de aprendizaje",
+  "projects.project3.description": "Plataforma solicitada por una profesional de Psicopedagogia. Está compuesta por una serie de juegos diseñados para entrenar la lectura de chicos en edad de aprendizaje o con dificultades. Los juegos pueden ser jugados individualmente o en un mix aleatorio para aumentar la dificultad.",
+  "projects.project4.title": "InteraSoft.com.ar",
+  "projects.project4.description": "Sitio web personal con Blog desarrollado en CodeIgniter. El proyecto fue principalmente desarrollado para un trabajo de la universidad.",
+  "contact.title": "Contacto"
 }

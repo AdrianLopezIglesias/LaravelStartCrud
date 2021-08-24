@@ -39,7 +39,7 @@ export default function Navigation(props) {
           <Nav className="me-auto">
 
             <Link
-              class="nav-link"
+              className="nav-link"
               activeClass="active"
               to="about"
               spy={true}
@@ -50,7 +50,7 @@ export default function Navigation(props) {
             </Link>
 
             <Link
-              class="nav-link"
+              className="nav-link"
               activeClass="active"
               to="skills"
               spy={true}
@@ -61,7 +61,7 @@ export default function Navigation(props) {
             </Link>
 
             <Link
-              class="nav-link"
+              className="nav-link"
               activeClass="active"
               to="projects"
               spy={true}
@@ -69,6 +69,16 @@ export default function Navigation(props) {
               offset={-70}
               duration={500}>
               <FormattedMessage id="navigation.projects" />
+            </Link>
+            <Link
+              className="nav-link"
+              activeClass="active"
+              to="contact"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}>
+              <FormattedMessage id="navigation.contact" />
             </Link>
 
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">

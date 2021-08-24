@@ -22,7 +22,7 @@ export default function ProjectModal(props) {
         <h3><FormattedMessage id={image.title} /></h3>
         <p><FormattedMessage id={image.description} /></p>
         <img
-          className="d-block w-100 mh-400  center fit-image"
+          className="d-block w-75"
           src={"/images/" + image.url}
           alt={image.title}
         />
@@ -67,7 +67,7 @@ export default function ProjectModal(props) {
             <li>URL: {props.project.website}</li>
             <li>User: {props.project.user}</li>
             <li>Password: {props.project.password}</li>
-            <li>Repository: {props.project.repository}</li>
+            <li>Repository: {props.project.repo}</li>
           </ul>
           {tecnologias}
 

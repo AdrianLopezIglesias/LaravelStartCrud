@@ -10,7 +10,7 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import WrappedMessage from './WrappedMessage'
 import ProjectModal from './ProjectModal'
-import images from './images'
+import images from './bd/images'
 
 export default function ProjectCard(props) {
   const context = useContext(Context);
@@ -18,10 +18,10 @@ export default function ProjectCard(props) {
 
 
   return (
-      <Col  lg={4}>
+      <Col  md={4}>
       <Card >
         <Card.Img variant="top" src={"/images/" + props.project.images[0].url} />
-        <Card.Body>
+        <Card.Body >
           <Card.Title>
             <FormattedMessage id={props.project.title} />
           </Card.Title>
