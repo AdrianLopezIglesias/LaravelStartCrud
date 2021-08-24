@@ -15,7 +15,7 @@ export default class TechTable extends Component {
     this.state = {
       filters: {}
     };
-    this.experienciaFilter = { number: 1, comparator: Comparator.GE };
+    this.experienciaFilter = 1;
     this.tipoFilter = "";
     this.nombreFilter = "";
   }
@@ -26,7 +26,10 @@ export default class TechTable extends Component {
     });
   };
 
-
+  resetFilters = () => {
+    this.experienciaFilter("");
+    this.tipoFilter("");
+  };
   filterExperience = (e) => {
     console.log(+e.target.value);
     this.experienciaFilter({ number: +e.target.value, comparator: Comparator.GE });
@@ -52,7 +55,7 @@ export default class TechTable extends Component {
 
 
 
-      const experienciaFilter = filters.experiencia ? filters.experiencia.filterVal : { number: 1, comparator: Comparator.GE };
+      const experienciaFilter = filters.experiencia ? filters.experiencia.filterVal : null;
       const tipoFilter = filters.tipo ? filters.tipo.filterVal : null;
 
       if (experienciaFilter) {
@@ -125,11 +128,11 @@ export default class TechTable extends Component {
             </td>
             <td>
               <Form.Select onChange={this.filterExperience}>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-                <option value='4'>4</option>
-                <option value='5'>5</option>
+                <option value='1'>más de 1</option>
+                <option value='2'>más de 2</option>
+                <option value='3'>más de 3</option>
+                <option value='4'>más de 4</option>
+                <option value='5'>más de 5</option>
               </Form.Select>
             </td>
           </tr>

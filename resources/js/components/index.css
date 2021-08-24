@@ -7,3 +7,39 @@ display: none}
 
 .filter-label{
 display:none}
+
+.carousel-caption-proyect-model {
+  position: relative;
+  color: black;
+  text-align: left;
+  padding-left: 0px;
+  margin-left: 0px
+}
+
+.mh-400{
+  max-height: 400px;
+}
+.mg-300{
+    max-height: 300px;
+}
+.fit-image{
+  object-fit: cover;
+}
+
+.mw-500{
+  max-width: 800px
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.video-project{
+    width:100%;
+    height:500px;
+}
+
+.nav-link{
+cursor: pointer;}

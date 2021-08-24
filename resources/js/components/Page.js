@@ -24,7 +24,8 @@ function Page() {
         <Navigation context={context} />
         <br />
         <Container>
-
+<br />
+<br />
         <About />
         <Skills />
           <Projects />

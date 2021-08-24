@@ -113,5 +113,11 @@ const tecnologias = [
     experiencia: 5,
     tipo: "Backend",
   }
+  ,{
+    id: 21,
+    name: "PrestaShop",
+    experiencia: 1,
+    tipo: "Other",
+  }
 ]
 export default tecnologias;

@@ -8,21 +8,33 @@ import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
 import TechTable from './TechTable';
 import ProjectCard from './ProjectCard'
+import proyectos from './proyectos'
+import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+
 
 export default function Projects() {
   const context = useContext(Context);
 
 
-
   return (
     <section id="projects">
+      <Element name="projects"></Element>
+
       <h2>
         <FormattedMessage id="projects.header" />
       </h2>
       <Row>
-        <ProjectCard title="<FormattedMessage id='projects.header' />"></ProjectCard>
-      <ProjectCard></ProjectCard>
-      <ProjectCard></ProjectCard>
+        {proyectos.map(function(project, index) {
+          return <ProjectCard
+            key={index}
+            project={project}
+            title={<FormattedMessage id={project.title} />}
+            description={<FormattedMessage id={project.description} />}
+            tecnologies={project.tecnologies} />
+        })}
+
+
+
       </Row>
     </section>
   );

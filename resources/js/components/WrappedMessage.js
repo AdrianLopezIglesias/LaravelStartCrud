@@ -11,7 +11,7 @@ const WrappedMessage = props => {
 
   return (
     <span lang={locale}>
-      {/* <FormattedMessage {...message}  /> */}
+      <FormattedMessage {...message}  />
     </span>
   );
 };

@@ -7,6 +7,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Table from 'react-bootstrap/Table';
 import TechTable from './TechTable';
+import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+
 
 export default function About() {
   const context = useContext(Context);
@@ -15,6 +17,8 @@ export default function About() {
 
   return (
     <section id="skills">
+      <Element name="skills"></Element>
+
       <h2>
         <FormattedMessage id="skills.header" />
       </h2>

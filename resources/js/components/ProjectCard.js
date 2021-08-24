@@ -9,6 +9,8 @@ import Table from 'react-bootstrap/Table';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import WrappedMessage from './WrappedMessage'
+import ProjectModal from './ProjectModal'
+import images from './images'
 
 export default function ProjectCard(props) {
   const context = useContext(Context);
@@ -16,19 +18,20 @@ export default function ProjectCard(props) {
 
 
   return (
-      <Col col={4}>
+      <Col  lg={4}>
       <Card >
+        <Card.Img variant="top" src={"/images/" + props.project.images[0].url} />
         <Card.Body>
           <Card.Title>
-            {props.title}
+            <FormattedMessage id={props.project.title} />
           </Card.Title>
           <Card.Text>
-            <WrappedMessage message={props.title} />
-
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
+            <FormattedMessage id={props.project.description} />
           </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <ProjectModal
+            title={props.title}
+            project={props.project} />
+            
         </Card.Body>
       </Card>
       </Col>
