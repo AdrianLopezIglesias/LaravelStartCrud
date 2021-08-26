@@ -11,6 +11,7 @@ import ProjectCard from './ProjectCard'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Carousel from 'react-bootstrap/Carousel'
+import Projects from './Projects';
 export default function ProjectModal(props) {
   const [show, setShow] = useState(false);
 
@@ -33,7 +34,7 @@ export default function ProjectModal(props) {
 
 
   const tecnologias =
-    <div>Tecnologias utilizadas
+    <div><FormattedMessage id="projects.modal.techstack" />
       <ul>
         {props.project.tecnologies.map(function (tec, index) {
           return <li key={index}>{tec}</li>
@@ -49,7 +50,7 @@ export default function ProjectModal(props) {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Ver más detalles
+        <FormattedMessage id="projects.modal.moredetails" />
       </Button>
 
       <Modal show={show} onHide={handleClose} size="xl">

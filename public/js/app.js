@@ -11063,12 +11063,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _LanguageWrapper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LanguageWrapper */ "./resources/js/components/LanguageWrapper.js");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/message.js");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/message.js");
 /* harmony import */ var _TechTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TechTable */ "./resources/js/components/TechTable.js");
 /* harmony import */ var _ProjectCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ProjectCard */ "./resources/js/components/ProjectCard.js");
-/* harmony import */ var react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap/Modal */ "./node_modules/react-bootstrap/esm/Modal.js");
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap/Modal */ "./node_modules/react-bootstrap/esm/Modal.js");
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var _Projects__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Projects */ "./resources/js/components/Projects.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -11082,6 +11083,7 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
  // import { FormattedMessage } from 'react-intl';
+
 
 
 
@@ -11110,72 +11112,76 @@ function ProjectModal(props) {
     return setShow(true);
   };
 
-  var imagenes = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+  var imagenes = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
     children: props.project.images.map(function (image, index) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_5__.default, {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_6__.default, {
             id: image.title
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_5__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_6__.default, {
             id: image.description
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
           className: "d-block w-75",
           src: "/images/" + image.url,
           alt: image.title
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {})]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {})]
       }, index);
     })
   });
 
-  var tecnologias = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-    children: ["Tecnologias utilizadas", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
+  var tecnologias = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_6__.default, {
+      id: "projects.modal.techstack"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
       children: props.project.tecnologies.map(function (tec, index) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
           children: tec
         }, index);
       })
     })]
   });
 
-  var video = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-    children: props.project.video ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("iframe", {
+  var video = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    children: props.project.video ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("iframe", {
       "class": "video-project",
       src: props.project.video
     }) : ""
   });
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_6__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_7__.default, {
       variant: "primary",
       onClick: handleShow,
-      children: "Ver m\xE1s detalles"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_7__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_6__.default, {
+        id: "projects.modal.moredetails"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_8__.default, {
       show: show,
       onHide: handleClose,
       size: "xl",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_7__.default.Header, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_8__.default.Header, {
         closeButton: true,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_7__.default.Title, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_5__.default, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_8__.default.Title, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_6__.default, {
             id: props.project.title
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_7__.default.Body, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_5__.default, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_8__.default.Body, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_6__.default, {
             id: props.project.description
           })
-        }), "Links", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("ul", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
+        }), "Links", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("ul", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
             children: ["URL: ", props.project.website]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
             children: ["User: ", props.project.user]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
             children: ["Password: ", props.project.password]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
             children: ["Repository: ", props.project.repo]
           })]
         }), tecnologias, imagenes, video]
@@ -11301,7 +11307,7 @@ function About() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ TechTable)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_bootstrap_table_next__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap-table-next */ "./node_modules/react-bootstrap-table-next/lib/index.js");
@@ -11314,6 +11320,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_Table__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap/Table */ "./node_modules/react-bootstrap/esm/Table.js");
 /* harmony import */ var react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap/Form */ "./node_modules/react-bootstrap/esm/Form.js");
 /* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/message.js");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/injectIntl.js");
 /* harmony import */ var react_bootstrap_table2_paginator__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap-table2-paginator */ "./node_modules/react-bootstrap-table2-paginator/lib/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -11436,9 +11443,18 @@ var TechTable = /*#__PURE__*/function (_Component) {
         return items;
       };
 
+      var tf_experience = this.props.intl.formatMessage({
+        id: 'skills.table.experience'
+      });
+      var tf_area = this.props.intl.formatMessage({
+        id: 'skills.table.area'
+      });
+      var tf_tech = this.props.intl.formatMessage({
+        id: 'skills.table.tech'
+      });
       var columns = [{
         dataField: "name",
-        text: "Tecnologia",
+        text: tf_tech,
         filter: (0,react_bootstrap_table2_filter__WEBPACK_IMPORTED_MODULE_4__.textFilter)({
           className: "hidden",
           getFilter: function getFilter(filter) {
@@ -11447,11 +11463,11 @@ var TechTable = /*#__PURE__*/function (_Component) {
         })
       }, {
         dataField: "experiencia",
-        text: "Experiencia (años)",
+        text: tf_experience,
         filter: (0,react_bootstrap_table2_filter__WEBPACK_IMPORTED_MODULE_4__.numberFilter)((_numberFilter = {
           comparators: [react_bootstrap_table2_filter__WEBPACK_IMPORTED_MODULE_4__.Comparator.GE],
           options: [1, 2, 3, 4, 5],
-          placeholder: "años de experiencia",
+          placeholder: tf_experience,
           withoutEmptyComparatorOption: true,
           defaultValue: 1,
           comparator: react_bootstrap_table2_filter__WEBPACK_IMPORTED_MODULE_4__.Comparator.GE,
@@ -11464,7 +11480,7 @@ var TechTable = /*#__PURE__*/function (_Component) {
         }), _defineProperty(_numberFilter, "sort", true), _numberFilter))
       }, {
         dataField: "tipo",
-        text: "Área de aplicación",
+        text: tf_area,
         filter: (0,react_bootstrap_table2_filter__WEBPACK_IMPORTED_MODULE_4__.selectFilter)({
           className: "hidden",
           options: selectOptions,
@@ -11474,6 +11490,9 @@ var TechTable = /*#__PURE__*/function (_Component) {
         }),
         sort: true
       }];
+      var c_exp = this.props.intl.formatMessage({
+        id: 'skills.filterExperience.c'
+      });
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
           children: "Filtrar por"
@@ -11491,21 +11510,21 @@ var TechTable = /*#__PURE__*/function (_Component) {
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
                     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12__.default.Select, {
                       onChange: this.filterExperience,
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("option", {
                         value: "1",
-                        children: "m\xE1s de 1"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                        children: [c_exp, " 1"]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("option", {
                         value: "2",
-                        children: "m\xE1s de 2"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                        children: [c_exp, " 2"]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("option", {
                         value: "3",
-                        children: "m\xE1s de 3"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                        children: [c_exp, " 3"]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("option", {
                         value: "4",
-                        children: "m\xE1s de 4"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                        children: [c_exp, " 4"]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("option", {
                         value: "5",
-                        children: "m\xE1s de 5"
+                        children: [c_exp, " 5"]
                       })]
                     })
                   })]
@@ -11566,7 +11585,7 @@ var TechTable = /*#__PURE__*/function (_Component) {
   return TechTable;
 }(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 
-
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_intl__WEBPACK_IMPORTED_MODULE_13__.default)(TechTable));
 
 /***/ }),
 
@@ -102415,7 +102434,7 @@ function _setPrototypeOf(o, p) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"navigation.home":"Home","navigation.about":"About me","navigation.skills":"Tech stack","navigation.projects":"Portfolio","navigation.contact":"Contacto","about.header":"About me","about.content1":"I am a Full Stack web developer with solid knowledge in Laravel and currently studying React.   ","about.content2":"I have 7 years of experience in the development of IT solutions.","about.content3":"I am specialized in:","about.content.item1":"Management Systems Development","about.content.item2":"Websites","about.content.item3":"Automations","about.content.item4":"Productive efficiency","skills.header":"Tech stack","skills.content":"","skills.filterExperience":"Years of experience","skills.filterArea":"Application area","skills.filterName":"Technology name","projects.header":"Portfolio","projects.project1.title":"navela.com.ar","projects.project1.description":"Website of a sailing school located in Buenos Aires.","projects.project1.image1.title":"100% custom construction","projects.project1.image1.description":"The client delivered a mock-up with a meticulous detail of the website he wanted to build. Each and every element was developed with your wishes in mind, such as the double layout of the navigation bar, the exact alignment of the icons, etc.","projects.project1.image2.title":"Spam prevention","projects.project1.image2.description":"The client is recommended to incorporate a Google CAPTCHA (reCAPTCHA) into the contact form to reduce spam.","projects.project2.title":"HR Management System","projects.project2.description":"The client requested a System to unify operations of different business branches and facilitate the recycling of information and the operational load. It has: a Mass Upload system that intelligently incorporates data to the DB from the import of an Excel avoiding duplicate uploads.","projects.project2.image1.title":"Detailed personal data profile","projects.project2.image1.description":"The system has dozens of sections, each with its own table in the database. The system is articulated by a series of PHP controllers, developing low to high complexity queries. The system data update is done through AJAX (jQuery), giving the end user ease and speed to operate.","projects.project2.image2.title":"Search system optimized for queries to tens of thousands of data","projects.project2.image2.description":"The client had several million data that had to be articulated in several tables, with performance when searching a priority. The final result was as expected, with an average of between 1 and 5 seconds when making a query.","projects.project3.title":"Intera: Learning platform","projects.project3.description":"Platform requested by a Psychopedagogy professional. It is made up of a series of games designed to train children of learning age or with difficulties to read. Games can be played individually or in a random mix to increase difficulty.","projects.project4.title":"InteraSoft.com.ar","projects.project4.description":"Personal website with Blog developed in CodeIgniter. The project was mainly developed for a university job.","contact.title":"Contacto","contact.form.name":"Name","contact.form.email":"Email address","contact.form.message":"Message","contact.form.name.error":"Name is needed to submit the message.","contact.form.email.error":"A valid email address is needed to submit the message.","contact.form.message.error":"A message must be submited. ","contact.form.submit":"Send."}');
+module.exports = JSON.parse('{"navigation.home":"Home","navigation.about":"About me","navigation.skills":"Tech stack","navigation.projects":"Portfolio","navigation.contact":"Contacto","about.header":"About me","about.content1":"I am a Full Stack web developer with solid knowledge in Laravel and currently studying React.   ","about.content2":"I have 7 years of experience in the development of IT solutions.","about.content3":"I am specialized in:","about.content.item1":"Management Systems Development","about.content.item2":"Websites","about.content.item3":"Automations","about.content.item4":"Productive efficiency","skills.header":"Tech stack","skills.content":"","skills.filterExperience":"Years of experience","skills.filterExperience.c":"More than ","skills.table.experience":"Experience (years)","skills.table.area":"Area of application","skills.table.tech":"Tecnology","skills.filterArea":"Application area","skills.filterName":"Technology name","projects.header":"Portfolio","projects.project1.title":"navela.com.ar","projects.project1.description":"Website of a sailing school located in Buenos Aires.","projects.project1.image1.title":"100% custom construction","projects.project1.image1.description":"The client delivered a mock-up with a meticulous detail of the website he wanted to build. Each and every element was developed with your wishes in mind, such as the double layout of the navigation bar, the exact alignment of the icons, etc.","projects.project1.image2.title":"Spam prevention","projects.project1.image2.description":"The client is recommended to incorporate a Google CAPTCHA (reCAPTCHA) into the contact form to reduce spam.","projects.project2.title":"HR Management System","projects.project2.description":"The client requested a System to unify operations of different business branches and facilitate the recycling of information and the operational load. It has: a Mass Upload system that intelligently incorporates data to the DB from the import of an Excel avoiding duplicate uploads.","projects.project2.image1.title":"Detailed personal data profile","projects.project2.image1.description":"The system has dozens of sections, each with its own table in the database. The system is articulated by a series of PHP controllers, developing low to high complexity queries. The system data update is done through AJAX (jQuery), giving the end user ease and speed to operate.","projects.project2.image2.title":"Search system optimized for queries to tens of thousands of data","projects.project2.image2.description":"The client had several million data that had to be articulated in several tables, with performance when searching a priority. The final result was as expected, with an average of between 1 and 5 seconds when making a query.","projects.project3.title":"Intera: Learning platform","projects.project3.description":"Platform requested by a Psychopedagogy professional. It is made up of a series of games designed to train children of learning age or with difficulties to read. Games can be played individually or in a random mix to increase difficulty.","projects.project4.title":"InteraSoft.com.ar","projects.project4.description":"Personal website with Blog developed in CodeIgniter. The project was mainly developed for a university job.","projects.modal.techstack":"Tecnologias utilizadas","projects.modal.moredetails":"See more details","contact.title":"Contacto","contact.form.name":"Name","contact.form.email":"Email address","contact.form.message":"Message","contact.form.name.error":"Name is needed to submit the message.","contact.form.email.error":"A valid email address is needed to submit the message.","contact.form.message.error":"A message must be submited. ","contact.form.submit":"Send."}');
 
 /***/ }),
 
@@ -102426,7 +102445,7 @@ module.exports = JSON.parse('{"navigation.home":"Home","navigation.about":"About
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"navigation.home":"Inicio","navigation.about":"Acerca de mi","navigation.skills":"Tecnologias","navigation.projects":"Portfolio","navigation.contact":"Contacto","about.header":"Acerca de mi","about.content1":"Soy un desarrollador web Full Stack con solidos conocimientos en Laravel y actualmente estudiando React.   ","about.content2":"Cuento con 7 años de experiencia en el desarrollo de soluciones IT. ","about.content3":"Estoy especializado en:","about.content.item1":"Desarrollo de Sistemas de Gestión","about.content.item2":"Páginas Web","about.content.item3":"Automatizaciones","about.content.item4":"Eficiencia productiva","skills.header":"Tecnologias","skills.content":"","skills.filterExperience":"Años de experiencia","skills.filterArea":"Área de aplicación","skills.filterName":"Nombre de la tecnología","projects.header":"Proyectos","projects.project1.title":"navela.com.ar","projects.project1.description":"Sitio web de una escuela de navegación de velero ubicada en Buenos Aires.","projects.project1.image1.title":"Construcción 100% a medida","projects.project1.image1.description":"El cliente entrego un mock-up con un detalle minucioso del sitio web que queria construir. Todos y cada uno de los elementos fueron desarrollados teniendo en cuenta sus deseos, tales como la diposición doble de la barra de navegación, la alineación exacta de los iconos, etc.","projects.project1.image2.title":"Prevención de spam","projects.project1.image2.description":"Se recomendo al cliente incorporar al formulario de contacto un CAPTCHA de Google (reCAPTCHA) para disminuir el spam.","projects.project2.title":"Sistema de Gestión de RRHH","projects.project2.description":"El cliente solicitó un Sistema para unificar operaciones de distintas ramas de negocio y facilitar el reciclado de información y la carga operativa. Cuenta con: un sistema de Carga Masiva que inteligentemente incorpora datos a la BD desde la importación de un Excel evitando cargas duplicadas.","projects.project2.image1.title":"Perfil de datos personales con gran nivel de detalle","projects.project2.image1.description":"El sistema cuenta con decenas de secciones, cada una con su propia tabla en la base de datos. El sistema es articulado por una serie de controladores en PHP, desarrollando queries de baja a alta complejidad. La actualización de datos del sistema se realiza mediante AJAX (jQuery), dando al usuario final facilidad y velocidad para operar.","projects.project2.image2.title":"Sistema de búsqueda optimizado para consultas a decenas de miles de datos","projects.project2.image2.description":"El cliente poseia varios millones de datos  que debían ser articulados en varias tablas, siendo el performance a la hora de realizar búsquedas una prioridad. El resultado final fue tal lo esperado, con un promedio de entre 1 y 5 segundos al realizar una consulta.","projects.project3.title":"Intera: Plataforma de aprendizaje","projects.project3.description":"Plataforma solicitada por una profesional de Psicopedagogia. Está compuesta por una serie de juegos diseñados para entrenar la lectura de chicos en edad de aprendizaje o con dificultades. Los juegos pueden ser jugados individualmente o en un mix aleatorio para aumentar la dificultad.","projects.project4.title":"InteraSoft.com.ar","projects.project4.description":"Sitio web personal con Blog desarrollado en CodeIgniter. El proyecto fue principalmente desarrollado para un trabajo de la universidad.","contact.title":"Contacto","contact.form.name":"Nombre","contact.form.email":"Dirección de mail","contact.form.message":"Mensaje","contact.form.name.error":"Debe ingresar un Nombre para enviar el mensaje.","contact.form.email.error":"Debe ingresar una dirección de email valida para enviar el mensaje.","contact.form.message.error":"Debe ingresar contenido en el mensaje. ","contact.form.submit":"Enviar."}');
+module.exports = JSON.parse('{"navigation.home":"Inicio","navigation.about":"Acerca de mi","navigation.skills":"Tecnologias","navigation.projects":"Portfolio","navigation.contact":"Contacto","about.header":"Acerca de mi","about.content1":"Soy un desarrollador web Full Stack con solidos conocimientos en Laravel y actualmente estudiando React.   ","about.content2":"Cuento con 7 años de experiencia en el desarrollo de soluciones IT. ","about.content3":"Estoy especializado en:","about.content.item1":"Desarrollo de Sistemas de Gestión","about.content.item2":"Páginas Web","about.content.item3":"Automatizaciones","about.content.item4":"Eficiencia productiva","skills.header":"Tecnologias","skills.content":"","skills.filterExperience":"Años de experiencia","skills.filterExperience.c":"Más de ","skills.table.experience":"Experiencia (años)","skills.table.area":"Área de aplicación","skills.table.tech":"Tecnologia","skills.filterArea":"Área de aplicación","skills.filterName":"Nombre de la tecnología","projects.header":"Proyectos","projects.project1.title":"navela.com.ar","projects.project1.description":"Sitio web de una escuela de navegación de velero ubicada en Buenos Aires.","projects.project1.image1.title":"Construcción 100% a medida","projects.project1.image1.description":"El cliente entrego un mock-up con un detalle minucioso del sitio web que queria construir. Todos y cada uno de los elementos fueron desarrollados teniendo en cuenta sus deseos, tales como la diposición doble de la barra de navegación, la alineación exacta de los iconos, etc.","projects.project1.image2.title":"Prevención de spam","projects.project1.image2.description":"Se recomendo al cliente incorporar al formulario de contacto un CAPTCHA de Google (reCAPTCHA) para disminuir el spam.","projects.project2.title":"Sistema de Gestión de RRHH","projects.project2.description":"El cliente solicitó un Sistema para unificar operaciones de distintas ramas de negocio y facilitar el reciclado de información y la carga operativa. Cuenta con: un sistema de Carga Masiva que inteligentemente incorpora datos a la BD desde la importación de un Excel evitando cargas duplicadas.","projects.project2.image1.title":"Perfil de datos personales con gran nivel de detalle","projects.project2.image1.description":"El sistema cuenta con decenas de secciones, cada una con su propia tabla en la base de datos. El sistema es articulado por una serie de controladores en PHP, desarrollando queries de baja a alta complejidad. La actualización de datos del sistema se realiza mediante AJAX (jQuery), dando al usuario final facilidad y velocidad para operar.","projects.project2.image2.title":"Sistema de búsqueda optimizado para consultas a decenas de miles de datos","projects.project2.image2.description":"El cliente poseia varios millones de datos  que debían ser articulados en varias tablas, siendo el performance a la hora de realizar búsquedas una prioridad. El resultado final fue tal lo esperado, con un promedio de entre 1 y 5 segundos al realizar una consulta.","projects.project3.title":"Intera: Plataforma de aprendizaje","projects.project3.description":"Plataforma solicitada por una profesional de Psicopedagogia. Está compuesta por una serie de juegos diseñados para entrenar la lectura de chicos en edad de aprendizaje o con dificultades. Los juegos pueden ser jugados individualmente o en un mix aleatorio para aumentar la dificultad.","projects.project4.title":"InteraSoft.com.ar","projects.project4.description":"Sitio web personal con Blog desarrollado en CodeIgniter. El proyecto fue principalmente desarrollado para un trabajo de la universidad.","projects.modal.techstack":"Tecnologias utilizadas","projects.modal.moredetails":"Ver más detalles","contact.title":"Contacto","contact.form.name":"Nombre","contact.form.email":"Dirección de mail","contact.form.message":"Mensaje","contact.form.name.error":"Debe ingresar un Nombre para enviar el mensaje.","contact.form.email.error":"Debe ingresar una dirección de email valida para enviar el mensaje.","contact.form.message.error":"Debe ingresar contenido en el mensaje. ","contact.form.submit":"Enviar."}');
 
 /***/ })
 

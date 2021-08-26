@@ -8,10 +8,10 @@ import Col from 'react-bootstrap/Col';
 import tecnologias from './bd/tecnologias.js';
 import Table from 'react-bootstrap/Table'
 import Form from 'react-bootstrap/Form'
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 
-export default class TechTable extends Component {
+class TechTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -69,13 +69,16 @@ export default class TechTable extends Component {
       return items;
     };
 
+    const tf_experience = this.props.intl.formatMessage({ id: 'skills.table.experience' })
+    const tf_area = this.props.intl.formatMessage({ id: 'skills.table.area' })
+    const tf_tech = this.props.intl.formatMessage({ id: 'skills.table.tech' })
 
 
     const columns = [
 
       {
         dataField: "name",
-        text: "Tecnologia",
+        text: tf_tech,
         filter: textFilter({
           className: "hidden",
           getFilter: filter => {
@@ -85,11 +88,11 @@ export default class TechTable extends Component {
       },
       {
         dataField: "experiencia",
-        text: "Experiencia (años)",
+        text: tf_experience,
         filter: numberFilter({
           comparators: [Comparator.GE],
           options: [1, 2, 3, 4, 5],
-          placeholder: "años de experiencia",
+          placeholder: tf_experience,
           withoutEmptyComparatorOption: true,
           defaultValue: 1,
           comparator: Comparator.GE,
@@ -105,7 +108,7 @@ export default class TechTable extends Component {
       },
       {
         dataField: "tipo",
-        text: "Área de aplicación",
+        text: tf_area,
         filter: selectFilter({
           className: "hidden",
           options: selectOptions,
@@ -116,7 +119,8 @@ export default class TechTable extends Component {
         sort: true,
       }
     ];
-
+    const c_exp = this.props.intl.formatMessage({ id: 'skills.filterExperience.c' })
+  
     return (
       <div>
         <p>Filtrar por</p>
@@ -130,11 +134,11 @@ export default class TechTable extends Component {
             </td>
             <td>
               <Form.Select onChange={this.filterExperience}>
-                <option value='1'>más de 1</option>
-                <option value='2'>más de 2</option>
-                <option value='3'>más de 3</option>
-                <option value='4'>más de 4</option>
-                <option value='5'>más de 5</option>
+                <option value='1'>{c_exp} 1</option>
+                <option value='2'>{c_exp} 2</option>
+                <option value='3'>{c_exp} 3</option>
+                <option value='4'>{c_exp} 4</option>
+                <option value='5'>{c_exp} 5</option>
               </Form.Select>
             </td>
           </tr>
@@ -185,3 +189,5 @@ export default class TechTable extends Component {
     );
   }
 }
+
+export default injectIntl(TechTable);
