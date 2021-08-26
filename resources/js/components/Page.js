@@ -38,7 +38,8 @@ function Page() {
 <br />
         {/* <Stack /> */}
         <Contact />
-        
+          <br />
+          <br />
         </Container>
     </LanguageWrapper>
       </div>

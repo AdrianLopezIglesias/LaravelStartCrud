@@ -87,10 +87,8 @@ export default class Contact extends React.Component {
       message: message
     })
       .then(function (response) {
-        console.log(response);
       })
       .catch(function (error) {
-        console.log(error);
       });
 
     
@@ -107,36 +105,39 @@ export default class Contact extends React.Component {
         <>
           <div className="">
             <Element name="contact"></Element>
-
+            <div className="section-title">
+            
             <h1><FormattedMessage id="contact.title" /></h1>
+            </div>
+
             <div className="card-body">
               <form action="/" onSubmit={(e) => this.handleSubmit(e)} encType="multipart/form-data" autoComplete="off">
                 <div className="form-group">
-                  <label className="mb-0">Your name<span className="text-danger">*</span></label>
+                  <label className="mb-0"><FormattedMessage id="contact.form.name" /><span className="text-danger">*</span></label>
                   <input name="name" type="text" className="form-control" placeholder="Name" value={this.state.name} onChange={this.handleChange} onBlur={this.handleBlur} />
                   {nameError
-                    ? <div className="alert alert-danger mt-2">Name is a required field.</div>
+                    ? <div className="alert alert-danger mt-2"><FormattedMessage id="contact.form.name.error" /></div>
                     : ''
                   }
                 </div>
                 <div className="form-group">
-                  <label className="mb-0">Your email<span className="text-danger">*</span></label>
+                  <label className="mb-0"><FormattedMessage id="contact.form.email" /><span className="text-danger">*</span></label>
                   <input name="email" type="email" className="form-control" placeholder="Email" value={this.state.email} onChange={this.handleChange} onBlur={this.handleBlur} />
                   {emailError
-                    ? <div className="alert alert-danger mt-2">Email is a required field.</div>
+                    ? <div className="alert alert-danger mt-2"><FormattedMessage id="contact.form.email.error" /></div>
                     : ''
                   }
                   {emailError2
-                    ? <div className="alert alert-danger mt-2">Email invalid.</div>
+                    ? <div className="alert alert-danger mt-2"><FormattedMessage id="contact.form.email.error" /></div>
                     : ''
                   }
                 </div>
 
                 <div className="form-group">
-                  <label className="mb-0">Message<span className="text-danger">*</span></label>
+                  <label className="mb-0"><FormattedMessage id="contact.form.message" /><span className="text-danger">*</span></label>
                   <textarea name="message" type="text" className="form-control" placeholder="Message" value={this.state.message} onChange={this.handleChange} onBlur={this.handleBlur} />
                   {messageError
-                    ? <div className="alert alert-danger mt-2">Message is a required field.</div>
+                    ? <div className="alert alert-danger mt-2"><FormattedMessage id="contact.form.message.error" /></div>
                     : ''
                   }
                 </div>

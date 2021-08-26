@@ -26,6 +26,14 @@ Route::get('/', [
 
 
 Route::middleware(['auth'])->group(function () {
+  Route::get('/cache', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    Artisan::call('route:cache');
+    Artisan::call('route:clear');
+    return "Cleared!";
+  });
 Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
 
 Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate')->name('io_field_template');

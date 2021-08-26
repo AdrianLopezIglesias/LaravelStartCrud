@@ -3,6 +3,7 @@
 "navigation.about": "Acerca de mi",
 "navigation.skills": "Tecnologias",
 "navigation.projects": "Portfolio",
+  "navigation.contact": "Contacto",
 
   "about.header": "Acerca de mi",
   "about.content1": "Soy un desarrollador web Full Stack con solidos conocimientos en Laravel y actualmente estudiando React.   ",
@@ -39,5 +40,12 @@
   "projects.project3.description": "Plataforma solicitada por una profesional de Psicopedagogia. Está compuesta por una serie de juegos diseñados para entrenar la lectura de chicos en edad de aprendizaje o con dificultades. Los juegos pueden ser jugados individualmente o en un mix aleatorio para aumentar la dificultad.",
   "projects.project4.title": "InteraSoft.com.ar",
   "projects.project4.description": "Sitio web personal con Blog desarrollado en CodeIgniter. El proyecto fue principalmente desarrollado para un trabajo de la universidad.",
-  "contact.title": "Contacto"
+  "contact.title": "Contacto",
+  "contact.form.name": "Nombre",
+  "contact.form.email": "Dirección de mail",
+  "contact.form.message": "Mensaje",
+  "contact.form.name.error": "Debe ingresar un Nombre para enviar el mensaje.",
+  "contact.form.email.error": "Debe ingresar una dirección de email valida para enviar el mensaje.",
+  "contact.form.message.error": "Debe ingresar contenido en el mensaje. ",
+  "contact.form.submit": "Enviar."
 }

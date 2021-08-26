@@ -3,6 +3,8 @@ import BootstrapTable from "react-bootstrap-table-next";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 import filterFactory, { selectFilter, numberFilter, Comparator, textFilter } from "react-bootstrap-table2-filter";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import tecnologias from './bd/tecnologias.js';
 import Table from 'react-bootstrap/Table'
 import Form from 'react-bootstrap/Form'
@@ -31,7 +33,6 @@ export default class TechTable extends Component {
     this.tipoFilter("");
   };
   filterExperience = (e) => {
-    console.log(+e.target.value);
     this.experienciaFilter({ number: +e.target.value, comparator: Comparator.GE });
   }
   filterTipo = (e) => {
@@ -50,7 +51,6 @@ export default class TechTable extends Component {
 
     const products = () => {
       const { filters } = this.state;
-      console.log("d=>", filters);
       let items = tecnologias;
 
 
@@ -120,7 +120,9 @@ export default class TechTable extends Component {
     return (
       <div>
         <p>Filtrar por</p>
-        <Table className="w-50">
+        <Row>
+          <Col lg={8}>
+        <Table className="w-100">
           <tbody>
           <tr>
             <td >
@@ -161,6 +163,11 @@ export default class TechTable extends Component {
           </tbody>
 
         </Table>
+          </Col>
+          <Col md={4}>
+          </Col>
+          
+        </Row>
 
 
         <BootstrapTable

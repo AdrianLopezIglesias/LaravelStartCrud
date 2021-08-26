@@ -20,9 +20,9 @@ export default function Projects() {
     <section id="projects">
       <Element name="projects"></Element>
 
-      <h2>
+      <h1>
         <FormattedMessage id="projects.header" />
-      </h2>
+      </h1>
       <Row>
         {proyectos.map(function(project, index) {
           return <ProjectCard

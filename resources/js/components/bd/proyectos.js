@@ -17,6 +17,10 @@ const proyectos = [
     title: "projects.project2.title",
     description: "projects.project2.description",
     tecnologies: ["Laravel", "JQuery", "PHP", "HTML", "CSS", "Bootstrap"],
+    url: "confidential",
+    repository: "confidential",
+    access_user: "",
+    access_password: ""
   },
   {
     id: 3,
@@ -35,7 +39,11 @@ const proyectos = [
     ],
     title: "projects.project3.title",
     description: "projects.project3.description",
-    tecnologies: ["AngularJS",  "HTML", "CSS"],
+    tecnologies: ["AngularJS", "HTML", "CSS"],
+    url: "http://intera.interasoft.com.ar",
+    repository: "",
+    access_user: "",
+    access_password: ""
   },
   {
     id: 2,
@@ -47,11 +55,15 @@ const proyectos = [
     title: "projects.project1.title",
     description: "projects.project1.description",
     tecnologies: ["JQuery", "PHP", "HTML", "CSS", "Bootstrap"],
+  url: "",
+  repository: "",
+  access_user: "",
+  access_password: ""
   },
 
   {
     id: 4,
-    name: "InteraSoft",
+    name: "Old InteraSoft",
     images: [
       {
         url: "interasoft (1).gif",
@@ -67,7 +79,7 @@ const proyectos = [
     title: "projects.project4.title",
     description: "projects.project4.description",
     tecnologies: ["CodeIgniter", "JQuery", "PHP", "HTML", "CSS", "Bootstrap"],
-    url: "",
+    url: "http://old.interasoft.com.ar",
     repository: "",
     access_user: "",
     access_password: ""

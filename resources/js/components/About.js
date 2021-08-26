@@ -16,9 +16,9 @@ export default function About() {
   return (
     <section id="about">
       <Element name="about"></Element>
-      <h2>
+      <h1>
         <FormattedMessage id="about.header" />
-      </h2>
+      </h1>
       <Row >
         <Col md={8}>
           <p>

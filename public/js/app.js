@@ -10283,7 +10283,7 @@ function About() {
     id: "about",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_scroll__WEBPACK_IMPORTED_MODULE_2__.Element, {
       name: "about"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_4__.default, {
         id: "about.header"
       })
@@ -10553,11 +10553,7 @@ var Contact = /*#__PURE__*/function (_React$Component) {
         name: name,
         email: email,
         message: message
-      }).then(function (response) {
-        console.log(response);
-      })["catch"](function (error) {
-        console.log(error);
-      });
+      }).then(function (response) {})["catch"](function (error) {});
     }
   }, {
     key: "render",
@@ -10580,9 +10576,12 @@ var Contact = /*#__PURE__*/function (_React$Component) {
             className: "",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_scroll__WEBPACK_IMPORTED_MODULE_1__.Element, {
               name: "contact"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_4__.default, {
-                id: "contact.title"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              className: "section-title",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_4__.default, {
+                  id: "contact.title"
+                })
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
               className: "card-body",
@@ -10597,7 +10596,9 @@ var Contact = /*#__PURE__*/function (_React$Component) {
                   className: "form-group",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
                     className: "mb-0",
-                    children: ["Your name", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_4__.default, {
+                      id: "contact.form.name"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                       className: "text-danger",
                       children: "*"
                     })]
@@ -10611,13 +10612,17 @@ var Contact = /*#__PURE__*/function (_React$Component) {
                     onBlur: this.handleBlur
                   }), nameError ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                     className: "alert alert-danger mt-2",
-                    children: "Name is a required field."
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_4__.default, {
+                      id: "contact.form.name.error"
+                    })
                   }) : '']
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                   className: "form-group",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
                     className: "mb-0",
-                    children: ["Your email", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_4__.default, {
+                      id: "contact.form.email"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                       className: "text-danger",
                       children: "*"
                     })]
@@ -10631,16 +10636,22 @@ var Contact = /*#__PURE__*/function (_React$Component) {
                     onBlur: this.handleBlur
                   }), emailError ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                     className: "alert alert-danger mt-2",
-                    children: "Email is a required field."
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_4__.default, {
+                      id: "contact.form.email.error"
+                    })
                   }) : '', emailError2 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                     className: "alert alert-danger mt-2",
-                    children: "Email invalid."
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_4__.default, {
+                      id: "contact.form.email.error"
+                    })
                   }) : '']
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                   className: "form-group",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
                     className: "mb-0",
-                    children: ["Message", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_4__.default, {
+                      id: "contact.form.message"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
                       className: "text-danger",
                       children: "*"
                     })]
@@ -10654,7 +10665,9 @@ var Contact = /*#__PURE__*/function (_React$Component) {
                     onBlur: this.handleBlur
                   }), messageError ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                     className: "alert alert-danger mt-2",
-                    children: "Message is a required field."
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_4__.default, {
+                      id: "contact.form.message.error"
+                    })
                   }) : '']
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
                   className: "text-center mb-0",
@@ -10831,17 +10844,17 @@ function Navigation(props) {
   var scroller = Scroll.scroller; // Somewhere else, even another file
 
   scroller.scrollTo('myScrollToElement', {
-    duration: 1500,
-    delay: 100,
-    smooth: true,
+    duration: 300,
+    delay: 10,
+    smooth: false,
     containerId: 'ContainerElementID',
     offset: 50 // Scrolls to element + 50 pixels down the page
 
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_5__.default, {
     fixed: "top",
-    bg: "dark",
-    variant: "dark",
+    bg: "light",
+    variant: "light",
     expand: "sm",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_6__.default, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_5__.default.Brand, {
@@ -10856,44 +10869,44 @@ function Navigation(props) {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_scroll__WEBPACK_IMPORTED_MODULE_3__.Link, {
             className: "nav-link",
             activeClass: "active",
-            to: "about",
-            spy: true,
+            to: "about" // spy={true}
+            ,
             smooth: true,
             offset: -70,
-            duration: 500,
+            duration: 1,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_8__.default, {
               id: "navigation.about"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_scroll__WEBPACK_IMPORTED_MODULE_3__.Link, {
             className: "nav-link",
             activeClass: "active",
-            to: "skills",
-            spy: true,
+            to: "skills" // spy={true}
+            ,
             smooth: true,
             offset: -70,
-            duration: 500,
+            duration: 1,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_8__.default, {
               id: "navigation.skills"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_scroll__WEBPACK_IMPORTED_MODULE_3__.Link, {
             className: "nav-link",
             activeClass: "active",
-            to: "projects",
-            spy: true,
+            to: "projects" // spy={true}
+            ,
             smooth: true,
             offset: -70,
-            duration: 500,
+            duration: 1,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_8__.default, {
               id: "navigation.projects"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_scroll__WEBPACK_IMPORTED_MODULE_3__.Link, {
             className: "nav-link",
             activeClass: "active",
-            to: "contact",
-            spy: true,
+            to: "contact" // spy={true}
+            ,
             smooth: true,
             offset: -70,
-            duration: 500,
+            duration: 1,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_8__.default, {
               id: "navigation.contact"
             })
@@ -10965,7 +10978,7 @@ function Page() {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Navigation__WEBPACK_IMPORTED_MODULE_3__.default, {
         context: context
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_9__.default, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_About__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Skills__WEBPACK_IMPORTED_MODULE_5__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Projects__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Contact__WEBPACK_IMPORTED_MODULE_6__.default, {})]
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_About__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Skills__WEBPACK_IMPORTED_MODULE_5__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Projects__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Contact__WEBPACK_IMPORTED_MODULE_6__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {})]
       })]
     })
   });
@@ -11117,8 +11130,6 @@ function ProjectModal(props) {
     })
   });
 
-  console.log(props.project.tecnologies);
-
   var tecnologias = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     children: ["Tecnologias utilizadas", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
       children: props.project.tecnologies.map(function (tec, index) {
@@ -11214,7 +11225,7 @@ function Projects() {
     id: "projects",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_scroll__WEBPACK_IMPORTED_MODULE_5__.Element, {
       name: "projects"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_7__.default, {
         id: "projects.header"
       })
@@ -11271,7 +11282,7 @@ function About() {
     id: "skills",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_scroll__WEBPACK_IMPORTED_MODULE_3__.Element, {
       name: "skills"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_5__.default, {
         id: "skills.header"
       })
@@ -11297,10 +11308,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
 /* harmony import */ var react_bootstrap_table_next_dist_react_bootstrap_table2_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap-table-next/dist/react-bootstrap-table2.min.css */ "./node_modules/react-bootstrap-table-next/dist/react-bootstrap-table2.min.css");
 /* harmony import */ var react_bootstrap_table2_filter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap-table2-filter */ "./node_modules/react-bootstrap-table2-filter/lib/index.js");
+/* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap/Row */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap/Col */ "./node_modules/react-bootstrap/esm/Col.js");
 /* harmony import */ var _bd_tecnologias_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./bd/tecnologias.js */ "./resources/js/components/bd/tecnologias.js");
-/* harmony import */ var react_bootstrap_Table__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap/Table */ "./node_modules/react-bootstrap/esm/Table.js");
-/* harmony import */ var react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap/Form */ "./node_modules/react-bootstrap/esm/Form.js");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/message.js");
+/* harmony import */ var react_bootstrap_Table__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap/Table */ "./node_modules/react-bootstrap/esm/Table.js");
+/* harmony import */ var react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap/Form */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/message.js");
 /* harmony import */ var react_bootstrap_table2_paginator__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap-table2-paginator */ "./node_modules/react-bootstrap-table2-paginator/lib/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -11340,6 +11353,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
+
 var TechTable = /*#__PURE__*/function (_Component) {
   _inherits(TechTable, _Component);
 
@@ -11365,8 +11380,6 @@ var TechTable = /*#__PURE__*/function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "filterExperience", function (e) {
-      console.log(+e.target.value);
-
       _this.experienciaFilter({
         number: +e.target.value,
         comparator: react_bootstrap_table2_filter__WEBPACK_IMPORTED_MODULE_4__.Comparator.GE
@@ -11404,7 +11417,6 @@ var TechTable = /*#__PURE__*/function (_Component) {
 
       var products = function products() {
         var filters = _this2.state.filters;
-        console.log("d=>", filters);
         var items = _bd_tecnologias_js__WEBPACK_IMPORTED_MODULE_5__.default;
         var experienciaFilter = filters.experiencia ? filters.experiencia.filterVal : null;
         var tipoFilter = filters.tipo ? filters.tipo.filterVal : null;
@@ -11465,68 +11477,75 @@ var TechTable = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
           children: "Filtrar por"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap_Table__WEBPACK_IMPORTED_MODULE_8__.default, {
-          className: "w-50",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tbody", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_9__.default, {
-                  id: "skills.filterExperience"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_10__.default.Select, {
-                  onChange: this.filterExperience,
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
-                    value: "1",
-                    children: "m\xE1s de 1"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
-                    value: "2",
-                    children: "m\xE1s de 2"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
-                    value: "3",
-                    children: "m\xE1s de 3"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
-                    value: "4",
-                    children: "m\xE1s de 4"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
-                    value: "5",
-                    children: "m\xE1s de 5"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_8__.default, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_9__.default, {
+            lg: 8,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap_Table__WEBPACK_IMPORTED_MODULE_10__.default, {
+              className: "w-100",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tbody", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_11__.default, {
+                      id: "skills.filterExperience"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12__.default.Select, {
+                      onChange: this.filterExperience,
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                        value: "1",
+                        children: "m\xE1s de 1"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                        value: "2",
+                        children: "m\xE1s de 2"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                        value: "3",
+                        children: "m\xE1s de 3"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                        value: "4",
+                        children: "m\xE1s de 4"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                        value: "5",
+                        children: "m\xE1s de 5"
+                      })]
+                    })
                   })]
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_9__.default, {
-                  id: "skills.filterArea"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_10__.default.Select, {
-                  onChange: this.filterTipo,
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
-                    value: "Backend",
-                    children: "Backend"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
-                    value: "Frontend",
-                    children: "Frontend"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
-                    value: "Varios",
-                    children: "Varios"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_11__.default, {
+                      id: "skills.filterArea"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12__.default.Select, {
+                      onChange: this.filterTipo,
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                        value: "Backend",
+                        children: "Backend"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                        value: "Frontend",
+                        children: "Frontend"
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("option", {
+                        value: "Varios",
+                        children: "Varios"
+                      })]
+                    })
                   })]
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_9__.default, {
-                  id: "skills.filterName"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_10__.default.Control, {
-                  type: "text",
-                  onChange: this.filterNombre
-                })
-              })]
-            })]
-          })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_11__.default, {
+                      id: "skills.filterName"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("td", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12__.default.Control, {
+                      type: "text",
+                      onChange: this.filterNombre
+                    })
+                  })]
+                })]
+              })
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_9__.default, {
+            md: 4
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_bootstrap_table_next__WEBPACK_IMPORTED_MODULE_1__.default, {
           keyField: "id",
           data: products(),
@@ -11641,7 +11660,11 @@ var proyectos = [{
   }],
   title: "projects.project2.title",
   description: "projects.project2.description",
-  tecnologies: ["Laravel", "JQuery", "PHP", "HTML", "CSS", "Bootstrap"]
+  tecnologies: ["Laravel", "JQuery", "PHP", "HTML", "CSS", "Bootstrap"],
+  url: "confidential",
+  repository: "confidential",
+  access_user: "",
+  access_password: ""
 }, {
   id: 3,
   name: "Intera",
@@ -11656,7 +11679,11 @@ var proyectos = [{
   }],
   title: "projects.project3.title",
   description: "projects.project3.description",
-  tecnologies: ["AngularJS", "HTML", "CSS"]
+  tecnologies: ["AngularJS", "HTML", "CSS"],
+  url: "http://intera.interasoft.com.ar",
+  repository: "",
+  access_user: "",
+  access_password: ""
 }, {
   id: 2,
   name: "Navela",
@@ -11671,10 +11698,14 @@ var proyectos = [{
   }],
   title: "projects.project1.title",
   description: "projects.project1.description",
-  tecnologies: ["JQuery", "PHP", "HTML", "CSS", "Bootstrap"]
+  tecnologies: ["JQuery", "PHP", "HTML", "CSS", "Bootstrap"],
+  url: "",
+  repository: "",
+  access_user: "",
+  access_password: ""
 }, {
   id: 4,
-  name: "InteraSoft",
+  name: "Old InteraSoft",
   images: [{
     url: "interasoft (1).gif",
     title: "projects.project4.image1.title",
@@ -11687,7 +11718,7 @@ var proyectos = [{
   title: "projects.project4.title",
   description: "projects.project4.description",
   tecnologies: ["CodeIgniter", "JQuery", "PHP", "HTML", "CSS", "Bootstrap"],
-  url: "",
+  url: "http://old.interasoft.com.ar",
   repository: "",
   access_user: "",
   access_password: ""
@@ -16949,7 +16980,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".about-image{\r\n  width: 100%;\r\n}\r\n\r\n.hidden{\r\ndisplay: none}\r\n\r\n.filter-label{\r\ndisplay:none}\r\n\r\n.carousel-caption-proyect-model {\r\n  position: relative;\r\n  color: black;\r\n  text-align: left;\r\n  padding-left: 0px;\r\n  margin-left: 0px\r\n}\r\n\r\n.mh-400{\r\n  max-height: 400px;\r\n}\r\n.mg-300{\r\n    max-height: 300px;\r\n}\r\n.fit-image{\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\r\n}\r\n\r\n.mw-500{\r\n  max-width: 800px\r\n}\r\n\r\n.center {\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  width: 50%;\r\n}\r\n\r\n.video-project{\r\n    width:100%;\r\n    height:500px;\r\n}\r\n\r\n.nav-link{\r\ncursor: pointer;}\r\n\r\n.card-text{\r\n   overflow: hidden;\r\n   text-overflow: ellipsis;\r\n   display: -webkit-box;\r\n   -webkit-line-clamp: 6; /* number of lines to show */\r\n   -webkit-box-orient: vertical;}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".about-image{\r\n  width: 100%;\r\n}\r\n\r\n.hidden{\r\ndisplay: none}\r\n\r\n.filter-label{\r\ndisplay:none}\r\n\r\n.carousel-caption-proyect-model {\r\n  position: relative;\r\n  color: black;\r\n  text-align: left;\r\n  padding-left: 0px;\r\n  margin-left: 0px\r\n}\r\n\r\n.mh-400{\r\n  max-height: 400px;\r\n}\r\n.mg-300{\r\n    max-height: 300px;\r\n}\r\n.fit-image{\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\r\n}\r\n\r\n.mw-500{\r\n  max-width: 800px\r\n}\r\n\r\n.center {\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  width: 50%;\r\n}\r\n\r\n.video-project{\r\n    width:100%;\r\n    height:500px;\r\n}\r\n\r\n.nav-link{\r\ncursor: pointer;}\r\n\r\n.card-text{\r\n   overflow: hidden;\r\n   text-overflow: ellipsis;\r\n   display: -webkit-box;\r\n   -webkit-line-clamp: 6; /* number of lines to show */\r\n   -webkit-box-orient: vertical;}\r\n\r\n.navbar{\r\n  box-shadow: 1px 1px 10px gray;\r\n}\r\n\r\n.card{\r\n  box-shadow: 1px 1px 10px gray;\r\n  margin: 10px;\r\n}\r\n\r\nh1{\r\n  /* text-align: center; */\r\n  padding: 10px;\r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -102384,7 +102415,7 @@ function _setPrototypeOf(o, p) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"navigation.home":"Home","navigation.about":"About me","navigation.skills":"Tech stack","navigation.projects":"Portfolio","about.header":"About me","about.content1":"I am a Full Stack web developer with solid knowledge in Laravel and currently studying React.   ","about.content2":"I have 7 years of experience in the development of IT solutions.","about.content3":"I am specialized in:","about.content.item1":"Management Systems Development","about.content.item2":"Websites","about.content.item3":"Automations","about.content.item4":"Productive efficiency","skills.header":"Tech stack","skills.content":"","skills.filterExperience":"Years of experience","skills.filterArea":"Application area","skills.filterName":"Technology name","projects.header":"Portfolio","projects.project1.title":"navela.com.ar","projects.project1.description":"Website of a sailing school located in Buenos Aires.","projects.project1.image1.title":"100% custom construction","projects.project1.image1.description":"The client delivered a mock-up with a meticulous detail of the website he wanted to build. Each and every element was developed with your wishes in mind, such as the double layout of the navigation bar, the exact alignment of the icons, etc.","projects.project1.image2.title":"Spam prevention","projects.project1.image2.description":"The client is recommended to incorporate a Google CAPTCHA (reCAPTCHA) into the contact form to reduce spam.","projects.project2.title":"HR Management System","projects.project2.description":"The client requested a System to unify operations of different business branches and facilitate the recycling of information and the operational load. It has: a Mass Upload system that intelligently incorporates data to the DB from the import of an Excel avoiding duplicate uploads.","projects.project2.image1.title":"Detailed personal data profile","projects.project2.image1.description":"The system has dozens of sections, each with its own table in the database. The system is articulated by a series of PHP controllers, developing low to high complexity queries. The system data update is done through AJAX (jQuery), giving the end user ease and speed to operate.","projects.project2.image2.title":"Search system optimized for queries to tens of thousands of data","projects.project2.image2.description":"The client had several million data that had to be articulated in several tables, with performance when searching a priority. The final result was as expected, with an average of between 1 and 5 seconds when making a query.","projects.project3.title":"Intera: Learning platform","projects.project3.description":"Platform requested by a Psychopedagogy professional. It is made up of a series of games designed to train children of learning age or with difficulties to read. Games can be played individually or in a random mix to increase difficulty.","projects.project4.title":"InteraSoft.com.ar","projects.project4.description":"Personal website with Blog developed in CodeIgniter. The project was mainly developed for a university job."}');
+module.exports = JSON.parse('{"navigation.home":"Home","navigation.about":"About me","navigation.skills":"Tech stack","navigation.projects":"Portfolio","navigation.contact":"Contacto","about.header":"About me","about.content1":"I am a Full Stack web developer with solid knowledge in Laravel and currently studying React.   ","about.content2":"I have 7 years of experience in the development of IT solutions.","about.content3":"I am specialized in:","about.content.item1":"Management Systems Development","about.content.item2":"Websites","about.content.item3":"Automations","about.content.item4":"Productive efficiency","skills.header":"Tech stack","skills.content":"","skills.filterExperience":"Years of experience","skills.filterArea":"Application area","skills.filterName":"Technology name","projects.header":"Portfolio","projects.project1.title":"navela.com.ar","projects.project1.description":"Website of a sailing school located in Buenos Aires.","projects.project1.image1.title":"100% custom construction","projects.project1.image1.description":"The client delivered a mock-up with a meticulous detail of the website he wanted to build. Each and every element was developed with your wishes in mind, such as the double layout of the navigation bar, the exact alignment of the icons, etc.","projects.project1.image2.title":"Spam prevention","projects.project1.image2.description":"The client is recommended to incorporate a Google CAPTCHA (reCAPTCHA) into the contact form to reduce spam.","projects.project2.title":"HR Management System","projects.project2.description":"The client requested a System to unify operations of different business branches and facilitate the recycling of information and the operational load. It has: a Mass Upload system that intelligently incorporates data to the DB from the import of an Excel avoiding duplicate uploads.","projects.project2.image1.title":"Detailed personal data profile","projects.project2.image1.description":"The system has dozens of sections, each with its own table in the database. The system is articulated by a series of PHP controllers, developing low to high complexity queries. The system data update is done through AJAX (jQuery), giving the end user ease and speed to operate.","projects.project2.image2.title":"Search system optimized for queries to tens of thousands of data","projects.project2.image2.description":"The client had several million data that had to be articulated in several tables, with performance when searching a priority. The final result was as expected, with an average of between 1 and 5 seconds when making a query.","projects.project3.title":"Intera: Learning platform","projects.project3.description":"Platform requested by a Psychopedagogy professional. It is made up of a series of games designed to train children of learning age or with difficulties to read. Games can be played individually or in a random mix to increase difficulty.","projects.project4.title":"InteraSoft.com.ar","projects.project4.description":"Personal website with Blog developed in CodeIgniter. The project was mainly developed for a university job.","contact.title":"Contacto","contact.form.name":"Name","contact.form.email":"Email address","contact.form.message":"Message","contact.form.name.error":"Name is needed to submit the message.","contact.form.email.error":"A valid email address is needed to submit the message.","contact.form.message.error":"A message must be submited. ","contact.form.submit":"Send."}');
 
 /***/ }),
 
@@ -102395,7 +102426,7 @@ module.exports = JSON.parse('{"navigation.home":"Home","navigation.about":"About
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"navigation.home":"Inicio","navigation.about":"Acerca de mi","navigation.skills":"Tecnologias","navigation.projects":"Portfolio","about.header":"Acerca de mi","about.content1":"Soy un desarrollador web Full Stack con solidos conocimientos en Laravel y actualmente estudiando React.   ","about.content2":"Cuento con 7 años de experiencia en el desarrollo de soluciones IT. ","about.content3":"Estoy especializado en:","about.content.item1":"Desarrollo de Sistemas de Gestión","about.content.item2":"Páginas Web","about.content.item3":"Automatizaciones","about.content.item4":"Eficiencia productiva","skills.header":"Tecnologias","skills.content":"","skills.filterExperience":"Años de experiencia","skills.filterArea":"Área de aplicación","skills.filterName":"Nombre de la tecnología","projects.header":"Proyectos","projects.project1.title":"navela.com.ar","projects.project1.description":"Sitio web de una escuela de navegación de velero ubicada en Buenos Aires.","projects.project1.image1.title":"Construcción 100% a medida","projects.project1.image1.description":"El cliente entrego un mock-up con un detalle minucioso del sitio web que queria construir. Todos y cada uno de los elementos fueron desarrollados teniendo en cuenta sus deseos, tales como la diposición doble de la barra de navegación, la alineación exacta de los iconos, etc.","projects.project1.image2.title":"Prevención de spam","projects.project1.image2.description":"Se recomendo al cliente incorporar al formulario de contacto un CAPTCHA de Google (reCAPTCHA) para disminuir el spam.","projects.project2.title":"Sistema de Gestión de RRHH","projects.project2.description":"El cliente solicitó un Sistema para unificar operaciones de distintas ramas de negocio y facilitar el reciclado de información y la carga operativa. Cuenta con: un sistema de Carga Masiva que inteligentemente incorpora datos a la BD desde la importación de un Excel evitando cargas duplicadas.","projects.project2.image1.title":"Perfil de datos personales con gran nivel de detalle","projects.project2.image1.description":"El sistema cuenta con decenas de secciones, cada una con su propia tabla en la base de datos. El sistema es articulado por una serie de controladores en PHP, desarrollando queries de baja a alta complejidad. La actualización de datos del sistema se realiza mediante AJAX (jQuery), dando al usuario final facilidad y velocidad para operar.","projects.project2.image2.title":"Sistema de búsqueda optimizado para consultas a decenas de miles de datos","projects.project2.image2.description":"El cliente poseia varios millones de datos  que debían ser articulados en varias tablas, siendo el performance a la hora de realizar búsquedas una prioridad. El resultado final fue tal lo esperado, con un promedio de entre 1 y 5 segundos al realizar una consulta.","projects.project3.title":"Intera: Plataforma de aprendizaje","projects.project3.description":"Plataforma solicitada por una profesional de Psicopedagogia. Está compuesta por una serie de juegos diseñados para entrenar la lectura de chicos en edad de aprendizaje o con dificultades. Los juegos pueden ser jugados individualmente o en un mix aleatorio para aumentar la dificultad.","projects.project4.title":"InteraSoft.com.ar","projects.project4.description":"Sitio web personal con Blog desarrollado en CodeIgniter. El proyecto fue principalmente desarrollado para un trabajo de la universidad.","contact.title":"Contacto"}');
+module.exports = JSON.parse('{"navigation.home":"Inicio","navigation.about":"Acerca de mi","navigation.skills":"Tecnologias","navigation.projects":"Portfolio","navigation.contact":"Contacto","about.header":"Acerca de mi","about.content1":"Soy un desarrollador web Full Stack con solidos conocimientos en Laravel y actualmente estudiando React.   ","about.content2":"Cuento con 7 años de experiencia en el desarrollo de soluciones IT. ","about.content3":"Estoy especializado en:","about.content.item1":"Desarrollo de Sistemas de Gestión","about.content.item2":"Páginas Web","about.content.item3":"Automatizaciones","about.content.item4":"Eficiencia productiva","skills.header":"Tecnologias","skills.content":"","skills.filterExperience":"Años de experiencia","skills.filterArea":"Área de aplicación","skills.filterName":"Nombre de la tecnología","projects.header":"Proyectos","projects.project1.title":"navela.com.ar","projects.project1.description":"Sitio web de una escuela de navegación de velero ubicada en Buenos Aires.","projects.project1.image1.title":"Construcción 100% a medida","projects.project1.image1.description":"El cliente entrego un mock-up con un detalle minucioso del sitio web que queria construir. Todos y cada uno de los elementos fueron desarrollados teniendo en cuenta sus deseos, tales como la diposición doble de la barra de navegación, la alineación exacta de los iconos, etc.","projects.project1.image2.title":"Prevención de spam","projects.project1.image2.description":"Se recomendo al cliente incorporar al formulario de contacto un CAPTCHA de Google (reCAPTCHA) para disminuir el spam.","projects.project2.title":"Sistema de Gestión de RRHH","projects.project2.description":"El cliente solicitó un Sistema para unificar operaciones de distintas ramas de negocio y facilitar el reciclado de información y la carga operativa. Cuenta con: un sistema de Carga Masiva que inteligentemente incorpora datos a la BD desde la importación de un Excel evitando cargas duplicadas.","projects.project2.image1.title":"Perfil de datos personales con gran nivel de detalle","projects.project2.image1.description":"El sistema cuenta con decenas de secciones, cada una con su propia tabla en la base de datos. El sistema es articulado por una serie de controladores en PHP, desarrollando queries de baja a alta complejidad. La actualización de datos del sistema se realiza mediante AJAX (jQuery), dando al usuario final facilidad y velocidad para operar.","projects.project2.image2.title":"Sistema de búsqueda optimizado para consultas a decenas de miles de datos","projects.project2.image2.description":"El cliente poseia varios millones de datos  que debían ser articulados en varias tablas, siendo el performance a la hora de realizar búsquedas una prioridad. El resultado final fue tal lo esperado, con un promedio de entre 1 y 5 segundos al realizar una consulta.","projects.project3.title":"Intera: Plataforma de aprendizaje","projects.project3.description":"Plataforma solicitada por una profesional de Psicopedagogia. Está compuesta por una serie de juegos diseñados para entrenar la lectura de chicos en edad de aprendizaje o con dificultades. Los juegos pueden ser jugados individualmente o en un mix aleatorio para aumentar la dificultad.","projects.project4.title":"InteraSoft.com.ar","projects.project4.description":"Sitio web personal con Blog desarrollado en CodeIgniter. El proyecto fue principalmente desarrollado para un trabajo de la universidad.","contact.title":"Contacto","contact.form.name":"Nombre","contact.form.email":"Dirección de mail","contact.form.message":"Mensaje","contact.form.name.error":"Debe ingresar un Nombre para enviar el mensaje.","contact.form.email.error":"Debe ingresar una dirección de email valida para enviar el mensaje.","contact.form.message.error":"Debe ingresar contenido en el mensaje. ","contact.form.submit":"Enviar."}');
 
 /***/ })
 

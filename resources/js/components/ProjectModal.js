@@ -31,7 +31,6 @@ export default function ProjectModal(props) {
     })}
   </div>
 
-  console.log(props.project.tecnologies);
 
   const tecnologias =
     <div>Tecnologias utilizadas

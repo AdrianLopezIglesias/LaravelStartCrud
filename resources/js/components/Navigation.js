@@ -22,16 +22,16 @@ export default function Navigation(props) {
 
   // Somewhere else, even another file
   scroller.scrollTo('myScrollToElement', {
-    duration: 1500,
-    delay: 100,
-    smooth: true,
+    duration: 300,
+    delay: 10,
+    smooth: false,
     containerId: 'ContainerElementID',
     offset: 50, // Scrolls to element + 50 pixels down the page
   })
 
 
   return (
-    <Navbar fixed="top" bg="dark" variant="dark" expand="sm">
+    <Navbar fixed="top" bg="light" variant="light" expand="sm">
       <Container>
         <Navbar.Brand href="#home">InteraSoft</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -42,10 +42,11 @@ export default function Navigation(props) {
               className="nav-link"
               activeClass="active"
               to="about"
-              spy={true}
+              // spy={true}
               smooth={true}
               offset={-70}
-              duration={500}>
+              duration={1}
+            >
               <FormattedMessage id="navigation.about" />
             </Link>
 
@@ -53,10 +54,11 @@ export default function Navigation(props) {
               className="nav-link"
               activeClass="active"
               to="skills"
-              spy={true}
+              // spy={true}
               smooth={true}
               offset={-70}
-              duration={500}>
+              duration={1}
+            >
               <FormattedMessage id="navigation.skills"/>
             </Link>
 
@@ -64,20 +66,22 @@ export default function Navigation(props) {
               className="nav-link"
               activeClass="active"
               to="projects"
-              spy={true}
+              // spy={true}
               smooth={true}
               offset={-70}
-              duration={500}>
+              duration={1}
+            >
               <FormattedMessage id="navigation.projects" />
             </Link>
             <Link
               className="nav-link"
               activeClass="active"
               to="contact"
-              spy={true}
+              // spy={true}
               smooth={true}
               offset={-70}
-              duration={500}>
+              duration={1}
+            >
               <FormattedMessage id="navigation.contact" />
             </Link>
 

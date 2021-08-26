@@ -51,3 +51,16 @@ cursor: pointer;}
    -webkit-line-clamp: 6; /* number of lines to show */
    -webkit-box-orient: vertical;}
 
+.navbar{
+  box-shadow: 1px 1px 10px gray;
+}
+
+.card{
+  box-shadow: 1px 1px 10px gray;
+  margin: 10px;
+}
+
+h1{
+  /* text-align: center; */
+  padding: 10px;
+}

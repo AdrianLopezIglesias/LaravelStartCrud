@@ -3,6 +3,7 @@
   "navigation.about": "About me",
   "navigation.skills": "Tech stack",
   "navigation.projects": "Portfolio",
+  "navigation.contact": "Contacto",
   "about.header": "About me",
   "about.content1": "I am a Full Stack web developer with solid knowledge in Laravel and currently studying React.   ",
   "about.content2": "I have 7 years of experience in the development of IT solutions.",
@@ -32,5 +33,13 @@
   "projects.project3.title": "Intera: Learning platform",
   "projects.project3.description": "Platform requested by a Psychopedagogy professional. It is made up of a series of games designed to train children of learning age or with difficulties to read. Games can be played individually or in a random mix to increase difficulty.",
   "projects.project4.title": "InteraSoft.com.ar",
-  "projects.project4.description": "Personal website with Blog developed in CodeIgniter. The project was mainly developed for a university job."
+  "projects.project4.description": "Personal website with Blog developed in CodeIgniter. The project was mainly developed for a university job.",
+    "contact.title": "Contacto",
+    "contact.form.name": "Name",
+    "contact.form.email": "Email address",
+    "contact.form.message": "Message",
+    "contact.form.name.error": "Name is needed to submit the message.",
+    "contact.form.email.error": "A valid email address is needed to submit the message.",
+    "contact.form.message.error": "A message must be submited. ",
+    "contact.form.submit": "Send."
 }

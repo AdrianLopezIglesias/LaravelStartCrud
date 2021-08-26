@@ -19,9 +19,9 @@ export default function About() {
     <section id="skills">
       <Element name="skills"></Element>
 
-      <h2>
+      <h1>
         <FormattedMessage id="skills.header" />
-      </h2>
+      </h1>
       <TechTable />
     </section>
   );
