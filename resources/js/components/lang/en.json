@@ -21,7 +21,11 @@
   "skills.table.tech": "Tecnology",
   "skills.filterArea": "Application area",
   "skills.filterName": "Technology name",
+
   "projects.header": "Portfolio",
+  "projects.modal.techstack": "Tecnologias utilizadas",
+  "projects.modal.moredetails": "See more details",
+
   "projects.project1.title": "navela.com.ar",
   "projects.project1.description": "Website of a sailing school located in Buenos Aires.",
   "projects.project1.image1.title": "100% custom construction",
@@ -38,8 +42,7 @@
   "projects.project3.description": "Platform requested by a Psychopedagogy professional. It is made up of a series of games designed to train children of learning age or with difficulties to read. Games can be played individually or in a random mix to increase difficulty.",
   "projects.project4.title": "InteraSoft.com.ar",
   "projects.project4.description": "Personal website with Blog developed in CodeIgniter. The project was mainly developed for a university job.",
-  "projects.modal.techstack": "Tecnologias utilizadas",
-  "projects.modal.moredetails": "See more details",
+ 
   "contact.title": "Contacto",
   "contact.form.name": "Name",
   "contact.form.email": "Email address",

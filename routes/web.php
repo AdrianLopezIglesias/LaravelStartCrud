@@ -18,11 +18,6 @@ use App\Http\Controllers\HomeController;
 
 Auth::routes();
 
-Route::get('/', [
-    HomeController::class, 'index'
-])->name('home');
-
-
 
 
 Route::middleware(['auth'])->group(function () {
@@ -49,12 +44,27 @@ Route::post(
     '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
 )->name('io_generator_builder_generate_from_file');
 
-Route::resource('teclados', App\Http\Controllers\TecladosController::class);
+Route::resource('adm/teclados', App\Http\Controllers\TecladosController::class);
 
-Route::resource('mice', App\Http\Controllers\MouseController::class);
+Route::resource('adm/mice', App\Http\Controllers\MouseController::class);
 
-Route::resource('projects', App\Http\Controllers\ProjectController::class);
-Route::resource('mensajes', App\Http\Controllers\MensajeController::class);
+Route::resource('adm/projects', App\Http\Controllers\ProjectController::class);
+Route::resource('adm/mensajes', App\Http\Controllers\MensajeController::class);
 
 });
 
+Route::get('/{any_path?}', [
+    HomeController::class, 'index'
+])->name('home');
+
+
+
+
+Route::group(['prefix' => 'adm'], function () {
+    Route::resource('textos', App\Http\Controllers\Adm\TextoController::class, ["as" => 'adm']);
+});
+
+
+Route::group(['prefix' => 'adm'], function () {
+    Route::resource('tecnologias', App\Http\Controllers\Adm\TecnologiaController::class, ["as" => 'adm']);
+});

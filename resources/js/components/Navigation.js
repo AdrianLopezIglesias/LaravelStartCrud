@@ -9,7 +9,14 @@ import { FormattedMessage } from 'react-intl';
 import Form from 'react-bootstrap/Form'
 import paginationFactory, { PaginationProvider } from 'react-bootstrap-table2-paginator';
 import * as Scroll from 'react-scroll';
-import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+
+//ROUTER
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 export default function Navigation(props) {
@@ -33,12 +40,18 @@ export default function Navigation(props) {
   return (
     <Navbar fixed="top" bg="light" variant="light" expand="sm">
       <Container>
-        <Navbar.Brand href="#home">InteraSoft</Navbar.Brand>
+        <Navbar.Brand>InteraSoft</Navbar.Brand>
+            
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
 
-            <Link
+            <Link className="nav-link" to="/about"><FormattedMessage id="navigation.about" /></Link>
+            <Link className="nav-link" to="/skills"><FormattedMessage id="navigation.skills" /></Link>
+            <Link className="nav-link" to="/projects"><FormattedMessage id="navigation.projects" /></Link>
+            <Link className="nav-link" to="/contact"><FormattedMessage id="navigation.contact" /></Link>
+
+            {/* <Link
               className="nav-link"
               activeClass="active"
               to="about"
@@ -83,7 +96,7 @@ export default function Navigation(props) {
               duration={1}
             >
               <FormattedMessage id="navigation.contact" />
-            </Link>
+            </Link> */}
 
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

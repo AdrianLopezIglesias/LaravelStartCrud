@@ -10,18 +10,36 @@ import Table from 'react-bootstrap/Table'
 import Form from 'react-bootstrap/Form'
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 import paginationFactory from 'react-bootstrap-table2-paginator';
+import axios from 'axios';
+
 
 class TechTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filters: {}
+        filters: { },
+        tecnologias: []
     };
     this.experienciaFilter = 1;
     this.tipoFilter = "";
-    this.nombreFilter = "";
-  }
+      this.nombreFilter = "";
+      axios.get('/api/adm/tecnologias')
+          .then((response) => {
+              console.log(Object.values(response.data));
+              this.setState({ tecnologias: Object.values(response.data) })
+          })
+          .catch(function (error) {
+              // handle error
 
+              console.log(error);
+          })
+          .then(function () {
+              // always executed
+          });
+  }
+    componentDidMount() {
+
+    }
   onTableChange = (type, newState) => {
     this.setState({
       filters: newState.filters
@@ -46,12 +64,13 @@ class TechTable extends Component {
     const selectOptions = {
       Frontend: "Frontend",
       Backend: "Backend",
-      Varios: "Varios"
+        Varios: "Varios",
+      DesignPatterns: "Design Patterns"
     };
 
     const products = () => {
       const { filters } = this.state;
-      let items = tecnologias;
+      let items = this.state.tecnologias;
 
 
 
@@ -151,6 +170,7 @@ class TechTable extends Component {
                 <option value='Backend'>Backend</option>
                 <option value='Frontend'>Frontend</option>
                 <option value='Varios'>Varios</option>
+                <option value='Design Patterns'>Design Patterns</option>
               </Form.Select>
             </td>
           </tr>

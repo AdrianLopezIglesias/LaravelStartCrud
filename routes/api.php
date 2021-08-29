@@ -39,3 +39,11 @@ Route::resource('mensajes', MensajeAPIController::class)->only([
   'store'
 ]);
 
+
+
+Route::group(['prefix' => 'adm'], function () {
+    Route::resource('textos', Adm\TextoAPIController::class);
+    Route::resource('tecnologias', Adm\TecnologiaAPIController::class);
+});
+
+

@@ -35,32 +35,25 @@ function Page() {
           <Navigation context={context} />
           <br />
           <Container>
-          <Switch>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/users">
-              <Users />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
+            <Switch>
+              <Route path="/about">    
+                <About />
+              </Route>    
+              <Route path="/skills">
+                <Skills />
+              </Route>        
+              <Route path="/projects">
+                <Projects />
+              </Route>
+              <Route path="/contact">   
+                <Contact />
+              </Route>
+              <Route path="/">    
+                <About />
+              </Route>    
+            </Switch>
 
 
-
-            <br />
-            <br />
-            <Skills />
-            <br />
-            <br />
-            <Projects />
-            <br />
-            <br />
-            {/* <Stack /> */}
-            <Contact />
-            <br />
-            <br />
           </Container>
         </LanguageWrapper>
       </div>
