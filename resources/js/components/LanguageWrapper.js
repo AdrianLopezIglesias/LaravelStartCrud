@@ -6,13 +6,14 @@ import { IntlProvider } from 'react-intl';
 import axios from 'axios';
 
 
-import Spanish from './lang/es.json';
-import English from './lang/en.json';
+// import Spanish from './lang/es.json';
+// import English from './lang/en.json';
 
 export const Context = React.createContext();
 
 
-
+let Spanish = window.textos.es;
+let English = window.textos.en;
 
 const local = 'es';
 
@@ -29,29 +30,6 @@ if (local === 'es') {
 const LanguageWrapper = (props) => {
     const [locale, setLocale] = useState(local);
     const [messages, setMessages] = useState(lang);
-
-    useEffect(() => {
-        axios.get('/api/adm/textos')
-            .then(function (response) {
-                Spanish = response.data.es
-                English = response.data.en
-                setMessages(Spanish);
-            })
-            .catch(function (error) {
-                // handle error
-                axios.get('/api/adm/textos')
-                    .then(function (response) {
-                        Spanish = response.data.es
-                        English = response.data.en
-                        console.log(Spanish);
-                        setMessages(Spanish);
-                    })
-                console.log(error);
-            })
-            .then(function () {
-                // always executed
-            });
-    }, []);
 
     function selectLanguage(e) {
         const newLocale = e.target.value;

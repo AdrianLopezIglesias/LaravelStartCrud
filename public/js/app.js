@@ -10726,12 +10726,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/provider.js");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/provider.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _lang_es_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lang/es.json */ "./resources/js/components/lang/es.json");
-/* harmony import */ var _lang_en_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lang/en.json */ "./resources/js/components/lang/en.json");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -10747,18 +10745,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
  //AXios
 
-
-
+ // import Spanish from './lang/es.json';
+// import English from './lang/en.json';
 
 
 var Context = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createContext();
+var Spanish = window.textos.es;
+var English = window.textos.en;
 var local = 'es';
 var lang;
 
 if (local === 'es') {
-  lang = _lang_es_json__WEBPACK_IMPORTED_MODULE_2__;
+  lang = Spanish;
 } else {
-  lang = _lang_en_json__WEBPACK_IMPORTED_MODULE_3__;
+  lang = English;
 } // local === 'es' ? lang = Spanish : lang = English;
 
 
@@ -10773,45 +10773,27 @@ var LanguageWrapper = function LanguageWrapper(props) {
       messages = _useState4[0],
       setMessages = _useState4[1];
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/adm/textos').then(function (response) {
-      _lang_es_json__WEBPACK_IMPORTED_MODULE_2__ = response.data.es;
-      _lang_en_json__WEBPACK_IMPORTED_MODULE_3__ = response.data.en;
-      setMessages(_lang_es_json__WEBPACK_IMPORTED_MODULE_2__);
-    })["catch"](function (error) {
-      // handle error
-      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/adm/textos').then(function (response) {
-        _lang_es_json__WEBPACK_IMPORTED_MODULE_2__ = response.data.es;
-        _lang_en_json__WEBPACK_IMPORTED_MODULE_3__ = response.data.en;
-        console.log(_lang_es_json__WEBPACK_IMPORTED_MODULE_2__);
-        setMessages(_lang_es_json__WEBPACK_IMPORTED_MODULE_2__);
-      });
-      console.log(error);
-    }).then(function () {// always executed
-    });
-  }, []);
-
   function selectLanguage(e) {
     var newLocale = e.target.value;
     setLocale(newLocale);
 
     if (newLocale === 'en') {
-      setMessages(_lang_en_json__WEBPACK_IMPORTED_MODULE_3__);
+      setMessages(English);
     } else {
       if (newLocale === 'es') {
-        setMessages(_lang_es_json__WEBPACK_IMPORTED_MODULE_2__);
+        setMessages(Spanish);
       } else {
         setMessages(Arabic);
       }
     }
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Context.Provider, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Context.Provider, {
     value: {
       locale: locale,
       selectLanguage: selectLanguage
     },
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_5__.default, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_3__.default, {
       messages: messages,
       locale: locale,
       children: props.children
@@ -11027,16 +11009,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _LanguageWrapper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LanguageWrapper */ "./resources/js/components/LanguageWrapper.js");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/message.js");
-/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap/Col */ "./node_modules/react-bootstrap/esm/Col.js");
-/* harmony import */ var react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap/Card */ "./node_modules/react-bootstrap/esm/Card.js");
-/* harmony import */ var _WrappedMessage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WrappedMessage */ "./resources/js/components/WrappedMessage.js");
-/* harmony import */ var _ProjectModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ProjectModal */ "./resources/js/components/ProjectModal.js");
-/* harmony import */ var _bd_images__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./bd/images */ "./resources/js/components/bd/images.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
- // import { FormattedMessage } from 'react-intl';
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/message.js");
+/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap/Col */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap/Card */ "./node_modules/react-bootstrap/esm/Card.js");
+/* harmony import */ var _ProjectModal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProjectModal */ "./resources/js/components/ProjectModal.js");
+/* harmony import */ var react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap/Modal */ "./node_modules/react-bootstrap/esm/Modal.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -11050,27 +11039,87 @@ __webpack_require__.r(__webpack_exports__);
 
 function ProjectCard(props) {
   var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageWrapper__WEBPACK_IMPORTED_MODULE_1__.Context);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_6__.default, {
-    md: 4,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_7__.default, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_7__.default.Img, {
-        variant: "top",
-        src: "/images/" + props.project.images[0].url
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_7__.default.Body, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_7__.default.Title, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_8__.default, {
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      show = _useState2[0],
+      setShow = _useState2[1];
+
+  var handleClose = function handleClose() {
+    setShow(false);
+  };
+
+  var handleShow = function handleShow() {
+    setShow(true);
+  };
+
+  var imagenes = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    children: props.project.images.map(function (image, index) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+          className: "d-block w-75",
+          src: "/images/" + image.url
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("br", {})]
+      }, index);
+    })
+  });
+
+  var tecnologias = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_4__.default, {
+      id: "projects.modal.techstack"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("ul", {
+      children: props.project.tecnologies.map(function (tec, index) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("li", {
+          children: tec
+        }, index);
+      })
+    })]
+  });
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_5__.default, {
+    lg: 4,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_6__.default, {
+      onClick: function onClick() {
+        return handleShow();
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_6__.default.Body, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_6__.default.Title, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_4__.default, {
             id: props.project.title
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_7__.default.Text, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_8__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_6__.default.Text, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_4__.default, {
             id: props.project.description
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_ProjectModal__WEBPACK_IMPORTED_MODULE_3__.default, {
-          title: props.title,
-          project: props.project
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+          variant: "bottom",
+          src: "/images/" + props.project.images[0].url,
+          className: "card-image-project"
         })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_7__.default, {
+      show: show,
+      onHide: handleClose,
+      size: 'lg',
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_7__.default.Header, {
+        closeButton: true,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_7__.default.Title, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_4__.default, {
+            id: props.project.title
+          })
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_7__.default.Body, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_4__.default, {
+            id: props.project.description
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+          children: ["URL del proyecto publicado: ", props.project.website]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
+          children: ["URL del repositorio: ", props.project.website]
+        }), tecnologias, imagenes]
       })]
-    })
+    })]
   });
 }
 
@@ -11085,17 +11134,181 @@ function ProjectCard(props) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ ProjectModal)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/message.js");
+/* harmony import */ var react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Modal */ "./node_modules/react-bootstrap/esm/Modal.js");
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+function ProjectModal(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      show = _useState2[0],
+      setShow = _useState2[1];
+
+  var handleShow = function handleShow() {
+    return setShow(true);
+  };
+
+  var handleClose = function handleClose() {
+    return setShow(false);
+  };
+
+  var imagenes = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    children: props.project.images.map(function (image, index) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+          className: "d-block w-75",
+          src: "/images/" + image.url
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})]
+      }, index);
+    })
+  });
+
+  var tecnologias = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_2__.default, {
+      id: "projects.modal.techstack"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("ul", {
+      children: props.project.tecnologies.map(function (tec, index) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
+          children: tec
+        }, index);
+      })
+    })]
+  });
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_3__.default, {
+      show: props.show,
+      onHide: handleClose,
+      backdrop: true,
+      size: "xl",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_3__.default.Header, {
+        closeButton: true,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_3__.default.Title, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_2__.default, {
+            id: props.project.title
+          })
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_3__.default.Body, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__.default, {
+          variant: "primary",
+          onClick: handleClose,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_2__.default, {
+            id: "projects.modal.moredetails"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_2__.default, {
+            id: props.project.description
+          })
+        }), "Links", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("ul", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
+            children: ["URL: ", props.project.website]
+          })
+        }), tecnologias, imagenes]
+      })]
+    })
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProjectModal);
+
+/***/ }),
+
+/***/ "./resources/js/components/Projects.js":
+/*!*********************************************!*\
+  !*** ./resources/js/components/Projects.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Projects)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _LanguageWrapper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LanguageWrapper */ "./resources/js/components/LanguageWrapper.js");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/message.js");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/message.js");
+/* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap/Row */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var _ProjectCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProjectCard */ "./resources/js/components/ProjectCard.js");
+/* harmony import */ var _bd_proyectos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./bd/proyectos */ "./resources/js/components/bd/proyectos.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+
+var proyectos2 = window.proyectos;
+function Projects() {
+  var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageWrapper__WEBPACK_IMPORTED_MODULE_1__.Context);
+  var tecnologias = [];
+  console.log(proyectos2);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("section", {
+    id: "projects",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_5__.default, {
+        id: "projects.header"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_6__.default, {
+      children: _bd_proyectos__WEBPACK_IMPORTED_MODULE_3__.default.map(function (project, index) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ProjectCard__WEBPACK_IMPORTED_MODULE_2__.default, {
+          project: project,
+          title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_5__.default, {
+            id: project.title
+          }),
+          description: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_5__.default, {
+            id: project.description
+          }),
+          tecnologies: project.tecnologies
+        }, index);
+      })
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/Skills.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Skills.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Skills)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _LanguageWrapper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LanguageWrapper */ "./resources/js/components/LanguageWrapper.js");
+/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/message.js");
 /* harmony import */ var _TechTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TechTable */ "./resources/js/components/TechTable.js");
-/* harmony import */ var _ProjectCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ProjectCard */ "./resources/js/components/ProjectCard.js");
-/* harmony import */ var react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap/Modal */ "./node_modules/react-bootstrap/esm/Modal.js");
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var _Projects__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Projects */ "./resources/js/components/Projects.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_scroll__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-scroll */ "./node_modules/react-scroll/modules/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -11119,197 +11332,23 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+function Skills() {
+  var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageWrapper__WEBPACK_IMPORTED_MODULE_1__.Context);
 
-
-
-
-
-function ProjectModal(props) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
-      show = _useState2[0],
-      setShow = _useState2[1];
+      tecnologias = _useState2[0],
+      setTecnologias = _useState2[1];
 
-  var handleClose = function handleClose() {
-    return setShow(false);
-  };
-
-  var handleShow = function handleShow() {
-    return setShow(true);
-  };
-
-  var imagenes = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-    children: props.project.images.map(function (image, index) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_6__.default, {
-            id: image.title
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_6__.default, {
-            id: image.description
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
-          className: "d-block w-75",
-          src: "/images/" + image.url,
-          alt: image.title
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {})]
-      }, index);
-    })
-  });
-
-  var tecnologias = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_6__.default, {
-      id: "projects.modal.techstack"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
-      children: props.project.tecnologies.map(function (tec, index) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
-          children: tec
-        }, index);
-      })
-    })]
-  });
-
-  var video = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-    children: props.project.video ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("iframe", {
-      "class": "video-project",
-      src: props.project.video
-    }) : ""
-  });
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_7__.default, {
-      variant: "primary",
-      onClick: handleShow,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_6__.default, {
-        id: "projects.modal.moredetails"
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_8__.default, {
-      show: show,
-      onHide: handleClose,
-      size: "xl",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_8__.default.Header, {
-        closeButton: true,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_8__.default.Title, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_6__.default, {
-            id: props.project.title
-          })
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_8__.default.Body, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_6__.default, {
-            id: props.project.description
-          })
-        }), "Links", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("ul", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-            children: ["URL: ", props.project.website]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-            children: ["User: ", props.project.user]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-            children: ["Password: ", props.project.password]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("li", {
-            children: ["Repository: ", props.project.repo]
-          })]
-        }), tecnologias, imagenes, video]
-      })]
-    })]
-  });
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/Projects.js":
-/*!*********************************************!*\
-  !*** ./resources/js/components/Projects.js ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Projects)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _LanguageWrapper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LanguageWrapper */ "./resources/js/components/LanguageWrapper.js");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/message.js");
-/* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap/Row */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var _TechTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TechTable */ "./resources/js/components/TechTable.js");
-/* harmony import */ var _ProjectCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ProjectCard */ "./resources/js/components/ProjectCard.js");
-/* harmony import */ var _bd_proyectos__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./bd/proyectos */ "./resources/js/components/bd/proyectos.js");
-/* harmony import */ var react_scroll__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-scroll */ "./node_modules/react-scroll/modules/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
- // import { FormattedMessage } from 'react-intl';
-
-
-
-
-
-
-
-
-
-
-
-
-function Projects() {
-  var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageWrapper__WEBPACK_IMPORTED_MODULE_1__.Context);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("section", {
-    id: "projects",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_scroll__WEBPACK_IMPORTED_MODULE_5__.Element, {
-      name: "projects"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_7__.default, {
-        id: "projects.header"
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_8__.default, {
-      children: _bd_proyectos__WEBPACK_IMPORTED_MODULE_4__.default.map(function (project, index) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_ProjectCard__WEBPACK_IMPORTED_MODULE_3__.default, {
-          project: project,
-          title: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_7__.default, {
-            id: project.title
-          }),
-          description: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_7__.default, {
-            id: project.description
-          }),
-          tecnologies: project.tecnologies
-        }, index);
-      })
-    })]
-  });
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/Skills.js":
-/*!*******************************************!*\
-  !*** ./resources/js/components/Skills.js ***!
-  \*******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ About)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _LanguageWrapper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LanguageWrapper */ "./resources/js/components/LanguageWrapper.js");
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/message.js");
-/* harmony import */ var _TechTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TechTable */ "./resources/js/components/TechTable.js");
-/* harmony import */ var react_scroll__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-scroll */ "./node_modules/react-scroll/modules/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
- // import { FormattedMessage } from 'react-intl';
-
-
-
-
-
-
-
-
-
-
-function About() {
-  var context = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_LanguageWrapper__WEBPACK_IMPORTED_MODULE_1__.Context);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log("hola");
+    axios.get('/api/adm/tecnologias').then(function (response) {
+      console.log(Object.values(response.data));
+      setTecnologias(Object.values(response.data));
+    })["catch"](function (error) {
+      console.log(error);
+    }).then(function () {});
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("section", {
     id: "skills",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_scroll__WEBPACK_IMPORTED_MODULE_3__.Element, {
@@ -11318,7 +11357,9 @@ function About() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_5__.default, {
         id: "skills.header"
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_TechTable__WEBPACK_IMPORTED_MODULE_2__.default, {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_TechTable__WEBPACK_IMPORTED_MODULE_2__.default, {
+      tecnologias: tecnologias
+    })]
   });
 }
 
@@ -11432,29 +11473,19 @@ var TechTable = /*#__PURE__*/function (_Component) {
 
     _this.state = {
       filters: {},
-      tecnologias: []
+      tecnologias: Object.values(window.tecnologias)
     };
     _this.experienciaFilter = 1;
     _this.tipoFilter = "";
-    _this.nombreFilter = "";
-    axios__WEBPACK_IMPORTED_MODULE_7___default().get('/api/adm/tecnologias').then(function (response) {
-      console.log(Object.values(response.data));
+    _this.nombreFilter = ""; // axios.get('/api/adm/tecnologias')
+    //     .then((response) => { console.log(Object.values(response.data)); this.setState({ tecnologias: Object.values(response.data) }) })
+    //     .catch(function (error) { console.log(error); })
+    //     .then(function () { });
 
-      _this.setState({
-        tecnologias: Object.values(response.data)
-      });
-    })["catch"](function (error) {
-      // handle error
-      console.log(error);
-    }).then(function () {// always executed
-    });
     return _this;
   }
 
   _createClass(TechTable, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {}
-  }, {
     key: "render",
     value: function render() {
       var _this2 = this,
@@ -11637,71 +11668,6 @@ var TechTable = /*#__PURE__*/function (_Component) {
 
 /***/ }),
 
-/***/ "./resources/js/components/WrappedMessage.js":
-/*!***************************************************!*\
-  !*** ./resources/js/components/WrappedMessage.js ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react_intl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-intl */ "./node_modules/react-intl/lib/src/components/message.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-var WrappedMessage = function WrappedMessage(props) {
-  var message = props.message; // manually check if a translation exists for this message in the current (non-default) locale
-  // this allows us to match the containing "lang" span when we fallback to the default locale
-
-  var locale = "en";
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-    lang: locale,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_intl__WEBPACK_IMPORTED_MODULE_2__.default, _objectSpread({}, message))
-  });
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WrappedMessage);
-
-/***/ }),
-
-/***/ "./resources/js/components/bd/images.js":
-/*!**********************************************!*\
-  !*** ./resources/js/components/bd/images.js ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-var images = {
-  "navela": [{
-    url: "navela (1).jpg",
-    title: "projects.project1.image1.title",
-    description: "projects.project1.image1.description"
-  }, {
-    url: "navela (3).jpg",
-    title: "Prevención de spam",
-    description: "Se recomendo al cliente incorporar al formulario de contacto un CAPTCHA de Google (reCAPTCHA) para disminuir el spam."
-  }]
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (images);
-
-/***/ }),
-
 /***/ "./resources/js/components/bd/proyectos.js":
 /*!*************************************************!*\
   !*** ./resources/js/components/bd/proyectos.js ***!
@@ -11717,13 +11683,9 @@ var proyectos = [{
   id: 1,
   name: "SiC",
   images: [{
-    "url": "sic (1).gif",
-    "title": "projects.project2.image1.title",
-    "description": "projects.project2.image1.description"
+    "url": "sic1.jpg"
   }, {
-    "url": "sic (2).gif",
-    "title": "projects.project2.image2.title",
-    "description": "projects.project2.image2.description"
+    "url": "sic (2).gif"
   }],
   title: "projects.project2.title",
   description: "projects.project2.description",
@@ -11736,7 +11698,7 @@ var proyectos = [{
   id: 3,
   name: "Intera",
   images: [{
-    url: "intera (1).gif",
+    url: "intera1.jpg",
     title: "projects.project3.image1.title",
     description: "projects.project3.image1.description"
   }, {
@@ -11755,7 +11717,7 @@ var proyectos = [{
   id: 2,
   name: "Navela",
   images: [{
-    url: "navela (1).gif",
+    url: "navela1.jpg",
     title: "projects.project1.image1.title",
     description: "projects.project1.image1.description"
   }, {
@@ -11774,7 +11736,7 @@ var proyectos = [{
   id: 4,
   name: "Old InteraSoft",
   images: [{
-    url: "interasoft (1).gif",
+    url: "portfolio1.jpg",
     title: "projects.project4.image1.title",
     description: "projects.project4.image1.description"
   }, {
@@ -17047,7 +17009,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".about-image{\r\n  width: 100%;\r\n}\r\n\r\n.hidden{\r\ndisplay: none}\r\n\r\n.filter-label{\r\ndisplay:none}\r\n\r\n.carousel-caption-proyect-model {\r\n  position: relative;\r\n  color: black;\r\n  text-align: left;\r\n  padding-left: 0px;\r\n  margin-left: 0px\r\n}\r\n\r\n.mh-400{\r\n  max-height: 400px;\r\n}\r\n.mg-300{\r\n    max-height: 300px;\r\n}\r\n.fit-image{\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\r\n}\r\n\r\n.mw-500{\r\n  max-width: 800px\r\n}\r\n\r\n.center {\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  width: 50%;\r\n}\r\n\r\n.video-project{\r\n    width:100%;\r\n    height:500px;\r\n}\r\n\r\n.nav-link{\r\ncursor: pointer;}\r\n\r\n.card-text{\r\n   overflow: hidden;\r\n   text-overflow: ellipsis;\r\n   display: -webkit-box;\r\n   -webkit-line-clamp: 6; /* number of lines to show */\r\n   -webkit-box-orient: vertical;}\r\n\r\n.navbar{\r\n  box-shadow: 1px 1px 10px gray;\r\n}\r\n\r\n.card{\r\n  box-shadow: 1px 1px 10px gray;\r\n  margin: 10px;\r\n}\r\n\r\nh1{\r\n  /* text-align: center; */\r\n  margin-top: 40px;\r\n  padding: 10px;\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".about-image{\r\n  width: 100%;\r\n}\r\n\r\n.hidden{\r\ndisplay: none}\r\n\r\n.filter-label{\r\ndisplay:none}\r\n\r\n.carousel-caption-proyect-model {\r\n  position: relative;\r\n  color: black;\r\n  text-align: left;\r\n  padding-left: 0px;\r\n  margin-left: 0px\r\n}\r\n\r\n.mh-400{\r\n  max-height: 400px;\r\n}\r\n.mg-300{\r\n    max-height: 300px;\r\n}\r\n.fit-image{\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\r\n}\r\n\r\n.mw-500{\r\n  max-width: 800px\r\n}\r\n\r\n.center {\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  width: 50%;\r\n}\r\n\r\n.video-project{\r\n    width:100%;\r\n    height:500px;\r\n}\r\n\r\n.nav-link{\r\ncursor: pointer;}\r\n\r\n.card-text{\r\n   overflow: hidden;\r\n   text-overflow: ellipsis;\r\n   display: -webkit-box;\r\n   -webkit-line-clamp: 6; /* number of lines to show */\r\n   -webkit-box-orient: vertical;}\r\n\r\n.navbar{\r\n  box-shadow: 1px 1px 10px gray;\r\n}\r\n\r\n.card{\r\n  box-shadow: 1px 1px 10px gray;\r\n  margin: 10px;\r\n  height: 500px;\r\n}\r\n\r\n.card-img{\r\n    height: 200px;\r\n}\r\n.card-image-project{\r\n    height: 200px;\r\n    -o-object-fit: cover;\r\n       object-fit: cover;  position: absolute;\r\n    margin: 4px;\r\n  bottom: 4px;\r\n  margin-left: auto;\r\n  width: 90%;\r\n}\r\n\r\n.card-title{\r\n    font-size: 26px\r\n}\r\nh1{\r\n  /* text-align: center; */\r\n  margin-top: 40px;\r\n  padding: 10px;\r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -105417,28 +105379,6 @@ function _setPrototypeOf(o, p) {
 
   return _setPrototypeOf(o, p);
 }
-
-/***/ }),
-
-/***/ "./resources/js/components/lang/en.json":
-/*!**********************************************!*\
-  !*** ./resources/js/components/lang/en.json ***!
-  \**********************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = JSON.parse('{"navigation.home":"Home","navigation.about":"About me","navigation.skills":"Tech stack","navigation.projects":"Portfolio","navigation.contact":"Contacto","about.header":"About me","about.content1":"I am a Full Stack web developer with solid knowledge in Laravel and currently studying React.   ","about.content2":"I have 7 years of experience in the development of IT solutions.","about.content3":"I am specialized in:","about.content.item1":"Management Systems Development","about.content.item2":"Websites","about.content.item3":"Automations","about.content.item4":"Productive efficiency","skills.header":"Tech stack","skills.content":"","skills.filterExperience":"Years of experience","skills.filterExperience.c":"More than ","skills.table.experience":"Experience (years)","skills.table.area":"Area of application","skills.table.tech":"Tecnology","skills.filterArea":"Application area","skills.filterName":"Technology name","projects.header":"Portfolio","projects.modal.techstack":"Tecnologias utilizadas","projects.modal.moredetails":"See more details","projects.project1.title":"navela.com.ar","projects.project1.description":"Website of a sailing school located in Buenos Aires.","projects.project1.image1.title":"100% custom construction","projects.project1.image1.description":"The client delivered a mock-up with a meticulous detail of the website he wanted to build. Each and every element was developed with your wishes in mind, such as the double layout of the navigation bar, the exact alignment of the icons, etc.","projects.project1.image2.title":"Spam prevention","projects.project1.image2.description":"The client is recommended to incorporate a Google CAPTCHA (reCAPTCHA) into the contact form to reduce spam.","projects.project2.title":"HR Management System","projects.project2.description":"The client requested a System to unify operations of different business branches and facilitate the recycling of information and the operational load. It has: a Mass Upload system that intelligently incorporates data to the DB from the import of an Excel avoiding duplicate uploads.","projects.project2.image1.title":"Detailed personal data profile","projects.project2.image1.description":"The system has dozens of sections, each with its own table in the database. The system is articulated by a series of PHP controllers, developing low to high complexity queries. The system data update is done through AJAX (jQuery), giving the end user ease and speed to operate.","projects.project2.image2.title":"Search system optimized for queries to tens of thousands of data","projects.project2.image2.description":"The client had several million data that had to be articulated in several tables, with performance when searching a priority. The final result was as expected, with an average of between 1 and 5 seconds when making a query.","projects.project3.title":"Intera: Learning platform","projects.project3.description":"Platform requested by a Psychopedagogy professional. It is made up of a series of games designed to train children of learning age or with difficulties to read. Games can be played individually or in a random mix to increase difficulty.","projects.project4.title":"InteraSoft.com.ar","projects.project4.description":"Personal website with Blog developed in CodeIgniter. The project was mainly developed for a university job.","contact.title":"Contacto","contact.form.name":"Name","contact.form.email":"Email address","contact.form.message":"Message","contact.form.name.error":"Name is needed to submit the message.","contact.form.email.error":"A valid email address is needed to submit the message.","contact.form.message.error":"A message must be submited. ","contact.form.submit":"Send."}');
-
-/***/ }),
-
-/***/ "./resources/js/components/lang/es.json":
-/*!**********************************************!*\
-  !*** ./resources/js/components/lang/es.json ***!
-  \**********************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = JSON.parse('{"navigation.about":"Acerca de mi","navigation.skills":"Tecnologias","navigation.projects":"Portfolio","navigation.contact":"Contacto","about.header":"Acerca de mi","about.content1":"Soy un desarrollador web Full Stack con solidos conocimientos en Laravel y actualmente estudiando React.   ","about.content2":"Cuento con 7 años de experiencia en el desarrollo de soluciones IT. ","about.content3":"Estoy especializado en:","about.content.item1":"Desarrollo de Sistemas de Gestión","about.content.item2":"Páginas Web","about.content.item3":"Automatizaciones","about.content.item4":"Eficiencia productiva","skills.header":"Tecnologias","skills.content":"","skills.filterExperience":"Años de experiencia","skills.filterExperience.c":"Más de ","skills.table.experience":"Experiencia (años)","skills.table.area":"Área de aplicación","skills.table.tech":"Tecnologia","skills.filterArea":"Área de aplicación","skills.filterName":"Nombre de la tecnología","projects.header":"Proyectos","projects.modal.techstack":"Tecnologias utilizadas","projects.modal.moredetails":"Ver más detalles","projects.project1.title":"navela.com.ar","projects.project1.description":"Sitio web de una escuela de navegación de velero ubicada en Buenos Aires.","projects.project1.image1.title":"Construcción 100% a medida","projects.project1.image1.description":"El cliente entrego un mock-up con un detalle minucioso del sitio web que queria construir. Todos y cada uno de los elementos fueron desarrollados teniendo en cuenta sus deseos, tales como la diposición doble de la barra de navegación, la alineación exacta de los iconos, etc.","projects.project1.image2.title":"Prevención de spam","projects.project1.image2.description":"Se recomendo al cliente incorporar al formulario de contacto un CAPTCHA de Google (reCAPTCHA) para disminuir el spam.","projects.project2.title":"Sistema de Gestión de RRHH","projects.project2.description":"El cliente solicitó un Sistema para unificar operaciones de distintas ramas de negocio y facilitar el reciclado de información y la carga operativa. Cuenta con: un sistema de Carga Masiva que inteligentemente incorpora datos a la BD desde la importación de un Excel evitando cargas duplicadas.","projects.project2.image1.title":"Perfil de datos personales con gran nivel de detalle","projects.project2.image1.description":"El sistema cuenta con decenas de secciones, cada una con su propia tabla en la base de datos. El sistema es articulado por una serie de controladores en PHP, desarrollando queries de baja a alta complejidad. La actualización de datos del sistema se realiza mediante AJAX (jQuery), dando al usuario final facilidad y velocidad para operar.","projects.project2.image2.title":"Sistema de búsqueda optimizado para consultas a decenas de miles de datos","projects.project2.image2.description":"El cliente poseia varios millones de datos  que debían ser articulados en varias tablas, siendo el performance a la hora de realizar búsquedas una prioridad. El resultado final fue tal lo esperado, con un promedio de entre 1 y 5 segundos al realizar una consulta.","projects.project3.title":"Intera: Plataforma de aprendizaje","projects.project3.description":"Plataforma solicitada por una profesional de Psicopedagogia. Está compuesta por una serie de juegos diseñados para entrenar la lectura de chicos en edad de aprendizaje o con dificultades. Los juegos pueden ser jugados individualmente o en un mix aleatorio para aumentar la dificultad.","projects.project4.title":"InteraSoft.com.ar","projects.project4.description":"Sitio web personal con Blog desarrollado en CodeIgniter. El proyecto fue principalmente desarrollado para un trabajo de la universidad.","contact.title":"Contacto","contact.form.name":"Nombre","contact.form.email":"Dirección de mail","contact.form.message":"Mensaje","contact.form.name.error":"Debe ingresar un Nombre para enviar el mensaje.","contact.form.email.error":"Debe ingresar una dirección de email valida para enviar el mensaje.","contact.form.message.error":"Debe ingresar contenido en el mensaje. ","contact.form.submit":"Enviar."}');
 
 /***/ })
 

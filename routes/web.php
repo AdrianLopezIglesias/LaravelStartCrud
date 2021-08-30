@@ -48,7 +48,6 @@ Route::resource('adm/teclados', App\Http\Controllers\TecladosController::class);
 
 Route::resource('adm/mice', App\Http\Controllers\MouseController::class);
 
-Route::resource('adm/projects', App\Http\Controllers\ProjectController::class);
 Route::resource('adm/mensajes', App\Http\Controllers\MensajeController::class);
 
 });
@@ -67,4 +66,9 @@ Route::group(['prefix' => 'adm'], function () {
 
 Route::group(['prefix' => 'adm'], function () {
     Route::resource('tecnologias', App\Http\Controllers\Adm\TecnologiaController::class, ["as" => 'adm']);
+});
+
+
+Route::group(['prefix' => 'adm'], function () {
+    Route::resource('projects', App\Http\Controllers\Adm\ProjectController::class, ["as" => 'adm']);
 });

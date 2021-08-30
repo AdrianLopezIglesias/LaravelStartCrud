@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Repositories\Adm;
 
-use App\Models\Project;
+use App\Models\Adm\Project;
 use App\Repositories\BaseRepository;
 
 /**
  * Class ProjectRepository
- * @package App\Repositories
- * @version August 29, 2021, 1:48 am UTC
+ * @package App\Repositories\Adm
+ * @version August 29, 2021, 1:51 am UTC
 */
 
 class ProjectRepository extends BaseRepository

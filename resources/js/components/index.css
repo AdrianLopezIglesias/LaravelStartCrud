@@ -58,8 +58,24 @@ cursor: pointer;}
 .card{
   box-shadow: 1px 1px 10px gray;
   margin: 10px;
+  height: 500px;
 }
 
+.card-img{
+    height: 200px;
+}
+.card-image-project{
+    height: 200px;
+    object-fit: cover;  position: absolute;
+    margin: 4px;
+  bottom: 4px;
+  margin-left: auto;
+  width: 90%;
+}
+
+.card-title{
+    font-size: 26px
+}
 h1{
   /* text-align: center; */
   margin-top: 40px;

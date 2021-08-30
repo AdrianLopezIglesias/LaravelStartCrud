@@ -9,6 +9,14 @@
     <div class="sidebar">
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+
+                <li class="nav-item">
+                    <a href="{{ route('io_generator_builder') }}" class="nav-link {{ Request::is('mensajes*') ? 'active' : '' }}">
+                        <p>Generador</p>
+                    </a>
+                </li>
+
                 @include('layouts.menu')
             </ul>
         </nav>

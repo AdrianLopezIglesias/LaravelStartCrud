@@ -4,14 +4,10 @@ const proyectos = [
     name: "SiC",
     images: [
       {
-        "url": "sic (1).gif",
-        "title": "projects.project2.image1.title",
-        "description": "projects.project2.image1.description"
+        "url": "sic1.jpg"
       },
       {
-        "url": "sic (2).gif",
-        "title": "projects.project2.image2.title",
-        "description": "projects.project2.image2.description"
+        "url": "sic (2).gif"
       },
     ],
     title: "projects.project2.title",
@@ -27,7 +23,7 @@ const proyectos = [
     name: "Intera",
     images: [
       {
-        url: "intera (1).gif",
+        url: "intera1.jpg",
         title: "projects.project3.image1.title",
         description: "projects.project3.image1.description"
       },
@@ -49,7 +45,7 @@ const proyectos = [
     id: 2,
     name: "Navela",
     images: [
-      { url: "navela (1).gif", title: "projects.project1.image1.title", description: "projects.project1.image1.description" },
+      { url: "navela1.jpg", title: "projects.project1.image1.title", description: "projects.project1.image1.description" },
       { url: "navela (2).jpg", title: "projects.project1.image2.title", description: "projects.project1.image2.description" },
     ],
     title: "projects.project1.title",
@@ -66,7 +62,7 @@ const proyectos = [
     name: "Old InteraSoft",
     images: [
       {
-        url: "interasoft (1).gif",
+        url: "portfolio1.jpg",
         title: "projects.project4.image1.title",
         description: "projects.project4.image1.description"
       },

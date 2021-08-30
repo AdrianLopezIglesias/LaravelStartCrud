@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Adm;
 
-use App\Http\Requests\CreateProjectRequest;
-use App\Http\Requests\UpdateProjectRequest;
-use App\Repositories\ProjectRepository;
-use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
+use App\DataTables\Adm\ProjectDataTable;
+use App\Http\Requests\Adm;
+use App\Http\Requests\Adm\CreateProjectRequest;
+use App\Http\Requests\Adm\UpdateProjectRequest;
+use App\Repositories\Adm\ProjectRepository;
 use Flash;
+use App\Http\Controllers\AppBaseController;
 use Response;
 
 class ProjectController extends AppBaseController
@@ -23,16 +24,12 @@ class ProjectController extends AppBaseController
     /**
      * Display a listing of the Project.
      *
-     * @param Request $request
-     *
+     * @param ProjectDataTable $projectDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(ProjectDataTable $projectDataTable)
     {
-        $projects = $this->projectRepository->all();
-
-        return view('projects.index')
-            ->with('projects', $projects);
+        return $projectDataTable->render('adm.projects.index');
     }
 
     /**
@@ -42,7 +39,7 @@ class ProjectController extends AppBaseController
      */
     public function create()
     {
-        return view('projects.create');
+        return view('adm.projects.create');
     }
 
     /**
@@ -60,13 +57,13 @@ class ProjectController extends AppBaseController
 
         Flash::success('Project saved successfully.');
 
-        return redirect(route('projects.index'));
+        return redirect(route('adm.projects.index'));
     }
 
     /**
      * Display the specified Project.
      *
-     * @param int $id
+     * @param  int $id
      *
      * @return Response
      */
@@ -77,16 +74,16 @@ class ProjectController extends AppBaseController
         if (empty($project)) {
             Flash::error('Project not found');
 
-            return redirect(route('projects.index'));
+            return redirect(route('adm.projects.index'));
         }
 
-        return view('projects.show')->with('project', $project);
+        return view('adm.projects.show')->with('project', $project);
     }
 
     /**
      * Show the form for editing the specified Project.
      *
-     * @param int $id
+     * @param  int $id
      *
      * @return Response
      */
@@ -97,16 +94,16 @@ class ProjectController extends AppBaseController
         if (empty($project)) {
             Flash::error('Project not found');
 
-            return redirect(route('projects.index'));
+            return redirect(route('adm.projects.index'));
         }
 
-        return view('projects.edit')->with('project', $project);
+        return view('adm.projects.edit')->with('project', $project);
     }
 
     /**
      * Update the specified Project in storage.
      *
-     * @param int $id
+     * @param  int              $id
      * @param UpdateProjectRequest $request
      *
      * @return Response
@@ -118,22 +115,20 @@ class ProjectController extends AppBaseController
         if (empty($project)) {
             Flash::error('Project not found');
 
-            return redirect(route('projects.index'));
+            return redirect(route('adm.projects.index'));
         }
 
         $project = $this->projectRepository->update($request->all(), $id);
 
         Flash::success('Project updated successfully.');
 
-        return redirect(route('projects.index'));
+        return redirect(route('adm.projects.index'));
     }
 
     /**
      * Remove the specified Project from storage.
      *
-     * @param int $id
-     *
-     * @throws \Exception
+     * @param  int $id
      *
      * @return Response
      */
@@ -144,13 +139,13 @@ class ProjectController extends AppBaseController
         if (empty($project)) {
             Flash::error('Project not found');
 
-            return redirect(route('projects.index'));
+            return redirect(route('adm.projects.index'));
         }
 
         $this->projectRepository->delete($id);
 
         Flash::success('Project deleted successfully.');
 
-        return redirect(route('projects.index'));
+        return redirect(route('adm.projects.index'));
     }
 }
