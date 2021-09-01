@@ -9,13 +9,13 @@ use Eloquent as Model;
 /**
  * Class Project
  * @package App\Models\Adm
- * @version August 29, 2021, 1:51 am UTC
+ * @version August 30, 2021, 4:42 pm UTC
  *
- * @property \Illuminate\Database\Eloquent\Collection $projectimages
- * @property string $name
- * @property string $title
- * @property string $description
- * @property string $tecnologias
+ * @property \Illuminate\Database\Eloquent\Collection $images
+ * @property string $url
+ * @property string $repositoryy
+ * @property string $techs
+ * @property string $mainimage
  */
 class Project extends Model
 {
@@ -27,10 +27,10 @@ class Project extends Model
 
 
     public $fillable = [
-        'name',
-        'title',
-        'description',
-        'tecnologias'
+        'url',
+        'repositoryy',
+        'techs',
+        'mainimage'
     ];
 
     /**
@@ -54,8 +54,24 @@ class Project extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function projectimages()
+    public function images()
     {
         return $this->hasMany(\App\Models\Adm\Projectimage::class, 'project_id', 'id');
+    }
+    public function getTitleenAttribute()
+    {
+        return \App\Models\Adm\Texto::where('value', 'project'.$this->id.'.title')->first()->en;
+    }
+    public function getTitleesAttribute()
+    {
+        return \App\Models\Adm\Texto::where('value', 'project'.$this->id.'.title')->first()->es;
+    }
+    public function getDescriptionenAttribute()
+    {
+        return \App\Models\Adm\Texto::where('value', 'project'.$this->id.'.description')->first()->en;
+    }
+    public function getDescriptionesAttribute()
+    {
+        return \App\Models\Adm\Texto::where('value', 'project'.$this->id.'.description')->first()->es;
     }
 }

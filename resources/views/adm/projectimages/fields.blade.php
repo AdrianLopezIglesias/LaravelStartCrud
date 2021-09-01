@@ -1,27 +1,19 @@
-<!-- Url Field -->
+<!-- Project Id Field -->
+
+<?php
+
+$projects = App\Models\Adm\Project::all()->pluck('titlees', 'id')
+
+?>
 <div class="form-group w-100">
-    {!! Form::label('url', 'Url:') !!}
-    {!! Form::text('url', null, ['class' => 'form-control']) !!}
+    {!! Form::label('project_id', 'Project Id:') !!}
+    {!! Form::select('project_id', $projects) !!}
 </div>
 
-<!-- Repositoryy Field -->
-<div class="form-group w-100">
-    {!! Form::label('repositoryy', 'Repositoryy:') !!}
-    {!! Form::text('repositoryy', null, ['class' => 'form-control']) !!}
-</div>
 
-<!-- Techs Field -->
-<div class="form-group w-100">
-    {!! Form::label('techs', 'Techs:') !!}
-    {!! Form::text('techs', null, ['class' => 'form-control']) !!}
-</div>
+{!! Form::file('mainiimage') !!}
 
-<!-- Mainimage Field -->
-<div class="form-group w-100">
-    {!! Form::label('mainimage', 'Mainimage:') !!}
-    {!! Form::file('mainiimage') !!}
-</div>
-
+<br>
 <!-- Mainimage Field -->
 <div class="form-group w-100">
     {!! Form::label('titlees', 'Title(Es):') !!}

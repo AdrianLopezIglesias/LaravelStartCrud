@@ -34,5 +34,22 @@
         "workspaceRoot": null,
         "workspacePath": null,
         "id": "flQGWUoPArhMR1mk"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\xampp\\htdocs\\development\\development2\\resources\\views",
+        "parent_id": null,
+        "fsPath": "c:\\xampp\\htdocs\\development\\development2\\resources\\views",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "XaoTHbp37vkMrOQc"
+    },
+    {
+        "type": "Group",
+        "name": "Front",
+        "parent_id": null,
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "DjaZiSwNWJt78vmQ"
     }
 ]

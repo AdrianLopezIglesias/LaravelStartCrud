@@ -34,3 +34,11 @@
 </li>
 
 
+<li class="nav-item">
+    <a href="{{ route('adm.projectimages.index') }}"
+       class="nav-link {{ Request::is('adm/projectimages*') ? 'active' : '' }}">
+        <p>Projectimages</p>
+    </a>
+</li>
+
+

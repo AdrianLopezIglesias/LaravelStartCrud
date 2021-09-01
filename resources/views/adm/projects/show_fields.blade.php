@@ -16,27 +16,27 @@
     <p>{{ $project->updated_at }}</p>
 </div>
 
-<!-- Name Field -->
+<!-- Url Field -->
 <div class="col-sm-12">
-    {!! Form::label('name', 'Name:') !!}
-    <p>{{ $project->name }}</p>
+    {!! Form::label('url', 'Url:') !!}
+    <p>{{ $project->url }}</p>
 </div>
 
-<!-- Title Field -->
+<!-- Repositoryy Field -->
 <div class="col-sm-12">
-    {!! Form::label('title', 'Title:') !!}
-    <p>{{ $project->title }}</p>
+    {!! Form::label('repositoryy', 'Repositoryy:') !!}
+    <p>{{ $project->repositoryy }}</p>
 </div>
 
-<!-- Description Field -->
+<!-- Techs Field -->
 <div class="col-sm-12">
-    {!! Form::label('description', 'Description:') !!}
-    <p>{{ $project->description }}</p>
+    {!! Form::label('techs', 'Techs:') !!}
+    <p>{{ $project->techs }}</p>
 </div>
 
-<!-- Tecnologias Field -->
+<!-- Mainimage Field -->
 <div class="col-sm-12">
-    {!! Form::label('tecnologias', 'Tecnologias:') !!}
-    <p>{{ $project->tecnologias }}</p>
+    {!! Form::label('mainimage', 'Mainimage:') !!}
+    <p>{{ $project->mainimage }}</p>
 </div>
 

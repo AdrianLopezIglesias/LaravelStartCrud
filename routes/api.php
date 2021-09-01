@@ -47,3 +47,8 @@ Route::group(['prefix' => 'adm'], function () {
 });
 
 
+
+
+Route::group(['prefix' => 'adm'], function () {
+    Route::resource('projectimages', App\Http\Controllers\API\Adm\ProjectimageAPIController::class);
+});

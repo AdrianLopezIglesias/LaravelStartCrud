@@ -16,40 +16,43 @@ use App\Http\Controllers\HomeController;
 */
 
 
-Auth::routes();
-
+Auth::routes([
+    'register' => false, // Registration Routes...
+    'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+]);
 
 
 Route::middleware(['auth'])->group(function () {
-  Route::get('/cache', function () {
-    Artisan::call('cache:clear');
-    Artisan::call('config:cache');
-    Artisan::call('view:clear');
-    Artisan::call('route:cache');
-    Artisan::call('route:clear');
-    return "Cleared!";
-  });
-Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
+    Route::get('/cache', function () {
+        Artisan::call('cache:clear');
+        Artisan::call('config:cache');
+        Artisan::call('view:clear');
+        Artisan::call('route:cache');
+        Artisan::call('route:clear');
+        return "Cleared!";
+    });
+    Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
 
-Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate')->name('io_field_template');
+    Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate')->name('io_field_template');
 
-Route::get('relation_field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@relationFieldTemplate')->name('io_relation_field_template');
+    Route::get('relation_field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@relationFieldTemplate')->name('io_relation_field_template');
 
-Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate')->name('io_generator_builder_generate');
+    Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate')->name('io_generator_builder_generate');
 
-Route::post('generator_builder/rollback', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@rollback')->name('io_generator_builder_rollback');
+    Route::post('generator_builder/rollback', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@rollback')->name('io_generator_builder_rollback');
 
-Route::post(
-    'generator_builder/generate-from-file',
-    '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
-)->name('io_generator_builder_generate_from_file');
+    Route::post(
+        'generator_builder/generate-from-file',
+        '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
+    )->name('io_generator_builder_generate_from_file');
 
-Route::resource('adm/teclados', App\Http\Controllers\TecladosController::class);
 
-Route::resource('adm/mice', App\Http\Controllers\MouseController::class);
-
-Route::resource('adm/mensajes', App\Http\Controllers\MensajeController::class);
-
+    Route::resource('adm/mensajes', App\Http\Controllers\MensajeController::class);
+    Route::resource('adm/textos', App\Http\Controllers\Adm\TextoController::class, ["as" => 'adm']);
+    Route::resource('adm/tecnologias', App\Http\Controllers\Adm\TecnologiaController::class, ["as" => 'adm']);
+    Route::resource('adm/projects', App\Http\Controllers\Adm\ProjectController::class, ["as" => 'adm']);
+    Route::resource('adm/projectimages', App\Http\Controllers\Adm\ProjectimageController::class, ["as" => 'adm']);
 });
 
 Route::get('/{any_path?}', [
@@ -57,18 +60,3 @@ Route::get('/{any_path?}', [
 ])->name('home');
 
 
-
-
-Route::group(['prefix' => 'adm'], function () {
-    Route::resource('textos', App\Http\Controllers\Adm\TextoController::class, ["as" => 'adm']);
-});
-
-
-Route::group(['prefix' => 'adm'], function () {
-    Route::resource('tecnologias', App\Http\Controllers\Adm\TecnologiaController::class, ["as" => 'adm']);
-});
-
-
-Route::group(['prefix' => 'adm'], function () {
-    Route::resource('projects', App\Http\Controllers\Adm\ProjectController::class, ["as" => 'adm']);
-});

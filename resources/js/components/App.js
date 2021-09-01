@@ -1,7 +1,7 @@
 import React, { useContext} from 'react';
 import ReactDOM from 'react-dom';
 //components
-import Page from './Page';
+import Page from './Front/Page';
 import './index.css';
 
 

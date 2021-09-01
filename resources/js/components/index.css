@@ -56,9 +56,10 @@ cursor: pointer;}
 }
 
 .card{
+ cursor:pointer;
   box-shadow: 1px 1px 10px gray;
   margin: 10px;
-  height: 500px;
+  height: 400px;
 }
 
 .card-img{

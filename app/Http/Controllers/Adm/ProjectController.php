@@ -10,6 +10,9 @@ use App\Repositories\Adm\ProjectRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use App\Models\Adm\Texto;
+use App\Models\Adm\Project;
+
 
 class ProjectController extends AppBaseController
 {
@@ -51,10 +54,26 @@ class ProjectController extends AppBaseController
      */
     public function store(CreateProjectRequest $request)
     {
-        $input = $request->all();
+        $project = new Project();
+        $project->url = $request->url;
+        $project->repositoryy = $request->repositoryy;
+        $project->techs = $request->techs;
+        $project->mainimage = $request->file('mainiimage')->store('uploads', 'public');
+        $project->save();
 
-        $project = $this->projectRepository->create($input);
+        // $project = $this->projectRepository->create($input);
 
+        $texto = new Texto;
+        $texto->value = "project" . $project->id . ".title";
+        $texto->en = $request->titleen;
+        $texto->es = $request->titlees;
+        $texto->save();
+
+        $texto = new Texto;
+        $texto->value = "project".$project->id.".description";
+        $texto->en = $request->descriptionen;
+        $texto->es = $request->descriptiones;
+        $texto->save();
         Flash::success('Project saved successfully.');
 
         return redirect(route('adm.projects.index'));
@@ -112,13 +131,32 @@ class ProjectController extends AppBaseController
     {
         $project = $this->projectRepository->find($id);
 
+        $project->url = $request->url;
+        $project->repositoryy = $request->repositoryy;
+        $project->techs = $request->techs;
+        if($request->file('mainiimage')){
+            $project->mainimage = $request->file('mainiimage')->store('uploads', 'public');
+        }
+        $project->save();
+
+
         if (empty($project)) {
             Flash::error('Project not found');
 
             return redirect(route('adm.projects.index'));
         }
+        $texto = Texto::where('value', 'project' . $id . '.title')->first();
+        $texto->value = "project" . $project->id . ".title";
+        $texto->en = $request->titleen;
+        $texto->es = $request->titlees;
+        $texto->save();
 
-        $project = $this->projectRepository->update($request->all(), $id);
+        $texto = Texto::where('value', 'project' . $id . '.description')->first();
+        $texto->value = "project" . $project->id . ".description";
+        $texto->en = $request->descriptionen;
+        $texto->es = $request->descriptiones;
+        $texto->save();
+
 
         Flash::success('Project updated successfully.');
 

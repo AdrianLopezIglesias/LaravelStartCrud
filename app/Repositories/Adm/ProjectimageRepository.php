@@ -2,25 +2,23 @@
 
 namespace App\Repositories\Adm;
 
-use App\Models\Adm\Project;
+use App\Models\Adm\Projectimage;
 use App\Repositories\BaseRepository;
 
 /**
- * Class ProjectRepository
+ * Class ProjectimageRepository
  * @package App\Repositories\Adm
- * @version August 30, 2021, 4:42 pm UTC
+ * @version August 30, 2021, 11:51 pm UTC
 */
 
-class ProjectRepository extends BaseRepository
+class ProjectimageRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
         'url',
-        'repositoryy',
-        'techs',
-        'mainimage'
+        'project_id'
     ];
 
     /**
@@ -38,6 +36,6 @@ class ProjectRepository extends BaseRepository
      **/
     public function model()
     {
-        return Project::class;
+        return Projectimage::class;
     }
 }

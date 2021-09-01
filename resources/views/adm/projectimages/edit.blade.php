@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-12">
-                <h1>Create Project</h1>
+                <h1>Edit Projectimage</h1>
             </div>
         </div>
     </div>
@@ -18,19 +18,18 @@
     <div class="card">
 
 
-        {!! Form::open(['route' => 'adm.projects.store', 'files' => true]) !!}
+
+        {!! Form::model($projectimage, ['files' => true, 'route' => ['adm.projectimages.update', $projectimage->id], 'method' => 'patch']) !!}
 
         <div class="card-body">
-
             <div class="row">
-                @include('adm.projects.fields')
+                @include('adm.projectimages.fields')
             </div>
-
         </div>
 
         <div class="card-footer">
             {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-            <a href="{{ route('adm.projects.index') }}" class="btn btn-default">Cancel</a>
+            <a href="{{ route('adm.projectimages.index') }}" class="btn btn-default">Cancel</a>
         </div>
 
         {!! Form::close() !!}

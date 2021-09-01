@@ -2,11 +2,11 @@
 
 namespace App\DataTables\Adm;
 
-use App\Models\Adm\Project;
+use App\Models\Adm\Projectimage;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class ProjectDataTable extends DataTable
+class ProjectimageDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,16 +18,16 @@ class ProjectDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'adm.projects.datatables_actions');
+        return $dataTable->addColumn('action', 'adm.projectimages.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Project $model
+     * @param \App\Models\Projectimage $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Project $model)
+    public function query(Projectimage $model)
     {
         return $model->newQuery();
     }
@@ -66,9 +66,7 @@ class ProjectDataTable extends DataTable
     {
         return [
             'url',
-            'repositoryy',
-            'techs',
-            'mainimage'
+            'project_id'
         ];
     }
 
@@ -79,6 +77,6 @@ class ProjectDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'projects_datatable_' . time();
+        return 'projectimages_datatable_' . time();
     }
 }

@@ -42,7 +42,8 @@ class HomeController extends Controller
         foreach ($tecnologias as $t) {
             $tec[$t->id] = ['id' => $t->id, 'experiencia' => $t->experiencia, 'name' => $t->nombre, 'tipo' => $t->area];
         }
-        $pro = Project::all();
+
+        $pro = Project::with('images')->orderBy('id', 'desc')->get();
 
         return view('home', ['f' => $f, 'tec' => $tec, 'pro' => $pro]);
     }
