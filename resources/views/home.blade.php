@@ -32,6 +32,9 @@
     <script type="text/javascript">
         window.proyectos = {!!json_encode($pro) !!}
     </script>
+    <style>
+    
+    </style>
 </head>
 
 <body>

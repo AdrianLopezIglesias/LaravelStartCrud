@@ -42,3 +42,11 @@
 </li>
 
 
+<li class="nav-item">
+    <a href="{{ route('empresas.index') }}"
+       class="nav-link {{ Request::is('empresas*') ? 'active' : '' }}">
+        <p>Empresas</p>
+    </a>
+</li>
+
+

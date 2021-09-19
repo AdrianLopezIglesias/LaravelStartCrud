@@ -1,13 +1,28 @@
 import React, { useContext, useRef, useState } from 'react';
 import { Context } from '../LanguageWrapper'
-import { FormattedMessage, useIntl  } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card'
 import Modal from 'react-bootstrap/Modal'
 import ClampLines from 'react-clamp-lines';
 
-export default function ProjectCard(props) {
-  const intl = useIntl()
+class ProjectCard2 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filters: {},
+      tecnologias: Object.values(window.tecnologias),
+    };
+    this.experienciaFilter = 1;
+    this.tipoFilter = "";
+    this.nombreFilter = "";
+
+    // axios.get('/api/adm/tecnologias')
+    //     .then((response) => { console.log(Object.values(response.data)); this.setState({ tecnologias: Object.values(response.data) }) })
+    //     .catch(function (error) { console.log(error); })
+    //     .then(function () { });
+  }
+  
   const context = useContext(Context);
   const [show, setShow] = useState(false);
   const handleClose = () => { setShow(false) };
@@ -36,8 +51,7 @@ export default function ProjectCard(props) {
         </ul>
       </div>
   }
-  const project_description = intl.formatMessage({ id: "project" + props.project.id + ".description" })
-  const project_title = intl.formatMessage({ id: "project" + props.project.id + ".title" })
+  // const project_description = this.props.intl.formatMessage({ id: "project" + props.project.id + ".description"})
   console.log("123");
   return (
     <Col lg={4}>
@@ -46,30 +60,18 @@ export default function ProjectCard(props) {
           <img variant="bottom" src={props.project.mainimage} className="card-image-project" />
           <div className="cardText">
             <Card.Title>
-              <ClampLines
-                text={project_title}
-                id="really-unique-id2"
-                lines={1}
-                buttons={false}
-                ellipsis="..."
-                moreText="Read more"
-                lessText="Collapse"
-                className="custom-class"
-                innerElement="p"
-              />
+              <FormattedMessage id={"project" + props.project.id + ".title"} />
             </Card.Title>
-            <ClampLines
+            {/* <ClampLines
               text={project_description}
               id="really-unique-id"
-              lines={5}
-              buttons={false}
-
+              lines={4}
               ellipsis="..."
-              moreText="Read more"
+              moreText="Expand"
               lessText="Collapse"
               className="custom-class"
               innerElement="p"
-            />
+            /> */}
               {/* <FormattedMessage id={"project" + props.project.id + ".description"} /> */}
           </div>
 

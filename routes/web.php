@@ -60,3 +60,6 @@ Route::get('/{any_path?}', [
 ])->name('home');
 
 
+
+
+Route::resource('empresas', App\Http\Controllers\EmpresaController::class);

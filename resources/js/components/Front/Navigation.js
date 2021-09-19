@@ -14,7 +14,7 @@ export default function Navigation(props) {
   return (
     <Navbar fixed="top" bg="light" variant="light" expand="sm">
       <Container>
-              <Navbar.Brand><Link className="navbar-brand" to="/about">InteraSoft</Link></Navbar.Brand>
+              <Navbar.Brand><Link className="navbar-brand" to="/about"><img src="logo.png" className="navbar-logo"/>InteraSoft</Link></Navbar.Brand>
             
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

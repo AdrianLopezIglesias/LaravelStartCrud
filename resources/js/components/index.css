@@ -45,11 +45,8 @@ display:none}
 cursor: pointer;}
 
 .card-text{
-   overflow: hidden;
    text-overflow: ellipsis;
-   display: -webkit-box;
-   -webkit-line-clamp: 6; /* number of lines to show */
-   -webkit-box-orient: vertical;}
+   }
 
 .navbar{
   box-shadow: 1px 1px 10px gray;
@@ -61,9 +58,20 @@ cursor: pointer;}
   margin: 10px;
   height: 400px;
 }
+.cardText{
+  max-height: 170px; 
+text-overflow: ellipsis;
+overflow: hidden;
+}
+
+
 
 .card-img{
     height: 200px;
+}
+.navbar-logo{
+  height: 24px;
+  margin-right: 4px;
 }
 .card-image-project{
     height: 200px;
@@ -75,7 +83,11 @@ cursor: pointer;}
 }
 
 .card-title{
-    font-size: 26px
+    font-size: 20px;
+    height: 26px;
+text-overflow: ellipsis;
+overflow: hidden;
+
 }
 h1{
   /* text-align: center; */
