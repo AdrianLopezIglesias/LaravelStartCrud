@@ -9,7 +9,6 @@ let proyectos = window.proyectos;
 
 export default function Projects() {
   const context = useContext(Context);
-    console.log(proyectos)
 
   return (
     <section id="projects">

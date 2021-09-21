@@ -38,7 +38,6 @@ export default function ProjectCard(props) {
   }
   const project_description = intl.formatMessage({ id: "project" + props.project.id + ".description" })
   const project_title = intl.formatMessage({ id: "project" + props.project.id + ".title" })
-  console.log("123");
   return (
     <Col lg={4}>
       <Card onClick={() => handleShow()}>

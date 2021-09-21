@@ -52,7 +52,6 @@ class ProjectCard2 extends Component {
       </div>
   }
   // const project_description = this.props.intl.formatMessage({ id: "project" + props.project.id + ".description"})
-  console.log("123");
   return (
     <Col lg={4}>
       <Card onClick={() => handleShow()}>

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 //components
-import About from './About';
+import Start from './Start';
 import Navigation from './Navigation';
 // import Contact from './Contact';
 import Projects from './Projects';
@@ -26,19 +26,16 @@ import {
 
 function Page() {
   const context = useContext(Context);
-
   return (
     <Router>
       <div>
         <LanguageWrapper>
-          <Navigation context={context} />
-          <br />
+          {/* <Navigation context={context} /> */}
           <Container>
             <Switch>
-              <Route path="/about">    
-                <About />
-              </Route>    
-              <Route path="/skills">
+                <Start />
+  
+              {/* <Route path="/skills">
                 <Skills />
               </Route>        
               <Route path="/projects">
@@ -49,7 +46,7 @@ function Page() {
               </Route>
               <Route path="/">    
                 <About />
-              </Route>    
+              </Route>     */}
             </Switch>
 
 
