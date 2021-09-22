@@ -1,28 +1,11 @@
 import React, { useContext } from 'react';
-import ReactDOM from 'react-dom';
-//components
-import Start from './Start';
-import Navigation from './Navigation';
-// import Contact from './Contact';
-import Projects from './Projects';
-import Skills from './Skills';
-import Contact from './Contact';
-
-/* react-intl imports */
-import { IntlProvider } from 'react-intl';
 import LanguageWrapper from '../LanguageWrapper'
 import { Context } from '../LanguageWrapper'
-
+import Game from './Game'
 
 import Container from 'react-bootstrap/Container'
 
-//ROUTER
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
-
+import {BrowserRouter as Router,Switch,Route,} from "react-router-dom";
 
 function Page() {
   const context = useContext(Context);
@@ -33,7 +16,7 @@ function Page() {
           {/* <Navigation context={context} /> */}
           <Container>
             <Switch>
-                <Start />
+                <Game />
   
               {/* <Route path="/skills">
                 <Skills />
