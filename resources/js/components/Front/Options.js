@@ -10,17 +10,34 @@ export default class Options extends Component {
 
 
   render() {
+    let select = (a) => this.props.selectOption(a)
     let logic =
-      <tbody onClick={() => this.props.selectOption()}>
-        {this.props.logic.map(function (l, i) {
-          return (
-            <tr key={i}>
-              <td>{lettersToIcons(l.math.objective)}</td>
-              <td>{lettersToIcons(l.math.operation)}</td>
-            </tr>
-          )
-        })}
-      </tbody>
+      <div>
+        {
+          this.props.logic.map(function (k, x) {
+            return (
+              <div key={x}>
+                <div className="button-option">
+                  <table className="table">
+                    <tbody onClick={() => select(x)}>
+                      {k.map(function (l, i) {
+                        return (
+                          <tr key={i}>
+                            <td className="column-30">{lettersToIcons(l.math.objective)}</td>
+                            <td>{lettersToIcons(l.math.operation)}</td>
+                          </tr>
+                        )
+                      })
+                      }
+                    </tbody>
+                  </table>
+                </div>
+                <br />
+                <br />
+              </div>
+            )
+          })}
+      </div>
 
     let buttons
 
@@ -33,45 +50,43 @@ export default class Options extends Component {
     let op = ""
     if (this.props.logic[0]) {
       console.log(this.props.calculating)
-      ob = lettersToIcons(this.props.logic[this.props.calculating[0]].math.objective)
-      op = lettersToIcons(this.props.logic[this.props.calculating[0]].math.operation)
+      ob = lettersToIcons(this.props.logic[0][this.props.calculating[0]].math.objective)
+      op = lettersToIcons(this.props.logic[0][this.props.calculating[0]].math.operation)
     }
     let checkingAnswer =
       <span className={this.props.calculating[1] > 0 ? "badge bg-success w-100" : "badge bg-danger w-100"}>
-      <table className="table">
-        <tbody>
-        <tr>
-        <td>{lettersToIcons(ob)}</td>
-        
-        <td>{lettersToIcons(op)}</td>
-      </tr>
-        </tbody>
-      </table>
+        <table className="table">
+          <tbody>
+            <tr>
+              <td>{lettersToIcons(ob)}</td>
+
+              <td>{lettersToIcons(op)}</td>
+            </tr>
+          </tbody>
+        </table>
       </span>
-    
+
     let buttonsPlay =
       <div>
         <div onClick={() => this.props.ignoreOption()} className="w-100 button-option" variant="outline-dark">Ignorar (- {this.props.penalization_value()} a todo)</div>
         <br />
         <br />
-        <div className="w-100 button-option" variant="outline-dark">
-          <table className="table">
-            {logic}
-          </table>
+        <div className="w-100">
+          {logic}
         </div>
       </div>
       ;
     switch (this.props.gameStatus) {
       case "play":
-        buttons = buttonsPlay; 
+        buttons = buttonsPlay;
         break;
       case "calculating":
         buttons = checkingAnswer
         break;
       case "lost":
-        buttons = buttonsLost; 
+        buttons = buttonsLost;
         break;
-    
+
       default:
         break;
     }

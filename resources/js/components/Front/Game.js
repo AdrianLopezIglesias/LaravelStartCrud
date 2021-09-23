@@ -40,7 +40,7 @@ class Game extends Component {
 
 
 
-  async resolveOption() {
+  async resolveOption(t) {
     this.setState({ gameStatus: 'calculating' })
     let vals = {};
     let vols = {};
@@ -48,11 +48,11 @@ class Game extends Component {
       vals[key] = value;
     });
 
-    for (var i = 0; i < this.state.logic.length; i++) {
+    for (var i = 0; i < this.state.logic[t].length; i++) {
 
       if (this.state.gameStatus != "lost") {
-        let ob = this.state.logic[i].math.objective;
-        let x = math.parse(this.state.logic[i].math.operation)
+        let ob = this.state.logic[t][i].math.objective;
+        let x = math.parse(this.state.logic[t][i].math.operation)
         let y = x.compile()
         let z = x.evaluate(vals)
         this.setState({ calculating: [i, z] })
@@ -118,8 +118,8 @@ class Game extends Component {
 
 
 
-  selectOption = async () => {
-    await this.resolveOption();
+  selectOption = async (x) => {
+    await this.resolveOption(x);
     this.setState({
       logic: logicGenerator()
     })

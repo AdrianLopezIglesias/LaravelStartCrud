@@ -70,6 +70,9 @@ export function mathGeneration() {
 
 }
 export function logicGenerator() {
-  let data = _.times(Math.round(randomScalar()), () => generateOption());
+  let data = _.times(4, () => _.times(Math.round(randomScalar()), () => generateOption()));
+  // let data = _.times(Math.round(randomScalar()), () => generateOption());
+
+  console.log(data);
   return data;
 }
