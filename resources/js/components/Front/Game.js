@@ -7,6 +7,7 @@ import Options from './Options'
 const config = {}
 const math = create(all, config)
 var _ = require('lodash');
+const timer = ms => new Promise(res => setTimeout(res, ms))
 
 class Game extends Component {
   constructor(props) {
@@ -16,7 +17,8 @@ class Game extends Component {
       core: this.initialVals,
       last: this.initialVals,
       gameStatus: 'play',
-      survived: 0
+      survived: 0,
+      calculating: [0, "Z"]
     }
   }
   initialVals = { Z: 10, B: 10, C: 10, D: 10, E: 10, Y: 10, G: 10, H: 10, X: 10, J: 10 }
@@ -35,7 +37,10 @@ class Game extends Component {
     })
   }
 
-  resolveOption() {
+  
+  
+  async resolveOption() {
+      this.setState({ gameStatus: 'calculating'})
     let vals = {};
     let vols = {}; 
     _.forIn(this.state.core, function (value, key) {
@@ -43,24 +48,29 @@ class Game extends Component {
     });
 
     for (var i = 0; i < this.state.logic.length; i++) {
+      let ob = this.state.logic[i].math.objective;
       let x = math.parse(this.state.logic[i].math.operation)
       let y = x.compile()
       let z = x.evaluate(vals)
+      this.setState({calculating: [i, z] })
       let n = 0
-      if (vols[this.state.logic[i].math.objective]) {
-        n =  (vols[this.state.logic[i].math.objective])
+      if (vols[ob]) {
+        n =  (vols[ob])
       }
-      vals[this.state.logic[i].math.objective] = vals[this.state.logic[i].math.objective] + z
-      vols[this.state.logic[i].math.objective] =   + z
-      console.log(vols)
+      vals[ob] = vals[ob] + z
+      vols[ob] =   + z
+      this.setState({
+        core: vals,
+        last: vols,
+      })
+      this.checkLost(vals)
+      await timer(1000); // 
     }
-
     this.setState({
-      core: vals,
-      last: vols, 
-      survived: this.state.survived + 1
+      survived: this.state.survived + 1,
+      gameStatus: 'play' 
     })
-    this.checkLost(vals)
+
   }
 
   checkLost = (vals) => {
@@ -119,6 +129,7 @@ class Game extends Component {
         <Options
           logic={this.state.logic}
           gameStatus={this.state.gameStatus}
+          calculating={this.state.calculating}
           penalization_value={this.penalization_value}
           selectOption={this.selectOption}
           ignoreOption={this.ignoreOption} />

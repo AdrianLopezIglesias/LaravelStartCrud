@@ -25,7 +25,9 @@ class GameState extends Component {
                     {Math.round(c[l] * 100) / 100}
                   </td>
                   <td>
-                    <span className={ex[l] < 0 ? 'danger' : 'success'}>({isNaN(ex[l]) ? 0 : Math.round(ex[l] * 100) / 100})</span>
+                    <span className={ex[l] < 0 ? 'danger' : 'success'}>
+                      {isNaN(ex[l]) ? "" : Math.round(ex[l] * 100) / 100}
+                    </span>
                   </td>
                 </tr>
               )

@@ -1,0 +1,113 @@
+[33mcommit f8bc938e2cb7a4b337f9fa3f7d5e437a34dab9ca[m[33m ([m[1;36mHEAD -> [m[1;32mfuncionandoEstableSimple[m[33m, [m[1;32mrefactorMultipleViews[m[33m)[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Tue Sep 21 12:06:27 2021 -0300
+
+    Funcionando basico copado
+
+[33mcommit 0614da46bfb85532b47de47b75df2ec54055665f[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Sun Sep 19 18:01:45 2021 -0300
+
+    Todo actualizado
+
+[33mcommit 8f49c87488272502c60e880e967c865fe6b29bd5[m[33m ([m[1;32mmain[m[33m)[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Sat Sep 11 11:05:13 2021 -0300
+
+    Página funcionando al 20210911
+
+[33mcommit bf582a4d15f02971f7be5720243cfbb9a6c7239a[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mnew[m[33m)[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Wed Sep 1 13:59:10 2021 -0300
+
+    funcionando
+
+[33mcommit f59a9be885aea95ec3b6785ea29c12e3c3d74f83[m[33m ([m[1;32mpro-api[m[33m)[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Mon Aug 30 13:30:10 2021 -0300
+
+    Todo ok, todas las tablas son cargadas directamente del HTMl. Falta agregar bien bien el tema de Projects y sus Imagenes
+
+[33mcommit 7766c6e1aacb585ac1ee4b38c9b1d41d18554acb[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Sat Aug 28 22:08:24 2021 -0300
+
+    Se limpio infyom
+
+[33mcommit 2a41f10e85862d44acbc2fb0f767e0943a944d83[m[33m ([m[1;32mportfolio[m[33m)[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Sat Aug 28 21:56:58 2021 -0300
+
+    funcionando api de techs y textos
+
+[33mcommit 760a086b3c8b437a1534447c3667ae7c3355fb90[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Sat Aug 28 14:29:41 2021 -0300
+
+    Comenzando routing
+
+[33mcommit 114251e29736c32d5389dfef4cc4143ecdf4fa85[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Thu Aug 26 09:41:19 2021 -0300
+
+    Varios arreglos
+
+[33mcommit 018b5430c9a50c858f9b7c46cfa138a1f79ea286[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Wed Aug 25 22:54:19 2021 -0300
+
+    General varios avances
+
+[33mcommit 14e714784b663c4d6c225726c95153d992059ec0[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Tue Aug 24 20:30:07 2021 -0300
+
+    Se agrego sección de contacto y POST a database, con todos los controladores de mensajes
+
+[33mcommit f432c020b986ec1b9b384c7c397be9b68e4c39b8[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Tue Aug 24 09:46:03 2021 -0300
+
+    Sección de proyectos agregada con modal funcionando.
+
+[33mcommit 66ff91def8766c1528f809a184eff41946e3918f[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Sun Aug 22 12:47:05 2021 -0300
+
+    Maquetado general, secciones basicas, tabla de tecnologias con filtros e inicio de Proyectos
+
+[33mcommit 664da8ef8f7dda864b42ecff77d564df9588722c[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Sat Aug 21 15:36:43 2021 -0300
+
+    Basic Structure + Language Support working
+
+[33mcommit 1c907864cc56be9522ad71571741e7a38f8a923a[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Fri Aug 20 20:48:57 2021 -0300
+
+    React working
+
+[33mcommit 857c4327807eb5f2a8a93ac66ea11d7bcd68359b[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Fri Aug 20 18:14:56 2021 -0300
+
+    Infyom setted up with DataTables fully working
+
+[33mcommit b64f371b90599a913f2b07e7607a99d3f9d7a558[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Tue Aug 10 20:28:59 2021 -0300
+
+    Vue: on, Vue Api index: on
+
+[33mcommit 8ff32b8c7b1c3bf9589eacbdc17ee32344abccb2[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Tue Aug 10 10:57:55 2021 -0300
+
+    Se agrego ide-helper
+
+[33mcommit d4315ce23c5331afc8b2494ee49f888048132680[m
+Author: Adrian Lopez Iglesias <adrianlopeziglesias1@gmail.com>
+Date:   Mon Aug 9 22:08:59 2021 -0300
+
+    InfyOm + DataTables Working
