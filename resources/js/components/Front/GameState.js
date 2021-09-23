@@ -10,7 +10,6 @@ class GameState extends Component {
   render() {
     let c = this.props.status;
     let ex = this.props.last;
-    console.log(ex)
     return (
       <div >
         <table className="table">

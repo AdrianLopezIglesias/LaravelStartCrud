@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { create, all } from 'mathjs'
-import GameState from './GameState'; 
+import GameState from './GameState';
 import { logicGenerator } from "./Helpers/logic";
 import Options from './Options'
 
@@ -33,79 +33,93 @@ class Game extends Component {
       logic: logicGenerator(),
       core: this.initialVals,
       gameStatus: 'play',
-      survived: 0
+      survived: 0,
+      calculating: [0, 0]
     })
   }
 
-  
-  
+
+
   async resolveOption() {
-      this.setState({ gameStatus: 'calculating'})
+    this.setState({ gameStatus: 'calculating' })
     let vals = {};
-    let vols = {}; 
+    let vols = {};
     _.forIn(this.state.core, function (value, key) {
-      vals[key] = value; 
+      vals[key] = value;
     });
 
     for (var i = 0; i < this.state.logic.length; i++) {
-      let ob = this.state.logic[i].math.objective;
-      let x = math.parse(this.state.logic[i].math.operation)
-      let y = x.compile()
-      let z = x.evaluate(vals)
-      this.setState({calculating: [i, z] })
-      let n = 0
-      if (vols[ob]) {
-        n =  (vols[ob])
-      }
-      vals[ob] = vals[ob] + z
-      vols[ob] =   + z
-      this.setState({
-        core: vals,
-        last: vols,
-      })
-      this.checkLost(vals)
-      await timer(1000); // 
-    }
-    this.setState({
-      survived: this.state.survived + 1,
-      gameStatus: 'play' 
-    })
 
+      if (this.state.gameStatus != "lost") {
+        let ob = this.state.logic[i].math.objective;
+        let x = math.parse(this.state.logic[i].math.operation)
+        let y = x.compile()
+        let z = x.evaluate(vals)
+        this.setState({ calculating: [i, z] })
+        let n = 0
+        if (vols[ob]) {
+          n = (vols[ob])
+        }
+        vals[ob] = vals[ob] + z
+        vols[ob] = + z
+        this.setState({
+          core: vals,
+          last: vols,
+        })
+
+        await timer(1000); // 
+      }
+      this.checkLost(vals)
+    }
+    if (this.state.gameStatus != "lost") {
+      this.setState({
+        survived: this.state.survived + 1,
+        gameStatus: 'play',
+        calculating: [0, 0]
+      })
+    }
   }
 
   checkLost = (vals) => {
-    let lost; 
+    let lost;
     _.forIn(vals, function (value, key) {
       if (value < 0) {
         lost = true;
       }
     })
-    
+
     if (lost) {
-        this.setState({gameStatus: 'lost'})}
+      this.setState({ gameStatus: 'lost' })
+    }
   }
 
   penalization_value = () => {
-  return this.state.survived / 10 + 0.3
-  } 
+    return this.state.survived / 10 + 0.3
+  }
 
   penalization() {
-    let penalization_value = this.penalization_value(); 
+
+    let penalization_value = this.penalization_value();
     let vals = {};
+    let vols = {};
+
     _.forIn(this.state.core, function (value, key) {
-      vals[key] = value - penalization_value; 
+      vals[key] = value - penalization_value;
+      vols[key] = -penalization_value;
     });
     this.setState({
       core: vals,
-      survived: this.state.survived + 1
+      survived: this.state.survived + 1,
+      last: vols
     })
     this.checkLost(vals)
 
-  }
+    }
 
-  selectOption = () => {
-    this.penalization();
-    this.resolveOption();
+
+
+  selectOption = async () => {
+    await this.resolveOption();
     this.setState({
       logic: logicGenerator()
     })
@@ -125,13 +139,14 @@ class Game extends Component {
     return (
       <div>
         <h2>Turnos: {this.state.survived}</h2>
-        <GameState status={c} last={l}/>
+        <GameState status={c} last={l} />
         <Options
           logic={this.state.logic}
           gameStatus={this.state.gameStatus}
           calculating={this.state.calculating}
           penalization_value={this.penalization_value}
           selectOption={this.selectOption}
+          resetGame={this.resetGame}
           ignoreOption={this.ignoreOption} />
       </div>
     );

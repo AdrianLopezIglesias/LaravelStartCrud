@@ -32,11 +32,12 @@ export default class Options extends Component {
     let ob = ""
     let op = ""
     if (this.props.logic[0]) {
+      console.log(this.props.calculating)
       ob = lettersToIcons(this.props.logic[this.props.calculating[0]].math.objective)
       op = lettersToIcons(this.props.logic[this.props.calculating[0]].math.operation)
     }
     let checkingAnswer =
-      <span className={this.props.calculating[1] > 0 ? "badge bg-success" : "badge bg-danger"}>
+      <span className={this.props.calculating[1] > 0 ? "badge bg-success w-100" : "badge bg-danger w-100"}>
       <table className="table">
         <tbody>
         <tr>
