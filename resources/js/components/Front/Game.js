@@ -39,11 +39,12 @@ class Game extends Component {
   }
 
 
-
   async resolveOption(t) {
+
+    await this.penalization();
     this.setState({ gameStatus: 'calculating' })
     let vals = {};
-    let vols = {};
+    let vols = this.state.last;
     _.forIn(this.state.core, function (value, key) {
       vals[key] = value;
     });
@@ -67,7 +68,8 @@ class Game extends Component {
           last: vols,
         })
 
-        await timer(1000); // 
+    console.log(this.state.calculating)
+        await timer(1500); // 
       }
       this.checkLost(vals)
     }
@@ -78,6 +80,7 @@ class Game extends Component {
         calculating: [0, 0]
       })
     }
+
   }
 
   checkLost = (vals) => {
@@ -94,11 +97,11 @@ class Game extends Component {
   }
 
   penalization_value = () => {
-    return this.state.survived / 10 + 0.3
+    return Math.round((this.state.survived / 8 + 0.5) * 10)/10
   }
 
-  penalization() {
-
+  async penalization() {
+    console.log("appliying penalization")
     let penalization_value = this.penalization_value();
     let vals = {};
     let vols = {};
@@ -113,6 +116,7 @@ class Game extends Component {
       last: vols
     })
     this.checkLost(vals)
+    await timer(500); // 
 
     }
 

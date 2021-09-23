@@ -17,13 +17,13 @@ class GameState extends Component {
             {Object.keys(this.props.status).map(function (l, i) {
               return (
                 <tr key={i}>
-                  <td>
+                  <td className="w-20">
                     {lettersToIcons(l)}
                   </td>
-                  <td>
+                  <td className="w-40">
                     {Math.round(c[l] * 100) / 100}
                   </td>
-                  <td>
+                  <td >
                     <span className={ex[l] < 0 ? 'danger' : 'success'}>
                       {isNaN(ex[l]) ? "" : Math.round(ex[l] * 100) / 100}
                     </span>

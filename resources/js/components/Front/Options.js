@@ -1,44 +1,49 @@
 import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button';
 import { lettersToIcons } from "./Helpers/letterToIcons";
-
+import OptionLogic from './OptionLogic'
 
 export default class Options extends Component {
   constructor(props) {
     super(props);
   }
 
-
   render() {
-    let select = (a) => this.props.selectOption(a)
-    let logic =
-      <div>
-        {
-          this.props.logic.map(function (k, x) {
-            return (
-              <div key={x}>
-                <div className="button-option">
-                  <table className="table">
-                    <tbody onClick={() => select(x)}>
-                      {k.map(function (l, i) {
-                        return (
-                          <tr key={i}>
-                            <td className="column-30">{lettersToIcons(l.math.objective)}</td>
-                            <td>{lettersToIcons(l.math.operation)}</td>
-                          </tr>
-                        )
-                      })
-                      }
-                    </tbody>
-                  </table>
-                </div>
-                <br />
-                <br />
-              </div>
-            )
-          })}
-      </div>
-
+    // let penal = this.props.penalization_value()
+    // let select = (a) => this.props.selectOption(a)
+    // let logic =
+    //   <div>
+    //     {
+    //       this.props.logic.map(function (k, x) {
+    //         return (
+    //           <div key={x}>
+    //             <div className="button-option">
+    //             <p>(- {penal} a todo)</p>
+    //               <table className="table">
+    //                 <tbody onClick={() => select(x)}>
+    //                   {k.map(function (l, i) {
+    //                     return (
+    //                       <tr key={i}>
+    //                         <td className="w-20">{lettersToIcons(l.math.objective)}</td>
+    //                         <td>{lettersToIcons(l.math.operation)}</td>
+    //                       </tr>
+    //                     )
+    //                   })
+    //                   }
+    //                 </tbody>
+    //               </table>
+    //             </div>
+    //             <br />
+    //             <br />
+    //           </div>
+    //         )
+    //       })}
+    //   </div>
+    let logic = <OptionLogic
+      penalization_value={this.props.penalization_value}
+      selectOption={this.props.selectOption}
+      logic={this.props.logic}
+    />
     let buttons
 
     let buttonsLost =
@@ -47,9 +52,9 @@ export default class Options extends Component {
         <Button onClick={() => this.props.resetGame()}>Play again</Button>
       </div>
     let ob = ""
+    console.log(this.props.calculating)
     let op = ""
-    if (this.props.logic[0]) {
-      console.log(this.props.calculating)
+    if (this.props.logic[0] && this.props.calculating[0] && this.props.logic[0][this.props.calculating[0]]) {
       ob = lettersToIcons(this.props.logic[0][this.props.calculating[0]].math.objective)
       op = lettersToIcons(this.props.logic[0][this.props.calculating[0]].math.operation)
     }
@@ -68,8 +73,8 @@ export default class Options extends Component {
 
     let buttonsPlay =
       <div>
-        <div onClick={() => this.props.ignoreOption()} className="w-100 button-option" variant="outline-dark">Ignorar (- {this.props.penalization_value()} a todo)</div>
-        <br />
+        {/* <div onClick={() => this.props.ignoreOption()} className="w-100 button-option" variant="outline-dark">Ignorar (- {this.props.penalization_value()} a todo)</div>
+        <br /> */}
         <br />
         <div className="w-100">
           {logic}
@@ -95,6 +100,7 @@ export default class Options extends Component {
     return (
       <div>
         {buttons}
+
       </div>
     )
   }

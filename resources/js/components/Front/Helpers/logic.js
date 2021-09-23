@@ -14,13 +14,13 @@ function randomScalar() {
   let x = (_.random(1, 1500)) / 500 + 1
   let y = 2
   let z = (Math.pow(y, x)) / 2
-  let zx = Math.round(z * 10) / 20
+  let zx = Math.round(z * 10) / 10
 
   return zx
 }
 export function mathGeneration() {
   function randomMultiplyer() {
-    let y = Math.round(randomScalar()) / 10
+    let y = Math.round(randomScalar()/2) / 10
     return y
   }
 
@@ -70,9 +70,8 @@ export function mathGeneration() {
 
 }
 export function logicGenerator() {
-  let data = _.times(4, () => _.times(Math.round(randomScalar()), () => generateOption()));
+  let data = _.times(Math.round(randomScalar()/2)+1, () => _.times(Math.round(randomScalar())+1, () => generateOption()));
   // let data = _.times(Math.round(randomScalar()), () => generateOption());
 
-  console.log(data);
   return data;
 }
