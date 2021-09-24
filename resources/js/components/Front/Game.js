@@ -3,6 +3,8 @@ import { create, all } from 'mathjs'
 import GameState from './GameState';
 import { logicGenerator } from "./Helpers/logic";
 import Options from './Options'
+import Container from 'react-bootstrap/Container'
+
 
 const config = {}
 const math = create(all, config)
@@ -18,14 +20,32 @@ class Game extends Component {
       last: this.initialVals,
       gameStatus: 'play',
       survived: 0,
-      calculating: [0, "Z"]
+      calculating: [0, "Z"],
+      selectedOption: 0
     }
+
   }
-  initialVals = { Z: 10, B: 10, C: 10, D: 10, E: 10, Y: 10, G: 10, H: 10, X: 10, J: 10 }
+  initialVals = { Z: 10, B: 10, C: 10, D: 10, E: 10, Y: 10, G: 10, H: 10, X: 10, J: 10, M:10, L:10 }
+
   componentDidMount() {
+    let savedState
+    if (JSON.parse(localStorage.getItem('game'))) {
+      savedState = JSON.parse(localStorage.getItem('game'))
+    } else {
+      this.saveState()
+    }
     this.setState({
       logic: logicGenerator()
     })
+    if (savedState) {
+    this.setState(savedState)
+    }
+
+
+  }
+
+  saveState() {
+    localStorage.setItem('game', JSON.stringify(this.state))
   }
 
   resetGame = () => {
@@ -34,15 +54,18 @@ class Game extends Component {
       core: this.initialVals,
       gameStatus: 'play',
       survived: 0,
-      calculating: [0, 0]
+      calculating: [0, 0],
+      selectedOption: 0
     })
-  }
+    this.saveState()
 
+  }
 
   async resolveOption(t) {
 
+    this.setState({ gameStatus: 'calculating', selectedOption: t })
+
     await this.penalization();
-    this.setState({ gameStatus: 'calculating' })
     let vals = {};
     let vols = this.state.last;
     _.forIn(this.state.core, function (value, key) {
@@ -57,6 +80,7 @@ class Game extends Component {
         let y = x.compile()
         let z = x.evaluate(vals)
         this.setState({ calculating: [i, z] })
+
         let n = 0
         if (vols[ob]) {
           n = (vols[ob])
@@ -68,7 +92,6 @@ class Game extends Component {
           last: vols,
         })
 
-    console.log(this.state.calculating)
         await timer(1500); // 
       }
       this.checkLost(vals)
@@ -77,9 +100,11 @@ class Game extends Component {
       this.setState({
         survived: this.state.survived + 1,
         gameStatus: 'play',
-        calculating: [0, 0]
+        calculating: [0, 0],
+        selectedOption: 0
       })
     }
+    this.saveState()
 
   }
 
@@ -101,7 +126,6 @@ class Game extends Component {
   }
 
   async penalization() {
-    console.log("appliying penalization")
     let penalization_value = this.penalization_value();
     let vals = {};
     let vols = {};
@@ -113,14 +137,13 @@ class Game extends Component {
     this.setState({
       core: vals,
       survived: this.state.survived + 1,
-      last: vols
+      last: vols,
+      calculating: [99, "Todo -" + penalization_value]
     })
     this.checkLost(vals)
-    await timer(500); // 
+    await timer(1500); // 
 
     }
-
-
 
   selectOption = async (x) => {
     await this.resolveOption(x);
@@ -141,9 +164,16 @@ class Game extends Component {
     let l = this.state.last;
 
     return (
-      <div>
+      <Container className="pt-4">
         <h2>Turnos: {this.state.survived}</h2>
-        <GameState status={c} last={l} />
+        <GameState
+          status={c}
+          last={l}
+          calculating={this.state.calculating}
+          logic={this.state.logic}
+          selectedOption={this.state.selectedOption}
+        
+        />
         <Options
           logic={this.state.logic}
           gameStatus={this.state.gameStatus}
@@ -151,8 +181,9 @@ class Game extends Component {
           penalization_value={this.penalization_value}
           selectOption={this.selectOption}
           resetGame={this.resetGame}
+          selectedOption={this.state.selectedOption}
           ignoreOption={this.ignoreOption} />
-      </div>
+      </Container>
     );
   }
 

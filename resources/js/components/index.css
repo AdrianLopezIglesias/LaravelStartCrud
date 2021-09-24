@@ -4,9 +4,30 @@
 
 .button-option{
 cursor:pointer;
-border:1px solid black; 
 padding: 10px;  
+box-shadow: 1px 1px 5px gray;
 }
+.danger-t{
+color: red;
+  animation-name: danger-text;
+  animation-duration: 1s;
+}
+.succes-t{
+color: green;
+  animation-name: success-text;
+  animation-duration: 1s;
+}
+
+@keyframes success-text {
+  from {color: green;}
+  to {color: black;}
+}
+@keyframes danger-text {
+  from {color: red;}
+  to {color: black;}
+}
+
+
 
 .huge{
 height: 40px;
@@ -19,6 +40,12 @@ color: green}
 
 .column-30{
 width:30%
+}
+.column-20{
+width:20%
+}
+.column-40{
+width:40%
 }
 .hidden{
 display: none}
@@ -70,12 +97,6 @@ cursor: pointer;}
   box-shadow: 1px 1px 10px gray;
 }
 
-.card{
- cursor:pointer;
-  box-shadow: 1px 1px 10px gray;
-  margin: 10px;
-  height: 400px;
-}
 .cardText{
   max-height: 170px; 
 text-overflow: ellipsis;

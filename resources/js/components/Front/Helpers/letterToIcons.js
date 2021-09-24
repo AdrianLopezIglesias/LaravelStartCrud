@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGem, faFighterJet, faCloudSun, faCoffee, faAddressCard, faAngry, faAtom, faBatteryHalf, faBiking, faBone, faBrain, faCar, faCarrot, faCat, faChurch, faChild } from '@fortawesome/free-solid-svg-icons'
+import { faMoneyBillAlt, faLandmark, faGem, faFighterJet, faCloudSun, faCoffee, faAddressCard, faAngry, faAtom, faBatteryHalf, faBiking, faBone, faBrain, faCar, faCarrot, faCat, faChurch, faChild } from '@fortawesome/free-solid-svg-icons'
 const reactStringReplace = require('react-string-replace');
 
 export function lettersToIcons(string) {
@@ -13,7 +13,8 @@ export function lettersToIcons(string) {
   string = reactStringReplace(string, 'H', (match, i) => (< FontAwesomeIcon key={string} icon={faBiking} />))
   string = reactStringReplace(string, 'X', (match, i) => (< FontAwesomeIcon key={string} icon={faGem} />))
   string = reactStringReplace(string, 'J', (match, i) => (< FontAwesomeIcon key={string} icon={faFighterJet} />))
-  string = reactStringReplace(string, 'K', (match, i) => (< FontAwesomeIcon key={string} icon={faCar} />))
+  string = reactStringReplace(string, 'M', (match, i) => (< FontAwesomeIcon key={string} icon={faLandmark} />))
+  string = reactStringReplace(string, 'L', (match, i) => (< FontAwesomeIcon key={string} icon={faMoneyBillAlt} />))
   return string;
 
 }

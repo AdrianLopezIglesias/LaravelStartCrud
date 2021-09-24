@@ -27,7 +27,7 @@ export function mathGeneration() {
 
 
   let math
-  let letras = "ZBCDEYGHXJ"
+  let letras = "ZBCDEYGHXJML"
   function o0() {
     return chance.character({ pool: '+-' }) + " " + randomScalar()
   }
