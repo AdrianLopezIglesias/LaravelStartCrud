@@ -1,51 +1,35 @@
 
 
-
 <li class="nav-item">
-    <a href="{{ route('mensajes.index') }}"
-       class="nav-link {{ Request::is('mensajes*') ? 'active' : '' }}">
-        <p>Mensajes</p>
+    <a href="{{ route('tratamientos.index') }}"
+       class="nav-link {{ Request::is('tratamientos*') ? 'active' : '' }}">
+        <p>Tratamientos</p>
     </a>
 </li>
 
 
 <li class="nav-item">
-    <a href="{{ route('adm.textos.index') }}"
-       class="nav-link {{ Request::is('adm/textos*') ? 'active' : '' }}">
-        <p>Textos</p>
-    </a>
-</li>
-
-
-<li class="nav-item">
-    <a href="{{ route('adm.tecnologias.index') }}"
-       class="nav-link {{ Request::is('adm/tecnologias*') ? 'active' : '' }}">
-        <p>Tecnologias</p>
+    <a href="{{ route('contratacions.index') }}"
+       class="nav-link {{ Request::is('contratacions*') ? 'active' : '' }}">
+        <p>Contratacions</p>
     </a>
 </li>
 
 
 
+
 <li class="nav-item">
-    <a href="{{ route('adm.projects.index') }}"
-       class="nav-link {{ Request::is('projects*') ? 'active' : '' }}">
-        <p>Projects</p>
+    <a href="{{ route('citas.index') }}"
+       class="nav-link {{ Request::is('citas*') ? 'active' : '' }}">
+        <p>Citas</p>
     </a>
 </li>
 
 
 <li class="nav-item">
-    <a href="{{ route('adm.projectimages.index') }}"
-       class="nav-link {{ Request::is('adm/projectimages*') ? 'active' : '' }}">
-        <p>Projectimages</p>
-    </a>
-</li>
-
-
-<li class="nav-item">
-    <a href="{{ route('empresas.index') }}"
-       class="nav-link {{ Request::is('empresas*') ? 'active' : '' }}">
-        <p>Empresas</p>
+    <a href="{{ route('pacientes.index') }}"
+       class="nav-link {{ Request::is('pacientes*') ? 'active' : '' }}">
+        <p>Pacientes</p>
     </a>
 </li>
 

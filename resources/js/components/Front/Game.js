@@ -20,8 +20,9 @@ class Game extends Component {
       last: this.initialVals,
       gameStatus: 'play',
       survived: 0,
-      calculating: [0, "Z"],
-      selectedOption: 0
+      calculating: [0, "Z", ],
+      selectedOption: 0,
+      history: [],
     }
 
   }
@@ -40,6 +41,7 @@ class Game extends Component {
     if (savedState) {
     this.setState(savedState)
     }
+
 
 
   }
@@ -65,7 +67,6 @@ class Game extends Component {
 
     this.setState({ gameStatus: 'calculating', selectedOption: t })
 
-    await this.penalization();
     let vals = {};
     let vols = this.state.last;
     _.forIn(this.state.core, function (value, key) {
@@ -73,13 +74,12 @@ class Game extends Component {
     });
 
     for (var i = 0; i < this.state.logic[t].length; i++) {
-
       if (this.state.gameStatus != "lost") {
         let ob = this.state.logic[t][i].math.objective;
         let x = math.parse(this.state.logic[t][i].math.operation)
         let y = x.compile()
         let z = x.evaluate(vals)
-        this.setState({ calculating: [i, z] })
+        this.setState({ calculating: [i, z, ob, x] })
 
         let n = 0
         if (vols[ob]) {
@@ -96,19 +96,24 @@ class Game extends Component {
       }
       this.checkLost(vals)
     }
+    await this.penalization();
+    this.checkLost(vals)
     if (this.state.gameStatus != "lost") {
       this.setState({
         survived: this.state.survived + 1,
         gameStatus: 'play',
-        calculating: [0, 0],
+        calculating: [0, 0, 0, 0],
         selectedOption: 0
       })
     }
     this.saveState()
 
+
+
   }
 
   checkLost = (vals) => {
+    let history = this.state.history; 
     let lost;
     _.forIn(vals, function (value, key) {
       if (value < 0) {
@@ -117,12 +122,17 @@ class Game extends Component {
     })
 
     if (lost) {
-      this.setState({ gameStatus: 'lost' })
+      history.push(this.state.survived)
+      this.setState({
+        gameStatus: 'lost',
+        history: history
+      })
+      this.saveState()
     }
   }
 
   penalization_value = () => {
-    return Math.round((this.state.survived / 8 + 0.5) * 10)/10
+    return Math.round((this.state.survived / 7 + 0.5) * 10)/10
   }
 
   async penalization() {
@@ -136,7 +146,6 @@ class Game extends Component {
     });
     this.setState({
       core: vals,
-      survived: this.state.survived + 1,
       last: vols,
       calculating: [99, "Todo -" + penalization_value]
     })
@@ -165,7 +174,7 @@ class Game extends Component {
 
     return (
       <Container className="pt-4">
-        <h2>Turnos: {this.state.survived}</h2>
+        <h2>Turnos: {this.state.survived} / {Math.max.apply(Math, this.state.history)}</h2>
         <GameState
           status={c}
           last={l}

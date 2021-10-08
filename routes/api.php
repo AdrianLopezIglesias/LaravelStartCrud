@@ -22,33 +22,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::resource('teclados', TecladosAPIController::class);
-
-
-Route::resource('mice', MouseAPIController::class);
-
-
-Route::resource('i_m_e_i_s', App\Http\Controllers\API\IMEIAPIController::class);
-
-
-Route::resource('projects', ProjectAPIController::class);
   }
 );
 
-Route::resource('mensajes', MensajeAPIController::class)->only([
-  'store'
-]);
+
+Route::resource('tratamientos', tratamientoAPIController::class);
+
+Route::post('citas/disponibilidad', 'CitaAPIController@disponibilidad');
+
+Route::resource('contratacions', ContratacionAPIController::class);
 
 
-
-Route::group(['prefix' => 'adm'], function () {
-    Route::resource('textos', Adm\TextoAPIController::class);
-    Route::resource('tecnologias', Adm\TecnologiaAPIController::class);
-});
+Route::resource('clientes', ClienteAPIController::class);
 
 
+Route::resource('citas', CitaAPIController::class);
 
 
-Route::group(['prefix' => 'adm'], function () {
-    Route::resource('projectimages', App\Http\Controllers\API\Adm\ProjectimageAPIController::class);
-});
+Route::resource('pacientes', PacientesAPIController::class);

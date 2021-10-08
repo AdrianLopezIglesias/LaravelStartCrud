@@ -1,24 +1,6 @@
 [
     {
         "type": "Directory",
-        "name": "c:\\xampp\\htdocs\\development\\development2\\resources\\js\\components",
-        "parent_id": null,
-        "fsPath": "c:\\xampp\\htdocs\\development\\development2\\resources\\js\\components",
-        "workspaceRoot": null,
-        "workspacePath": null,
-        "id": "JWNwBgf5iS7uF2lI"
-    },
-    {
-        "type": "Directory",
-        "name": "c:\\xampp\\htdocs\\development\\development2\\app\\Http",
-        "parent_id": null,
-        "fsPath": "c:\\xampp\\htdocs\\development\\development2\\app\\Http",
-        "workspaceRoot": null,
-        "workspacePath": null,
-        "id": "LlkwV9EdbMRcXSJQ"
-    },
-    {
-        "type": "Directory",
         "name": "c:\\xampp\\htdocs\\development\\development2\\routes",
         "parent_id": null,
         "fsPath": "c:\\xampp\\htdocs\\development\\development2\\routes",
@@ -37,19 +19,38 @@
     },
     {
         "type": "Directory",
-        "name": "c:\\xampp\\htdocs\\development\\development2\\resources\\views",
+        "name": "c:\\xampp\\htdocs\\development\\crm_ace\\app",
         "parent_id": null,
-        "fsPath": "c:\\xampp\\htdocs\\development\\development2\\resources\\views",
+        "fsPath": "c:\\xampp\\htdocs\\development\\crm_ace\\app",
         "workspaceRoot": null,
         "workspacePath": null,
-        "id": "XaoTHbp37vkMrOQc"
+        "id": "fgLSRkBJrFD0Zne4"
     },
     {
-        "type": "Group",
-        "name": "Front",
+        "type": "Directory",
+        "name": "c:\\xampp\\htdocs\\development\\crm_ace\\resources\\js",
         "parent_id": null,
+        "fsPath": "c:\\xampp\\htdocs\\development\\crm_ace\\resources\\js",
         "workspaceRoot": null,
         "workspacePath": null,
-        "id": "DjaZiSwNWJt78vmQ"
+        "id": "0agRi1sMmVUol2dN"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\xampp\\htdocs\\development\\crm_ace\\resources\\views",
+        "parent_id": null,
+        "fsPath": "c:\\xampp\\htdocs\\development\\crm_ace\\resources\\views",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "MDb2SAmihZjqxH7F"
+    },
+    {
+        "type": "Directory",
+        "name": "c:\\xampp\\htdocs\\development\\crm_ace\\database",
+        "parent_id": null,
+        "fsPath": "c:\\xampp\\htdocs\\development\\crm_ace\\database",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "tBbx4PpGmkDyo5En"
     }
 ]

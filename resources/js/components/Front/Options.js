@@ -52,7 +52,6 @@ export default class Options extends Component {
         
         {buttons}
         <br />
-        <Button onClick={() => this.props.resetGame()}>New game</Button>
       </div>
     )
   }

@@ -48,18 +48,31 @@ Route::middleware(['auth'])->group(function () {
     )->name('io_generator_builder_generate_from_file');
 
 
-    Route::resource('adm/mensajes', App\Http\Controllers\MensajeController::class);
-    Route::resource('adm/textos', App\Http\Controllers\Adm\TextoController::class, ["as" => 'adm']);
-    Route::resource('adm/tecnologias', App\Http\Controllers\Adm\TecnologiaController::class, ["as" => 'adm']);
-    Route::resource('adm/projects', App\Http\Controllers\Adm\ProjectController::class, ["as" => 'adm']);
-    Route::resource('adm/projectimages', App\Http\Controllers\Adm\ProjectimageController::class, ["as" => 'adm']);
 });
 
-Route::get('/{any_path?}', [
-    HomeController::class, 'index'
-])->name('home');
+// Route::get('/{any_path?}', [
+//     HomeController::class, 'index'
+// ])->name('home');
+Route::get('/', function () {
+return redirect('/tratamientos');
+})->name('home');
 
 
 
 
-Route::resource('empresas', App\Http\Controllers\EmpresaController::class);
+
+
+Route::resource('tratamientos', App\Http\Controllers\TratamientoController::class);
+
+
+Route::post('contratacions/render', 'App\Http\Controllers\ContratacionController@render');
+Route::resource('contratacions', App\Http\Controllers\ContratacionController::class);
+    
+
+Route::resource('clientes', App\Http\Controllers\ClienteController::class);
+
+
+Route::resource('citas', App\Http\Controllers\CitaController::class);
+
+
+Route::resource('pacientes', App\Http\Controllers\PacientesController::class);

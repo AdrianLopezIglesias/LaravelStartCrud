@@ -27,21 +27,22 @@ class GameState extends Component {
     } else {
       ob = "Todo"
     }
-    console.log(ob)
-    console.log(vp)
+
 
     let currentClass
 
     let defineStyle = (l) => {
-      console.log(l)
       let style
-      if (l == ob) {
-        if (vp > 0) {
+      if (l == calc[2]) {
+        if (calc[1] > 0) {
           style =  "success"
         }
         else {
           style =  "danger"
         }
+      }
+      if (calc[0] == 99) {
+        style = "danger"
       }
       return style
     }

@@ -14,6 +14,8 @@ export default class OptionLogic extends Component {
     let logic = this.props.logic
     let calc = this.props.calculating
 
+    let val
+    if (!isNaN(calc[1])) { val = Math.round(calc[1] * 10) / 10 }
 
     if ([calc[0]] && [calc[0]] != 99) {
       ob = lettersToIcons(logic[so][calc[0]].math.objective)
@@ -23,17 +25,22 @@ export default class OptionLogic extends Component {
       op = "-" + this.props.penalization_value(); 
     }
 
-   return (
+    return (
+      <div>
+        <br />
+        <br />
      <span className={calc[1] > 0 ? "card border-success w-100" : "card border-danger w-100"}>
         <table className="table">
           <tbody>
            <tr>
              <td className={calc[1] > 0 ? "success  column-20" : "danger  column-20"}>{ob}</td>
              <td className={calc[1] > 0 ? "success  column-40" : "danger column-40"}>{op}</td>
+                <td className={calc[1] > 0 ? "success  column-40" : "danger column-40"}>{val}</td>
             </tr>
           </tbody>
         </table>
       </span>
+     </div>
     )
   }
 }

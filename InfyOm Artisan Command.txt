@@ -1,0 +1,2 @@
+php artisan infyom:scaffold Tratamiento --datatables=true --paginate=10 --fieldsFile=resources/model_schemas/tratamiento.json
+php artisan infyom:scaffold Tratamiento --paginate=10 --fieldsFile=resources/model_schemas/tratamiento.json
