@@ -8,10 +8,7 @@
                     <h1>Citas</h1>
                 </div>
                 <div class="col-sm-6">
-                    <a class="btn btn-primary float-right"
-                       href="{{ route('citas.create') }}">
-                        Add New
-                    </a>
+
                 </div>
             </div>
         </div>
@@ -36,6 +33,4 @@
 
         </div>
     </div>
-
 @endsection
-

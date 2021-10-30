@@ -21,6 +21,7 @@ class CreateCitasTable extends Migration
             $table->integer('contratacion_id');
             $table->integer('tratamiento_id');
             $table->integer('paciente_id');
+            $table->integer('centro_id');
             $table->timestamps();
         });
     }

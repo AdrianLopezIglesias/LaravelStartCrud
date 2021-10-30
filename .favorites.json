@@ -1,56 +1,65 @@
 [
     {
         "type": "Directory",
-        "name": "c:\\xampp\\htdocs\\development\\development2\\routes",
+        "name": "f:\\7. Proyectos\\2. Desarrollos\\development2\\routes",
         "parent_id": null,
-        "fsPath": "c:\\xampp\\htdocs\\development\\development2\\routes",
+        "fsPath": "f:\\7. Proyectos\\2. Desarrollos\\development2\\routes",
         "workspaceRoot": null,
         "workspacePath": null,
         "id": "NYbA9cLezPh2Qlk8"
     },
     {
         "type": "Directory",
-        "name": "c:\\xampp\\htdocs\\development\\development2\\app\\Models",
+        "name": "f:\\7. Proyectos\\2. Desarrollos\\development2\\app\\Models",
         "parent_id": null,
-        "fsPath": "c:\\xampp\\htdocs\\development\\development2\\app\\Models",
+        "fsPath": "f:\\7. Proyectos\\2. Desarrollos\\development2\\app\\Models",
         "workspaceRoot": null,
         "workspacePath": null,
         "id": "flQGWUoPArhMR1mk"
     },
     {
         "type": "Directory",
-        "name": "c:\\xampp\\htdocs\\development\\crm_ace\\app",
+        "name": "f:\\7. Proyectos\\2. Desarrollos\\crm_ace\\app",
         "parent_id": null,
-        "fsPath": "c:\\xampp\\htdocs\\development\\crm_ace\\app",
+        "fsPath": "f:\\7. Proyectos\\2. Desarrollos\\crm_ace\\app",
         "workspaceRoot": null,
         "workspacePath": null,
         "id": "fgLSRkBJrFD0Zne4"
     },
     {
         "type": "Directory",
-        "name": "c:\\xampp\\htdocs\\development\\crm_ace\\resources\\js",
+        "name": "f:\\7. Proyectos\\2. Desarrollos\\crm_ace\\resources\\js",
         "parent_id": null,
-        "fsPath": "c:\\xampp\\htdocs\\development\\crm_ace\\resources\\js",
+        "fsPath": "f:\\7. Proyectos\\2. Desarrollos\\crm_ace\\resources\\js",
         "workspaceRoot": null,
         "workspacePath": null,
         "id": "0agRi1sMmVUol2dN"
     },
     {
         "type": "Directory",
-        "name": "c:\\xampp\\htdocs\\development\\crm_ace\\resources\\views",
+        "name": "f:\\7. Proyectos\\2. Desarrollos\\crm_ace\\resources\\views",
         "parent_id": null,
-        "fsPath": "c:\\xampp\\htdocs\\development\\crm_ace\\resources\\views",
+        "fsPath": "f:\\7. Proyectos\\2. Desarrollos\\crm_ace\\resources\\views",
         "workspaceRoot": null,
         "workspacePath": null,
         "id": "MDb2SAmihZjqxH7F"
     },
     {
         "type": "Directory",
-        "name": "c:\\xampp\\htdocs\\development\\crm_ace\\database",
+        "name": "f:\\7. Proyectos\\2. Desarrollos\\crm_ace\\database",
         "parent_id": null,
-        "fsPath": "c:\\xampp\\htdocs\\development\\crm_ace\\database",
+        "fsPath": "f:\\7. Proyectos\\2. Desarrollos\\crm_ace\\database",
         "workspaceRoot": null,
         "workspacePath": null,
         "id": "tBbx4PpGmkDyo5En"
+    },
+    {
+        "type": "Directory",
+        "name": "f:\\7. Proyectos\\2. Desarrollos\\crm_ace\\tests",
+        "parent_id": null,
+        "fsPath": "f:\\7. Proyectos\\2. Desarrollos\\crm_ace\\tests",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "jCruPEcAqxDlBMN0"
     }
 ]

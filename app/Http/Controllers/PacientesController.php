@@ -9,148 +9,293 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use App\Models\Pacientes;
+use App\Models\Profesional;
+use App\Models\Tratamiento;
+use App\Models\Contratacion;
+use App\Models\Cita;
 
-class PacientesController extends AppBaseController
-{
-    /** @var  PacientesRepository */
-    private $pacientesRepository;
+class PacientesController extends AppBaseController {
 
-    public function __construct(PacientesRepository $pacientesRepo)
-    {
-        $this->pacientesRepository = $pacientesRepo;
-    }
 
-    /**
-     * Display a listing of the Pacientes.
-     *
-     * @param Request $request
-     *
-     * @return Response
-     */
-    public function index(Request $request)
-    {
-        $pacientes = $this->pacientesRepository->paginate(10);
 
-        return view('pacientes.index')
-            ->with('pacientes', $pacientes);
-    }
+	
+//===========================================================================
+//=============================== TRANSMUTAR ================================
+//===========================================================================
 
-    /**
-     * Show the form for creating a new Pacientes.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        return view('pacientes.create');
-    }
+	public function transmutar(Request $request, $id = 0, $view = "paciente_table", $access = "general"){
 
-    /**
-     * Store a newly created Pacientes in storage.
-     *
-     * @param CreatePacientesRequest $request
-     *
-     * @return Response
-     */
-    public function store(CreatePacientesRequest $request)
-    {
-        $input = $request->all();
+		$input = parse_str($request->form->all());
 
-        $pacientes = $this->pacientesRepository->create($input);
+		if($id != 0 || $request->paciente_id != 0){
+			//============================= EDITAR PACIENTE
+			$paciente                = Pacientes::find($input['paciente']);
+			$pacienteDatosPersonales = $paciente->datospersonales;
+			$paciente->fill($input)->save();
+			$pacienteDatosPersonales->fill($input)->save();
+		}else{
+			//============================= NUEVO PACIENTE
+			$paciente = Pacientes::create($input);
+			$paciente->datospersonales()->create($input);
+		}
 
-        Flash::success('Pacientes saved successfully.');
+		//=============================== RETURN 
+		switch ($view) {
+			case 'paciente_show': 
+				return redirect(route('pacientes.show', [$paciente->id]));
+				// return view('pacientes.table', compact('paciente'));
+				break;
+			case 'datos_personales_tabla': 
+				$pacienteDatosPersonales = $paciente->datospersonales;
+				return view('paciente_datos_personales.show_fields', compact('pacienteDatosPersonales', 'paciente'));
+				break;
+			case 'paciente_table': 
+				return view('pacientes.table', compact('paciente'));
+				break;
+			
+			default: 
+				return view('pacientes.table', compact('paciente'));
+				break;
+		}
+		if($request->redirect == "si"){
+		}
 
-        return redirect(route('pacientes.index'));
-    }
+	}
 
-    /**
-     * Display the specified Pacientes.
-     *
-     * @param int $id
-     *
-     * @return Response
-     */
-    public function show($id)
-    {
-        $pacientes = $this->pacientesRepository->find($id);
 
-        if (empty($pacientes)) {
-            Flash::error('Pacientes not found');
 
-            return redirect(route('pacientes.index'));
-        }
+	public function render(Request $request) {
+		switch ($request->view) {
+			case 'ver': 
+				return view('contratacions.show', compact('contratacion'));
+				# code...
+				break;
+			case      'datospersonales_index': 
+			$paciente = Pacientes            : : with('datospersonales')->find($request->paciente);
+				$pacienteDatosPersonales = $paciente->datospersonales;
+				return view('paciente_datos_personales.show_fields', compact('pacienteDatosPersonales', 'paciente'));
+				break;
+			case      'pacientes_editar': 
+			$paciente = Pacientes       : : with('datospersonales')->find($request->paciente);
+				$pacienteDatosPersonales = $paciente->datospersonales;
+				return view('pacientes.create', compact('pacienteDatosPersonales', 'paciente'));
+				break;
+			case 'nuevo': 
+				$access = $request->access;
+				return view('pacientes.create', compact('access'));
+				# code...
+				break;
 
-        return view('pacientes.show')->with('pacientes', $pacientes);
-    }
 
-    /**
-     * Show the form for editing the specified Pacientes.
-     *
-     * @param int $id
-     *
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $pacientes = $this->pacientesRepository->find($id);
+			//NUEVO + EDITAR
+			case 'store_new': 
+				$input  = $request->all();
+				$access = $request->access;
 
-        if (empty($pacientes)) {
-            Flash::error('Pacientes not found');
+				if($request->ajax == 'si'){
+					parse_str($request->form, $input);
+				}
+				if($request->update == "si"){
+					$paciente                = Pacientes::find($input['paciente']);
+					$pacienteDatosPersonales = $paciente->datospersonales;
+					$paciente->fill($input)->save();
+					$pacienteDatosPersonales->fill($input)->save();
+				}else{
+					$paciente = Pacientes::create($input);
+					$paciente->datospersonales()->create($input);
+				}
 
-            return redirect(route('pacientes.index'));
-        }
+				switch ($request->redirect) {
+					case 'si': 
+						return redirect(route('pacientes.show', [$paciente->id]));
+						break;
+					case 'datos_personales_tabla': 
+						$pacienteDatosPersonales = $paciente->datospersonales;
+						return view('paciente_datos_personales.show_fields', compact('pacienteDatosPersonales', 'paciente'));
+						break;
+					
+					default: 
+						return view('pacientes.table', compact('paciente'));
+						break;
+				}
+				if($request->redirect == "si"){
+				}
+				break;
 
-        return view('pacientes.edit')->with('pacientes', $pacientes);
-    }
+			case 'pacientes_buscar': 
+				$access = $request->access;
+				$datos  = [];
+				parse_str($request->form, $datos);
+				$pacientes = Pacientes::where('nombre', 'like', "%" . strtolower($datos['nombre']) . "%")->get();
+				return view('pacientes.table', compact('pacientes'));
+				break;
 
-    /**
-     * Update the specified Pacientes in storage.
-     *
-     * @param int $id
-     * @param UpdatePacientesRequest $request
-     *
-     * @return Response
-     */
-    public function update($id, UpdatePacientesRequest $request)
-    {
-        $pacientes = $this->pacientesRepository->find($id);
+			case                     'table'                  : 
+			$profesionalTratamientos = ProfesionalTratamiento:: with(['tratamientos', 'profesional'])->where('profesional_id', $request->profesional);
+				$access = $request->access;
+				return view('profesional_tratamientos.table', compact('access', 'profesionalTratamientos'));
+				break;
 
-        if (empty($pacientes)) {
-            Flash::error('Pacientes not found');
+			case   'citas_index': 
+			$citas = Cita       : : where('paciente_id', $request->paciente);
+				$paciente = $request->paciente;
+				$access   = $request->access;
+				return view('citas.manager', compact('access', 'citas', 'paciente'));
+				break;
 
-            return redirect(route('pacientes.index'));
-        }
+			case      'tratamientos_index': 
+			$paciente = Pacientes         : : with('tratamientos')->find($request->paciente);
+				$tratamientos = $paciente->tratamientos;
+				$paciente     = $paciente->id;
+				$access       = $request->access;
+				return view('tratamientos.table', compact('access', 'tratamientos', 'paciente'));
+				break;
 
-        $pacientes = $this->pacientesRepository->update($request->all(), $id);
+			case           'contrataciones_index': 
+			$contratacions = Contratacion        : : where('paciente_id', $request->paciente)->get();
+				$paciente = $request->paciente;
+				$access   = $request->access;
+				return view('contratacions.manager', compact('access', 'contratacions', 'paciente'));
+				break;
 
-        Flash::success('Pacientes updated successfully.');
+			default: 
+				# code...
+				break;
+		}
+	}
 
-        return redirect(route('pacientes.index'));
-    }
+	/** @var  PacientesRepository */
+	private $pacientesRepository;
 
-    /**
-     * Remove the specified Pacientes from storage.
-     *
-     * @param int $id
-     *
-     * @throws \Exception
-     *
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        $pacientes = $this->pacientesRepository->find($id);
+	public function __construct(PacientesRepository $pacientesRepo) {
+		$this->pacientesRepository = $pacientesRepo;
+	}
 
-        if (empty($pacientes)) {
-            Flash::error('Pacientes not found');
+	/**
+	 * Display a listing of the Pacientes.
+	 *
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function index(Request $request) {
+		// $pacientes = $this->pacientesRepository->paginate(10);
+		$pacientes = Pacientes::with('datospersonales')->paginate(10);
+		return view('pacientes.index', compact('pacientes'));
+	}
 
-            return redirect(route('pacientes.index'));
-        }
+	/**
+	 * Show the form for creating a new Pacientes.
+	 *
+	 * @return Response
+	 */
+	public function create() {
+		return view('pacientes.create');
+	}
 
-        $this->pacientesRepository->delete($id);
+	/**
+	 * Store a newly created Pacientes in storage.
+	 *
+	 * @param CreatePacientesRequest $request
+	 *
+	 * @return Response
+	 */
+	public function store(CreatePacientesRequest $request) {
+		dd($request);
+		$input = $request->all();
 
-        Flash::success('Pacientes deleted successfully.');
+		$paciente = $this->pacientesRepository->create($input);
+		$paciente->datospersonales()->create($input);
+		$datospersonales = $paciente->datospersonales;
 
-        return redirect(route('pacientes.index'));
-    }
+		Flash:: success('Pacientes saved successfully.');
+
+		// return redirect(route('pacientes.show'), ['paciente' => $paciente, 'datospersonales' => $datospersonales]);
+	
+	}
+
+	/**
+	 * Display the specified Pacientes.
+	 *
+	 * @param int $id
+	 *
+	 * @return Response
+	 */
+	public function show($id) {
+		$paciente = $this->pacientesRepository->find($id);
+
+		$paciente                = Pacientes::with('datospersonales')->find($id);
+		$pacienteDatosPersonales = $paciente->datospersonales;
+		// dd($pacienteDatosPersonales);
+		return view('pacientes.show', compact('paciente', 'pacienteDatosPersonales'));
+	}
+
+	/**
+	 * Show the form for editing the specified Pacientes.
+	 *
+	 * @param int $id
+	 *
+	 * @return Response
+	 */
+	public function edit($id) {
+		$pacientes = $this->pacientesRepository->find($id);
+
+		if (empty($pacientes)) {
+			Flash:: error('Pacientes not found');
+
+			return redirect(route('pacientes.index'));
+		}
+
+		return view('pacientes.edit')->with('pacientes', $pacientes);
+	}
+
+	/**
+	 * Update the specified Pacientes in storage.
+	 *
+	 * @param int $id
+	 * @param UpdatePacientesRequest $request
+	 *
+	 * @return Response
+	 */
+	public function update($id, UpdatePacientesRequest $request) {
+		$pacientes = $this->pacientesRepository->find($id);
+
+		if (empty($pacientes)) {
+			Flash:: error('Pacientes not found');
+
+			return redirect(route('pacientes.index'));
+		}
+
+		$pacientes = $this->pacientesRepository->update($request->all(), $id);
+
+		Flash:: success('Pacientes updated successfully.');
+
+		return redirect(route('pacientes.index'));
+	}
+
+	/**
+	 * Remove the specified Pacientes from storage.
+	 *
+	 * @param int $id
+	 *
+	 * @throws \Exception
+	 *
+	 * @return Response
+	 */
+	public function destroy($id) {
+		$pacientes = $this->pacientesRepository->find($id);
+
+		if (empty($pacientes)) {
+			Flash:: error('Pacientes not found');
+
+			return redirect(route('pacientes.index'));
+		}
+
+		$this->pacientesRepository->delete($id);
+
+		Flash:: success('Pacientes deleted successfully.');
+
+		return redirect(route('pacientes.index'));
+	}
 }

@@ -39,8 +39,9 @@ class tratamientoAPIController extends AppBaseController
             $request->get('skip'),
             $request->get('limit')
         );
+				$tratamientos = Tratamiento::paginate(5);
 
-        return $this->sendResponse($tratamientos->toArray(), 'Tratamientos retrieved successfully');
+        return $this->sendResponse($tratamientos, 'Tratamientos retrieved successfully');
     }
 
     /**

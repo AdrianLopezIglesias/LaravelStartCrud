@@ -9,9 +9,105 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
-
+use App\Models\Tratamiento;
+use Illuminate\Support\Str; 
 class TratamientoController extends AppBaseController
 {
+//===========================================================================
+//===============================    VER     ================================
+//===========================================================================
+	public function ver(Request $request, $vista = ""){
+		$input = [];
+		parse_str($request->form, $input);
+
+		//=============================== RETURN 
+		switch ($vista) {
+			case 'paciente_show': 
+				return redirect(route('pacientes.show', [$paciente->id]));
+				// return view('pacientes.table', compact('paciente'));
+				break;
+			case 'datos_personales_tabla': 
+				$pacienteDatosPersonales = $paciente->datospersonales;
+				return view('paciente_datos_personales.show_fields', compact('pacienteDatosPersonales', 'paciente'));
+				break;
+			case 'crear': 
+				return view('tratamientos.create');
+				break;
+			case 'paciente_table': 
+				return view('pacientes.table', compact('paciente'));
+				break;
+			
+			default: 
+				return view('pacientes.table', compact('paciente'));
+				break;
+		}
+		if($request->redirect == "si"){
+		}
+
+	}
+
+
+
+
+//===========================================================================
+//=============================== TRANSMUTAR ================================
+//===========================================================================
+	public function transmutar(Request $request, $id = 0, $view = "table"){
+
+		$input = [];
+		parse_str($request->form, $input);
+
+		if($id != 0 || $request->paciente_id != 0){
+			//============================= EDITAR TRATAMIENTO
+			$paciente                = Pacientes::find($input['paciente']);
+			$pacienteDatosPersonales = $paciente->datospersonales;
+			$paciente->fill($input)->save();
+			$pacienteDatosPersonales->fill($input)->save();
+		}else{
+			//============================= NUEVO TRATAMIENTO
+			$tratamiento = Tratamiento::create($input);
+		}
+
+		//=============================== RETURN 
+		switch ($view) {
+			case 'tabla': 
+				$tratamientos = Tratamiento::orderByDesc('id')->paginate(10); 
+				$access = "general";
+				return view('tratamientos.table', compact('tratamientos', 'access'));
+				break;
+				
+			case 'datos_personales_tabla': 
+				$pacienteDatosPersonales = $paciente->datospersonales;
+				return view('paciente_datos_personales.show_fields', compact('pacienteDatosPersonales', 'paciente'));
+				break;
+
+			case 'paciente_table': 
+				return view('pacientes.table', compact('paciente'));
+				break;
+			
+			default: 
+				return view('pacientes.table', compact('paciente'));
+				break;
+		}
+		if($request->redirect == "si"){
+		}
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /** @var  TratamientoRepository */
     private $tratamientoRepository;
 
@@ -29,10 +125,13 @@ class TratamientoController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $tratamientos = $this->tratamientoRepository->paginate(10);
 
-        return view('tratamientos.index')
-            ->with('tratamientos', $tratamientos);
+			$tratamientos = Tratamiento::paginate(10);
+        // $tratamiento = $this->tratamientoRepository->paginate(10);
+				$access = "";
+
+        return view('tratamientos.index', compact('tratamientos', 'access'));
+
     }
 
     /**
@@ -73,14 +172,14 @@ class TratamientoController extends AppBaseController
     public function show($id)
     {
         $tratamiento = $this->tratamientoRepository->find($id)->with('pro');
-
+				$view = "";
         if (empty($tratamiento)) {
             Flash::error('Tratamiento not found');
 
             return redirect(route('tratamientos.index'));
         }
 
-        return view('tratamientos.show')->with('tratamiento', $tratamiento);
+        return view('tratamientos.show', compact('tratamiento', 'view'));
     }
 
     /**

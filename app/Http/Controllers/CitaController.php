@@ -8,12 +8,15 @@ use App\Http\Requests\CreateCitaRequest;
 use App\Http\Requests\UpdateCitaRequest;
 use App\Repositories\CitaRepository;
 use Flash;
+use Illuminate\Http\Request;
+
 use App\Http\Controllers\AppBaseController;
 use Response;
 use App\Models\Cita;
 
 class CitaController extends AppBaseController
 {
+	
     /** @var  CitaRepository */
     private $citaRepository;
 
@@ -28,10 +31,10 @@ class CitaController extends AppBaseController
      * @param CitaDataTable $citaDataTable
      * @return Response
      */
-    public function index(CitaDataTable $citaDataTable)
-    {
-        $citas = Cita::orderBy('dia')->get();
-        return view('citas.index')->with('citas', $citas);
+    public function index(){
+				$access = "general";
+        $citas = Cita::orderBy('dia')->with('tratamiento')->get();
+        return view('citas.index', compact('citas', 'access'));
         // return $citaDataTable->render('citas.index');
     }
 
@@ -73,6 +76,7 @@ class CitaController extends AppBaseController
     public function show($id)
     {
         $cita = $this->citaRepository->find($id);
+				$access = "general";
 
         if (empty($cita)) {
             Flash::error('Cita not found');
@@ -80,7 +84,7 @@ class CitaController extends AppBaseController
             return redirect(route('citas.index'));
         }
 
-        return view('citas.show')->with('cita', $cita);
+        return view('citas.show', compact('cita', 'access'));
     }
 
     /**

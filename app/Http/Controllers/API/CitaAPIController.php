@@ -9,6 +9,8 @@ use App\Repositories\CitaRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use App\Models\Profesional;
+use App\Helpers\TimeHelper;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -24,16 +26,7 @@ class CitaAPIController extends AppBaseController {
 	public function __construct(CitaRepository $citaRepo) {
 		$this->citaRepository = $citaRepo;
 	}
-	public static function lz($num){
-			return (strlen($num) < 2) ? "0{$num}" : $num;
-	}
 
-	public static function getTime($num, $hora_start = 9){
-		$num_hours = ($num*5)/60+$hora_start; //some float
-		$hours = floor($num_hours);
-		$mins = round(($num_hours - $hours) * 60);
-		return CitaAPIController::lz($hours) . ":" . CitaAPIController::lz($mins);
-	}
 
 	public function disponibilidad(Request $request) {
 		$citas = Cita::whereDate('dia', date('y-m-d', strtotime($request->dia)))->with('tratamiento')->get();
@@ -44,10 +37,9 @@ class CitaAPIController extends AppBaseController {
 			$disponibilidad[$i]['disponibilidad'] =  'free';
 			$disponibilidad[$i]['cod_horario'] =  $i;
 
-			$disponibilidad[$i]['hora_inicio'] =  CitaAPIController::getTime($i);
+			$disponibilidad[$i]['hora_inicio'] =  TimeHelper::getTime($i);
 
-			$disponibilidad[$i]['hora_fin'] =  CitaAPIController::getTime($i + ($request->tratamiento_duracion)/5);
-
+			$disponibilidad[$i]['hora_fin'] =  TimeHelper::getTime($i + ($request->tratamiento_duracion)/5);
 		}
 		foreach ($citas as $cita) {
 			$disponibilidad[$cita->turno]['disponibilidad'] = "busy";
@@ -74,8 +66,9 @@ class CitaAPIController extends AppBaseController {
 			$request->get('skip'),
 			$request->get('limit')
 		);
+		$citas = Cita::paginate(10);
 
-		return $this->sendResponse($citas->toArray(), 'Citas retrieved successfully');
+		return $this->sendResponse($citas, 'Citas retrieved successfully');
 	}
 
 	/**
@@ -89,9 +82,10 @@ class CitaAPIController extends AppBaseController {
 	public function store(CreateCitaAPIRequest $request) {
 		$input = $request->all();
 		// return $input; 
-
-		$cita = $this->citaRepository->create($input);
-
+		$cita = Cita::create($input); 
+		// $cita = $this->citaRepository->create($input);
+		$cita->profesional()->save(Profesional::find(1));
+		return $cita;
 		return $this->sendResponse($cita->toArray(), 'Cita saved successfully');
 	}
 

@@ -34,13 +34,21 @@ class PacientesAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $pacientes = $this->pacientesRepository->all(
-            $request->except(['skip', 'limit']),
-            $request->get('skip'),
-            $request->get('limit')
-        );
-
-        return $this->sendResponse($pacientes->toArray(), 'Pacientes retrieved successfully');
+			$nombre = "";
+			$pacientes = []; 
+			if(isSet($request->nombre) && $request->nombre != ""){
+			}			
+			
+			if(isSet($request->nombre) && $request->nombre != ""){
+				$nombre = mb_strtolower($request->nombre);
+				$pacientes = Pacientes::where('nombre', 'like', '%'.$nombre.'%')
+						->with(['datospersonales', 'contrataciones', 'citas', 'tratamientos'])
+						->paginate(10);
+					return $this->sendResponse($pacientes, 'Pacientes retrieved successfully');
+				}else{
+					$pacientes = Pacientes::with(['datospersonales', 'contrataciones', 'citas', 'tratamientos'])->paginate(10);
+				}
+        return $this->sendResponse($pacientes, 'Pacientes retrieved successfully');
     }
 
     /**

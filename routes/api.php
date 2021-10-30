@@ -40,3 +40,24 @@ Route::resource('citas', CitaAPIController::class);
 
 
 Route::resource('pacientes', PacientesAPIController::class);
+
+
+Route::resource('profesionals', App\Http\Controllers\API\ProfesionalAPIController::class);
+
+
+Route::resource('salons', App\Http\Controllers\API\SalonAPIController::class);
+
+
+Route::resource('salon_horarios', App\Http\Controllers\API\SalonHorarioAPIController::class);
+
+
+Route::resource('profesional_horarios', App\Http\Controllers\API\ProfesionalHorarioAPIController::class);
+
+
+Route::resource('instalacions', App\Http\Controllers\API\InstalacionAPIController::class);
+
+
+Route::resource('profesional_tratamientos', App\Http\Controllers\API\ProfesionalTratamientoAPIController::class);
+
+
+Route::resource('paciente_datos_personales', App\Http\Controllers\API\PacienteDatosPersonalesAPIController::class);

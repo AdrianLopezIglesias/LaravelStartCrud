@@ -8,7 +8,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body" id="mediumBody">
+                <div class="modal-body" id="modal_body">
                     <div>
                         <!-- the result to be displayed apply here -->
                     </div>

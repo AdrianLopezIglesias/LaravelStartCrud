@@ -15,7 +15,7 @@ class CreateTratamientosTable extends Migration
     public function up()
     {
 			Schema::create('tratamientos', function (Blueprint $table) {
-            $table->increments('id');
+			$table->bigIncrements('id');
       $table->longText('nombre')->nullable();
 
       $table->longText('descripcion')->nullable();

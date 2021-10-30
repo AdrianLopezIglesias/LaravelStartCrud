@@ -10,9 +10,55 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 USE App\Models\Contratacion;
+USE App\Models\Profesional;
 
 class ContratacionController extends AppBaseController
 {
+
+	public function ver(Request $request, $vista = ""){
+		$input = [];
+		parse_str($request->form, $input);
+
+		//=============================== RETURN 
+		switch ($vista) {
+			case 'paciente_show': 
+				return redirect(route('pacientes.show', [$paciente->id]));
+				// return view('pacientes.table', compact('paciente'));
+				break;
+			case 'datos_personales_tabla': 
+				$pacienteDatosPersonales = $paciente->datospersonales;
+				return view('paciente_datos_personales.show_fields', compact('pacienteDatosPersonales', 'paciente'));
+				break;
+			case 'crear': 
+				return view('contratacions.create');
+				break;
+			case 'paciente_table': 
+				return view('pacientes.table', compact('paciente'));
+				break;
+			
+			default: 
+				return view('pacientes.table', compact('paciente'));
+				break;
+		}
+		if($request->redirect == "si"){
+		}
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /** @var  ContratacionRepository */
     private $contratacionRepository;
 
@@ -169,13 +215,14 @@ class ContratacionController extends AppBaseController
                 return view('contratacions.show', compact('contratacion'));
                 # code...
                 break;
-            case 'new':
+            case 'nueva':
                 $contratacion = new Contratacion; 
                 return view('contratacions.create', compact('paciente'));
                 # code...
                 break;
             case 'agendar':
-                return view('contratacions.agendar', compact('contratacion'));
+								$profesionales = Profesional::all(); 
+                return view('contratacions.agendar', compact('contratacion', 'profesionales'));
                 # code...
                 break;
             

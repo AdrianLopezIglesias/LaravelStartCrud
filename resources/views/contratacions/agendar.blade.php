@@ -1,12 +1,13 @@
 <div class="container">
 	<h4>Agendar cita</h4>
 	<br>
+	<h4>Elegir día </h4>
 	<div id="datepicker"></div>
 	<br>
-	<p>Turnos disponibles: </p>
+	<x-profesionales.lista_check_list :profesionales="$profesionales" />
+	<br>
+	<h4>Turnos disponibles: </h4>
 	<div id="disponibilidad"></div>
-
-
 </div>
 
 <script>
@@ -17,64 +18,50 @@
 
     var output = fecha2.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
 
-    // $(document).on("change", "#datepicker", function() {
-    //     fecha2 = $(this).val();
-    //     output = fecha2.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
-    //     $.ajax("/api/citas/disponibilidad/" + output, function(data) {
-    //         type: "POST",
-    //         console.log(data);
-    //         var citas = data;
-    //         var opciones = `<select class="form-control" name="agendar-turno">`;
-    //         _.forIn(citas, function(value, key) {
-    //             if (value['disponibilidad'] == "free") {
-    //                 opciones += `<option value="${value.cod_horario}" onclick="agendarTurno(${key})">De las ${value.hora_inicio} a las </option><br>`
-    //             }
-    //         });
-    //         opciones += `</select>`;
-    //         $('#disponibilidad').html(opciones);
-    //     });
-    // })
-
     $(document).on("change", "#datepicker", function() {
 			fecha2 = $(this).val();
 			output = fecha2.replace(/(\d\d)\/(\d\d)\/(\d{4})/, "$3-$1-$2");
 			let datos = {
-					fecha: output,
-					tratamiento_duracion: "{{ $contratacion->tratamiento->duracion }}"
+					dia: output,
+					tratamiento_duracion: "{{ $contratacion->tratamiento->duracion }}",
+					profesionales: $('input[name="profesionales"]').val()
 			};
-			$.ajax({
-					type: "POST",
-					url: "/api/citas/disponibilidad",
-					data: datos,
-					headers: {
-							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-					},
-					beforeSend: function() {
-							$('#xx').show();
-					},
-					success: function(result) {
-
-							var citas = result;
-							var opciones = `<select class="form-control" name="agendar-turno">`;
-							_.forIn(citas, function(value, key) {
-									if (value['disponibilidad'] == "free") {
-											opciones += `<option value="${value.cod_horario}" onclick="agendarTurno(${key})">De las ${value.hora_inicio} a las ${value.hora_fin}</option><br>`
-									}
-							});
-							opciones += `</select>`;
-							$('#disponibilidad').html(opciones);
-
-					},
-					complete: function() {
-							$('#xx').hide();
-					},
-					error: function(jqXHR, testStatus, error) {
-							console.log(error);
-							$('#xx').hide();
-					},
-					timeout: 8000
-			});
+			solicitarDisponibilidad(datos);
+			
 	});
+	function solicitarDisponibilidad(datos){
+		$.ajax({
+			type: "POST",
+			url: "/api/citas/disponibilidad",
+			data: datos,
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
+			beforeSend: function() {
+				$('#xx').show();
+			},
+			success: function(result) {
+				console.log(result);
+				var citas = result;
+				var opciones = `<select class="form-control" name="agendar-turno">`;
+				_.forIn(citas, function(value, key) {
+					if (value['disponibilidad'] == "free") {
+						opciones += `<option value="${value.cod_horario}" onclick="agendarTurno(${key})">De las ${value.hora_inicio} a las ${value.hora_fin}</option><br>`
+					}
+				});
+				opciones += `</select>`;
+				$('#disponibilidad').html(opciones);
+			},
+			complete: function() {
+					$('#xx').hide();
+			},
+			error: function(jqXHR, testStatus, error) {
+					console.log(error);
+					$('#xx').hide();
+			},
+			timeout: 8000
+		});
+	}
 
 	function agendarTurno(key) {
 			let datos = {

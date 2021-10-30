@@ -41,13 +41,12 @@ class Tratamiento extends Model
         'nombre',
         'descripcion',
         'descripcion_corta',
-        'area',
+
+        'duracion',
         'sesiones',
         'valor',
         'activo',
-        'profesional',
-        'equipamiento',
-        'imagen_principal'
+
     ];
 
     /**
@@ -74,6 +73,12 @@ class Tratamiento extends Model
         'activo' => 'required'
     ];
 
+		public function getDescAttribute(){
+			return \Illuminate\Support\Str::limit($this->descripcion, 100, '...');
+		}
+		public function getDescCortAttribute(){
+			return \Illuminate\Support\Str::limit($this->descripcion_corta, 100, '...');
+		}
 
     
 }

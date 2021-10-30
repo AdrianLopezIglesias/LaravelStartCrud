@@ -8,15 +8,16 @@
                     <h1>Contratacions</h1>
                 </div>
                 <div class="col-sm-6">
-                    <a class="btn btn-primary float-right"
-                       href="{{ route('contratacions.create') }}">
-                        Add New
-                    </a>
+
                 </div>
             </div>
         </div>
     </section>
-
+		<a class      = "btn btn-outline-secondary action_handler"
+			parameters = '{"target": "modal_medium", "vista": "crear", "url": "contratacion/ver/crear"}'
+			form = "">
+			Ingresar nueva contratacion
+		</a>
     <div class="content px-3">
 
         @include('flash::message')

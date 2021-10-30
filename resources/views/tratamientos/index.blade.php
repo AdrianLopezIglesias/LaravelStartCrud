@@ -1,41 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Tratamientos</h1>
-                </div>
-                <div class="col-sm-6">
-                    <a class="btn btn-primary float-right"
-                       href="{{ route('tratamientos.create') }}">
-                        Add New
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class = "content-header">
+<div     class = "container-fluid">
+<div     class = "row mb-2">
+<div     class = "col-sm-6">
+				<h1>Tratamientos</h1>
+			</div>
+			<div class = "col-sm-6">
 
-    <div class="content px-3">
+			</div>
+		</div>
+	</div>
+</section>
 
-        @include('flash::message')
+<a class      = "btn btn-outline-secondary action_handler"
+   id         = "boton_tratamiento_abrir_form"
+   parameters = '{"target": "modal_medium", "url": "tratamiento/ver/crear"}'
+   form       = "">
+	Ingresar nuevo tratamiento
+</a>
 
-        <div class="clearfix"></div>
+<div class = "content px-3">
 
-        <div class="card">
-            <div class="card-body p-0">
-                @include('tratamientos.table')
+	@include('flash::message')
 
-                <div class="card-footer clearfix float-right">
-                    <div class="float-right">
-                        @include('adminlte-templates::common.paginate', ['records' => $tratamientos])
-                    </div>
-                </div>
-            </div>
+	<div class = "clearfix"></div>
 
-        </div>
-    </div>
+	<div class = "card">
+	<div class = "card-body p-0">
+			@include('tratamientos.table')
+
+		</div>
+
+	</div>
+</div>
 
 @endsection
-
