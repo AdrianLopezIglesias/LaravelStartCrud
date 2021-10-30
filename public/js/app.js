@@ -2094,12 +2094,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       pacientes: [],
-      paciente_search_nombre: ""
+      paciente_search_nombre: "",
+      paciente_search_dni: ""
     };
   },
   mounted: function mounted() {
@@ -2110,17 +2119,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       console.log(this.paciente_search_nombre);
-
-      if (this.paciente_search_nombre != "") {
-        return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/pacientes?nombre=" + this.paciente_search_nombre).then(function (x) {
-          _this.pacientes = x.data.data.data;
-          console.log(x);
-        });
-      }
-
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/pacientes").then(function (x) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/pacientes?nombre=" + this.paciente_search_nombre + "&dni=" + this.paciente_search_dni).then(function (x) {
         _this.pacientes = x.data.data.data;
-        console.log(x);
       });
     }
   }
@@ -19725,6 +19725,35 @@ var render = function () {
                         return
                       }
                       _vm.paciente_search_nombre = $event.target.value
+                    },
+                  },
+                }),
+              ]),
+            ]),
+            _c("tr", [
+              _c("td", { staticStyle: { width: "20%" } }, [
+                _vm._v("Búsqueda por DNI"),
+              ]),
+              _c("td", [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.paciente_search_dni,
+                      expression: "paciente_search_dni",
+                    },
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.paciente_search_dni },
+                  on: {
+                    change: _vm.getPacientes,
+                    input: function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.paciente_search_dni = $event.target.value
                     },
                   },
                 }),

@@ -13,7 +13,7 @@ use App\Helpers\StringHelper;
  *
  * @property string $nombre
  */
-class Paciente extends Model
+class Pacientes extends Model
 {
 	
 	use HasFactory;

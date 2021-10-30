@@ -15,6 +15,14 @@ div
                 v-model="paciente_search_nombre",
                 @change="getPacientes"
               )
+          tr
+            td(style={ width: '20%' }) Búsqueda por DNI
+            td 
+              input.form-control(
+                type="text",
+                v-model="paciente_search_dni",
+                @change="getPacientes"
+              )
       br
       table.table
         thead
@@ -33,6 +41,7 @@ export default {
     return {
       pacientes: [],
       paciente_search_nombre: "",
+      paciente_search_dni: "",
     };
   },
   mounted() {
@@ -41,18 +50,16 @@ export default {
   methods: {
     getPacientes() {
       console.log(this.paciente_search_nombre);
-      if (this.paciente_search_nombre != "") {
-        return axios
-          .get("/api/pacientes?nombre=" + this.paciente_search_nombre)
-          .then((x) => {
-            this.pacientes = x.data.data.data;
-            console.log(x);
-          });
-      }
-      axios.get("/api/pacientes").then((x) => {
-        this.pacientes = x.data.data.data;
-        console.log(x);
-      });
+      return axios
+        .get(
+          "/api/pacientes?nombre=" +
+            this.paciente_search_nombre +
+            "&dni=" +
+            this.paciente_search_dni
+        )
+        .then((x) => {
+          this.pacientes = x.data.data.data;
+        });
     },
   },
 };

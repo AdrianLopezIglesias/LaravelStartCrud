@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Requests\API\CreatePacientesAPIRequest;
 use App\Http\Requests\API\UpdatePacientesAPIRequest;
-use App\Models\Pacientes;
+use App\Models\Paciente;
 use App\Repositories\PacientesRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
@@ -34,25 +34,30 @@ class PacientesAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-			$nombre = "";
-            if(isSet($request->nombre) && $request->nombre != "") : $nombre = $request->nombre ? $nombre = ""; 
+        $nombre = !empty($request->nombre) ? $request->nombre : "";
+        $dni = !empty($request->dni) ? $request->dni : "";
 
-			$pacientes = Pacientes::when($request->nombre, function ($query, $role) {
-                return $query->where('role_id', $role);
+        $pacientes = Paciente::when($nombre, function ($query, $nombre) {
+            return $query->where('nombre', $nombre);
+        })
+            ->when($dni, function ($query, $dni) {
+                return $query->where('nombre', $dni);
             })
+            ->paginate(15);
 
-
-			
-			if(isSet($request->nombre) && $request->nombre != ""){
-				$nombre = mb_strtolower($request->nombre);
-				$pacientes = Pacientes::where('nombre', 'like', '%'.$nombre.'%')
-						->with(['datospersonales', 'contrataciones', 'citas', 'tratamientos'])
-						->paginate(10);
-					return $this->sendResponse($pacientes, 'Pacientes retrieved successfully');
-				}else{
-					$pacientes = Pacientes::with(['datospersonales', 'contrataciones', 'citas', 'tratamientos'])->paginate(10);
-				}
         return $this->sendResponse($pacientes, 'Pacientes retrieved successfully');
+
+
+        // if (isset($request->nombre) && $request->nombre != "") {
+        //     $nombre = mb_strtolower($request->nombre);
+        //     $pacientes = Paciente::where('nombre', 'like', '%' . $nombre . '%')
+        //         ->with(['datospersonales', 'contrataciones', 'citas', 'tratamientos'])
+        //         ->paginate(10);
+        //     return $this->sendResponse($pacientes, 'Pacientes retrieved successfully');
+        // } else {
+        //     $pacientes = Paciente::with(['datospersonales', 'contrataciones', 'citas', 'tratamientos'])->paginate(10);
+        // }
+        // return $this->sendResponse($pacientes, 'Pacientes retrieved successfully');
     }
 
     /**
