@@ -35,9 +35,13 @@ class PacientesAPIController extends AppBaseController
     public function index(Request $request)
     {
 			$nombre = "";
-			$pacientes = []; 
-			if(isSet($request->nombre) && $request->nombre != ""){
-			}			
+            if(isSet($request->nombre) && $request->nombre != "") : $nombre = $request->nombre ? $nombre = ""; 
+
+			$pacientes = Pacientes::when($request->nombre, function ($query, $role) {
+                return $query->where('role_id', $role);
+            })
+
+
 			
 			if(isSet($request->nombre) && $request->nombre != ""){
 				$nombre = mb_strtolower($request->nombre);
