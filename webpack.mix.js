@@ -26,6 +26,10 @@ const mix = require('laravel-mix');
 						use: ['raw-loader', 'pug-plain-loader']
 					}
 				]
+			},
+			{
+        test: /\.coffee$/,
+        loader: "coffee-loader",
 			}
 		]
 	}

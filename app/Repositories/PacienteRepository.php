@@ -2,16 +2,16 @@
 
 namespace App\Repositories;
 
-use App\Models\Pacientes;
+use App\Models\Paciente;
 use App\Repositories\BaseRepository;
 
 /**
- * Class PacientesRepository
+ * Class PacienteRepository
  * @package App\Repositories
  * @version September 26, 2021, 7:51 pm UTC
 */
 
-class PacientesRepository extends BaseRepository
+class PacienteRepository extends BaseRepository
 {
     /**
      * @var array
@@ -35,6 +35,6 @@ class PacientesRepository extends BaseRepository
      **/
     public function model()
     {
-        return Pacientes::class;
+        return Paciente::class;
     }
 }
