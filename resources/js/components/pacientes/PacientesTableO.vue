@@ -2,112 +2,90 @@
 div
 	.container-fluid
 		div
+			v-text-field(
+				v-model="nombre_search"
+				label="Búsqueda por nombre"
+				hide-details="auto"
+				v-on:change="customSearch()"
+			)
+			v-text-field(
+				v-model="dni_search"
+				label="Búsqueda por DNI"
+				hide-details="auto"
+				v-on:change="customSearch()"
+			)
+			v-text-field(
+				v-model="telefono_search"
+				label="Búsqueda por Teléfono"
+				hide-details="auto"
+				v-on:change="customSearch()"
+			)
 			br
-			h2 ACE
-			
-			br
-			v-data-table.elevation-1(:headers="headers" :items="desserts" :items-per-page="5")
+			v-data-table(
+				:headers="headers"
+				:items="pacientes"
+				:loading="loading"
+				loading-text="Loading... Please wait"
+				:server-items-length="totalPassengers"
+				:options.sync="options"
+				class="elevation-1"
+				)
 </template>
+
 <script>
-  export default {
-    data () {
-      return {
-        headers: [
-          {
-            text: 'Dessert (100g serving)',
-            align: 'start',
-            sortable: false,
-            value: 'name',
-          },
-          { text: 'Calories', value: 'calories' },
-          { text: 'Fat (g)', value: 'fat' },
-          { text: 'Carbs (g)', value: 'carbs' },
-          { text: 'Protein (g)', value: 'protein' },
-          { text: 'Iron (%)', value: 'iron' },
-        ],
-        desserts: [
-          {
-            name: 'Frozen Yogurt',
-            calories: 159,
-            fat: 6.0,
-            carbs: 24,
-            protein: 4.0,
-            iron: '1%',
-          },
-          {
-            name: 'Ice cream sandwich',
-            calories: 237,
-            fat: 9.0,
-            carbs: 37,
-            protein: 4.3,
-            iron: '1%',
-          },
-          {
-            name: 'Eclair',
-            calories: 262,
-            fat: 16.0,
-            carbs: 23,
-            protein: 6.0,
-            iron: '7%',
-          },
-          {
-            name: 'Cupcake',
-            calories: 305,
-            fat: 3.7,
-            carbs: 67,
-            protein: 4.3,
-            iron: '8%',
-          },
-          {
-            name: 'Gingerbread',
-            calories: 356,
-            fat: 16.0,
-            carbs: 49,
-            protein: 3.9,
-            iron: '16%',
-          },
-          {
-            name: 'Jelly bean',
-            calories: 375,
-            fat: 0.0,
-            carbs: 94,
-            protein: 0.0,
-            iron: '0%',
-          },
-          {
-            name: 'Lollipop',
-            calories: 392,
-            fat: 0.2,
-            carbs: 98,
-            protein: 0,
-            iron: '2%',
-          },
-          {
-            name: 'Honeycomb',
-            calories: 408,
-            fat: 3.2,
-            carbs: 87,
-            protein: 6.5,
-            iron: '45%',
-          },
-          {
-            name: 'Donut',
-            calories: 452,
-            fat: 25.0,
-            carbs: 51,
-            protein: 4.9,
-            iron: '22%',
-          },
-          {
-            name: 'KitKat',
-            calories: 518,
-            fat: 26.0,
-            carbs: 65,
-            protein: 7,
-            iron: '6%',
-          },
-        ],
-      }
+import axios from "axios";
+export default {
+  name: "DatatableComponent",
+  data() {
+    return {
+			nombre_search: "",
+			telefono_search: "",
+			dni_search: "",
+      page: 1,
+      totalPassengers: 0,
+      numberOfPages: 0,
+      pacientes: [],
+      loading: true,
+      options: {},
+      headers: [
+        { text: "Nombre", value: "nombre" },
+        { text: "DNI", value: "datospersonales.dni" },
+        { text: "Telefono", value: "datospersonales.telefono_principal" },
+        { text: "Telefono alternativo", value: "datospersonales.telefono_emergencias" },
+        { text: "Contrataciones", value: "contrataciones" },
+      ],
+    };
+  },
+  watch: {
+    options: {
+      handler() {
+				this.loading = true; 
+        this.readDataFromAPI();
+      },
+    deep: true,
     },
-  }
+  },
+  methods: {
+		customSearch() {
+			this.loading = true; 
+			this.readDataFromAPI();
+		},
+		readDataFromAPI() {
+			axios
+      const { page, itemsPerPage } = this.options;
+			let url = "/api/pacientes?page=" +page + "&nombre=" + this.nombre_search + "&telefono=" + this.telefono_search + "&dni=" + this.dni_search;
+      axios.get(url)
+        .then((response) => {
+          this.loading = false;
+          this.pacientes = response.data.data.data;
+          this.totalPassengers = response.data.data.total;
+          this.numberOfPages = response.data.data.last_page;
+        });
+		},
+
+  },
+  mounted() {
+    this.readDataFromAPI();
+  },
+};
 </script>
