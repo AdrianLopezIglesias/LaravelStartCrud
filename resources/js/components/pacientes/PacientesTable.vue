@@ -59,20 +59,20 @@ div
 <script>
 import axios from "axios";
 
-export default {
-  data() {
-    return {
-      pacientes: [],
+let pacientesTable = {
+	data() {
+		return {
+			pacientes: [],
       paciente_search_nombre: "",
       paciente_search_dni: "",
       paciente_search_telefono: "",
     };
   },
   mounted() {
-    this.getPacientes();
+		this.getPacientes();
   },
   methods: {
-    getPacientes() {
+		getPacientes() {
 			let url =  "/api/pacientes" 
 			url += "?nombre=" + this.paciente_search_nombre
 			url += "&dni=" + this.paciente_search_dni
@@ -87,4 +87,5 @@ export default {
     },
   },
 };
-</script>
+export default pacientesTable 
+</>
