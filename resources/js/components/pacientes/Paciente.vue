@@ -1,44 +1,15 @@
 <template lang="pug">
 div
 	.container-fluid
-		h1 Pacientes
+		h1 Paciente
 		div
-			v-text-field(
-				v-model="nombre_search"
-				label="Búsqueda por nombre"
-				hide-details="auto"
-				v-on:change="customSearch()"
-			)
-			v-text-field(
-				v-model="dni_search"
-				label="Búsqueda por DNI"
-				hide-details="auto"
-				v-on:change="customSearch()"
-			)
-			v-text-field(
-				v-model="telefono_search"
-				label="Búsqueda por Teléfono"
-				hide-details="auto"
-				v-on:change="customSearch()"
-			)
-			br
-			v-data-table(
-				@click:row="selectRow"
-				:headers="headers"
-				:items="pacientes"
-				:loading="loading"
-				item-key="id"
-				loading-text="Loading... Please wait"
-				:server-items-length="totalPassengers"
-				:options.sync="options"
-				class="elevation-1"
-				)
+		
 </template>
 
 <script>
 import axios from "axios";
 export default {
-  name: "DatatableComponent",
+	props:['data'],
   data() {
     return {
 			nombre_search: "",
@@ -69,9 +40,6 @@ export default {
     },
   },
   methods: {
-		selectRow(e){
-			this.$router.push({ name: 'Paciente', params: {id: e.id, data: e } })
-		},
 		customSearch() {
 			this.loading = true; 
 			this.readDataFromAPI();
@@ -92,6 +60,7 @@ export default {
   },
   mounted() {
     this.readDataFromAPI();
+		console.log(this.data)
   },
 };
 </script>

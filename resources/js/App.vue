@@ -1,15 +1,14 @@
 <template lang="pug">
-v-app
-	v-app-bar(color="primary" dark="")
-	SideBar
-		v-content
-			v-container-fluid
-				v-row.fill-height
-					v-col
-						transition(name="fade")
-							router-view
+	v-app
+		SideBar
+		v-main
+			v-row.fill-height
+				v-col
+					transition(name="fade")
+						router-view
+		v-footer
 </template>
-
+https://www.codeply.com/p/AtcbXz9Ybg
 <script lang="coffee">
 import PacientesTable from "./components/pacientes/PacientesTableO"
 import NavBar from "./components/ui/NavBar"
