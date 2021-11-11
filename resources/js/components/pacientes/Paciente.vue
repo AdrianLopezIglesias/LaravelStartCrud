@@ -18,7 +18,7 @@ div
 				v-tab-item(flat)
 					v-card
 						v-card-text
-							PacienteDatosPersonales(v-bind:paciente="paciente") 
+							PacienteDatosPersonales(v-bind:paciente="$store.state.paciente") 
 
 </template>
 
@@ -33,16 +33,14 @@ export default {
 	},
   data() {
     return {
-			paciente: {},
       loading: true,
     };
   },
 
   methods: {
   },
-  mounted() {
-		this.$store.commit('findPaciente', this.$route.params.id);
-		this.paciente = this.$store.state.paciente;
+  async mounted() {
+		await this.$store.commit('findPaciente', this.$route.params.id);
 		console.log(this.paciente)
   },
 };

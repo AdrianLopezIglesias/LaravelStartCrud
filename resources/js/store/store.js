@@ -25,6 +25,7 @@ const store = new Vuex.Store({
       axios.get(url)
 				.then((response) => {
 					state.paciente = response.data.data
+          console.log("🚀 ~ file: store.js ~ line 28 ~ .then ~ state.paciente", state.paciente)
         });
 		},
   }
