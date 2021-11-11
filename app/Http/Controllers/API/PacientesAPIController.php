@@ -94,7 +94,9 @@ class PacientesAPIController extends AppBaseController {
 	 */
 	public function show($id) {
 		/** @var Pacientes $pacientes */
-		$pacientes = $this->pacientesRepository->find($id);
+		$pacientes = Paciente::with(['datospersonales', 'contrataciones', 'citas', 'tratamientos'])->find($id);
+
+		// $pacientes = $this->pacientesRepository->find($id);
 
 		if (empty($pacientes)) {
 			return $this->sendError('Pacientes not found');

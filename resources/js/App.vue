@@ -8,18 +8,22 @@
 						router-view
 		v-footer
 </template>
+
 https://www.codeply.com/p/AtcbXz9Ybg
+
 <script lang="coffee">
 import PacientesTable from "./components/pacientes/PacientesTableO"
+import PacienteAgenda from './components/pacientes/PacienteAgenda'
+
 import NavBar from "./components/ui/NavBar"
 import SideBar from "./components/ui/SideBar"
-
 export default
 	name: "App"
 	components: {
 		PacientesTable,
+		PacienteAgenda,
 		NavBar,
-		SideBar
+		SideBar,
 	}
 </script>
 

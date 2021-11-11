@@ -16,9 +16,9 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/{any_path?}', [
+Route::get('/{uri}', [
 	HomeController::class, 'index'
-])->name('home');
+])->where('uri', '.*')->name('home');
 
 
 Auth::routes([

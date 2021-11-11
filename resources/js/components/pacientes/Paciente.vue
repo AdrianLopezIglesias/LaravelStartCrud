@@ -3,64 +3,47 @@ div
 	.container-fluid
 		h1 Paciente
 		div
-		
+		v-card
+			v-tabs(background-color="teal" dark vertical)
+				v-tabs-slider(color="teal")
+				v-tab Agenda
+				v-tab Datos personales
+				v-tab Contrataciones
+				v-tab Comunicaciones
+				v-tab Datos comerciales
+				v-tab-item
+					v-card(flat)
+						v-card-text
+							PacienteAgenda
+				v-tab-item(flat)
+					v-card
+						v-card-text
+							PacienteDatosPersonales(v-bind:paciente="paciente") 
+
 </template>
 
 <script>
-import axios from "axios";
+import PacienteAgenda from './PacienteAgenda'
+import PacienteDatosPersonales from './PacienteDatosPersonales'
 export default {
 	props:['data'],
+	components: {
+		PacienteAgenda,
+		PacienteDatosPersonales,
+	},
   data() {
     return {
-			nombre_search: "",
-			telefono_search: "",
-			dni_search: "",
-      page: 1,
-      totalPassengers: 0,
-      numberOfPages: 0,
-      pacientes: [],
+			paciente: {},
       loading: true,
-      options: {},
-      headers: [
-        { text: "Nombre", value: "nombre" },
-        { text: "DNI", value: "datospersonales.dni" },
-        { text: "Telefono", value: "datospersonales.telefono_principal" },
-        { text: "Telefono alternativo", value: "datospersonales.telefono_emergencias" },
-        { text: "Contrataciones", value: "contrataciones" },
-      ],
     };
   },
-  watch: {
-    options: {
-      handler() {
-				this.loading = true; 
-        this.readDataFromAPI();
-      },
-    deep: true,
-    },
-  },
-  methods: {
-		customSearch() {
-			this.loading = true; 
-			this.readDataFromAPI();
-		},
-		readDataFromAPI() {
-			axios
-      const { page, itemsPerPage } = this.options;
-			let url = "/api/pacientes?page=" +page + "&nombre=" + this.nombre_search + "&telefono=" + this.telefono_search + "&dni=" + this.dni_search;
-      axios.get(url)
-        .then((response) => {
-          this.loading = false;
-          this.pacientes = response.data.data.data;
-          this.totalPassengers = response.data.data.total;
-          this.numberOfPages = response.data.data.last_page;
-        });
-		},
 
+  methods: {
   },
   mounted() {
-    this.readDataFromAPI();
-		console.log(this.data)
+		this.$store.commit('findPaciente', this.$route.params.id);
+		this.paciente = this.$store.state.paciente;
+		console.log(this.paciente)
   },
 };
 </script>

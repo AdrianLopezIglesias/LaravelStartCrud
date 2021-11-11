@@ -70,6 +70,7 @@ export default {
   },
   methods: {
 		selectRow(e){
+			this.$store.commit('setPaciente', e);
 			this.$router.push({ name: 'Paciente', params: {id: e.id, data: e } })
 		},
 		customSearch() {
