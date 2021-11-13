@@ -90,3 +90,11 @@
 </li>
 
 
+<li class="nav-item">
+    <a href="{{ route('areas.index') }}"
+       class="nav-link {{ Request::is('areas*') ? 'active' : '' }}">
+        <p>Areas</p>
+    </a>
+</li>
+
+

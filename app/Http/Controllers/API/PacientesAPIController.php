@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\API;
 
 use App\Http\Requests\API\CreatePacientesAPIRequest;
@@ -10,26 +9,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use Response;
 
-/**
- * Class PacientesController
- * @package App\Http\Controllers\API
- */
-
 class PacientesAPIController extends AppBaseController {
-	/** @var  PacienteRepository */
 	private $pacientesRepository;
 
 	public function __construct(PacienteRepository $pacientesRepo) {
 		$this->pacientesRepository = $pacientesRepo;
 	}
 
-	/**
-	 * Display a listing of the Pacientes.
-	 * GET|HEAD /pacientes
-	 *
-	 * @param Request $request
-	 * @return Response
-	 */
 	public function index(Request $request) {
 		$nombre = !empty($request->nombre) ? $request->nombre : false;
 		$dni = !empty($request->dni) ? $request->dni : false;
@@ -114,19 +100,26 @@ class PacientesAPIController extends AppBaseController {
 	 *
 	 * @return Response
 	 */
-	public function update($id, UpdatePacientesAPIRequest $request) {
+	public function update($id, Request $request) {
 		$input = $request->all();
+		$paciente = Paciente::with('datospersonales')->find($id);
 
-		/** @var Pacientes $pacientes */
-		$pacientes = $this->pacientesRepository->find($id);
 
-		if (empty($pacientes)) {
+		if (empty($paciente)) {
 			return $this->sendError('Pacientes not found');
 		}
+		$paciente->update($input);
+		$paciente->datospersonales()->update([
+			'dni' => $input['datospersonales']['dni'],
+			'fecha_nacimiento' => $input['datospersonales']['fecha_nacimiento'],
+			'domicilio' => $input['datospersonales']['domicilio'],
+			'telefono_principal' => $input['datospersonales']['telefono_principal'],
+			'telefono_emergencias' => $input['datospersonales']['telefono_emergencias'],
+			'genero' => $input['datospersonales']['genero']
+		]);
 
-		$pacientes = $this->pacientesRepository->update($input, $id);
 
-		return $this->sendResponse($pacientes->toArray(), 'Pacientes updated successfully');
+		return $this->sendResponse($paciente->toArray(), 'Pacientes updated successfully');
 	}
 
 	/**

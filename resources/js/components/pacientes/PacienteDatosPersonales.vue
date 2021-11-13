@@ -1,5 +1,7 @@
 <template lang="pug">
 div
+	PacienteDatosPersonalesForm
+	br
 	v-simple-table
 		template(v-slot:default="")
 			tbody
@@ -28,12 +30,17 @@ div
 </template>
 
 <script>
+import PacienteDatosPersonalesForm from './PacienteDatosPersonalesForm'
+
 export default {
 	props:['paciente'],
   data() {
     return {
     };
   },
+	components:{
+		PacienteDatosPersonalesForm
+	},
 	  mounted() {
 		console.log(this.paciente)
   },

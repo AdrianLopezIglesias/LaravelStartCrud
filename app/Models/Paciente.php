@@ -14,78 +14,72 @@ use App\Helpers\StringHelper;
  *
  * @property string $nombre
  */
-class Paciente extends Model
-{
-    use HasFactory;
-    
-    public $table = 'pacientes';
+class Paciente extends Model {
+	use HasFactory;
 
-    
-    public function setNombreAttribute($value)
-    {
-        $this->attributes['nombre'] = StringHelper::removeEverything(mb_strtolower($value));
-    }
+	public $table = 'pacientes';
 
 
-    public $fillable = [
-        'nombre'
-    ];
-
-    /**
-     * The attributes that should be casted to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'id' => 'integer',
-                'nombre' => 'string'
-    ];
-
-    /**
-     * Validation rules
-     *
-     * @var array
-     */
-    public static $rules = [
-        'nombre' => 'required'
-    ];
-
-    public function datospersonales()
-    {
-        return $this->hasOne(PacienteDatosPersonales::class, 'paciente_id', 'id');
-    }
-        
-    public function contrataciones()
-    {
-        return $this->hasMany(Contratacion::class, 'paciente_id', 'id');
-    }
-    public function citas()
-    {
-        return $this->hasMany(Cita::class, 'paciente_id', 'id');
-    }
-    public function tratamientos()
-    {
-        return $this->hasManyThrough(
-            \App\Models\Tratamiento::class,  //Profesional
-                \App\Models\Contratacion::class, //ProfesionalHorario
-                'tratamiento_id', // Foreign key on the ProfesionalHorario table...
-                'id', // Foreign key on the Profesional table...
-                'id', // Local key on the Salon table...
-                'paciente_id' // Local key on the ProfesionalHorario table...
-        );
-    }
-
-    // public function setNombreAttribute($value)
-    // {
-    //     $this->attributes['nombre'] = StringHelper::remove_accents(strtolower($value));
-    // }
+	public function setNombreAttribute($value) {
+		$this->attributes['nombre'] = StringHelper::removeEverything(mb_strtolower($value));
+	}
 
 
-    public function getNombreAttribute($value)
-    {
-        return ucfirst($value);
-    }
-    // public function tratamientos(){
-    //     return $this->hasMany(Cita::class, 'paciente_id', 'id');
-    // }
+	public $fillable = [
+		'nombre'
+	];
+
+	/**
+	 * The attributes that should be casted to native types.
+	 *
+	 * @var array
+	 */
+	protected $casts = [
+		'id' => 'integer',
+		'nombre' => 'string'
+	];
+
+	/**
+	 * Validation rules
+	 *
+	 * @var array
+	 */
+	public static $rules = [
+		'nombre' => 'required'
+	];
+
+	public function datospersonales() {
+		return $this->hasOne(PacienteDatosPersonales::class, 'paciente_id', 'id');
+	}
+
+	public function contrataciones() {
+		return $this->hasMany(Contratacion::class, 'paciente_id', 'id');
+	}
+	public function citas() {
+		return $this->hasMany(Cita::class, 'paciente_id', 'id');
+	}
+	public function tratamientos() {
+		return $this->hasManyThrough(
+			\App\Models\Tratamiento::class,  //Profesional
+			\App\Models\Contratacion::class, //ProfesionalHorario
+			'tratamiento_id', // Foreign key on the ProfesionalHorario table...
+			'id', // Foreign key on the Profesional table...
+			'id', // Local key on the Salon table...
+			'paciente_id' // Local key on the ProfesionalHorario table...
+		);
+	}
+
+	// public function setNombreAttribute($value)
+	// {
+	//     $this->attributes['nombre'] = StringHelper::remove_accents(strtolower($value));
+	// }
+
+
+	public function getNombreAttribute($value) {
+		return ucwords($value);
+	}
+	// public function tratamientos(){
+	//     return $this->hasMany(Cita::class, 'paciente_id', 'id');
+	// }
+
 }

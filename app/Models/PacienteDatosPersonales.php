@@ -20,58 +20,55 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string $genero
  * @property integer $paciente_id
  */
-class PacienteDatosPersonales extends Model
-{
+class PacienteDatosPersonales extends Model {
 
-    use HasFactory;
+	use HasFactory;
 
-    public $table = 'pacientes_datos_personales';
-    
+	public $table = 'pacientes_datos_personales';
 
 
 
-    public $fillable = [
-        'dni',
-        'fecha_nacimiento',
-        'domicilio',
-        'telefono_principal',
-        'telefono_emergencias',
-        'genero',
-        'paciente_id'
-    ];
 
-    /**
-     * The attributes that should be casted to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'id' => 'integer',
-        'dni' => 'string',
-        'fecha_nacimiento' => 'date',
-        'telefono_emergencias' => 'string',
-        'genero' => 'string',
-        'paciente_id' => 'integer'
-    ];
+	public $fillable = [
+		'dni',
+		'fecha_nacimiento',
+		'domicilio',
+		'telefono_principal',
+		'telefono_emergencias',
+		'genero',
+		'paciente_id'
+	];
 
-    /**
-     * Validation rules
-     *
-     * @var array
-     */
-    public static $rules = [
-        'dni' => 'required',
-        'fecha_nacimiento' => 'required',
-        'domicilio' => 'required',
-        'telefono_principal' => 'required'
-    ];
+	/**
+	 * The attributes that should be casted to native types.
+	 *
+	 * @var array
+	 */
+	protected $casts = [
+		'id' => 'integer',
+		'dni' => 'string',
+		'fecha_nacimiento' => 'string',
+		'telefono_emergencias' => 'string',
+		'genero' => 'string',
+		'paciente_id' => 'integer'
+	];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     **/
-    public function pacientes()
-    {
-        return $this->hasOne(\App\Models\Pacientes::class);
-    }
+	/**
+	 * Validation rules
+	 *
+	 * @var array
+	 */
+	public static $rules = [
+		'dni' => 'required',
+		'fecha_nacimiento' => 'required',
+		'domicilio' => 'required',
+		'telefono_principal' => 'required'
+	];
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 **/
+	public function pacientes() {
+		return $this->hasOne(\App\Models\Pacientes::class);
+	}
 }

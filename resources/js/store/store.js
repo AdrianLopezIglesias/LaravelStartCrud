@@ -9,26 +9,31 @@ const store = new Vuex.Store({
   state: {
 		count: 0,
 		paciente: {
-			loading: true
+			loading: true,
+			datospersonales: {
+				fecha_nacimiento: '',
+			}
 		}
   },
   mutations: {
     increment (state) {
       state.count++
 		},
+		async savePaciente(state, paciente) { 
+			let url = "/api/pacientes/"+id;
+      let response = await axios.post(url, paciente);
+		},
 		setPaciente(state, paciente) { 
 			state.paciente = paciente
 		},
-		findPaciente(state, id) {
+		async findPaciente(state, id) {
 			let url = "/api/pacientes/"+id;
       console.log("🚀 ~ file: store.js ~ line 24 ~ findPaciente ~ id", id)
-      axios.get(url)
-				.then((response) => {
-					state.paciente = response.data.data
-          console.log("🚀 ~ file: store.js ~ line 28 ~ .then ~ state.paciente", state.paciente)
-        });
+      let response = await axios.get(url)
+			state.paciente = response.data.data
 		},
-  }
+	}
+
 })
 
 export default store

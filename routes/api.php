@@ -61,3 +61,6 @@ Route::resource('profesional_tratamientos', App\Http\Controllers\API\Profesional
 
 
 Route::resource('paciente_datos_personales', App\Http\Controllers\API\PacienteDatosPersonalesAPIController::class);
+
+
+Route::resource('areas', App\Http\Controllers\API\areaAPIController::class);

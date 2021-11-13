@@ -4,10 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Requests\API\CreateContratacionAPIRequest;
 use App\Http\Requests\API\UpdateContratacionAPIRequest;
-use App\Models\Contratacion;
 use App\Repositories\ContratacionRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Contratacion;
 use Response;
 
 /**
@@ -25,23 +25,29 @@ class ContratacionAPIController extends AppBaseController
         $this->contratacionRepository = $contratacionRepo;
     }
 
-    /**
-     * Display a listing of the Contratacion.
-     * GET|HEAD /contratacions
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function index(Request $request)
-    {
-        $contratacions = $this->contratacionRepository->all(
-            $request->except(['skip', 'limit']),
-            $request->get('skip'),
-            $request->get('limit')
-        );
+		public function index(Request $request) {
+			$paciente = !empty($request->paciente) ? $request->paciente : false;
+	
+			$contrataciones = Contratacion::with(['paciente', 'citas', 'tratamientos'])
+			
+				->when($paciente, function ($query, $paciente) {
+					return $query->where('paciente_id', $paciente);
+				})
 
-        return $this->sendResponse($contratacions->toArray(), 'Contratacions retrieved successfully');
-    }
+				// ->when($telefono, function ($query, $telefono) {
+				// 	return $query->whereHas('datospersonales', function ($q) use ($telefono) {
+				// 		$q->where(function ($query) use ($telefono) {
+				// 			$query->where('telefono_principal', 'like', '%' . $telefono . '%')
+				// 				->orWhere('telefono_emergencias', 'like', '%' . $telefono . '%');
+				// 		});
+				// 	});
+				// })
+				->paginate(15);
+			return $this->sendResponse($contrataciones, 'Contrataciones retrieved successfully');
+	
+
+		}
+
 
     /**
      * Store a newly created Contratacion in storage.

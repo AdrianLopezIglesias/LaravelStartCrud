@@ -19,10 +19,15 @@ div
 					v-card
 						v-card-text
 							PacienteDatosPersonales(v-bind:paciente="$store.state.paciente") 
+				v-tab-item(flat)
+					v-card
+						v-card-text
+							PacienteContrataciones
 
 </template>
 
 <script>
+import PacienteContrataciones from './PacienteContrataciones.vue'
 import PacienteAgenda from './PacienteAgenda'
 import PacienteDatosPersonales from './PacienteDatosPersonales'
 export default {
@@ -30,6 +35,7 @@ export default {
 	components: {
 		PacienteAgenda,
 		PacienteDatosPersonales,
+		PacienteContrataciones
 	},
   data() {
     return {

@@ -6,79 +6,50 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-/**
- * Class Tratamiento
- * @package App\Models
- * @version September 25, 2021, 5:51 pm UTC
- *
- * @property string $nombre
- * @property string $descripcion
- * @property string $descripcion_corta
- * @property string $area
- * @property string $sesiones
- * @property string $valor
- * @property string $activo
- * @property string $profesional
- * @property string $equipamiento
- * @property string $imagen_principal
- */
-class Tratamiento extends Model
-{
-    use SoftDeletes;
+class Tratamiento extends Model {
+	use SoftDeletes;
+	use HasFactory;
+	public $table = 'tratamientos';
 
-    use HasFactory;
+	protected $dates = ['deleted_at'];
 
-    public $table = 'tratamientos';
-    
+	public function getReferenceValue() {
+		return "{$this->nombre} ({$this->valor})";
+	}
 
-    protected $dates = ['deleted_at'];
+	public $fillable = [
+		'nombre',
+		'descripcion',
+		'descripcion_corta',
+		'area_id',
+		'duracion',
+		'sesiones',
+		'valor',
+		'activo',
+	];
 
-    public function getReferenceValue(){
-      return "{$this->nombre} ({$this->valor})";
-    } 
+	protected $casts = [
+		'id' => 'integer'
+	];
 
-    public $fillable = [
-        'nombre',
-        'descripcion',
-        'descripcion_corta',
 
-        'duracion',
-        'sesiones',
-        'valor',
-        'activo',
+	public static $rules = [
+		'nombre' => 'required',
+		'descripcion' => 'required',
+		'descripcion_corta' => 'required',
+		'area_id' => 'required',
+		'sesiones' => 'required',
+		'valor' => 'required',
+		'activo' => 'required'
+	];
 
-    ];
-
-    /**
-     * The attributes that should be casted to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'id' => 'integer'
-    ];
-
-    /**
-     * Validation rules
-     *
-     * @var array
-     */
-    public static $rules = [
-        'nombre' => 'required',
-        'descripcion' => 'required',
-        'descripcion_corta' => 'required',
-        'area' => 'required',
-        'sesiones' => 'required',
-        'valor' => 'required',
-        'activo' => 'required'
-    ];
-
-		public function getDescAttribute(){
-			return \Illuminate\Support\Str::limit($this->descripcion, 100, '...');
-		}
-		public function getDescCortAttribute(){
-			return \Illuminate\Support\Str::limit($this->descripcion_corta, 100, '...');
-		}
-
-    
+	public function getDescAttribute() {
+		return \Illuminate\Support\Str::limit($this->descripcion, 100, '...');
+	}
+	public function getDescCortAttribute() {
+		return \Illuminate\Support\Str::limit($this->descripcion_corta, 100, '...');
+	}
+	public function area() {
+		return $this->belongsTo('App\Models\Area', 'area_id');
+	}
 }

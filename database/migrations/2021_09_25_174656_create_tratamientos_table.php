@@ -24,6 +24,7 @@ class CreateTratamientosTable extends Migration
 
       $table->integer('sesiones')->nullable();
       $table->integer('duracion')->nullable();
+      $table->integer('area_id')->nullable();
 
       $table->integer('valor')->nullable();
       $table->boolean('activo')->nullable();

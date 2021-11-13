@@ -26,10 +26,10 @@ export default {
 
 			items: [
 				{
-					title: 'Dashboard', icon: 'mdi-view-dashboard', href: '/pacientes'
+					title: 'Pacientes', icon: 'mdi-view-dashboard', href: '/pacientes'
 			},
 			{
-				title: 'Dashboard2', icon: 'mdi-view-dashboard', href: '/nowwhere'
+				title: 'Tratamientos', icon: 'mdi-view-dashboard', href: '/tratamientos'
 			}
 		]
 	}

@@ -4,129 +4,112 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Requests\API\CreatetratamientoAPIRequest;
 use App\Http\Requests\API\UpdatetratamientoAPIRequest;
-use App\Models\tratamiento;
+use App\Models\Tratamiento;
 use App\Repositories\tratamientoRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use Response;
 
-/**
- * Class tratamientoController
- * @package App\Http\Controllers\API
- */
 
-class tratamientoAPIController extends AppBaseController
-{
-    /** @var  tratamientoRepository */
-    private $tratamientoRepository;
+class tratamientoAPIController extends AppBaseController {
+	/** @var  tratamientoRepoitory */
+	private $tratamientoRepository;
 
-    public function __construct(tratamientoRepository $tratamientoRepo)
-    {
-        $this->tratamientoRepository = $tratamientoRepo;
-    }
+	public function __construct(tratamientoRepository $tratamientoRepo) {
+		$this->tratamientoRepository = $tratamientoRepo;
+	}
 
-    /**
-     * Display a listing of the tratamiento.
-     * GET|HEAD /tratamientos
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function index(Request $request)
-    {
-        $tratamientos = $this->tratamientoRepository->all(
-            $request->except(['skip', 'limit']),
-            $request->get('skip'),
-            $request->get('limit')
-        );
-				$tratamientos = Tratamiento::paginate(5);
+	public function index(Request $request) {
+		$nombre = !empty($request->nombre) ? $request->nombre : false;
 
-        return $this->sendResponse($tratamientos, 'Tratamientos retrieved successfully');
-    }
+		$tratamientos = Tratamiento::with('area')
+			->when($nombre, function ($query, $nombre) {
+				return $query->where('nombre', 'like', '%' . $nombre . '%');
+			})
+			->paginate(15);
 
-    /**
-     * Store a newly created tratamiento in storage.
-     * POST /tratamientos
-     *
-     * @param CreatetratamientoAPIRequest $request
-     *
-     * @return Response
-     */
-    public function store(CreatetratamientoAPIRequest $request)
-    {
-        $input = $request->all();
+		return $this->sendResponse($tratamientos, 'Tratamientos retrieved successfully');
+	}
 
-        $tratamiento = $this->tratamientoRepository->create($input);
+	/**
+	 * Store a newly created tratamiento in storage.
+	 * POST /tratamientos
+	 *
+	 * @param CreatetratamientoAPIRequest $request
+	 *
+	 * @return Response
+	 */
+	public function store(CreatetratamientoAPIRequest $request) {
+		$input = $request->all();
 
-        return $this->sendResponse($tratamiento->toArray(), 'Tratamiento saved successfully');
-    }
+		$tratamiento = $this->tratamientoRepository->create($input);
 
-    /**
-     * Display the specified tratamiento.
-     * GET|HEAD /tratamientos/{id}
-     *
-     * @param int $id
-     *
-     * @return Response
-     */
-    public function show($id)
-    {
-        /** @var tratamiento $tratamiento */
-        $tratamiento = $this->tratamientoRepository->find($id);
+		return $this->sendResponse($tratamiento->toArray(), 'Tratamiento saved successfully');
+	}
 
-        if (empty($tratamiento)) {
-            return $this->sendError('Tratamiento not found');
-        }
+	/**
+	 * Display the specified tratamiento.
+	 * GET|HEAD /tratamientos/{id}
+	 *
+	 * @param int $id
+	 *
+	 * @return Response
+	 */
+	public function show($id) {
+		/** @var tratamiento $tratamiento */
+		$tratamiento = $this->tratamientoRepository->find($id);
 
-        return $this->sendResponse($tratamiento->toArray(), 'Tratamiento retrieved successfully');
-    }
+		if (empty($tratamiento)) {
+			return $this->sendError('Tratamiento not found');
+		}
 
-    /**
-     * Update the specified tratamiento in storage.
-     * PUT/PATCH /tratamientos/{id}
-     *
-     * @param int $id
-     * @param UpdatetratamientoAPIRequest $request
-     *
-     * @return Response
-     */
-    public function update($id, UpdatetratamientoAPIRequest $request)
-    {
-        $input = $request->all();
+		return $this->sendResponse($tratamiento->toArray(), 'Tratamiento retrieved successfully');
+	}
 
-        /** @var tratamiento $tratamiento */
-        $tratamiento = $this->tratamientoRepository->find($id);
+	/**
+	 * Update the specified tratamiento in storage.
+	 * PUT/PATCH /tratamientos/{id}
+	 *
+	 * @param int $id
+	 * @param UpdatetratamientoAPIRequest $request
+	 *
+	 * @return Response
+	 */
+	public function update($id, UpdatetratamientoAPIRequest $request) {
+		$input = $request->all();
 
-        if (empty($tratamiento)) {
-            return $this->sendError('Tratamiento not found');
-        }
+		/** @var tratamiento $tratamiento */
+		$tratamiento = $this->tratamientoRepository->find($id);
 
-        $tratamiento = $this->tratamientoRepository->update($input, $id);
+		if (empty($tratamiento)) {
+			return $this->sendError('Tratamiento not found');
+		}
 
-        return $this->sendResponse($tratamiento->toArray(), 'tratamiento updated successfully');
-    }
+		$tratamiento = $this->tratamientoRepository->update($input, $id);
 
-    /**
-     * Remove the specified tratamiento from storage.
-     * DELETE /tratamientos/{id}
-     *
-     * @param int $id
-     *
-     * @throws \Exception
-     *
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        /** @var tratamiento $tratamiento */
-        $tratamiento = $this->tratamientoRepository->find($id);
+		return $this->sendResponse($tratamiento->toArray(), 'tratamiento updated successfully');
+	}
 
-        if (empty($tratamiento)) {
-            return $this->sendError('Tratamiento not found');
-        }
+	/**
+	 * Remove the specified tratamiento from storage.
+	 * DELETE /tratamientos/{id}
+	 *
+	 * @param int $id
+	 *
+	 * @throws \Exception
+	 *
+	 * @return Response
+	 */
+	public function destroy($id) {
+		/** @var tratamiento $tratamiento */
+		$tratamiento = $this->tratamientoRepository->find($id);
 
-        $tratamiento->delete();
+		if (empty($tratamiento)) {
+			return $this->sendError('Tratamiento not found');
+		}
 
-        return $this->sendSuccess('Tratamiento deleted successfully');
-    }
+		$tratamiento->delete();
+
+		return $this->sendSuccess('Tratamiento deleted successfully');
+	}
 }
