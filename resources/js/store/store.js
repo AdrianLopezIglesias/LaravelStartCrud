@@ -13,11 +13,12 @@ const store = new Vuex.Store({
 			datospersonales: {
 				fecha_nacimiento: '',
 			}
-		}
+		},
+		valor_pagado: 0, 
   },
   mutations: {
-    increment (state) {
-      state.count++
+    setValorPagado (state, value) {
+			state.valor_pagado = value
 		},
 		async savePaciente(state, paciente) { 
 			let url = "/api/pacientes/"+id;

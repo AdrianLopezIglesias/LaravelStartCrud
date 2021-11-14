@@ -10,13 +10,15 @@ div
 				v-on:change="customSearch()"
 			)
 
-			v-text-field(
+			v-select(
+				:items="areas"
+				item-text="nombre" 
+				item-value="id" 
 				v-model="area_search"
-				label="Búsqueda por Área"
-				hide-details="auto"
+				label="label"
 				v-on:change="customSearch()"
 			)
-			v-select
+
 			br
 			v-data-table(
 				@click:row="selectRow"
@@ -34,20 +36,27 @@ div
 <script>
 import axios from "axios";
 export default {
+  props: {
+    action: {
+      type: String,
+      default: "show",
+    },
+},
   name: "DatatableComponent",
   data() {
     return {
 			nombre_search: "",
 			area_search: "",
       page: 1,
+			areas: [],
       totalPassengers: 0,
       numberOfPages: 0,
       pacientes: [],
       loading: true,
       options: {},
       headers: [
-        { text: "Nombre", value: "nombre" },
-        { text: "Descripcion", value: "descripcion_corta" },
+        { text: "Nombre", value: "nombre", sort:"false" },
+        { text: "Descripcion", value: "descripcion_corta", align: ' d-none d-lg-table-cell' },
         { text: "Sesiones", value: "sesiones" },
         { text: "Valor", value: "valor" },
         { text: "Área", value: "area.nombre" },
@@ -65,10 +74,22 @@ export default {
   },
   methods: {
 		selectRow(e){
-			this.$store.commit('setPaciente', e);
-			this.$router.push({ name: 'Paciente', params: {id: e.id, data: e } })
+			switch (this.action) {
+				case 'show':
+					this.$store.commit('setPaciente', e);
+					this.$router.push({ name: 'Paciente', params: {id: e.id, data: e } })
+					break;
+				case 'buy':
+					console.log(e.id)
+					this.$emit('buy', e)
+					break;
+			
+				default:
+					break;
+			}
 		},
 		customSearch() {
+      this.options.page = 1
 			this.loading = true; 
 			this.readDataFromAPI();
 		},
@@ -84,9 +105,16 @@ export default {
           this.numberOfPages = response.data.data.last_page;
         });
 		},
-
+		getAreas(){
+      axios.get("/api/areas")
+        .then((response) => {
+          this.areas = response.data.data;
+          console.log("🚀 ~ file: TratamientosTable.vue ~ line 99 ~ .then ~ this.areas", this.areas)
+        });
+		}
   },
   mounted() {
+		this.getAreas()
     this.readDataFromAPI();
   },
 };

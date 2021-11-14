@@ -68,7 +68,7 @@ class DatabaseSeeder extends Seeder {
 				'domicilio' => $faker->streetName . $faker->streetName . $faker->numberBetween($min = 1, $max = 9000) . "," . $faker->city,
 				'telefono_principal' => $faker->e164PhoneNumber,
 				'telefono_emergencias' => $faker->e164PhoneNumber,
-				'genero' => $faker->title,
+				'genero' => $faker->numberBetween($min = 1, $max = 2),
 			]);
 		}
 		foreach (range(1, 4) as $index) {

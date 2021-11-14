@@ -53,7 +53,7 @@ class Contratacion extends Model
     ];
 
   public function paciente() {
-    return $this->hasOne(\App\Models\Pacientes::class, 'id', 'paciente_id');
+    return $this->hasOne(\App\Models\Paciente::class, 'id', 'paciente_id');
   }
   public function tratamiento() {
     return $this->hasOne(\App\Models\Tratamiento::class, 'id', 'tratamiento_id');

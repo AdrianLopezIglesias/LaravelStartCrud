@@ -2,6 +2,7 @@
 div
 	.container-fluid
 		h1 Pacientes
+		PacienteDatosPersonalesForm(mensaje="Nuevo paciente" v-on:pacienteCreado="readDataFromAPI")
 		div
 			v-text-field(
 				v-model="nombre_search"
@@ -29,23 +30,26 @@ div
 				:loading="loading"
 				item-key="id"
 				loading-text="Loading... Please wait"
-				:server-items-length="totalPassengers"
+				:server-items-length="totalPacientes"
 				:options.sync="options"
 				class="elevation-1"
 				)
 </template>
 
 <script>
+import PacienteDatosPersonalesForm from './PacienteDatosPersonalesForm'
 import axios from "axios";
+
 export default {
   name: "DatatableComponent",
+	components: {PacienteDatosPersonalesForm},
   data() {
     return {
 			nombre_search: "",
 			telefono_search: "",
 			dni_search: "",
       page: 1,
-      totalPassengers: 0,
+      totalPacientes: 0,
       numberOfPages: 0,
       pacientes: [],
       loading: true,
@@ -74,6 +78,7 @@ export default {
 			this.$router.push({ name: 'Paciente', params: {id: e.id, data: e } })
 		},
 		customSearch() {
+			this.options.page = 1
 			this.loading = true; 
 			this.readDataFromAPI();
 		},
@@ -85,7 +90,7 @@ export default {
         .then((response) => {
           this.loading = false;
           this.pacientes = response.data.data.data;
-          this.totalPassengers = response.data.data.total;
+          this.totalPacientes = response.data.data.total;
           this.numberOfPages = response.data.data.last_page;
         });
 		},

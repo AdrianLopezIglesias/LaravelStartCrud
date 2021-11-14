@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-	PacienteDatosPersonalesForm
+	PacienteDatosPersonalesForm(:paciente="paciente")
 	br
 	v-simple-table
 		template(v-slot:default="")
@@ -17,6 +17,9 @@ div
 				tr
 					td DNI
 					td {{ paciente.datospersonales.dni }}
+				tr
+					td Domicilio
+					td {{ paciente.datospersonales.domicilio }}
 				tr
 					td Teléfono principal
 					td {{ paciente.datospersonales.telefono_principal }}

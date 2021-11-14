@@ -2,9 +2,9 @@
 v-dialog(v-model="dialog" persistent="" max-width="600px")
 		template(v-slot:activator="{ on, attrs }")
 			v-btn(color="primary" dark="" v-bind="attrs" v-on="on")
-				| Editar datos personales
+				| {{mensaje}}
 		v-card
-			v-toolbar(color="primary" dark="") Editar datos personales
+			v-toolbar(color="primary" dark="") {{mensaje}}
 			v-card-text
 				v-container
 					v-row
@@ -29,6 +29,8 @@ v-dialog(v-model="dialog" persistent="" max-width="600px")
 						v-col(cols="12")
 							v-text-field(label="DNI*" required="" v-model="paciente.datospersonales.dni")
 						v-col(cols="12")
+							v-text-field(label="Domicilio*" required="" v-model="paciente.datospersonales.domicilio")
+						v-col(cols="12")
 							v-text-field(label="Teléfono principal*" required="" v-model="paciente.datospersonales.telefono_principal")
 						v-col(cols="12")
 							v-text-field(label="Teléfono de emergencias*" required="" v-model="paciente.datospersonales.telefono_emergencias")
@@ -42,21 +44,42 @@ v-dialog(v-model="dialog" persistent="" max-width="600px")
 </template>
 
 <script>
-  import moment from 'moment'
+import moment from "moment";
 import _ from "lodash";
-import axios from "axios"
+import axios from "axios";
 
 export default {
+  props: {
+    mensaje: {
+      type: String,
+      default: "Editar datos personales",
+    },
+    paciente: {
+      type: Object,
+      default() {
+        return {
+					nombre: "",
+          datospersonales: {
+            genero: "",
+            dni: "",
+            telefono_principal: "",
+            telefono_emergencias: "",
+            fecha_nacimiento: "dd/mm/yyyy",
+          },
+        };
+      },
+    },
+  },
   data: () => ({
     dialog: false,
     activePicker: null,
     date: null,
     menu: false,
-		generos: [
-			{id: 1, text: "Masculino"},
-			{id: 2, text: "Femenino"},
-			{id: 3, text: "Otros"}
-		]
+    generos: [
+      { id: 1, text: "Masculino" },
+      { id: 2, text: "Femenino" },
+      { id: 3, text: "Otros" },
+    ],
   }),
   watch: {
     menu(val) {
@@ -64,53 +87,60 @@ export default {
     },
   },
   computed: {
-		fecha_nacimiento_dia: {
-			get() {
-				return this.paciente.datospersonales.fecha_nacimiento.split("/")[0]
-			},
-			set(value){
-				let fecha_nacimiento = this.paciente.datospersonales.fecha_nacimiento.split("/")
-				fecha_nacimiento[0] = value
-				this.paciente.datospersonales.fecha_nacimiento = fecha_nacimiento.join("/")
-			}
-		},
-		fecha_nacimiento_mes: {
-			get() {
-				return this.paciente.datospersonales.fecha_nacimiento.split("/")[1]
-			},
-			set(value){
-				let fecha_nacimiento = this.paciente.datospersonales.fecha_nacimiento.split("/")
-				fecha_nacimiento[1] = value
-				this.paciente.datospersonales.fecha_nacimiento = fecha_nacimiento.join("/")
-			}
-		},
-		fecha_nacimiento_ano: {
-			get() {
-				return this.paciente.datospersonales.fecha_nacimiento.split("/")[2]
-			},
-			set(value){
-				let fecha_nacimiento = this.paciente.datospersonales.fecha_nacimiento.split("/")
-				fecha_nacimiento[2] = value
-				this.paciente.datospersonales.fecha_nacimiento = fecha_nacimiento.join("/")
-			}
-		},
-    paciente: {
+    fecha_nacimiento_dia: {
       get() {
-        return _.cloneDeep(this.$store.state.paciente);
+        return this.paciente.datospersonales.fecha_nacimiento.split("/")[0];
+      },
+      set(value) {
+        let fecha_nacimiento = this.paciente.datospersonales.fecha_nacimiento.split("/");
+        fecha_nacimiento[0] = value;
+        this.paciente.datospersonales.fecha_nacimiento = fecha_nacimiento.join("/");
       },
     },
+    fecha_nacimiento_mes: {
+      get() {
+        return this.paciente.datospersonales.fecha_nacimiento.split("/")[1];
+      },
+      set(value) {
+        let fecha_nacimiento = this.paciente.datospersonales.fecha_nacimiento.split("/");
+        fecha_nacimiento[1] = value;
+        this.paciente.datospersonales.fecha_nacimiento = fecha_nacimiento.join("/");
+      },
+    },
+    fecha_nacimiento_ano: {
+      get() {
+        return this.paciente.datospersonales.fecha_nacimiento.split("/")[2];
+      },
+      set(value) {
+        let fecha_nacimiento = this.paciente.datospersonales.fecha_nacimiento.split("/");
+        fecha_nacimiento[2] = value;
+        this.paciente.datospersonales.fecha_nacimiento = fecha_nacimiento.join("/");
+      },
+    },
+    // paciente: {
+    //   get() {
+    //     return _.cloneDeep(this.$store.state.paciente);
+    //   },
+    // },
   },
 
   methods: {
     submit() {
-			this.dialog = false; 
-			let url = "/api/pacientes/"+this.paciente.id;
-      axios.put(url, this.paciente).then(response => {
-				console.log(response)
-			})
-			this.$store.commit('setPaciente', this.paciente);
+      this.dialog = false;
+			if(this.paciente.id) {
+				let url = "/api/pacientes/" + this.paciente.id;
+				axios.put(url, this.paciente).then((response) => {
+					console.log(response);
+				});
+      	this.$store.commit("setPaciente", this.paciente);
+			}else{
+				let url = "/api/pacientes";
+				axios.post(url, this.paciente).then((response) => {
+					console.log(response);
+					this.$emit("pacienteCreado");
+				});
+			}
     },
-
   },
 
   mounted() {

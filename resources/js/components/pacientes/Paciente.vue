@@ -8,7 +8,7 @@ div
 				v-tabs-slider(color="teal")
 				v-tab Agenda
 				v-tab Datos personales
-				v-tab Contrataciones
+				v-tab Tratamientos
 				v-tab Comunicaciones
 				v-tab Datos comerciales
 				v-tab-item
@@ -22,12 +22,13 @@ div
 				v-tab-item(flat)
 					v-card
 						v-card-text
-							PacienteContrataciones
+							PacienteTratamientos(v-bind:paciente="$store.state.paciente") 
 
 </template>
 
 <script>
-import PacienteContrataciones from './PacienteContrataciones.vue'
+
+import PacienteTratamientos from './PacienteTratamientos.vue'
 import PacienteAgenda from './PacienteAgenda'
 import PacienteDatosPersonales from './PacienteDatosPersonales'
 export default {
@@ -35,7 +36,7 @@ export default {
 	components: {
 		PacienteAgenda,
 		PacienteDatosPersonales,
-		PacienteContrataciones
+		PacienteTratamientos,
 	},
   data() {
     return {

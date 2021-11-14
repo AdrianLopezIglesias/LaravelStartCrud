@@ -21,10 +21,14 @@ class tratamientoAPIController extends AppBaseController {
 
 	public function index(Request $request) {
 		$nombre = !empty($request->nombre) ? $request->nombre : false;
+		$area = !empty($request->area) ? $request->area : false;
 
 		$tratamientos = Tratamiento::with('area')
 			->when($nombre, function ($query, $nombre) {
 				return $query->where('nombre', 'like', '%' . $nombre . '%');
+			})
+			->when($area, function ($query, $area) {
+				return $query->where('area_id', $area);
 			})
 			->paginate(15);
 

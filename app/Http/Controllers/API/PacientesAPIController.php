@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\API;
 
 use App\Http\Requests\API\CreatePacientesAPIRequest;
@@ -38,51 +39,31 @@ class PacientesAPIController extends AppBaseController {
 					});
 				});
 			})
+			->orderBy('id', 'desc')
 			->paginate(15);
 		return $this->sendResponse($pacientes, 'Pacientes retrieved successfully');
-
-
-		// if (isset($request->nombre) && $request->nombre != "") {
-		//     $nombre = mb_strtolower($request->nombre);
-		//     $pacientes = Paciente::where('nombre', 'like', '%' . $nombre . '%')
-		//         ->with(['datospersonales', 'contrataciones', 'citas', 'tratamientos'])
-		//         ->paginate(10);
-		//     return $this->sendResponse($pacientes, 'Pacientes retrieved successfully');
-		// } else {
-		//     $pacientes = Paciente::with(['datospersonales', 'contrataciones', 'citas', 'tratamientos'])->paginate(10);
-		// }
-		// return $this->sendResponse($pacientes, 'Pacientes retrieved successfully');
 	}
 
-	/**
-	 * Store a newly created Pacientes in storage.
-	 * POST /pacientes
-	 *
-	 * @param CreatePacientesAPIRequest $request
-	 *
-	 * @return Response
-	 */
-	public function store(CreatePacientesAPIRequest $request) {
+
+	public function store(Request $request) {
 		$input = $request->all();
+		$paciente = Paciente::create($input);
 
-		$pacientes = $this->pacientesRepository->create($input);
+		$paciente->datospersonales()->create([
+			'dni' => $input['datospersonales']['dni'],
+			'fecha_nacimiento' => $input['datospersonales']['fecha_nacimiento'],
+			'domicilio' => $input['datospersonales']['domicilio'],
+			'telefono_principal' => $input['datospersonales']['telefono_principal'],
+			'telefono_emergencias' => $input['datospersonales']['telefono_emergencias'],
+			'genero' => $input['datospersonales']['genero']
+		]);
 
-		return $this->sendResponse($pacientes->toArray(), 'Pacientes saved successfully');
+
+		return $this->sendResponse($paciente->toArray(), 'Paciente created successfully');
 	}
 
-	/**
-	 * Display the specified Pacientes.
-	 * GET|HEAD /pacientes/{id}
-	 *
-	 * @param int $id
-	 *
-	 * @return Response
-	 */
 	public function show($id) {
-		/** @var Pacientes $pacientes */
 		$pacientes = Paciente::with(['datospersonales', 'contrataciones', 'citas', 'tratamientos'])->find($id);
-
-		// $pacientes = $this->pacientesRepository->find($id);
 
 		if (empty($pacientes)) {
 			return $this->sendError('Pacientes not found');
@@ -91,15 +72,6 @@ class PacientesAPIController extends AppBaseController {
 		return $this->sendResponse($pacientes->toArray(), 'Pacientes retrieved successfully');
 	}
 
-	/**
-	 * Update the specified Pacientes in storage.
-	 * PUT/PATCH /pacientes/{id}
-	 *
-	 * @param int $id
-	 * @param UpdatePacientesAPIRequest $request
-	 *
-	 * @return Response
-	 */
 	public function update($id, Request $request) {
 		$input = $request->all();
 		$paciente = Paciente::with('datospersonales')->find($id);

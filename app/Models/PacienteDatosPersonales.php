@@ -39,11 +39,7 @@ class PacienteDatosPersonales extends Model {
 		'paciente_id'
 	];
 
-	/**
-	 * The attributes that should be casted to native types.
-	 *
-	 * @var array
-	 */
+
 	protected $casts = [
 		'id' => 'integer',
 		'dni' => 'string',
@@ -53,11 +49,6 @@ class PacienteDatosPersonales extends Model {
 		'paciente_id' => 'integer'
 	];
 
-	/**
-	 * Validation rules
-	 *
-	 * @var array
-	 */
 	public static $rules = [
 		'dni' => 'required',
 		'fecha_nacimiento' => 'required',
@@ -65,9 +56,7 @@ class PacienteDatosPersonales extends Model {
 		'telefono_principal' => 'required'
 	];
 
-	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
-	 **/
+
 	public function pacientes() {
 		return $this->hasOne(\App\Models\Pacientes::class);
 	}
