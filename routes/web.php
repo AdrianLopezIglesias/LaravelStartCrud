@@ -1,7 +1,19 @@
 <?php
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+
+Route::get('/', [
+
+	HomeController::class, 'index'
+]);
+
+Route::get('/restart', function () {
+	Artisan::call('migrate:fresh --seed');
+	return "database restarted";
+});
+
 Route::middleware(['auth'])->group(function () {
 	Route::get('/cache', function () {
 		Artisan::call('cache:clear');
@@ -36,9 +48,6 @@ Auth::routes([
 
 
 
-Route::get('/', [
-	HomeController::class, 'index'
-]);
 
 Route::get('/{uri}', [
 	HomeController::class, 'index'

@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\area;
+use App\Models\Area;
 
 class CreateareaRequest extends FormRequest
 {

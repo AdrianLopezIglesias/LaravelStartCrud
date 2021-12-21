@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\API;
 
-use App\Models\area;
+use App\Models\Area;
 use InfyOm\Generator\Request\APIRequest;
 
 class UpdateareaAPIRequest extends APIRequest

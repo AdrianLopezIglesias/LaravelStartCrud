@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Requests\API\CreateareaAPIRequest;
 use App\Http\Requests\API\UpdateareaAPIRequest;
-use App\Models\area;
+use App\Models\Area;
 use App\Repositories\areaRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;

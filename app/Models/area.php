@@ -14,37 +14,32 @@ use Eloquent as Model;
  * @property string $nombre
  * @property string $descripcion
  */
-class area extends Model
-{
+class Area extends Model {
 
 
-    public $table = 'areas';
-    
+	public $table = 'areas';
 
 
 
-    public $fillable = [
-        'nombre',
-        'descripcion'
-    ];
 
-    /**
-     * The attributes that should be casted to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'id' => 'integer'
-    ];
+	public $fillable = [
+		'nombre',
+		'descripcion'
+	];
 
-    /**
-     * Validation rules
-     *
-     * @var array
-     */
-    public static $rules = [
-        
-    ];
+	/**
+	 * The attributes that should be casted to native types.
+	 *
+	 * @var array
+	 */
+	protected $casts = [
+		'id' => 'integer'
+	];
 
-    
+	/**
+	 * Validation rules
+	 *
+	 * @var array
+	 */
+	public static $rules = [];
 }

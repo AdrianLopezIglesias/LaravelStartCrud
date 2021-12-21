@@ -28,7 +28,7 @@ div
 import axios from "axios";
 
 export default {
-	props: ['paciente'],
+	props     : ['paciente', 'reload'],
 	components: {},
   data() {
     return {
@@ -51,6 +51,9 @@ export default {
     };
   },
   watch: {
+		reload: function(newVal, oldVal) {
+      this.readDataFromAPI()
+    },
     options: {
       handler() {
 				this.loading = true; 
