@@ -29,8 +29,8 @@ const store = new Vuex.Store({
 		},
 		async findPaciente(state, id) {
 			let url = "/api/pacientes/"+id;
-      console.log("🚀 ~ file: store.js ~ line 24 ~ findPaciente ~ id", id)
-      let response = await axios.get(url)
+			console.log("🚀 ~ file: store.js ~ line 24 ~ findPaciente ~ id", id)
+			let response = await axios.get(url)
 			state.paciente = response.data.data
 		},
 	}
