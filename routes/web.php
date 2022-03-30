@@ -117,3 +117,6 @@ Route::resource('pacienteDatosPersonales', App\Http\Controllers\PacienteDatosPer
 
 
 Route::resource('areas', App\Http\Controllers\areaController::class);
+
+
+Route::resource('pensamientos', App\Http\Controllers\PensamientoController::class);

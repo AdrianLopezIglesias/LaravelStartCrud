@@ -98,3 +98,11 @@
 </li>
 
 
+<li class="nav-item">
+    <a href="{{ route('pensamientos.index') }}"
+       class="nav-link {{ Request::is('pensamientos*') ? 'active' : '' }}">
+        <p>Pensamientos</p>
+    </a>
+</li>
+
+

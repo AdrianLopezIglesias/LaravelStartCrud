@@ -1,24 +1,10 @@
 <template lang="pug">
 div
 	.container-fluid
-		h1 Pacientes
-		PacienteDatosPersonalesForm(mensaje="Nuevo paciente" v-on:pacienteCreado="readDataFromAPI")
 		div
 			v-text-field(
 				v-model="nombre_search"
 				label="Búsqueda por nombre"
-				hide-details="auto"
-				v-on:change="customSearch()"
-			)
-			v-text-field(
-				v-model="dni_search"
-				label="Búsqueda por DNI"
-				hide-details="auto"
-				v-on:change="customSearch()"
-			)
-			v-text-field(
-				v-model="telefono_search"
-				label="Búsqueda por Teléfono"
 				hide-details="auto"
 				v-on:change="customSearch()"
 			)

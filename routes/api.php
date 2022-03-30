@@ -62,3 +62,6 @@ Route::resource('paciente_datos_personales', App\Http\Controllers\API\PacienteDa
 
 
 Route::resource('areas', areaAPIController::class);
+
+
+Route::resource('pensamientos', PensamientoAPIController::class);

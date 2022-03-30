@@ -1,6 +1,5 @@
 <template lang="pug">
 	v-app
-		SideBar
 		v-main
 			v-row.fill-height
 				v-col
@@ -9,21 +8,14 @@
 		v-footer
 </template>
 
-https://www.codeply.com/p/AtcbXz9Ybg
 
 <script lang="coffee">
-import PacientesTable from "./components/pacientes/PacientesTableO"
-import PacienteAgenda from './components/pacientes/PacienteAgenda'
+import Pensamientos from "./components/Pensamientos"
 
-import NavBar from "./components/ui/NavBar"
-import SideBar from "./components/ui/SideBar"
 export default
 	name: "App"
 	components: {
-		PacientesTable,
-		PacienteAgenda,
-		NavBar,
-		SideBar,
+		Pensamientos,
 	}
 </script>
 
