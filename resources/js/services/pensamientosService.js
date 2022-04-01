@@ -7,6 +7,9 @@ const pensamientosService = {
 	
 	post: async (data) => {
 		return axios.post('/api/pensamientos', data);
+	},
+	patch: async (data) => {
+		return axios.patch('/api/pensamientos/'+data.id, data);
 	}
 }
 	

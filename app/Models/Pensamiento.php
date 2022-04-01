@@ -53,5 +53,8 @@ class Pensamiento extends Model {
 
     public function getMetadataAttribute($value) {
         return json_decode($value);
+        // return $value;
     }
+
+    
 }

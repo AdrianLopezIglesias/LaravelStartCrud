@@ -18,6 +18,7 @@ div
 			div(class="d-flex flex-row" tile flat)
 				v-select(
 					:items="tags"
+					filled
 					hide-details="auto",
 					v-model="tagSelector"
 					:dense="true",
@@ -44,7 +45,7 @@ div
 				:hide-default-header="true"
 			)
 				template(v-slot:item.texto="{item}")
-					| {{item.texto}}
+					div(v-on:click="editPensamiento(item)") {{item.texto}}
 				template(v-slot:item.metadata="{item}")
 					div(class="d-flex flex-row" tile flat)
 						div(v-for="x in item.metadata")
@@ -70,11 +71,12 @@ div
 							:delimiters="[' ']"
 							v-on:keydown.enter="post()"
 						)
-						v-select(
+						v-combobox(
 							:items="tags"
 							hide-details="auto",
 							v-model="tagSelector"
 							:dense="true",
+							filled
 							v-on:change="addMetadataItemEdit"
 						)
 						template(v-for="x in pensamientoEditado.metadata")
@@ -114,6 +116,7 @@ export default {
 			tagSelector: "",
 			editPensamientoDialog: false,
 			pensamientoEditado: {
+				id: 0,
 				texto: "",
 				metadata: [],
 			},
@@ -131,14 +134,6 @@ export default {
 			let pensamientos = this.pensamientos;
 			let metadata = this.metadata;
 			let value = this.value;
-
-			// if (value.length > 0) {
-			// 	pensamientos = pensamientos.filter(
-			// 		(pensamiento) =>
-			// 			pensamiento.texto.toLowerCase().includes(value.toLowerCase()) ||
-			// 			pensamiento.metadata.includes(value)
-			// 	);
-			// }
 
 			if (metadata.length > 0) {
 				metadata.forEach(x => {
@@ -165,7 +160,6 @@ export default {
 				texto: this.value,
 				metadata: this.metadata,
 			});
-			this.getData();
 			this.value = "";
 		},
 		getData() {
@@ -199,16 +193,19 @@ export default {
 		},
 		editPensamiento(p){
 			console.log(p)
-			this.pensamientoEditado = p; 
+			this.pensamientoEditado = _.cloneDeep(p); 
 			this.editPensamientoDialog = true; 
-			console.log(this.editPensamientoDialog)
 		},
 		closeEditPensamientoDialog(p){
 			this.editPensamientoDialog = false; 
 		},
 		submitEditPensamiento(p){
 			this.editPensamientoDialog = false; 
-
+			this.$store.dispatch("pensamientos/patch", {
+				id: this.pensamientoEditado.id,
+				texto: this.pensamientoEditado.texto,
+				metadata: this.pensamientoEditado.metadata,
+			});
 		}
 
 	},

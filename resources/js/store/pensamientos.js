@@ -45,12 +45,22 @@ let pensamientos = {
 					console.log(x)
 				})
 				.catch(x => {
-						context.commit('setError', true);
-						console.error(x)
+					context.commit('setError', true);
+					console.error(x)
 				})
 		}, 
 		post(context, data) {
 			pensamientosService.post(data)
+				.then(x => {
+					console.log(x)
+					context.dispatch('get')
+				})
+				.catch(x => {
+					console.error(x)
+				})
+		}, 
+		patch(context, data) {
+			pensamientosService.patch(data)
 				.then(x => {
 					console.log(x)
 					context.dispatch('get')

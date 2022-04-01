@@ -2180,6 +2180,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -2203,6 +2205,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       tagSelector: "",
       editPensamientoDialog: false,
       pensamientoEditado: {
+        id: 0,
         texto: "",
         metadata: []
       }
@@ -2217,13 +2220,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     filteredPensamientos: function filteredPensamientos() {
       var pensamientos = this.pensamientos;
       var metadata = this.metadata;
-      var value = this.value; // if (value.length > 0) {
-      // 	pensamientos = pensamientos.filter(
-      // 		(pensamiento) =>
-      // 			pensamiento.texto.toLowerCase().includes(value.toLowerCase()) ||
-      // 			pensamiento.metadata.includes(value)
-      // 	);
-      // }
+      var value = this.value;
 
       if (metadata.length > 0) {
         metadata.forEach(function (x) {
@@ -2247,7 +2244,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         texto: this.value,
         metadata: this.metadata
       });
-      this.getData();
       this.value = "";
     },
     getData: function getData() {
@@ -2284,15 +2280,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     editPensamiento: function editPensamiento(p) {
       console.log(p);
-      this.pensamientoEditado = p;
+      this.pensamientoEditado = lodash__WEBPACK_IMPORTED_MODULE_1___default().cloneDeep(p);
       this.editPensamientoDialog = true;
-      console.log(this.editPensamientoDialog);
     },
     closeEditPensamientoDialog: function closeEditPensamientoDialog(p) {
       this.editPensamientoDialog = false;
     },
     submitEditPensamiento: function submitEditPensamiento(p) {
       this.editPensamientoDialog = false;
+      this.$store.dispatch("pensamientos/patch", {
+        id: this.pensamientoEditado.id,
+        texto: this.pensamientoEditado.texto,
+        metadata: this.pensamientoEditado.metadata
+      });
     }
   },
   mounted: function mounted() {
@@ -2451,6 +2451,28 @@ var pensamientosService = {
     }
 
     return post;
+  }(),
+  patch: function () {
+    var _patch = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(data) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              return _context2.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default().patch('/api/pensamientos/' + data.id, data));
+
+            case 1:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    function patch(_x2) {
+      return _patch.apply(this, arguments);
+    }
+
+    return patch;
   }()
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (pensamientosService);
@@ -2522,6 +2544,14 @@ var pensamientos = {
     },
     post: function post(context, data) {
       _services_pensamientosService__WEBPACK_IMPORTED_MODULE_0__.default.post(data).then(function (x) {
+        console.log(x);
+        context.dispatch('get');
+      })["catch"](function (x) {
+        console.error(x);
+      });
+    },
+    patch: function patch(context, data) {
+      _services_pensamientosService__WEBPACK_IMPORTED_MODULE_0__.default.patch(data).then(function (x) {
         console.log(x);
         context.dispatch('get');
       })["catch"](function (x) {
@@ -21579,7 +21609,12 @@ var render = function () {
             { staticClass: "d-flex flex-row", attrs: { tile: "", flat: "" } },
             [
               _c("v-select", {
-                attrs: { items: _vm.tags, "hide-details": "auto", dense: true },
+                attrs: {
+                  items: _vm.tags,
+                  filled: "",
+                  "hide-details": "auto",
+                  dense: true,
+                },
                 on: { change: _vm.addMetadataItem },
                 model: {
                   value: _vm.tagSelector,
@@ -21635,7 +21670,19 @@ var render = function () {
                 key: "item.texto",
                 fn: function (ref) {
                   var item = ref.item
-                  return [_vm._v(_vm._s(item.texto))]
+                  return [
+                    _c(
+                      "div",
+                      {
+                        on: {
+                          click: function ($event) {
+                            return _vm.editPensamiento(item)
+                          },
+                        },
+                      },
+                      [_vm._v(_vm._s(item.texto))]
+                    ),
+                  ]
                 },
               },
               {
@@ -21733,11 +21780,12 @@ var render = function () {
                           expression: "pensamientoEditado.texto",
                         },
                       }),
-                      _c("v-select", {
+                      _c("v-combobox", {
                         attrs: {
                           items: _vm.tags,
                           "hide-details": "auto",
                           dense: true,
+                          filled: "",
                         },
                         on: { change: _vm.addMetadataItemEdit },
                         model: {

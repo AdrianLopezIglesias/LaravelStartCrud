@@ -111,18 +111,23 @@ class PensamientoAPIController extends AppBaseController {
      * @return Response
      */
     public function update($id, UpdatePensamientoAPIRequest $request) {
-        $input = $request->all();
+        try {
 
-        /** @var Pensamiento $pensamiento */
-        $pensamiento = $this->pensamientoRepository->find($id);
+            $input = $request->all();
+            dd($input);
+            /** @var Pensamiento $pensamiento */
+            $pensamiento = $this->pensamientoRepository->find($id);
 
-        if (empty($pensamiento)) {
-            return $this->sendError('Pensamiento not found');
+            if (empty($pensamiento)) {
+                return $this->sendError('Pensamiento not found');
+            }
+
+            $pensamiento = $this->pensamientoRepository->update($input, $id);
+
+            return $this->sendResponse($pensamiento->toArray(), 'Pensamiento updated successfully');
+        } catch (\Exception $e) {
+            return $this->sendError($e->getMessage());
         }
-
-        $pensamiento = $this->pensamientoRepository->update($input, $id);
-
-        return $this->sendResponse($pensamiento->toArray(), 'Pensamiento updated successfully');
     }
 
     /**
