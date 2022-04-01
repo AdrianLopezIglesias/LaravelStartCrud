@@ -16,14 +16,6 @@ div
 				v-on:keydown.enter="post()"
 			)
 			div(class="d-flex flex-row" tile flat)
-				v-select(
-					:items="tags"
-					filled
-					hide-details="auto",
-					v-model="tagSelector"
-					:dense="true",
-					v-on:change="addMetadataItem"
-				)
 				div(v-for="item in metadata")
 					v-chip(
 						class="ma-2"

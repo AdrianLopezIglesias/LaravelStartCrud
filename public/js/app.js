@@ -2174,14 +2174,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -21607,51 +21599,33 @@ var render = function () {
           _c(
             "div",
             { staticClass: "d-flex flex-row", attrs: { tile: "", flat: "" } },
-            [
-              _c("v-select", {
-                attrs: {
-                  items: _vm.tags,
-                  filled: "",
-                  "hide-details": "auto",
-                  dense: true,
-                },
-                on: { change: _vm.addMetadataItem },
-                model: {
-                  value: _vm.tagSelector,
-                  callback: function ($$v) {
-                    _vm.tagSelector = $$v
-                  },
-                  expression: "tagSelector",
-                },
-              }),
-              _vm._l(_vm.metadata, function (item) {
-                return _c(
-                  "div",
-                  [
-                    _c(
-                      "v-chip",
-                      {
-                        staticClass: "ma-2",
-                        attrs: {
-                          close: "",
-                          small: "",
-                          color: "green",
-                          outlined: "",
-                        },
-                        on: {
-                          "click:close": function ($event) {
-                            return _vm.removeMetadataItem(item)
-                          },
+            _vm._l(_vm.metadata, function (item) {
+              return _c(
+                "div",
+                [
+                  _c(
+                    "v-chip",
+                    {
+                      staticClass: "ma-2",
+                      attrs: {
+                        close: "",
+                        small: "",
+                        color: "green",
+                        outlined: "",
+                      },
+                      on: {
+                        "click:close": function ($event) {
+                          return _vm.removeMetadataItem(item)
                         },
                       },
-                      [_vm._v(_vm._s(item))]
-                    ),
-                  ],
-                  1
-                )
-              }),
-            ],
-            2
+                    },
+                    [_vm._v(_vm._s(item))]
+                  ),
+                ],
+                1
+              )
+            }),
+            0
           ),
           _c("v-data-table", {
             attrs: {
