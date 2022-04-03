@@ -20,9 +20,6 @@ let pensamientos = {
 		getPalabras: state => {
 			return state.palabras
 		},
-		getPalabras: state => {
-			return state.palabras
-		},
 		getMeta: state => {
 			return state.meta
 		},

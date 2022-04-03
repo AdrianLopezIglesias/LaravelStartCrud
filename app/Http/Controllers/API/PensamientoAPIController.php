@@ -31,7 +31,7 @@ class PensamientoAPIController extends AppBaseController {
      * @return Response
      */
     public function index(Request $request) {
-        $pensamientos = Pensamiento::orderBy('id', 'desc')->get();
+        $pensamientos = Pensamiento::orderBy('id', 'asc')->get();
         // $pensamientos = $this->pensamientoRepository->all(
         //     $request->except(['skip', 'limit']),
         //     $request->get('skip'),
