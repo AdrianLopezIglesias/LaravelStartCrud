@@ -2,7 +2,7 @@
 .container-fluid
 	v-data-table(
 		:headers="headers",
-		:items="filteredPensamientos",
+		:items="filteredThoughts",
 		:loading="loading",
 		limit="200",
 		:options="options",
@@ -10,7 +10,8 @@
 		:show-select="showSelect"
 		hide-default-footer
 		loading-text="Loading... Please wait",
-		:hide-default-header="true")
+		:hide-default-header="true"
+		)
 		template(v-slot:item.texto="{item}")
 			div(v-on:click="editPensamiento(item)") {{item.texto}}
 		template(v-slot:item.metadata="{item}")
@@ -22,7 +23,7 @@
 						outlined
 						@click="addMetadataItem(x)"
 					) {{x}}
-	v-dialog(v-model="editPensamientoDialog" width="500")
+	//- v-dialog(v-model="editPensamientoDialog" width="500")
 		v-card
 			v-card-text
 				br
@@ -60,7 +61,6 @@
 				v-btn(color="danger" @click="closeEditPensamientoDialog") Cancelar
 				v-btn(color="primary" @click="submitEditPensamiento") Actualizar
 	Footer
-
 </template>
 
 <script>
@@ -95,34 +95,15 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			pensamientos: "pensamientos/getPensamientos",
 			loading: "pensamientos/getLoading",
-			palabras: "pensamientos/getPalabras",
+			words: "pensamientos/getWords",
 			tags: "pensamientos/getTags",
+			filteredThoughts: "pensamientos/getFilteredThoughts",
 		}),
 		showSelect() {
 			return false;
 		},
-		filteredPensamientos() {
-			let pensamientos = this.pensamientos;
-			let metadata = this.metadata;
-			let value = this.value;
 
-			if (metadata.length > 0) {
-				metadata.forEach(x => {
-					pensamientos = pensamientos.filter(
-						(pensamiento) => {
-							if(_.isArray(pensamiento.metadata)) {
-								return pensamiento.metadata.includes(x)
-							}
-						}
-					);
-				})
-			}
-
-			return pensamientos;
-
-		}
 	},
 	watch: {},
 	methods: {
@@ -138,24 +119,8 @@ export default {
 		getData() {
 			this.$store.dispatch("pensamientos/get");
 		},
-		handleKey(e){
-		},
-		removeMetadataItem(e){
-			let index = this.metadata.indexOf(e)
-			this.metadata.splice(index, 1)
-		},
-		removeMetadataItemEdit(e){
-			let index = this.pensamientoEditado.metadata.indexOf(e)
-			this.pensamientoEditado.metadata.splice(index, 1)
-		},
 		addMetadataItem(e){
 			this.metadata.push(e)
-			this.$nextTick(() => {
-				this.tagSelector  = ''
-			})
-		},
-		addMetadataItemEdit(e){
-			this.pensamientoEditado.metadata.push(e)
 			this.$nextTick(() => {
 				this.tagSelector  = ''
 			})
@@ -188,18 +153,3 @@ export default {
 	},
 };
 </script>
-
-<style>
-    .theme--light.v-data-table tbody tr.v-data-table__selected {
-        background: #f5c17d70 !important;
-    }
-    .theme--dark.v-data-table tbody tr.v-data-table__selected {
-        background: #a17b4970 !important;
-    }
-    .theme--dark.v-data-table tbody tr.v-data-table__selected:hover {
-        background: #a17b49c2 !important;
-    }
-    .theme--light.v-data-table tbody tr.v-data-table__selected:hover {
-        background: #ffd296d2 !important;
-    }
-</style>

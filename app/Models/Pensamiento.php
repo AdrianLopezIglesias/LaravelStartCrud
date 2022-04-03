@@ -14,7 +14,7 @@ use Eloquent as Model;
  * @property string $created_at
  * @property string $updated_at
  * @property string $texto
- * @property string $metadata
+ * @property string $tags
  */
 class Pensamiento extends Model {
 
@@ -28,7 +28,7 @@ class Pensamiento extends Model {
         'created_at',
         'updated_at',
         'texto',
-        'metadata'
+        'tags'
     ];
 
     /**
@@ -51,10 +51,8 @@ class Pensamiento extends Model {
         return date('d-m-Y', strtotime($value));
     }
 
-    public function getMetadataAttribute($value) {
+    public function getTagsAttribute($value) {
         return json_decode($value);
         // return $value;
     }
-
-    
 }

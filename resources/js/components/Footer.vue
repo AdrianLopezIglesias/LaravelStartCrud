@@ -2,7 +2,6 @@
 v-footer(app height="72" inset)
 	v-text-field(
 		v-model="value",
-		:items="palabras"
 		label=""
 		hide-details="auto"
 		dense
@@ -15,7 +14,7 @@ v-footer(app height="72" inset)
 		v-on:keydown.enter="post()"
 	)
 	div(class="d-flex flex-row" tile flat)
-		div(v-for="item in metadata")
+		div(v-for="item in inputTags")
 			v-chip(
 				class="ma-2"
 				close
@@ -36,32 +35,37 @@ export default {
 	components: {},
 	data() {
 		return {
-
+			value: "",
 		};
 	},
 	computed: {
 		...mapGetters({
-			pensamientos: "pensamientos/getPensamientos",
 			loading: "pensamientos/getLoading",
-			palabras: "pensamientos/getPalabras",
+			words: "pensamientos/getWords",
 			tags: "pensamientos/getTags",
+			filteredThoughts: "pensamientos/getFilteredThoughts",
+			inputTags: "pensamientos/getInputTags",
+			inputValue: "pensamientos/getInputValue",
 		}),
 	},
 	watch: {},
 	methods: {
 		post() {
-			this.metadata = this.metadata.concat(hashtagHelper.getHashTag(this.value))
-			this.value = hashtagHelper.removeHashTag(this.value)
-			this.$store.dispatch("pensamientos/post", {
-				texto: this.value,
-				metadata: this.metadata,
-			});
-			this.value = "";
+			// this.inputTags = this.inputTags.concat(hashtagHelper.getHashTag(this.value))
+			// this.value = hashtagHelper.removeHashTag(this.value)
+			// this.$store.dispatch("pensamientos/post", {
+			// 	texto: this.value,
+			// 	inputTags: this.inputTags,
+			// });
+			// this.value = "";
 		},
 		removeMetadataItem(e){
-			let index = this.metadata.indexOf(e)
-			this.metadata.splice(index, 1)
+			let index = this.inputTags.indexOf(e)
+			this.inputTags.splice(index, 1)
 		},
+		handleKey(e){
+
+		}
 	},
 	mounted() {
 	},

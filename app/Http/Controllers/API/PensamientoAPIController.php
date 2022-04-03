@@ -31,33 +31,33 @@ class PensamientoAPIController extends AppBaseController {
      * @return Response
      */
     public function index(Request $request) {
-        $pensamientos = Pensamiento::orderBy('id', 'asc')->get();
-        // $pensamientos = $this->pensamientoRepository->all(
+        $thoughts = Pensamiento::orderBy('id', 'asc')->get();
+        // $thoughts = $this->thoughtRepository->all(
         //     $request->except(['skip', 'limit']),
         //     $request->get('skip'),
         //     $request->get('limit'),
         // );
-        $palabras = [];
-        $etiquetas = [];
-        foreach ($pensamientos as $pensamiento) {
-            $p = explode(" ", $pensamiento->texto);
-            foreach ($p as $palabra) {
-                if (!in_array($palabra, $palabras)) {
-                    array_push($palabras, $palabra);
+        $words = [];
+        $tags = [];
+        foreach ($thoughts as $thought) {
+            $p = explode(" ", $thought->texto);
+            foreach ($p as $word) {
+                if (!in_array($word, $words)) {
+                    array_push($words, $word);
                 }
             }
-            $e = $pensamiento->metadata;
-            foreach ($pensamiento->metadata as $etiqueta) {
-                if (!in_array($etiqueta, $etiquetas)) {
-                    array_push($etiquetas, $etiqueta);
+            $e = $thought->tags;
+            foreach ($thought->tags as $etiqueta) {
+                if (!in_array($etiqueta, $tags)) {
+                    array_push($tags, $etiqueta);
                 }
             }
         }
-        foreach ($pensamientos as $pensamiento) {
+        foreach ($thoughts as $thought) {
         }
-        $response['pensamientos']  = $pensamientos;
-        $response['etiquetas'] = $etiquetas;
-        $response['palabras'] = $palabras;
+        $response['thoughts']  = $thoughts;
+        $response['tags'] = $tags;
+        $response['words'] = $words;
 
         return response()->json($response);
 

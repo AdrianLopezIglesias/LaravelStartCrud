@@ -1,5 +1,5 @@
 import axios from 'axios'
-const pensamientosService = {
+const thoughtsService = {
 
 	get: () => {
 		return axios.get('/api/pensamientos');
@@ -13,4 +13,4 @@ const pensamientosService = {
 	}
 }
 	
-export default pensamientosService; 
+export default thoughtsService; 
