@@ -72,7 +72,13 @@ let thoughts = {
 					context.commit('setLoading', false);
 				})
 		}, 
-		post(context, data) {
+		post({ commit, state }) {
+			let tags = state.tags.concat(hashtagHelper.getHashTag(state.inputValue))
+			let inputValue = hashtagHelper.removeHashTag(state.inputValue)
+			let data = {
+				texto: inputValue,
+				tags: tags
+			}
 			thoughtsService.post(data)
 				.then(x => {
 					console.log(x)
@@ -92,6 +98,9 @@ let thoughts = {
 					console.error(x)
 				})
 		}, 
+		setInputValue({ commit }, value) {
+			commit('setInputValue', value)
+		}
 	},
 	mutations: {
 		setThoughts(state, data) {
