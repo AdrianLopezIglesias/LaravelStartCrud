@@ -74,8 +74,8 @@ class PensamientoAPIController extends AppBaseController {
      */
     public function store(CreatePensamientoAPIRequest $request) {
         $input = $request->all();
-        $input['metadata'] = json_encode($request->metadata);
-        $pensamiento = $this->pensamientoRepository->create($input);
+        $input['tags'] = json_encode($request->tags);
+        $pensamiento = Pensamiento::create($input);
 
 
         return $this->sendResponse($pensamiento->toArray(), 'Pensamiento saved successfully');
@@ -114,15 +114,16 @@ class PensamientoAPIController extends AppBaseController {
         try {
 
             $input = $request->all();
-            dd($input);
             /** @var Pensamiento $pensamiento */
             $pensamiento = $this->pensamientoRepository->find($id);
 
             if (empty($pensamiento)) {
                 return $this->sendError('Pensamiento not found');
             }
-
-            $pensamiento = $this->pensamientoRepository->update($input, $id);
+            $pensamiento->tags = json_encode($request->tags);
+            $pensamiento->texto = $request->texto;
+            $pensamiento->save();
+            // $pensamiento = $this->pensamientoRepository->update($input, $id);
 
             return $this->sendResponse($pensamiento->toArray(), 'Pensamiento updated successfully');
         } catch (\Exception $e) {

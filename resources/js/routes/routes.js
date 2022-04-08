@@ -1,6 +1,6 @@
-import Pensamientos from '../components/Pensamientos.vue'
+import Thoughts from '../components/Thoughts.vue'
 const routes = [
-  { path: '/', component: Pensamientos },
+  { path: '/', component: Thoughts },
 
 ]
 

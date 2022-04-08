@@ -12,7 +12,13 @@ let thoughts = {
 		error: false,
 		inputTags: [],
 		inputValue: "",
-		excluded: []
+		excludedTags: [],
+		editDialog: false,
+		editedThought: {
+			id: 0,
+			texto: "",
+			tags: [],
+		}
 	}), 
 	getters: {
 		getThoughts: state => {
@@ -30,7 +36,7 @@ let thoughts = {
 		getFilteredThoughts: state =>  {
 			let thoughts = state.thoughts;
 			let tags = state.inputTags;
-			console.log(thoughts)
+			let excludedTags = state.excludedTags;
 			let ft = thoughts
 			if (tags.length > 0) {
 				ft = [];
@@ -38,23 +44,42 @@ let thoughts = {
 					ft = thoughts.filter(
 						(thought) => {
 							if (_.isArray(thought.tags)) {
-								console.log(thought.tags.includes(x))
 								return thought.tags.includes(x)
 							}
 						}
 					);
 				})
 			}
-			console.log(ft)
+			if (excludedTags.length > 0) {
+				excludedTags.forEach(x => {
+					ft = ft.filter(
+						(thought) => {
+							if (_.isArray(thought.tags)) {
+								return !thought.tags.includes(x)
+							}
+						}
+					);
+				})
+			}
 
-			return thoughts;
+			return ft;
 		},
 		getInputValue: state =>  {
 			return state.inputValue;
 		},
 		getInputTags: state => {
 			return state.inputTags;
+		},
+		getExcludedTags: state => {
+			return state.excludedTags;
+		},
+		getEditDialog: state => {
+			return state.editDialog;
+		},
+		getEditedThought: state => {
+			return state.editedThought;
 		}
+
 	},
 	actions: {
 		get(context) { 
@@ -72,17 +97,15 @@ let thoughts = {
 					context.commit('setLoading', false);
 				})
 		}, 
-		post({ commit, state }) {
-			let tags = state.tags.concat(hashtagHelper.getHashTag(state.inputValue))
-			let inputValue = hashtagHelper.removeHashTag(state.inputValue)
+		post({ dispatch, commit, state }) {
 			let data = {
-				texto: inputValue,
-				tags: tags
+				texto: state.inputValue,
+				tags: state.inputTags
 			}
 			thoughtsService.post(data)
 				.then(x => {
-					console.log(x)
-					context.dispatch('get')
+					dispatch('get')
+					commit('setInputValue', "")
 				})
 				.catch(x => {
 					console.error(x)
@@ -91,7 +114,6 @@ let thoughts = {
 		patch(context, data) {
 			thoughtsService.patch(data)
 				.then(x => {
-					console.log(x)
 					context.dispatch('get')
 				})
 				.catch(x => {
@@ -121,9 +143,41 @@ let thoughts = {
 		setInputTags(state, data) {
 			state.inputTags = data
 		},
+		setExcludedTags(state, data) {
+			state.excludedTags = data
+		},
 		setInputValue(state, data) {
 			state.inputValue = data
 		},
+		addInputTag(state, tag) {
+			if (!state.inputTags.includes(tag)) {
+				state.inputTags.push(tag)
+			}
+		},
+		addExcludedTag(state, tag) {
+			if (!state.excludedTags.includes(tag)) {
+				state.excludedTags.push(tag)
+			}
+		},
+		removeExcludedTag(state, tag) {
+			state.excludedTags = state.excludedTags.filter(x => x !== tag)
+		},
+		removeInputTag(state, tag) {
+			state.inputTags = state.inputTags.filter(x => x !== tag)
+		},
+		setEditDialog(state, boolean) {
+			state.editDialog = boolean
+		},
+		setEditThought(state, thought) {
+			state.editedThought = thought
+		},
+		removeLastTag(state) {
+			if (state.inputTags.length > 0) {
+				state.inputTags.pop()
+			} else {
+				state.excludedTags.pop()
+			}
+		}
 
 	},
 

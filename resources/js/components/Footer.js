@@ -8,30 +8,61 @@ export default {
 	data() {
 		return {
 			input: "",
+			localInputTags: [],
+			localExcludedTags: []
 		};
 	},
 	computed: {
 		...mapGetters({
-			loading: "pensamientos/getLoading",
 			words: "pensamientos/getWords",
 			tags: "pensamientos/getTags",
-			filteredThoughts: "pensamientos/getFilteredThoughts",
 			inputTags: "pensamientos/getInputTags",
 			inputValue: "pensamientos/getInputValue",
+			excludedTags: "pensamientos/getExcludedTags",
 		}),
 	},
-	watch: {},
+	watch: {
+		inputTags(val) {
+			this.localInputTags = val;
+		},
+		excludedTags(val) {
+			this.localExcludedTags = val;
+		},
+	},
 	methods: {
 		post() {
+			this.processInput();
 			this.$store.dispatch("pensamientos/post")
+			this.input = "";
 		},
-		removeMetadataItem(e){
-			let index = this.inputTags.indexOf(e)
-			this.inputTags.splice(index, 1)
+		removeInputTag(e) {
+			this.$store.commit("pensamientos/removeInputTag", e)
 		},
-		handleKey(e){
-			console.log(this.input)
-			this.$store.dispatch("pensamientos/setInputValue", (this.input))
+		removeExcludedTag(e) {
+			this.$store.commit("pensamientos/removeExcludedTag", e)
+		},
+		handleKey(e) {
+			if (e.keyCode == 27) {
+				this.$store.commit("pensamientos/removeLastTag")
+			}
+			if (e.keyCode == 32) {
+				this.processInput();
+			}
+			this.$store.commit("pensamientos/setInputValue", (this.input))
+		}, 
+		processInput() {
+			let tag = hashtagHelper.getHashTag(this.input);
+			let excludedTags = hashtagHelper.getExcludedTag(this.input);
+			if (tag) {
+				this.localInputTags.push(tag)
+				this.$store.commit("pensamientos/setInputTags", (this.localInputTags))
+				this.input = hashtagHelper.removeHashTag(this.input)
+			}
+			if (excludedTags) {
+				this.localExcludedTags.push(excludedTags)
+				this.input = hashtagHelper.removeExcludedTag(this.input)
+				this.$store.commit("pensamientos/setExcludedTags", (this.localExcludedTags))
+			}
 		}
 	},
 	mounted() {

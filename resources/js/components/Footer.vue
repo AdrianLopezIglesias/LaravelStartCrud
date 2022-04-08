@@ -9,7 +9,7 @@ v-footer(app height="72" inset)
 		outlined
 		:solo="true"
 		multiple
-		v-on:keydown="handleKey"
+		v-on:keyup="handleKey"
 		:delimiters="[' ']"
 		v-on:keydown.enter="post()"
 	)
@@ -21,7 +21,17 @@ v-footer(app height="72" inset)
 				x-small
 				color="green"
 				outlined
-				@click:close="removeMetadataItem(item)"
+				@click:close="removeInputTag(item)"
+			) {{item}}
+	div(class="d-flex flex-row" tile flat)
+		div(v-for="item in excludedTags")
+			v-chip(
+				class="ma-2"
+				close
+				x-small
+				color="red"
+				outlined
+				@click:close="removeExcludedTag(item)"
 			) {{item}}
 </template>
 

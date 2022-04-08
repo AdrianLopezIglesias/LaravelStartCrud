@@ -10,12 +10,10 @@
 
 
 <script lang="coffee">
-import Pensamientos from "./components/Pensamientos"
 
 export default
 	name: "App"
 	components: {
-		Pensamientos,
 	}
 </script>
 
