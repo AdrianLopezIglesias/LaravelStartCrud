@@ -18,7 +18,8 @@ let thoughts = {
 			id: 0,
 			texto: "",
 			tags: [],
-		}
+		},
+		selectedThoughts: [],
 	}), 
 	getters: {
 		getThoughts: state => {
@@ -35,9 +36,12 @@ let thoughts = {
 		},
 		getFilteredThoughts: state =>  {
 			let thoughts = state.thoughts;
+
 			let tags = state.inputTags;
 			let excludedTags = state.excludedTags;
+
 			let ft = thoughts
+
 			if (tags.length > 0) {
 				ft = [];
 				tags.forEach(x => {
@@ -50,7 +54,9 @@ let thoughts = {
 					);
 				})
 			}
+
 			if (excludedTags.length > 0) {
+				console.log(excludedTags)
 				excludedTags.forEach(x => {
 					ft = ft.filter(
 						(thought) => {
@@ -78,7 +84,10 @@ let thoughts = {
 		},
 		getEditedThought: state => {
 			return state.editedThought;
-		}
+		},
+		getSelectedThoughts: state => {
+			return state.selectedThoughts;
+		},
 
 	},
 	actions: {
@@ -177,6 +186,9 @@ let thoughts = {
 			} else {
 				state.excludedTags.pop()
 			}
+		},
+		setSelectedThoughts(state, thoughts) {
+			state.selectedThoughts = thoughts
 		}
 
 	},

@@ -10,7 +10,7 @@ export default {
 		return text;
 	},
 	getExcludedTag(text) {
-		text = text.match(/(^|\s)(-[a-z\d-]+ )/ig)
+		text = text.match(/(^|\s)(-[a-z\d-]+)/ig)
 		if (!text) return ''
 		text = text[0]
 		text = text.replace('-', '')

@@ -1,5 +1,13 @@
 <template lang="pug">
 v-footer(app height="72" inset)
+	v-btn(
+		v-if="selectedThoughts.length > 0"
+		color="primary"
+		fab
+		small
+		@click="showDialog = true"
+	) 
+		v-icon() mdi-pencil
 	v-text-field(
 		v-model="input",
 		label=""

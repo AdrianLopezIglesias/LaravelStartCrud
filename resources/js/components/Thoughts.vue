@@ -1,6 +1,7 @@
 <template lang="pug">
 .container-fluid( ref="container" )
 	v-data-table(
+		v-model="selectedThoughts",
 		:headers="headers",
 		:items="filteredThoughts",
 		:loading="loading",

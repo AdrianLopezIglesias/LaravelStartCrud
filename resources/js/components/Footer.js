@@ -19,6 +19,7 @@ export default {
 			inputTags: "pensamientos/getInputTags",
 			inputValue: "pensamientos/getInputValue",
 			excludedTags: "pensamientos/getExcludedTags",
+			selectedThoughts: "pensamientos/getSelectedThoughts",
 		}),
 	},
 	watch: {

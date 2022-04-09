@@ -14,6 +14,7 @@ export default {
 			options: {
 				itemsPerPage: 5000,
 			},
+			selectedThoughts: [],
 		};
 	},
 	computed: {
@@ -22,7 +23,7 @@ export default {
 			filteredThoughts: "pensamientos/getFilteredThoughts",
 		}),
 		showSelect() {
-			return false;
+			return true;
 		},
 	},
 	watch: {
@@ -31,6 +32,11 @@ export default {
 				const container = this.$refs.container;
 				this.$vuetify.goTo(container.scrollHeight*this.filteredThoughts.length)
 			},
+		},
+		selectedThoughts: {
+			handler() {
+				this.$store.commit("pensamientos/setSelectedThoughts", this.selectedThoughts);
+			}
 		}
 	},
 	methods: {

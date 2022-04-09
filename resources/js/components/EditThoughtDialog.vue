@@ -33,8 +33,7 @@ v-dialog(v-model="editDialog" width="500")
 				) {{x}}
 		v-card-actions
 			v-spacer
-			v-btn(color="danger" @click="closeEditDialog") Cancelar
-			v-btn(color="primary" @click="submitEditThought") Actualizar
+			v-btn(color="primary" @click="closeEditDialog") Actualizar
 </template>
 
 <script src="./EditThoughtDialog.js"/>

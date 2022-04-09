@@ -23,13 +23,24 @@ export default {
 			tags: "pensamientos/getTags",
 			filteredThoughts: "pensamientos/getFilteredThoughts",
 			editedThought: "pensamientos/getEditedThought",
-			editDialog: "pensamientos/getEditDialog",
 		}),
+		editDialog: {
+			get: function() {
+				return this.$store.getters["pensamientos/getEditDialog"];
+			},
+			set: function (value) {
+				return this.$store.commit("pensamientos/setEditDialog", value);
+			}
+
+		}			
 	},
 	watch: {
 		editDialog(val) {
 			if (val == true) {
 				this.localEditedThought = _.cloneDeep(this.editedThought);
+			}
+			if (val == false) {
+				this.submitEditThought();
 			}
 		},
 	},
@@ -43,13 +54,12 @@ export default {
 		closeEditDialog() {
 			this.$store.commit("pensamientos/setEditDialog", false);
 		},
-		submitEditThought(p){
+		submitEditThought(){
 			this.$store.dispatch("pensamientos/patch", {
 				id: this.localEditedThought.id,
 				texto: this.localEditedThought.texto,
 				tags: this.localEditedThought.tags,
 			});
-			this.closeEditDialog();
 		}
 	},
 };
