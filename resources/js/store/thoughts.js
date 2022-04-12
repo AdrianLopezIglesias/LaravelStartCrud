@@ -43,7 +43,6 @@ let thoughts = {
 			let ft = thoughts
 
 			if (tags.length > 0) {
-				ft = [];
 				tags.forEach(tag => {
 					ft = ft.filter(
 						(thought) => {

@@ -2847,7 +2847,6 @@ var thoughts = {
       var ft = thoughts;
 
       if (tags.length > 0) {
-        ft = [];
         tags.forEach(function (tag) {
           ft = ft.filter(function (thought) {
             if (lodash__WEBPACK_IMPORTED_MODULE_2___default().isArray(thought.tags)) {
