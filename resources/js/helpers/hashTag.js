@@ -25,6 +25,7 @@ export default {
 		if (Array.isArray(text)) {
 			return text = text.join(' ')
 		}
+		text.replace("#", "")
 		return text.replace(/(^|\s)(#[a-z\d-]+)/ig, "");
 	},
 	removeExcludedTag(text) {

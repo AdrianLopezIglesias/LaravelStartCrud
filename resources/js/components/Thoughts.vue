@@ -42,7 +42,7 @@ export default {
 		return {
 			headers: [
 				{ text: "Texto", value: "texto", width:"70%" },
-				{ text: "tags", value: "tags" },
+				{ text: "tags", value: "tags", width: "20%" },
 			],
 			options: {
 				itemsPerPage: 5000,

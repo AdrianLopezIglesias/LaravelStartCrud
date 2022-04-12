@@ -44,11 +44,11 @@ let thoughts = {
 
 			if (tags.length > 0) {
 				ft = [];
-				tags.forEach(x => {
-					ft = thoughts.filter(
+				tags.forEach(tag => {
+					ft = ft.filter(
 						(thought) => {
 							if (_.isArray(thought.tags)) {
-								return thought.tags.includes(x)
+								return thought.tags.includes(tag)
 							}
 						}
 					);

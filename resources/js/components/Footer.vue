@@ -8,29 +8,8 @@ v-footer(app height="72" inset)
 		@click="showDialog = true"
 	) 
 		v-icon() mdi-pencil
-	v-text-field(
-		v-model="input",
-		label=""
-		hide-details="auto"
-		dense
-		flat
-		outlined
-		:solo="true"
-		multiple
-		v-on:keyup="handleKey"
-		:delimiters="[' ']"
-		v-on:keydown.enter="post()"
-	)
-	div(class="d-flex flex-row" tile flat)
-		div(v-for="item in inputTags")
-			v-chip(
-				class="ma-2"
-				close
-				x-small
-				color="green"
-				outlined
-				@click:close="removeInputTag(item)"
-			) {{item}}
+	ThoughtEditor(  )
+	Tags( )
 	div(class="d-flex flex-row" tile flat)
 		div(v-for="item in excludedTags")
 			v-chip(
@@ -45,12 +24,12 @@ v-footer(app height="72" inset)
 
 <script>
 import { mapGetters } from "vuex";
-import hashtagHelper from '../helpers/hashTag';
 import _ from 'lodash'
+import ThoughtEditor from "./ThoughtEditor.vue";
+import Tags from "./Tags.vue";
 
 export default {
-	name: "Footer",
-	components: {},
+	components: {ThoughtEditor, Tags},
 	data() {
 		return {
 			input: "",
@@ -77,40 +56,13 @@ export default {
 		},
 	},
 	methods: {
-		post() {
-			this.processInput();
-			this.$store.dispatch("pensamientos/post")
-			this.input = "";
-		},
 		removeInputTag(e) {
 			this.$store.commit("pensamientos/removeInputTag", e)
 		},
 		removeExcludedTag(e) {
 			this.$store.commit("pensamientos/removeExcludedTag", e)
 		},
-		handleKey(e) {
-			if (e.keyCode == 27) {
-				this.$store.commit("pensamientos/removeLastTag")
-			}
-			if (e.keyCode == 32) {
-				this.processInput();
-			}
-			this.$store.commit("pensamientos/setInputValue", (this.input))
-		}, 
-		processInput() {
-			let tag = hashtagHelper.getHashTag(this.input);
-			let excludedTags = hashtagHelper.getExcludedTag(this.input);
-			if (tag) {
-				this.localInputTags.push(tag)
-				this.$store.commit("pensamientos/setInputTags", (this.localInputTags))
-				this.input = hashtagHelper.removeHashTag(this.input)
-			}
-			if (excludedTags) {
-				this.localExcludedTags.push(excludedTags)
-				this.input = hashtagHelper.removeExcludedTag(this.input)
-				this.$store.commit("pensamientos/setExcludedTags", (this.localExcludedTags))
-			}
-		}
+
 	},
 	mounted() {
 	},

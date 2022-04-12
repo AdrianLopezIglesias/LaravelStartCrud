@@ -14,13 +14,9 @@ v-dialog(v-model="editDialog" width="500")
 				:delimiters="[' ']"
 				v-on:keydown.enter="post()"
 			)
-			v-combobox(
-				:items="tags"
-				hide-details="auto",
-				v-model="tagSelector"
-				:dense="true",
-				filled
-				v-on:change="addInputTag"
+			TagSelector(
+				:tags="tags"
+				v-on:add-input-tag="addInputTag"
 			)
 			template(v-for="x in localEditedThought.tags")
 				v-chip(
@@ -39,10 +35,13 @@ v-dialog(v-model="editDialog" width="500")
 <script>
 
 import { mapGetters } from "vuex";
+import TagSelector from './TagSelector.vue';
 import _ from 'lodash'
 
 export default {
-	name: "DatatableComponent",
+	components: {
+		TagSelector,
+	},
 	data() {
 		return {
 			tagSelector: "",
