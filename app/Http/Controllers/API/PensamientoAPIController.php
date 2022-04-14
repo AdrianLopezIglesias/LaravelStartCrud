@@ -141,16 +141,18 @@ class PensamientoAPIController extends AppBaseController {
      *
      * @return Response
      */
-    public function destroy($id) {
-        /** @var Pensamiento $pensamiento */
-        $pensamiento = $this->pensamientoRepository->find($id);
+    public function destroy(UpdatePensamientoAPIRequest $request) {
+        $input = $request->all();
+        foreach ($input as $id) {
+            /** @var Pensamiento $pensamiento */
+            $pensamiento = $this->pensamientoRepository->find($id);
 
-        if (empty($pensamiento)) {
-            return $this->sendError('Pensamiento not found');
+            if (empty($pensamiento)) {
+                break;
+            }
+            $pensamiento->delete();
         }
 
-        $pensamiento->delete();
-
-        return $this->sendSuccess('Pensamiento deleted successfully');
+        return $this->sendResponse($input, 'Pensamiento deleted successfully');
     }
 }

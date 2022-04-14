@@ -1,14 +1,7 @@
 <template lang="pug">
 v-footer(app height="72" inset)
-	v-btn(
-		v-if="selectedThoughts.length > 0"
-		color="primary"
-		fab
-		small
-		@click="showDialog = true"
-	) 
-		v-icon() mdi-pencil
-	ThoughtEditor(  )
+	DeleteButton( :selectedThoughts="selectedThoughts" )
+	ThoughtEditor
 	Tags( )
 	div(class="d-flex flex-row" tile flat)
 		div(v-for="item in excludedTags")
@@ -26,15 +19,17 @@ v-footer(app height="72" inset)
 import { mapGetters } from "vuex";
 import _ from 'lodash'
 import ThoughtEditor from "./ThoughtEditor.vue";
+import DeleteButton from "./DeleteButton.vue";
 import Tags from "./Tags.vue";
 
 export default {
-	components: {ThoughtEditor, Tags},
+	components: {ThoughtEditor, Tags, DeleteButton},
 	data() {
 		return {
 			input: "",
 			localInputTags: [],
-			localExcludedTags: []
+			localExcludedTags: [],
+			deleteDialog: false,
 		};
 	},
 	computed: {

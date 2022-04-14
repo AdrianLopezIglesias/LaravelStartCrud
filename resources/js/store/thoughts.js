@@ -130,7 +130,31 @@ let thoughts = {
 		}, 
 		setInputValue({ commit }, value) {
 			commit('setInputValue', value)
-		}
+		},
+		deleteSelectedThoughts({ dispatch, commit, state }) {
+			let ids = state.selectedThoughts.map(x => x.id)
+			thoughtsService.delete(ids)
+				.then(x => {
+					console.log(x)
+					dispatch('get')
+					commit('setSelectedThoughts', [])
+				})
+				.catch(x => {
+					console.error(x)
+				})
+		},
+		editSelectedThoughts({ dispatch, commit, state }) {
+			let ids = state.selectedThoughts.map(x => x.id)
+			thoughtsService.edit(ids)
+				.then(x => {
+					console.log(x)
+					dispatch('get')
+					commit('setSelectedThoughts', [])
+				})
+				.catch(x => {
+					console.error(x)
+				})
+		},
 	},
 	mutations: {
 		setThoughts(state, data) {
@@ -188,7 +212,8 @@ let thoughts = {
 		},
 		setSelectedThoughts(state, thoughts) {
 			state.selectedThoughts = thoughts
-		}
+		},
+
 
 	},
 

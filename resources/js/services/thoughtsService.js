@@ -10,6 +10,10 @@ const thoughtsService = {
 	},
 	patch: async (data) => {
 		return axios.patch('/api/pensamientos/'+data.id, data);
+	},
+	delete: async (ids) => {
+		console.log(ids)
+		return axios.post('/api/pensamientos/delete', ids);
 	}
 }
 	

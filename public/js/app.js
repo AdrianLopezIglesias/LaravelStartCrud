@@ -2065,6 +2065,120 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/DeleteButton.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/DeleteButton.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _DeleteDialog_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteDialog.vue */ "./resources/js/components/DeleteDialog.vue");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    DeleteDialog: _DeleteDialog_vue__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  props: {
+    selectedThoughts: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
+    }
+  },
+  data: function data() {
+    return {};
+  },
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)({})),
+  methods: {
+    openDialog: function openDialog() {
+      this.$refs.deleteDialog.openDialog();
+    }
+  },
+  watch: {
+    selectedThoughts: function selectedThoughts(val) {
+      console.log(val);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/DeleteDialog.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/DeleteDialog.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      dialog: false
+    };
+  },
+  methods: {
+    submit: function submit(e) {
+      this.$store.dispatch("pensamientos/deleteSelectedThoughts");
+      this.dialog = false;
+    },
+    openDialog: function openDialog() {
+      this.dialog = true;
+    }
+  },
+  props: {
+    selectedThoughts: {
+      type: Array,
+      "default": function _default() {
+        return [];
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditThoughtDialog.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditThoughtDialog.vue?vue&type=script&lang=js& ***!
@@ -2200,11 +2314,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ThoughtEditor_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ThoughtEditor.vue */ "./resources/js/components/ThoughtEditor.vue");
-/* harmony import */ var _Tags_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tags.vue */ "./resources/js/components/Tags.vue");
+/* harmony import */ var _DeleteButton_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DeleteButton.vue */ "./resources/js/components/DeleteButton.vue");
+/* harmony import */ var _Tags_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Tags.vue */ "./resources/js/components/Tags.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2228,13 +2343,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
+
 
 
 
@@ -2242,16 +2351,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     ThoughtEditor: _ThoughtEditor_vue__WEBPACK_IMPORTED_MODULE_1__.default,
-    Tags: _Tags_vue__WEBPACK_IMPORTED_MODULE_2__.default
+    Tags: _Tags_vue__WEBPACK_IMPORTED_MODULE_3__.default,
+    DeleteButton: _DeleteButton_vue__WEBPACK_IMPORTED_MODULE_2__.default
   },
   data: function data() {
     return {
       input: "",
       localInputTags: [],
-      localExcludedTags: []
+      localExcludedTags: [],
+      deleteDialog: false
     };
   },
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)({
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)({
     words: "pensamientos/getWords",
     tags: "pensamientos/getTags",
     inputTags: "pensamientos/getInputTags",
@@ -2378,7 +2489,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _helpers_hashTag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/hashTag */ "./resources/js/helpers/hashTag.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
 //
 //
 //
@@ -2394,11 +2513,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['text'],
   data: function data() {
     return {
-      input: ""
+      input: "",
+      localTags: [],
+      localExcludedTags: []
     };
   },
   watch: {
@@ -2437,10 +2559,30 @@ __webpack_require__.r(__webpack_exports__);
     },
     post: function post() {
       this.processInput();
-      this.$store.dispatch("pensamientos/post");
+
+      if (this.editing) {
+        this.$store.dispatch("pensamientos/editSelectedThoughts");
+      } else {
+        this.$store.dispatch("pensamientos/post");
+      }
+
       this.input = "";
     }
-  }
+  },
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)({
+    selectedThoughts: "pensamientos/getSelectedThoughts"
+  })), {}, {
+    formColor: function formColor() {
+      if (this.editing) {
+        return "green";
+      }
+
+      return "grey";
+    },
+    editing: function editing() {
+      return count(this.selectedThoughts) > 0;
+    }
+  })
 });
 
 /***/ }),
@@ -2522,12 +2664,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       options: {
         itemsPerPage: 5000
       },
-      selectedThoughts: []
+      localSelectedThoughts: []
     };
   },
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)({
     loading: "pensamientos/getLoading",
-    filteredThoughts: "pensamientos/getFilteredThoughts"
+    filteredThoughts: "pensamientos/getFilteredThoughts",
+    selectedThoughts: "pensamientos/getSelectedThoughts"
   })), {}, {
     showSelect: function showSelect() {
       return true;
@@ -2540,9 +2683,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.$vuetify.goTo(container.scrollHeight * this.filteredThoughts.length);
       }
     },
+    localSelectedThoughts: {
+      handler: function handler() {
+        this.$store.commit("pensamientos/setSelectedThoughts", this.localSelectedThoughts);
+      }
+    },
     selectedThoughts: {
       handler: function handler() {
-        this.$store.commit("pensamientos/setSelectedThoughts", this.selectedThoughts);
+        this.localSelectedThoughts = this.selectedThoughts;
       }
     }
   },
@@ -2753,6 +2901,29 @@ var thoughtsService = {
     }
 
     return patch;
+  }(),
+  "delete": function () {
+    var _delete2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(ids) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              console.log(ids);
+              return _context3.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/pensamientos/delete', ids));
+
+            case 2:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    function _delete(_x3) {
+      return _delete2.apply(this, arguments);
+    }
+
+    return _delete;
   }()
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (thoughtsService);
@@ -2927,6 +3098,36 @@ var thoughts = {
     setInputValue: function setInputValue(_ref2, value) {
       var commit = _ref2.commit;
       commit('setInputValue', value);
+    },
+    deleteSelectedThoughts: function deleteSelectedThoughts(_ref3) {
+      var dispatch = _ref3.dispatch,
+          commit = _ref3.commit,
+          state = _ref3.state;
+      var ids = state.selectedThoughts.map(function (x) {
+        return x.id;
+      });
+      _services_thoughtsService__WEBPACK_IMPORTED_MODULE_0__.default.delete(ids).then(function (x) {
+        console.log(x);
+        dispatch('get');
+        commit('setSelectedThoughts', []);
+      })["catch"](function (x) {
+        console.error(x);
+      });
+    },
+    editSelectedThoughts: function editSelectedThoughts(_ref4) {
+      var dispatch = _ref4.dispatch,
+          commit = _ref4.commit,
+          state = _ref4.state;
+      var ids = state.selectedThoughts.map(function (x) {
+        return x.id;
+      });
+      _services_thoughtsService__WEBPACK_IMPORTED_MODULE_0__.default.edit(ids).then(function (x) {
+        console.log(x);
+        dispatch('get');
+        commit('setSelectedThoughts', []);
+      })["catch"](function (x) {
+        console.error(x);
+      });
     }
   },
   mutations: {
@@ -21699,6 +21900,84 @@ component.options.__file = "resources/js/App.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/DeleteButton.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/DeleteButton.vue ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _DeleteButton_vue_vue_type_template_id_25843a28_lang_pug___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteButton.vue?vue&type=template&id=25843a28&lang=pug& */ "./resources/js/components/DeleteButton.vue?vue&type=template&id=25843a28&lang=pug&");
+/* harmony import */ var _DeleteButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteButton.vue?vue&type=script&lang=js& */ "./resources/js/components/DeleteButton.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _DeleteButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _DeleteButton_vue_vue_type_template_id_25843a28_lang_pug___WEBPACK_IMPORTED_MODULE_0__.render,
+  _DeleteButton_vue_vue_type_template_id_25843a28_lang_pug___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/DeleteButton.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/DeleteDialog.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/DeleteDialog.vue ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _DeleteDialog_vue_vue_type_template_id_84d1d584_lang_pug___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteDialog.vue?vue&type=template&id=84d1d584&lang=pug& */ "./resources/js/components/DeleteDialog.vue?vue&type=template&id=84d1d584&lang=pug&");
+/* harmony import */ var _DeleteDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/DeleteDialog.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _DeleteDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _DeleteDialog_vue_vue_type_template_id_84d1d584_lang_pug___WEBPACK_IMPORTED_MODULE_0__.render,
+  _DeleteDialog_vue_vue_type_template_id_84d1d584_lang_pug___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/DeleteDialog.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/EditThoughtDialog.vue":
 /*!*******************************************************!*\
   !*** ./resources/js/components/EditThoughtDialog.vue ***!
@@ -21933,6 +22212,38 @@ component.options.__file = "resources/js/components/Thoughts.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/DeleteButton.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/DeleteButton.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteButton.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/DeleteButton.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/DeleteDialog.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/DeleteDialog.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/DeleteDialog.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
 /***/ "./resources/js/components/EditThoughtDialog.vue?vue&type=script&lang=js&":
 /*!********************************************************************************!*\
   !*** ./resources/js/components/EditThoughtDialog.vue?vue&type=script&lang=js& ***!
@@ -22058,6 +22369,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_pug_plain_loader_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_f348271a_lang_pug___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_pug_plain_loader_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_f348271a_lang_pug___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/pug-plain-loader/index.js!../../node_modules/vue-loader/lib/index.js??vue-loader-options!./App.vue?vue&type=template&id=f348271a&lang=pug& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader/index.js!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/App.vue?vue&type=template&id=f348271a&lang=pug&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/DeleteButton.vue?vue&type=template&id=25843a28&lang=pug&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/DeleteButton.vue?vue&type=template&id=25843a28&lang=pug& ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_pug_plain_loader_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteButton_vue_vue_type_template_id_25843a28_lang_pug___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_pug_plain_loader_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteButton_vue_vue_type_template_id_25843a28_lang_pug___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_pug_plain_loader_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteButton_vue_vue_type_template_id_25843a28_lang_pug___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/pug-plain-loader/index.js!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteButton.vue?vue&type=template&id=25843a28&lang=pug& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader/index.js!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/DeleteButton.vue?vue&type=template&id=25843a28&lang=pug&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/DeleteDialog.vue?vue&type=template&id=84d1d584&lang=pug&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/DeleteDialog.vue?vue&type=template&id=84d1d584&lang=pug& ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_pug_plain_loader_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteDialog_vue_vue_type_template_id_84d1d584_lang_pug___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_pug_plain_loader_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteDialog_vue_vue_type_template_id_84d1d584_lang_pug___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_pug_plain_loader_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteDialog_vue_vue_type_template_id_84d1d584_lang_pug___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/pug-plain-loader/index.js!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteDialog.vue?vue&type=template&id=84d1d584&lang=pug& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader/index.js!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/DeleteDialog.vue?vue&type=template&id=84d1d584&lang=pug&");
 
 
 /***/ }),
@@ -22220,6 +22565,119 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader/index.js!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/DeleteButton.vue?vue&type=template&id=25843a28&lang=pug&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader/index.js!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/DeleteButton.vue?vue&type=template&id=25843a28&lang=pug& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.selectedThoughts.length > 0
+    ? _c(
+        "div",
+        [
+          _c(
+            "v-btn",
+            {
+              attrs: { color: "red", fab: "", small: "" },
+              on: { click: _vm.openDialog },
+            },
+            [_c("v-icon", [_vm._v("mdi-trash")])],
+            1
+          ),
+          _c("DeleteDialog", {
+            ref: "deleteDialog",
+            attrs: { selectedThoughts: _vm.selectedThoughts },
+          }),
+        ],
+        1
+      )
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader/index.js!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/DeleteDialog.vue?vue&type=template&id=84d1d584&lang=pug&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader/index.js!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/DeleteDialog.vue?vue&type=template&id=84d1d584&lang=pug& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-dialog",
+    {
+      attrs: { width: "500" },
+      model: {
+        value: _vm.dialog,
+        callback: function ($$v) {
+          _vm.dialog = $$v
+        },
+        expression: "dialog",
+      },
+    },
+    [
+      _c(
+        "v-card",
+        [
+          _c(
+            "v-card-text",
+            [
+              _c("p", [_vm._v("Eliminar las siguientes entradas: \t\t")]),
+              _vm._l(_vm.selectedThoughts, function (item) {
+                return _c("ul", [_c("li", [_vm._v(_vm._s(item.texto))])])
+              }),
+            ],
+            2
+          ),
+          _c(
+            "v-card-actions",
+            [
+              _c("v-spacer"),
+              _c(
+                "v-btn",
+                { attrs: { color: "primary" }, on: { click: _vm.submit } },
+                [_vm._v("Aceptar")]
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader/index.js!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditThoughtDialog.vue?vue&type=template&id=7b4e2f08&lang=pug&":
 /*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/pug-plain-loader/index.js!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/EditThoughtDialog.vue?vue&type=template&id=7b4e2f08&lang=pug& ***!
@@ -22363,21 +22821,7 @@ var render = function () {
     "v-footer",
     { attrs: { app: "", height: "72", inset: "" } },
     [
-      _vm.selectedThoughts.length > 0
-        ? _c(
-            "v-btn",
-            {
-              attrs: { color: "primary", fab: "", small: "" },
-              on: {
-                click: function ($event) {
-                  _vm.showDialog = true
-                },
-              },
-            },
-            [_c("v-icon", [_vm._v("mdi-pencil")])],
-            1
-          )
-        : _vm._e(),
+      _c("DeleteButton", { attrs: { selectedThoughts: _vm.selectedThoughts } }),
       _c("ThoughtEditor"),
       _c("Tags"),
       _c(
@@ -22530,6 +22974,7 @@ var render = function () {
       dense: "",
       flat: "",
       outlined: "",
+      color: _vm.formColor,
       solo: "",
     },
     on: {
@@ -22654,11 +23099,11 @@ var render = function () {
           },
         ]),
         model: {
-          value: _vm.selectedThoughts,
+          value: _vm.localSelectedThoughts,
           callback: function ($$v) {
-            _vm.selectedThoughts = $$v
+            _vm.localSelectedThoughts = $$v
           },
-          expression: "selectedThoughts",
+          expression: "localSelectedThoughts",
         },
       }),
       _c("EditThoughtDialog"),

@@ -1,7 +1,7 @@
 <template lang="pug">
 .container-fluid( ref="container" )
 	v-data-table(
-		v-model="selectedThoughts",
+		v-model="localSelectedThoughts",
 		:headers="headers",
 		:items="filteredThoughts",
 		:loading="loading",
@@ -47,13 +47,14 @@ export default {
 			options: {
 				itemsPerPage: 5000,
 			},
-			selectedThoughts: [],
+			localSelectedThoughts: [],
 		};
 	},
 	computed: {
 		...mapGetters({
 			loading: "pensamientos/getLoading",
 			filteredThoughts: "pensamientos/getFilteredThoughts",
+			selectedThoughts: "pensamientos/getSelectedThoughts",
 		}),
 		showSelect() {
 			return true;
@@ -66,11 +67,16 @@ export default {
 				this.$vuetify.goTo(container.scrollHeight*this.filteredThoughts.length)
 			},
 		},
+		localSelectedThoughts: {
+			handler() {
+				this.$store.commit("pensamientos/setSelectedThoughts", this.localSelectedThoughts);
+			}
+		},
 		selectedThoughts: {
 			handler() {
-				this.$store.commit("pensamientos/setSelectedThoughts", this.selectedThoughts);
+				this.localSelectedThoughts = this.selectedThoughts;
 			}
-		}
+		},
 	},
 	methods: {
 		getData() {

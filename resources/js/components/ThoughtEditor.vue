@@ -8,17 +8,21 @@ v-text-field(
 	dense
 	flat
 	outlined
+	:color="formColor"
 	solo
 )
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import hashtagHelper from '../helpers/hashTag';
 export default {
 	props: ['text'],
 	data() {
 		return {
 			input: "",
+			localTags: [],
+			localExcludedTags: [],
 		};
 	},
 	watch: {
@@ -53,9 +57,27 @@ export default {
 		},
 		post() {
 			this.processInput();
-			this.$store.dispatch("pensamientos/post")
+			if(this.editing){
+				this.$store.dispatch("pensamientos/editSelectedThoughts")
+			}else{
+				this.$store.dispatch("pensamientos/post")
+			}
 			this.input = "";
 		},
+	},
+	computed: {
+		...mapGetters({
+			selectedThoughts: "pensamientos/getSelectedThoughts",
+		}),
+		formColor() {
+			if (this.editing) {
+				return "green";
+			}
+			return "grey";
+		},
+		editing(){
+			return count(this.selectedThoughts) > 0;
+		}
 	},
 };
 </script>

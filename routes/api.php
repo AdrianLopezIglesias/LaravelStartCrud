@@ -65,3 +65,4 @@ Route::resource('areas', areaAPIController::class);
 
 
 Route::resource('pensamientos', PensamientoAPIController::class);
+Route::post('pensamientos/delete', 'PensamientoAPIController@destroy');
