@@ -8,6 +8,9 @@ const thoughtsService = {
 	post: async (data) => {
 		return axios.post('/api/pensamientos', data);
 	},
+	updateSelectedThoughts: async (data) => {
+		return axios.post('/api/pensamientos/edit-selected', data);
+	},
 	patch: async (data) => {
 		return axios.patch('/api/pensamientos/'+data.id, data);
 	},

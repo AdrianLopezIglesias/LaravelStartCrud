@@ -55,7 +55,6 @@ let thoughts = {
 			}
 
 			if (excludedTags.length > 0) {
-				console.log(excludedTags)
 				excludedTags.forEach(x => {
 					ft = ft.filter(
 						(thought) => {
@@ -135,7 +134,6 @@ let thoughts = {
 			let ids = state.selectedThoughts.map(x => x.id)
 			thoughtsService.delete(ids)
 				.then(x => {
-					console.log(x)
 					dispatch('get')
 					commit('setSelectedThoughts', [])
 				})
@@ -143,13 +141,10 @@ let thoughts = {
 					console.error(x)
 				})
 		},
-		editSelectedThoughts({ dispatch, commit, state }) {
-			let ids = state.selectedThoughts.map(x => x.id)
-			thoughtsService.edit(ids)
+		updateSelectedThoughts({ dispatch, commit, state }) {
+			let thoughts = state.selectedThoughts;
+			thoughtsService.updateSelectedThoughts(thoughts)
 				.then(x => {
-					console.log(x)
-					dispatch('get')
-					commit('setSelectedThoughts', [])
 				})
 				.catch(x => {
 					console.error(x)
@@ -213,6 +208,14 @@ let thoughts = {
 		setSelectedThoughts(state, thoughts) {
 			state.selectedThoughts = thoughts
 		},
+		addSelectedThoughtsTag(state, tag) {
+			state.selectedThoughts.forEach(x => {
+				if (!x.tags.includes(tag)) {
+					x.tags.push(tag)
+				}
+			})
+
+		}
 
 
 	},

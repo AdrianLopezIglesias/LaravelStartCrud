@@ -2534,7 +2534,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   methods: {
     handleKey: function handleKey(e) {
       if (e.keyCode == 27) {
-        this.$store.commit("pensamientos/removeLastTag");
+        if (this.isediting) {
+          this.$store.commit('pensamientos/setSelectedThoughts', []);
+        } else {
+          this.$store.commit("pensamientos/removeLastTag");
+        }
       }
 
       if (e.keyCode == 32) {
@@ -2547,6 +2551,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var tag = _helpers_hashTag__WEBPACK_IMPORTED_MODULE_0__.default.getHashTag(this.input);
       var excludedTags = _helpers_hashTag__WEBPACK_IMPORTED_MODULE_0__.default.getExcludedTag(this.input);
 
+      if (this.editing) {
+        this.$store.commit("pensamientos/addSelectedThoughtsTag", tag);
+      }
+
       if (tag) {
         this.$store.commit("pensamientos/addInputTag", tag);
         this.input = _helpers_hashTag__WEBPACK_IMPORTED_MODULE_0__.default.removeHashTag(this.input);
@@ -2556,12 +2564,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.input = _helpers_hashTag__WEBPACK_IMPORTED_MODULE_0__.default.removeExcludedTag(this.input);
         this.$store.commit("pensamientos/addExcludedTag", excludedTags);
       }
+
+      if (this.editing) {
+        this.$store.dispatch("pensamientos/updateSelectedThoughts");
+      }
     },
     post: function post() {
       this.processInput();
 
       if (this.editing) {
-        this.$store.dispatch("pensamientos/editSelectedThoughts");
+        return;
       } else {
         this.$store.dispatch("pensamientos/post");
       }
@@ -2577,10 +2589,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return "green";
       }
 
-      return "grey";
+      return "blue";
     },
     editing: function editing() {
-      return count(this.selectedThoughts) > 0;
+      return this.selectedThoughts.length > 0;
     }
   })
 });
@@ -2880,13 +2892,13 @@ var thoughtsService = {
 
     return post;
   }(),
-  patch: function () {
-    var _patch = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(data) {
+  updateSelectedThoughts: function () {
+    var _updateSelectedThoughts = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(data) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              return _context2.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default().patch('/api/pensamientos/' + data.id, data));
+              return _context2.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/pensamientos/edit-selected', data));
 
             case 1:
             case "end":
@@ -2896,22 +2908,21 @@ var thoughtsService = {
       }, _callee2);
     }));
 
-    function patch(_x2) {
-      return _patch.apply(this, arguments);
+    function updateSelectedThoughts(_x2) {
+      return _updateSelectedThoughts.apply(this, arguments);
     }
 
-    return patch;
+    return updateSelectedThoughts;
   }(),
-  "delete": function () {
-    var _delete2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(ids) {
+  patch: function () {
+    var _patch = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(data) {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              console.log(ids);
-              return _context3.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/pensamientos/delete', ids));
+              return _context3.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default().patch('/api/pensamientos/' + data.id, data));
 
-            case 2:
+            case 1:
             case "end":
               return _context3.stop();
           }
@@ -2919,7 +2930,30 @@ var thoughtsService = {
       }, _callee3);
     }));
 
-    function _delete(_x3) {
+    function patch(_x3) {
+      return _patch.apply(this, arguments);
+    }
+
+    return patch;
+  }(),
+  "delete": function () {
+    var _delete2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(ids) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              console.log(ids);
+              return _context4.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/pensamientos/delete', ids));
+
+            case 2:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }));
+
+    function _delete(_x4) {
       return _delete2.apply(this, arguments);
     }
 
@@ -3028,7 +3062,6 @@ var thoughts = {
       }
 
       if (excludedTags.length > 0) {
-        console.log(excludedTags);
         excludedTags.forEach(function (x) {
           ft = ft.filter(function (thought) {
             if (lodash__WEBPACK_IMPORTED_MODULE_2___default().isArray(thought.tags)) {
@@ -3107,25 +3140,18 @@ var thoughts = {
         return x.id;
       });
       _services_thoughtsService__WEBPACK_IMPORTED_MODULE_0__.default.delete(ids).then(function (x) {
-        console.log(x);
         dispatch('get');
         commit('setSelectedThoughts', []);
       })["catch"](function (x) {
         console.error(x);
       });
     },
-    editSelectedThoughts: function editSelectedThoughts(_ref4) {
+    updateSelectedThoughts: function updateSelectedThoughts(_ref4) {
       var dispatch = _ref4.dispatch,
           commit = _ref4.commit,
           state = _ref4.state;
-      var ids = state.selectedThoughts.map(function (x) {
-        return x.id;
-      });
-      _services_thoughtsService__WEBPACK_IMPORTED_MODULE_0__.default.edit(ids).then(function (x) {
-        console.log(x);
-        dispatch('get');
-        commit('setSelectedThoughts', []);
-      })["catch"](function (x) {
+      var thoughts = state.selectedThoughts;
+      _services_thoughtsService__WEBPACK_IMPORTED_MODULE_0__.default.updateSelectedThoughts(thoughts).then(function (x) {})["catch"](function (x) {
         console.error(x);
       });
     }
@@ -3190,6 +3216,13 @@ var thoughts = {
     },
     setSelectedThoughts: function setSelectedThoughts(state, thoughts) {
       state.selectedThoughts = thoughts;
+    },
+    addSelectedThoughtsTag: function addSelectedThoughtsTag(state, tag) {
+      state.selectedThoughts.forEach(function (x) {
+        if (!x.tags.includes(tag)) {
+          x.tags.push(tag);
+        }
+      });
     }
   },
   modules: {}

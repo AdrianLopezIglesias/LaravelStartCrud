@@ -36,7 +36,11 @@ export default {
 	methods: {
 		handleKey(e) {
 			if (e.keyCode == 27) {
-				this.$store.commit("pensamientos/removeLastTag")
+				if(this.isediting){
+					this.$store.commit('pensamientos/setSelectedThoughts', []);
+				}else{
+					this.$store.commit("pensamientos/removeLastTag")
+				}
 			}
 			if (e.keyCode == 32) {
 				this.processInput();
@@ -46,6 +50,9 @@ export default {
 		processInput() {
 			let tag = hashtagHelper.getHashTag(this.input);
 			let excludedTags = hashtagHelper.getExcludedTag(this.input);
+			if(this.editing){
+				this.$store.commit("pensamientos/addSelectedThoughtsTag", tag)
+			}
 			if (tag) {
 				this.$store.commit("pensamientos/addInputTag", tag)
 				this.input = hashtagHelper.removeHashTag(this.input)
@@ -54,11 +61,14 @@ export default {
 				this.input = hashtagHelper.removeExcludedTag(this.input)
 				this.$store.commit("pensamientos/addExcludedTag", excludedTags)
 			}
+			if(this.editing){
+				this.$store.dispatch("pensamientos/updateSelectedThoughts")
+			}
 		},
 		post() {
 			this.processInput();
 			if(this.editing){
-				this.$store.dispatch("pensamientos/editSelectedThoughts")
+				return; 
 			}else{
 				this.$store.dispatch("pensamientos/post")
 			}
@@ -73,10 +83,10 @@ export default {
 			if (this.editing) {
 				return "green";
 			}
-			return "grey";
+			return "blue";
 		},
 		editing(){
-			return count(this.selectedThoughts) > 0;
+			return (this.selectedThoughts.length) > 0;
 		}
 	},
 };

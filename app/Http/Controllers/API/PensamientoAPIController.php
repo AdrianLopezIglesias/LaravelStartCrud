@@ -155,4 +155,14 @@ class PensamientoAPIController extends AppBaseController {
 
         return $this->sendResponse($input, 'Pensamiento deleted successfully');
     }
+    public function editSelected(Request $request) {
+        $input = $request->all();
+        foreach ($input as $thought) {
+            $pensamiento = Pensamiento::find($thought['id']);
+            $pensamiento->tags = json_encode($thought['tags']);
+            $pensamiento->save();
+        }
+
+        return $this->sendResponse($input, 'Thoughts updated');
+    }
 }
