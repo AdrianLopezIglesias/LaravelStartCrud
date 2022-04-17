@@ -2702,6 +2702,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     selectedThoughts: {
       handler: function handler() {
+        console.log(this.selectedThoughts);
         this.localSelectedThoughts = this.selectedThoughts;
       }
     }

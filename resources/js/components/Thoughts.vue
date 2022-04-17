@@ -74,6 +74,7 @@ export default {
 		},
 		selectedThoughts: {
 			handler() {
+				console.log(this.selectedThoughts)
 				this.localSelectedThoughts = this.selectedThoughts;
 			}
 		},
