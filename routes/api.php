@@ -23,47 +23,49 @@ Route::middleware(['auth'])->group(
 	}
 );
 
+Route::middleware(['auth:sanctum'])->group(function(){
 
-Route::resource('tratamientos', tratamientoAPIController::class);
+	Route::resource('tratamientos', tratamientoAPIController::class);
 
-Route::post('citas/disponibilidad', 'CitaAPIController@disponibilidad');
+	Route::post('citas/disponibilidad', 'CitaAPIController@disponibilidad');
 
-Route::resource('contratacions', ContratacionAPIController::class);
-
-
-Route::resource('clientes', ClienteAPIController::class);
+	Route::resource('contratacions', ContratacionAPIController::class);
 
 
-Route::resource('citas', CitaAPIController::class);
+	Route::resource('clientes', ClienteAPIController::class);
 
 
-Route::resource('pacientes', PacientesAPIController::class);
+	Route::resource('citas', CitaAPIController::class);
 
 
-Route::resource('profesionals', App\Http\Controllers\API\ProfesionalAPIController::class);
+	Route::resource('pacientes', PacientesAPIController::class);
 
 
-Route::resource('salons', App\Http\Controllers\API\SalonAPIController::class);
+	Route::resource('profesionals', App\Http\Controllers\API\ProfesionalAPIController::class);
 
 
-Route::resource('salon_horarios', App\Http\Controllers\API\SalonHorarioAPIController::class);
+	Route::resource('salons', App\Http\Controllers\API\SalonAPIController::class);
 
 
-Route::resource('profesional_horarios', App\Http\Controllers\API\ProfesionalHorarioAPIController::class);
+	Route::resource('salon_horarios', App\Http\Controllers\API\SalonHorarioAPIController::class);
 
 
-Route::resource('instalacions', App\Http\Controllers\API\InstalacionAPIController::class);
+	Route::resource('profesional_horarios', App\Http\Controllers\API\ProfesionalHorarioAPIController::class);
 
 
-Route::resource('profesional_tratamientos', App\Http\Controllers\API\ProfesionalTratamientoAPIController::class);
+	Route::resource('instalacions', App\Http\Controllers\API\InstalacionAPIController::class);
 
 
-Route::resource('paciente_datos_personales', App\Http\Controllers\API\PacienteDatosPersonalesAPIController::class);
+	Route::resource('profesional_tratamientos', App\Http\Controllers\API\ProfesionalTratamientoAPIController::class);
 
 
-Route::resource('areas', areaAPIController::class);
+	Route::resource('paciente_datos_personales', App\Http\Controllers\API\PacienteDatosPersonalesAPIController::class);
 
 
-Route::resource('pensamientos', PensamientoAPIController::class);
-Route::post('pensamientos/edit-selected', 'PensamientoAPIController@editSelected');
-Route::post('pensamientos/delete', 'PensamientoAPIController@destroy');
+	Route::resource('areas', areaAPIController::class);
+
+
+	Route::resource('pensamientos', PensamientoAPIController::class);
+	Route::post('pensamientos/edit-selected', 'PensamientoAPIController@editSelected');
+	Route::post('pensamientos/delete', 'PensamientoAPIController@destroy');
+});
