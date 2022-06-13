@@ -6,7 +6,9 @@ use App\Http\Controllers\HomeController;
 
 Route::middleware(['auth:sanctum'])->group(function(){
 	Route::get('/', [
-
+		HomeController::class, 'index'
+	]);
+	Route::get('/x1', [
 		HomeController::class, 'index'
 	]);
 });
