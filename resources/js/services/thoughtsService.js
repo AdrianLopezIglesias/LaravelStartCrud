@@ -1,22 +1,27 @@
 import axios from 'axios'
+const instance = axios.create({
+	withCredentials: true,
+ })
+
 const thoughtsService = {
 
 	get: () => {
-		return axios.get('/api/pensamientos');
+		console.log(instance);
+		return instance.get('/api/pensamientos');
 	},
 	
 	post: async (data) => {
-		return axios.post('/api/pensamientos', data);
+		return instance.post('/api/pensamientos', data);
 	},
 	updateSelectedThoughts: async (data) => {
-		return axios.post('/api/pensamientos/edit-selected', data);
+		return instance.post('/api/pensamientos/edit-selected', data);
 	},
 	patch: async (data) => {
-		return axios.patch('/api/pensamientos/'+data.id, data);
+		return instance.patch('/api/pensamientos/'+data.id, data);
 	},
 	delete: async (ids) => {
 		console.log(ids)
-		return axios.post('/api/pensamientos/delete', ids);
+		return instance.post('/api/pensamientos/delete', ids);
 	}
 }
 	

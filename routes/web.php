@@ -8,9 +8,7 @@ Route::middleware(['auth:sanctum'])->group(function(){
 	Route::get('/', [
 		HomeController::class, 'index'
 	]);
-	Route::get('/x1', [
-		HomeController::class, 'index'
-	]);
+
 });
 // Route::get('/restart', function () {
 // 	Artisan::call('migrate:fresh --seed');

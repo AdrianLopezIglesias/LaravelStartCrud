@@ -2909,9 +2909,12 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
+var instance = axios__WEBPACK_IMPORTED_MODULE_1___default().create({
+  withCredentials: true
+});
 var thoughtsService = {
   get: function get() {
-    return axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/pensamientos');
+    return instance.get('/api/pensamientos');
   },
   post: function () {
     var _post = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(data) {
@@ -2919,7 +2922,7 @@ var thoughtsService = {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              return _context.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/pensamientos', data));
+              return _context.abrupt("return", instance.post('/api/pensamientos', data));
 
             case 1:
             case "end":
@@ -2941,7 +2944,7 @@ var thoughtsService = {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              return _context2.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/pensamientos/edit-selected', data));
+              return _context2.abrupt("return", instance.post('/api/pensamientos/edit-selected', data));
 
             case 1:
             case "end":
@@ -2963,7 +2966,7 @@ var thoughtsService = {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              return _context3.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default().patch('/api/pensamientos/' + data.id, data));
+              return _context3.abrupt("return", instance.patch('/api/pensamientos/' + data.id, data));
 
             case 1:
             case "end":
@@ -2986,7 +2989,7 @@ var thoughtsService = {
           switch (_context4.prev = _context4.next) {
             case 0:
               console.log(ids);
-              return _context4.abrupt("return", axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/pensamientos/delete', ids));
+              return _context4.abrupt("return", instance.post('/api/pensamientos/delete', ids));
 
             case 2:
             case "end":
@@ -3139,7 +3142,9 @@ var thoughts = {
     get: function get(context) {
       context.commit('setLoading', true);
       context.commit('setError', false);
-      _services_thoughtsService__WEBPACK_IMPORTED_MODULE_0__.default.get().then(function (x) {
+      _services_thoughtsService__WEBPACK_IMPORTED_MODULE_0__.default.get({
+        withCredentials: true
+      }).then(function (x) {
         context.commit('setThoughts', x.data.thoughts);
         context.commit('setWords', x.data.words);
         context.commit('setTags', x.data.tags);
