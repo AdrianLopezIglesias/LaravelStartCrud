@@ -31,8 +31,4 @@ RUN mkdir -p /home/$user/.composer && \
 # Set working directory
 WORKDIR /var/www
 
-RUN composer install --ignore-platform-reqs
-
-RUN cp env.docker .env
-
 USER $user
