@@ -33,6 +33,6 @@ WORKDIR /var/www
 
 RUN composer-install --ignore-platform-reqs
 
-RUN cp .env.docker .env
+RUN cp env.docker .env
 
 USER $user
