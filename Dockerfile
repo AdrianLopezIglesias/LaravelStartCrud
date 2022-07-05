@@ -31,6 +31,6 @@ RUN mkdir -p /home/$user/.composer && \
 # Set working directory
 WORKDIR /var/www
 
-# RUN cp .env.docker .env
+RUN cp .env.docker .env
 
 USER $user
