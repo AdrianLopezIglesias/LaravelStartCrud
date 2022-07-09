@@ -1,5 +1,6 @@
 <template lang="pug">
 .container-fluid( ref="container" )
+	EditKeyDialogVue
 	v-data-table(
 		v-model="localSelectedThoughts",
 		:headers="headers",
@@ -35,9 +36,10 @@ import { mapGetters } from "vuex";
 import _ from 'lodash'
 import Footer from "./Footer.vue";
 import EditThoughtDialog from "./EditThoughtDialog.vue";
+import EditKeyDialogVue from "./EditKeyDialog.vue";
 
 export default {
-	components: {Footer, EditThoughtDialog},
+	components: {Footer, EditThoughtDialog, EditKeyDialogVue},
 	data() {
 		return {
 			headers: [
@@ -101,6 +103,7 @@ export default {
 	},
 	mounted() {
 		this.getData();
+        this.$store.commit("encrypt/setEncryptionDialog", true);
 	},
 };
 </script>

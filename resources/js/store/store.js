@@ -3,17 +3,19 @@ import Vue from 'vue'
 Vue.use(Vuex)
 
 import pensamientos from './thoughts'
+import encryptionModule from './encryption'
 
 const store = new Vuex.Store({
-	state: {
+    state: {
 
-	},
-	mutations: {
+    },
+    mutations: {
 
-	},
-	modules: {
-		pensamientos: pensamientos
-	}
+    },
+    modules: {
+        pensamientos: pensamientos,
+        encryption: encryptionModule
+    }
 
 })
 
