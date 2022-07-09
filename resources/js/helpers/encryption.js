@@ -31,7 +31,7 @@ export default {
                 return decryptedText
             }
         } catch (e) {}
-        return text;
+        return "";
     },
 
     decryptTags(tags) {
@@ -47,6 +47,9 @@ export default {
         let decryptedThoughts = []
 
         thoughts.forEach(thought => {
+            if(this.decrypt(thought.texto) == ""){
+                return
+            }
                 thought.texto = this.decrypt(thought.texto);
                 thought.tags = this.decryptTags(thought.tags);
                 decryptedThoughts.push(thought);

@@ -119,6 +119,8 @@ let thoughts = {
                 })
         },
         patch(context, data) {
+            data.texto = encryption.encrypt(data.texto);
+            data.tags = encryption.encryptTags(data.tags);
             thoughtsService.patch(data)
                 .then(x => {
                     context.dispatch('get')
