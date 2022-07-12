@@ -16,8 +16,12 @@ v-text-field(
 <script>
 import { mapGetters } from "vuex";
 import hashtagHelper from '../helpers/hashTag';
+
+const key_space = 32
+const key_enter = 13
+const key_escape = 27
+
 export default {
-	props: ['text'],
 	data() {
 		return {
 			input: "",
@@ -25,67 +29,71 @@ export default {
 			localExcludedTags: [],
 		};
 	},
-	watch: {
-		input(newVal, oldVal) {
-			this.$emit('input', newVal);
-		},
-		text(newVal, oldVal) {
-			this.input = newVal;
-		},
-	},
+	watch: {},
 	methods: {
 		handleKey(e) {
-			if (e.keyCode == 27) {
-				if(this.isediting){
-					this.$store.commit('pensamientos/setSelectedThoughts', []);
-				}else{
-					this.$store.commit("pensamientos/removeLastTag")
-				}
-			}
-			if (e.keyCode == 32) {
-				this.processInput();
-			}
+            switch (e.keyCode) {
+                case key_escape:
+                    this.$store.commit('pensamientos/setSelectedThoughts', []);
+                    this.$store.commit("pensamientos/removeLastTag")
+                    break;
+                case key_space:
+				    this.processInput();
+                    break;
+            
+                default:
+                    break;
+            }
 			this.$store.commit("pensamientos/setInputValue", (this.input))
 		}, 
 		processInput() {
-			let tag = hashtagHelper.getHashTag(this.input);
+			let inputTag = hashtagHelper.getHashTag(this.input);
 			let excludedTags = hashtagHelper.getExcludedTag(this.input);
-			if(this.editing){
-				this.$store.commit("pensamientos/addSelectedThoughtsTag", tag)
-			}
-			if (tag) {
-				this.$store.commit("pensamientos/addInputTag", tag)
-				this.input = hashtagHelper.removeHashTag(this.input)
-			}
-			if (excludedTags) {
-				this.input = hashtagHelper.removeExcludedTag(this.input)
-				this.$store.commit("pensamientos/addExcludedTag", excludedTags)
-			}
-			if(this.editing){
-				this.$store.dispatch("pensamientos/updateSelectedThoughts")
-			}
+
+            this.cleanInput(); 
+            this.resolveSelectedTags();
+            this.resolveInputTag(inputTag);
+            this.resolveExcludedTags(excludedTags);
 		},
 		post() {
+            this.cleanInput(); 
+            this.$store.commit('pensamientos/setSelectedThoughts', []);
 			this.processInput();
-			if(this.editing){
-				return; 
-			}else{
-				this.$store.dispatch("pensamientos/post")
-			}
+            this.$store.dispatch("pensamientos/post")
 			this.input = "";
 		},
+        cleanInput() {
+            this.input = hashtagHelper.removeHashTag(this.input)
+            this.input = hashtagHelper.removeExcludedTag(this.input)
+        },
+        resolveSelectedTags(){
+			if(this.isEditing){
+				this.$store.commit("pensamientos/addSelectedThoughtsTag", inputTag)
+				this.$store.dispatch("pensamientos/updateSelectedThoughts")
+			}
+        },
+        resolveInputTag(){
+		    if (inputTag) {
+				this.$store.commit("pensamientos/addInputTag", inputTag)
+			}
+        },
+        resolveExcludedTags(){
+			if (excludedTags) {
+				this.$store.commit("pensamientos/addExcludedTag", excludedTags)
+			}
+        }
 	},
 	computed: {
 		...mapGetters({
 			selectedThoughts: "pensamientos/getSelectedThoughts",
 		}),
 		formColor() {
-			if (this.editing) {
+			if (this.isEditing) {
 				return "green";
 			}
 			return "blue";
 		},
-		editing(){
+		isEditing(){
 			return (this.selectedThoughts.length) > 0;
 		}
 	},
