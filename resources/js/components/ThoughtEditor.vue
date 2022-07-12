@@ -40,7 +40,7 @@ export default {
                 case key_space:
 				    this.processInput();
                     break;
-            
+
                 default:
                     break;
             }
@@ -55,29 +55,30 @@ export default {
             this.resolveInputTag(inputTag);
             this.resolveExcludedTags(excludedTags);
 		},
-		post() {
-            this.cleanInput(); 
-            this.$store.commit('pensamientos/setSelectedThoughts', []);
-			this.processInput();
-            this.$store.dispatch("pensamientos/post")
-			this.input = "";
-		},
         cleanInput() {
             this.input = hashtagHelper.removeHashTag(this.input)
             this.input = hashtagHelper.removeExcludedTag(this.input)
         },
+		post() {
+            this.processInput();
+			this.$store.commit("pensamientos/setInputValue", (this.input))
+
+            this.$store.dispatch("pensamientos/post")
+			this.input = "";
+            this.$store.commit('pensamientos/setSelectedThoughts', []);
+		},
         resolveSelectedTags(){
 			if(this.isEditing){
 				this.$store.commit("pensamientos/addSelectedThoughtsTag", inputTag)
 				this.$store.dispatch("pensamientos/updateSelectedThoughts")
 			}
         },
-        resolveInputTag(){
+        resolveInputTag(inputTag){
 		    if (inputTag) {
 				this.$store.commit("pensamientos/addInputTag", inputTag)
 			}
         },
-        resolveExcludedTags(){
+        resolveExcludedTags(excludedTags){
 			if (excludedTags) {
 				this.$store.commit("pensamientos/addExcludedTag", excludedTags)
 			}
