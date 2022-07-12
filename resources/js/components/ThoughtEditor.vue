@@ -51,7 +51,7 @@ export default {
 			let excludedTags = hashtagHelper.getExcludedTag(this.input);
 
             this.cleanInput(); 
-            this.resolveSelectedTags();
+            this.resolveSelectedTags(inputTag);
             this.resolveInputTag(inputTag);
             this.resolveExcludedTags(excludedTags);
 		},
@@ -67,7 +67,7 @@ export default {
 			this.input = "";
             this.$store.commit('pensamientos/setSelectedThoughts', []);
 		},
-        resolveSelectedTags(){
+        resolveSelectedTags(inputTag){
 			if(this.isEditing){
 				this.$store.commit("pensamientos/addSelectedThoughtsTag", inputTag)
 				this.$store.dispatch("pensamientos/updateSelectedThoughts")
