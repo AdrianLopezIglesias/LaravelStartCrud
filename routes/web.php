@@ -8,8 +8,11 @@ Route::middleware(['auth:sanctum'])->group(function(){
 	Route::get('/', [
 		HomeController::class, 'index'
 	]);
-
 });
+
+Route::get('/data', [
+    App\Http\Controllers\ApiController::class, 'get'
+]);
 // Route::get('/restart', function () {
 // 	Artisan::call('migrate:fresh --seed');
 // 	return "database restarted";
