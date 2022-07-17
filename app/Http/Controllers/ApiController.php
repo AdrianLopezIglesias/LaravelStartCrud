@@ -19,7 +19,7 @@ class ApiController extends Controller
             'lunarMonthWeek' => $year_week - $weekly_month*4 + 5,
             'weekDay' => ($week_day),
         ];
-
+        $fecha['complete'] = $fecha['lunarMonth'].'-'.$fecha['lunarMonthWeek'].'-'.$fecha['weekDay'];
         $finanzas = [
             'uva' => $this->getUVA(),
             'blue' => $this->getBlue(),
