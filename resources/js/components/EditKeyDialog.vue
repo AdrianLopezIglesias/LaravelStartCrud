@@ -15,7 +15,7 @@ v-dialog(v-model="editKeyDialog" width="500")
             )
 		v-card-actions
 			v-spacer
-			v-btn(color="primary" @click="post") Actualizar
+			v-btn(color="primary" @click="post") Confirmar
 </template>
 
 <script>
@@ -28,7 +28,7 @@ export default {
 	},
 	data() {
 		return {
-            input: "password" + Math.floor( Math.random()*10000),
+            input: "",
 		};
 	},
 	computed: {
@@ -41,17 +41,17 @@ export default {
 	},
 	methods: {
         closeEditDialog() {
-            this.$store.commit("encryption/setEncryptionDialog", false);
+            this.$store.commit("encryption/closeEncryptionDialog");
         },
         post() {
             this.$store.commit("encryption/setEncryptionKey", this.input);
-            localStorage.setItem("key", this.input);
             this.closeEditDialog();
             this.$store.dispatch("pensamientos/get");
         },
 	},
     mounted() {
-        localStorage.setItem("key", this.input);
+        this.$store.commit("encryption/retrieveEncryptionKey");
+        this.input = this.$store.state.encryption.encryptionKey;
     },
 };
 

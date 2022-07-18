@@ -103,7 +103,6 @@ export default {
 	},
 	mounted() {
 		this.getData();
-        this.$store.commit("encrypt/setEncryptionDialog", true);
 	},
 };
 </script>

@@ -1,6 +1,5 @@
 import crypto from 'crypto-js';
 const algorithm = 'aes-256-cbc'; //Using AES encryption
-localStorage.setItem("key", "encryptionKey");
 let password = localStorage.getItem("key");
 
 export default {
